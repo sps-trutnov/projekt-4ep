@@ -1,0 +1,210 @@
+html, body{
+    position: relative;
+}
+
+body{
+    /*background-color: rgb(0, 160, 227);*/
+
+}
+
+h1{
+    padding-top: 15px;
+    text-align: center;
+    font-family: sans-serif;
+    color: rgb(0, 160, 227);
+}
+
+
+a img {
+    margin:0 auto;    
+    display:block;
+}
+
+
+.prihlaseni input{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+}
+#pujcit input{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+}
+
+#vratit input{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+}
+
+
+.prihlaseni{
+    display: block;
+    position: relative;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#menu{
+    width: 600px;
+    display: block;
+    position: relative;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+ }
+
+#menu button{
+    text-align: center;
+    padding: 5px;
+    margin: 5px;
+}
+
+button {
+    text-decoration: none;
+    width: 245px;
+    color: white;
+    padding: 10px 30px;
+    display: inline-block;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.21);
+    border-bottom: 4px solid rgba(0,0,0,0.21);
+    border-radius: 14px;
+    margin: 10px;
+    font-size: 18px;
+    transition:.3s;
+    
+    
+}
+button.blue {background: rgb(10, 100, 170);}
+button.blue:hover   {background: rgb(0, 160, 227);}
+
+#pujcit{
+    display: block;
+    position: relative;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#vratit{
+    display: block;
+    position: relative;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.menu_button{
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+/*temp*/
+.temp_menu{
+    padding-top: 30px;
+    width: 100%;
+    text-align: center
+}
+.soon{
+    text-align: center;
+    color: white;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+
+.menu_button{
+    text-align: center;
+}
+
+input{
+    width:250px;
+    height: 40px;
+    border:3px solid #aaa;
+    border-radius:14px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+}
+  
+input:focus{
+    border-color:rgb(0, 160, 227);
+    box-shadow:0 0 6px 0 rgb(0, 160, 227);
+}
+input:hover{
+    border-color:rgb(0, 160, 227);
+    box-shadow:0 0 6px 0 rgb(0, 160, 227);
+}
+div.temp_menu>a {
+    background: rgb(53, 124, 183);
+    border: 2px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: white;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    
+    
+}
+#button-box {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+table{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50%;
+    padding-left: 10%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+td, th{
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+    background-color: #aaa;
+}
+
+textarea {
+
+    width:250px;
+    height: 100px;
+    border:3px solid #aaa;
+    border-radius:14px;
+    margin:8px 0;
+    outline:none;
+    padding:8px;
+    box-sizing:border-box;
+    transition:.3s;
+    resize: none;
+
+}
+
+textarea:focus{
+    border-color:rgb(0, 160, 227);
+    box-shadow:0 0 6px 0 rgb(0, 160, 227);
+}
+textarea:hover{
+    border-color:rgb(0, 160, 227);
+    box-shadow:0 0 6px 0 rgb(0, 160, 227);
+}
+
+#pridatKnihu {
+    margin: 0 auto;
+    text-align: center;
+}
