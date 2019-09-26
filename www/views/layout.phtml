@@ -1,0 +1,33 @@
+<?php
+$userAuthenticationService = $provideDependency("\authentication\UserAuthenticationServiceInterface");
+
+$isLogged = $userAuthenticationService->isLogged();
+$loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : null;
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The framework</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="<?=$getActionUrl("Home", "index")?>">Home</a>
+            <a href="<?=$getActionUrl("Article", "list")?>">Articles</a>
+        </nav>
+        <?php if ($isLogged): ?>
+            <p><?=$loggedUserName?></p>
+            <a href="<?=$getActionUrl("Account", "logout")?>">Logout</a>
+        <?php else: ?>
+            <a href="<?=$getActionUrl("Account", "login")?>">Login</a>
+            <a href="<?=$getActionUrl("Account", "register")?>">Register</a>
+        <?php endif; ?>
+    </header>
+    <main>
+        <?=$child?>
+    </main>
+</body>
+</html>
