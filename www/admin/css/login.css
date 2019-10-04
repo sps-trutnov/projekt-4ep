@@ -2,7 +2,7 @@
 
 .loginForm {
     padding: 16px;
-    background-color: white;
+    background-color: yellow;
     margin: 0 auto;
     margin-top: 5%;
     z-index: 10;
@@ -16,7 +16,7 @@ input[type=password] {
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
-    background: #f1f1f1;
+    background: red;
     color: black;
 }
 
@@ -28,7 +28,7 @@ input[type=password]:focus {
 }
 
 input[type=submit] {
-    background-color: dodgerblue;
+    background-color: red;
     color: white;
     font-weight: bold;
     padding: 16px 20px;
@@ -44,6 +44,6 @@ input[type=submit]:hover {
 }
 
 hr {
-    border: 1px solid #f1f1f1;
+    border: 1px solid purple;
     margin-bottom: 25px;
 }
