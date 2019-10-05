@@ -12,7 +12,13 @@ if(isset($_GET["f"]) & isset($_POST["action"])){
             $statement->execute(array($_POST["genre_name"]));
         }
     }
-    header("Location: ./insertBook.php");
+    if($f="editAuthor"){
+        if($a="Vložit"){
+            $statement = $db->prepare("INSERT INTO authors (firstname, lastname) VALUES (:firstname,:lastname)");
+            $statement->execute(array(":firstname" => $_POST["author_firstname"],":lastname" => $_POST["author_lastname"] ));
+        }
+    }
+   // header("Location: ./insertBook.php");
 }
 else
     die("error");

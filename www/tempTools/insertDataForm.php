@@ -27,7 +27,7 @@ $genres=$statement->fetchAll();
     <script src="../js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-    <form action="./insertBook_form.php?f=editAuthor" method="post">
+    <form action="./insertDataSC.php?f=editAuthor" method="post">
 	  <h2>Autoři</h2>
         <select name="author" id="">
             <?php 
@@ -43,7 +43,7 @@ $genres=$statement->fetchAll();
         <input type="submit" name="action" value="Odebrat">
         <input type="submit" name="action" value="Vložit">
     </form>
-    <form action="./insertBook_form.php?f=editGenre" method="post">
+    <form action="./insertDataSC.php?f=editGenre" method="post">
 	  <h2>Žánry</h2>
         <select name="genre" id="">
             <?php 
@@ -58,7 +58,7 @@ $genres=$statement->fetchAll();
         <input type="submit" name="action" value="Odebrat">
         <input type="submit" name="action" value="Vložit">
     </form>
-    <form action="./insertBook_form.php?f=addBook" method="post">
+    <form action="./insertDataSC.php?f=addBook" method="post">
     
     </form>
 </body>
