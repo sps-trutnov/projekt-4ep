@@ -5,19 +5,20 @@
 }
 
 .login-form h1 {
-  text-align: left;
-  margin-left: 40px;
-  font-size: 36px;
+  text-align: center;
   color: #fff;
+  background-color: rgba(0,0,0,.2);
+  font-size: 48px;
+  border-radius: 40px 40px 0 0;
 }
 
 .login-form {
   border: .5px solid #fff;
   background: #4facff;
   box-sizing: border-box;
-  padding-top: 50px;
-	padding-bottom: 50px;
+	padding-bottom: 25px;
   margin: 5% auto;
+  border-radius: 40px;
   text-align: center;
 }
 
@@ -30,12 +31,14 @@
   border: 2px solid #f2f2f2;
   outline: none;
   padding-left: 10px;
+  border-radius:50px
 }
 
 .login-form input[type="submit"] {
   height: 30px;
   width: 120px;
   background:#fff;
+  border-radius:50px
   border:1px solid #f2f2f2;
   font-size: larger;
   cursor: pointer;
