@@ -10,24 +10,17 @@ $loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The framework</title>
+    <title>Knihovna SPŠ Trutnov</title>
 </head>
 <body>
     <header>
-        <nav>
-            <a href="<?=$getActionUrl("Home", "index")?>">Home</a>
-            <a href="<?=$getActionUrl("Article", "list")?>">Articles</a>
-        </nav>
-        <?php if ($isLogged): ?>
-            <p><?=$loggedUserName?></p>
-            <a href="<?=$getActionUrl("Account", "logout")?>">Logout</a>
-        <?php else: ?>
-            <a href="<?=$getActionUrl("Account", "login")?>">Login</a>
-            <a href="<?=$getActionUrl("Account", "register")?>">Register</a>
-        <?php endif; ?>
+       <h1 id="logo"> <img  src="./obrazky/logo.jpg" alt="Logo SPŠ Trutnov" width="35px " height="35px"  > SPŠ Trutnov Knihovna</h1>
     </header>
     <main>
         <?=$child?>
     </main>
+	<footer>
+		<div> &copy; 2019 </div>
+	</footer>
 </body>
 </html>
