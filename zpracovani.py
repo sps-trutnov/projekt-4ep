@@ -26,7 +26,7 @@ autori = list(dict.fromkeys(autori)) #odstraneni duplikatu
 #nahrazeni autora jeho id
 for kniha in knihy:
     knihy[kniha][1] = autori.index(knihy[kniha][1])
-    print(knihy[kniha])
+    #print(knihy[kniha])
 
 
 
@@ -48,5 +48,5 @@ for kniha in knihy:
     sql_knihy += "('" + knihy[kniha][0] + "','" + knihy[kniha][2] + "','"  + str(knihy[kniha][1]) + "','" + "','" + "','"  + knihy[kniha][3] + "','"  + knihy[kniha][4] + "','"  + knihy[kniha][6] +"','" + "','"  + knihy[kniha][5] + "'),\n"
 
 
-#print(sql_autori)
-print(sql_knihy)
+print(sql_autori)
+#print(sql_knihy)
