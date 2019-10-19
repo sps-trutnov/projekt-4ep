@@ -9,6 +9,8 @@ require_once "../database/database.php";
 require_once "./User.php";
 require_once "./users.php";
 
+header("Access-Control-Allow-Origin: http://localhost:4200");
+
 if ($_SERVER['REQUEST_METHOD'] === "GET")
     get();
 elseif ($_SERVER['REQUEST_METHOD'] === "POST")
