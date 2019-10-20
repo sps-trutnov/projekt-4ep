@@ -10,6 +10,8 @@ require_once "./User.php";
 require_once "./users.php";
 
 header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Methods: PUT, POST, DELETE");
+header("Access-Control-Allow-Headers: Content-Type");
 
 if ($_SERVER['REQUEST_METHOD'] === "GET")
     get();
@@ -19,10 +21,11 @@ elseif ($_SERVER['REQUEST_METHOD'] === "PUT")
     put();
 elseif ($_SERVER['REQUEST_METHOD'] === "DELETE")
     delete();
+elseif ($_SERVER['REQUEST_METHOD'] === "OPTIONS") {}
 else 
 {
     http_response_code(405);
-    header("Allow: GET, POST, PUT, DELETE");
+    header("Allow: GET, POST, PUT, DELETE, OPTIONS");
 }
 
 function get()
@@ -64,14 +67,15 @@ function post()
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
-    if (!array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || !array_key_exists("password", $dataModel))
+    if (!array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || !array_key_exists("password", $dataModel) || 
+        !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel))
     {
         http_response_code(400);
         return;
     }
 
     $passwordHash = password_hash($dataModel["password"], PASSWORD_DEFAULT);
-    $user = new User(0, $dataModel["userName"], $dataModel["email"], $passwordHash);
+    $user = new User(0, $dataModel["userName"], $dataModel["email"], $passwordHash, $dataModel["isLibrarian"], $dataModel["isAdministrator"]);
 
     $newUser = addUser($databaseConnection, $user);
 
@@ -87,7 +91,8 @@ function put()
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
-    if (!array_key_exists("id", $dataModel) || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel))
+    if (!array_key_exists("id", $dataModel) || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
+        !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel))
     {
         http_response_code(400);
         return;
@@ -98,7 +103,8 @@ function put()
     else
         $passwordHash = password_hash($dataModel["password"], PASSWORD_DEFAULT);
 
-    $user = new User($dataModel["id"], $dataModel["userName"], $dataModel["email"], $passwordHash);
+    $user = new User($dataModel["id"], $dataModel["userName"], $dataModel["email"], $passwordHash, $dataModel["isLibrarian"], 
+        $dataModel["isAdministrator"]);
 
     $newUser = updateUser($databaseConnection, $user);
 
@@ -130,6 +136,8 @@ function toDataModel(User $user): array
     return [
         "id" => $user->getId(),
         "userName" => $user->getUserName(),
-        "email" => $user->getEmail()
+        "email" => $user->getEmail(),
+        "isLibrarian" => $user->getIsLibrarian(),
+        "isAdministrator" => $user->getIsAdministrator()
     ];
 }

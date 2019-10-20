@@ -3,15 +3,47 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Uživatelské jméno</th>
-            <th>Email</th>
+            <th class="table-column-fill">Uživatelské jméno</th>
+            <th class="table-column-fill">Heslo</th>
+            <th class="table-column-fill">Email</th>
+            <th>Knihovník</th>
+            <th>Administrátor</th>
+            <th class="pr-0">
+                <button *ngIf="isAnyChanged" class="btn btn-sm btn-success" (click)="saveAll()">Uložit</button>
+            </th>
+            <th>
+                <button *ngIf="isAnyChanged" class="btn btn-sm btn-danger" (click)="discardAll()">Zahodit</button>
+            </th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.id}}</td>
-            <td>{{user.userName}}</td>
-            <td>{{user.email}}</td>
+        <tr *ngFor="let user of users" [class.table-warning]="user.isChanged">
+            <td>{{user.original !== null ? user.original.id : ""}}</td>
+            <td class="table-column-fill">
+                <input class="form-control form-control-sm form-control-hover" placeholder="Nevyplněno" type="text" [(ngModel)]="user.newUserName">
+            </td>
+            <td class="table-column-fill">
+                <input class="form-control form-control-sm form-control-hover" placeholder="Nezměněno" type="password" [(ngModel)]="user.newPassword">
+            </td>
+            <td class="table-column-fill">
+                <input class="form-control form-control-sm form-control-hover" placeholder="Nevyplněno" type="text" [(ngModel)]="user.newEmail">
+            </td>
+            <td>
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static" type="checkbox" [(ngModel)]="user.newIsLibrarian" aria-label="...">
+                </div>
+            </td>
+            <td>
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static" type="checkbox" [(ngModel)]="user.newIsAdministrator" aria-label="...">
+                </div>
+            </td>
+            <td class="pr-0">
+                <button *ngIf="user.isChanged" class="btn btn-sm btn-success" (click)="save(user)">Uložit</button>
+            </td>
+            <td>
+                <button *ngIf="user.isChanged" class="btn btn-sm btn-danger" (click)="discard(user)">Zahodit</button>
+            </td>
         </tr>
     </tbody>
 </table>
