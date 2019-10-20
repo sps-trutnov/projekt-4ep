@@ -6,13 +6,13 @@ function echoMyBooks()
 
 include "./base/db.php";
 
-    $dotaz = $db->prepare(" SELECT book_requests.ID,book_requests.user_ID,book_requests.book_ID,book_requests.confirmed,book_requests.request_added,books.ID,books.name,authors.id,authors.firstname,authors.lastname/*,authors.firstname,authors.lastname*/
+    $dotaz = $db->prepare(" SELECT book_requests.id,book_requests.user_id,book_requests.book_id,book_requests.confirmed,book_requests.request_added,books.id,books.name,authors.id,authors.firstname,authors.lastname/*,authors.firstname,authors.lastname*/
                             FROM book_requests
 
-                            INNER JOIN books on book_requests.book_ID=books.ID 
+                            INNER JOIN books on book_requests.book_id=books.id 
                             INNER JOIN authors on books.author_id=authors.id
 
-                            WHERE book_requests.user_ID = ?
+                            WHERE book_requests.user_id = ?
                             ORDER BY book_requests.request_added"); 
                             
     $dotaz->execute(array($_SESSION["user_ID"]));
@@ -31,7 +31,7 @@ include "./base/db.php";
 
         foreach ($booklist as $book) 
         {
-            $ID_knihy = $book["ID"];
+            $ID_knihy = $book["id"];
             
             $potvrzeno = $book["confirmed"];
             $nazev_knihy = $book["name"];
