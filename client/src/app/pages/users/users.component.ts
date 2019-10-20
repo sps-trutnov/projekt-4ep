@@ -11,8 +11,8 @@ import { UserViewModel } from './user-view-model';
 export class UsersComponent implements OnInit {
     users: UserViewModel[];
 
-    constructor(private readonly userService: UserService) {
-
+    constructor(private readonly userService: UserService) { 
+        
     }
 
     async ngOnInit() {
@@ -37,23 +37,14 @@ export class UsersComponent implements OnInit {
             newUser = await this.userService.add(u, user.newPassword).toPromise();
         }
         user.original = newUser;
-        user.newUserName = newUser.userName;
-        user.newPassword = "";
-        user.newEmail = newUser.email;
-        user.newIsLibrarian = newUser.isLibrarian;
-        user.newIsAdministrator = newUser.isAdministrator;
+        user.resetToOriginal();
     }
 
     discard(user: UserViewModel) {
         if (user.original == null)
             this.users.splice(this.users.indexOf(user), 1);
-        else {
-            user.newUserName = user.original.userName;
-            user.newPassword = "";
-            user.newEmail = user.original.email;
-            user.newIsLibrarian = user.original.isLibrarian;
-            user.newIsAdministrator = user.original.isAdministrator;
-        }
+        else
+            user.resetToOriginal();
     }
 
     saveAll() {

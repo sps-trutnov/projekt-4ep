@@ -23,4 +23,20 @@ export class UserViewModel {
                 this.newIsLibrarian !== this.original.isLibrarian || this.newIsAdministrator !== this.original.isAdministrator;
         }
     }
+
+    resetToOriginal() {
+        if (this.original !== null) {
+            this.newUserName = this.original.userName;
+            this.newPassword = "";
+            this.newEmail = this.original.email;
+            this.newIsLibrarian = this.original.isLibrarian;
+            this.newIsAdministrator = this.original.isAdministrator;
+        } else {
+            this.newUserName = "";
+            this.newPassword = "";
+            this.newEmail = "";
+            this.newIsLibrarian = false;
+            this.newIsAdministrator = false;
+        }
+    }
 }
