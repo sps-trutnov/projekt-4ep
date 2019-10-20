@@ -14,7 +14,7 @@ function echoList()
 
     if($dotaz->rowCount() == 0)
     {
-        echo("Nenalezena žádnaaaá kniha v databázi.");
+        echo("Nenalezena žádná kniha v databázi.");
         print_r($db->errorinfo());
     }
     else

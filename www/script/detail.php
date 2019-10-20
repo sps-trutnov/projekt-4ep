@@ -12,7 +12,7 @@ getDetail(){
         include "./base/db.php";
         $IDKnihy = $_GET["id"];
 
-        $dotaz = $db->prepare(" SELECT books.ID,books.ISBN,books.name,books.year,books.description,books.page_count,books.is_maturita,authors.firstname,authors.lastname,conditions.condition,places.place 
+        $dotaz = $db->prepare(" SELECT books.id,books.ISBN,books.name,books.year,books.description,books.page_count,books.maturita_ready,authors.firstname,authors.lastname,conditions.condition,places.place 
                                 FROM books 
                                 INNER JOIN authors on books.author_id=authors.id 
                                 INNER JOIN conditions on books.condition_id=conditions.id 
@@ -37,9 +37,9 @@ getDetail(){
             $umisteni_knihy = $radek["place"];
             $popis = $radek["description"];
             $pocet_stran = $radek["page_count"];
-            $ID = $radek["ID"];
+            $ID = $radek["id"];
             $rok_knihy = $radek["year"];
-            $je_maturitni = $radek["is_maturita"];
+            $je_maturitni = $radek["maturita_ready"];
             
             if($je_maturitni == 1)$je_maturitni="Ano";
             else $je_maturitni="Ne";
