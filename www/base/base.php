@@ -1,7 +1,7 @@
 
 <?php
 if(isset($_SESSION["user_ID"])){
-    switch($_SESSION["accountType"]){
+    switch($_SESSION["account_type"]){
         case 0:{
             header("Location: ./admin/");
             break;

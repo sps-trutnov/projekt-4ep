@@ -108,7 +108,7 @@ class renderer
   public static function hasPermissions()
   {
     include(__DIR__ . "/user.php");
-    return User::GetAccountTypeStatic($_SESSION['username']) == 0;
+    return User::Getaccount_typeStatic($_SESSION['username']) == 0;
   }
 
   function renderTest()

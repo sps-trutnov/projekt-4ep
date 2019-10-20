@@ -25,7 +25,7 @@ if(isset($_POST['json']) && !empty($_POST['json']))
     $data = $value->GetData();
 
 
-    $data['accountType'] = $value->GetAccountTypeName();
+    $data['account_type'] = $value->Getaccount_typeName();
 
 
 
@@ -35,7 +35,7 @@ if(isset($_POST['json']) && !empty($_POST['json']))
   }
 
   // 2 == true == root
-  $outputArray['modify'] = User::GetAccountTypeStatic($_SESSION['username']) == 0;
+  $outputArray['modify'] = User::Getaccount_typeStatic($_SESSION['username']) == 0;
   $outputArray['users'] = $users;
 
   echo json_encode($outputArray);

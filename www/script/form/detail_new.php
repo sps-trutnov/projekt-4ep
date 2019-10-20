@@ -31,7 +31,7 @@ if(isset($_POST["request_userID"]) && isset($_POST["request_bookID"]) && isset($
             {
                     $new_hash = password_hash($_POST["new_pass"], PASSWORD_DEFAULT);
 
-                $change_query=$db->prepare("UPDATE users SET password='$new_hash' WHERE id='$actual_user_id' AND accountType=2");
+                $change_query=$db->prepare("UPDATE users SET password='$new_hash' WHERE id='$actual_user_id' AND account_type=2");
 
                 $change_query->execute();
 

@@ -8,7 +8,7 @@ if(!renderer::isUserLogged())
   returnFail("Not logged in");
 
 
-$type = intval(User::GetAccountTypeStatic($_SESSION['username']));
+$type = intval(User::Getaccount_typeStatic($_SESSION['username']));
 
 if($type > 0)
   returnFail("Do not have permission");

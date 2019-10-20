@@ -82,7 +82,7 @@ function onFindComplete(e)
     let operations = newRow.insertCell(2);
 
     nameCell.innerHTML = obj.firstname + " " + obj.lastname;
-    accTypeCell.innerHTML = obj.accountType;
+    accTypeCell.innerHTML = obj.account_type;
 
 
     // is root? (can change password, remove user)

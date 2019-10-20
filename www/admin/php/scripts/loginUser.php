@@ -21,7 +21,7 @@ if(isset($_POST['json']) && !empty($_POST['json']))
     {
       if(password_verify($userLoginValues['password'], $user['password']))
       {
-        if($user['accountType'] > 0)
+        if($user['account_type'] > 0)
         {
           session_start();
 
@@ -30,7 +30,7 @@ if(isset($_POST['json']) && !empty($_POST['json']))
             $_SESSION['firstname'] = $user['firstname'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['lastname'] = $user['lastname'];
-            $_SESSION['accountType'] = $user['accountType'];
+            $_SESSION['account_type'] = $user['account_type'];
 
           echo "login succesfull";
 

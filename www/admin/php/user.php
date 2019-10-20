@@ -48,12 +48,12 @@ class User
   }
 
 
-  public static function GetAccountTypeStatic($name)
+  public static function Getaccount_typeStatic($name)
   {
     require( __DIR__ . "/dbconn.php");
-    $q = $conn->prepare("SELECT accountType FROM users WHERE username=:username");
+    $q = $conn->prepare("SELECT account_type FROM users WHERE username=:username");
     $q->execute(array("username" => $name));
-    return $q->fetch()['accountType'];
+    return $q->fetch()['account_type'];
   }
 
 
@@ -109,14 +109,14 @@ class User
       return $this->cached['firstname'] . " " . $this->cached['lastname'];
   }
 
-  public function GetAccountType()
+  public function Getaccount_type()
   {
     $this->CheckIfCached();
-    return $this->cached['accountType'];
+    return $this->cached['account_type'];
   }
 
 
-  public static function GetAccountTypeNameStatic($type)
+  public static function Getaccount_typeNameStatic($type)
   {
     switch ($type) {
       case 0: return "Root";
@@ -126,9 +126,9 @@ class User
     }
   }
 
-  public function GetAccountTypeName()
+  public function Getaccount_typeName()
   {
-    return self::GetAccountTypeNameStatic($this->GetAccountType());
+    return self::Getaccount_typeNameStatic($this->Getaccount_type());
   }
 
   public function SetNewRole($roleId)
@@ -142,7 +142,7 @@ class User
   {
     require( __DIR__ . "/dbconn.php");
 
-    $q = $conn->prepare("UPDATE users SET accountType=$roleId WHERE username=:username");
+    $q = $conn->prepare("UPDATE users SET account_type=$roleId WHERE username=:username");
     return $q->execute(
       array("username" => $name)
     );
@@ -202,7 +202,7 @@ class User
   {
     require( __DIR__ . "/dbconn.php");
 
-    $q = $conn->prepare("SELECT id,username,firstname,lastname,accountType FROM users WHERE username=:username");
+    $q = $conn->prepare("SELECT id,username,firstname,lastname,account_type FROM users WHERE username=:username");
 
     $q->execute(array("username" => $this->name));
     $this->cached = $q->fetch(PDO::FETCH_ASSOC);

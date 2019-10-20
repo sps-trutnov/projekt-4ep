@@ -8,7 +8,7 @@ if(!renderer::isUserLogged())
   returnFail();
 
 
-if(User::GetAccountTypeStatic($_SESSION['username']) > 0){
+if(User::Getaccount_typeStatic($_SESSION['username']) > 0){
   returnFail();
 }
 

@@ -10,7 +10,7 @@ if(!renderer::isUserLogged())
   returnFail("User is not logged in");
 
 
-$type = intval(User::GetAccountTypeStatic($_SESSION['username']));
+$type = intval(User::Getaccount_typeStatic($_SESSION['username']));
 
 if($type > 0)
   returnFail("Do not have permission");
@@ -24,7 +24,7 @@ if(isset($_POST['json']))
 
     $return = array();
     $return['success'] = User::SetNewRoleStatic($json->username, $json->newrole);
-    $return['role'] = User::GetAccountTypeNameStatic($json->newrole);
+    $return['role'] = User::Getaccount_typeNameStatic($json->newrole);
     echo json_encode($return);
   }else {
     returnFail("One of fields is not defined");
