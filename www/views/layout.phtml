@@ -12,15 +12,19 @@ $loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knihovna SPŠ Trutnov</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
     <header>
-       <h1 id="logo"> <img src="./obrazky/logo.jpg" alt="Logo SPŠ Trutnov" width="35px" height="35px"> SPŠ Trutnov Knihovna</h1>
+       <h1 id="logo"> <img src="./img/logo.jpg" alt="Logo SPŠ Trutnov" width="35px" height="35px"> SPŠ Trutnov Knihovna</h1>
     </header>
     <main>
         <?=$child?>
     </main>
 	<footer>
+        <div class="menu_button">
+            <a href="."><img src="img/home.png" alt="menu" height="64" width="64"></a>
+        </div> 
 		<div> &copy; 2019 </div>
 	</footer>
 </body>

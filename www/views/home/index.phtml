@@ -2,7 +2,7 @@
 $parentPath = "views/layout.phtml";
 ?>
 <div id="button-box">
-	<a href="<?=$getActionUrl("Book", "Index")?>"><button class="blue">Seznam knih</button></a>
+	<a href="<?=$getActionUrl("Book", "Index", ["page" => 0])?>"><button class="blue">Seznam knih</button></a>
 	<a href="<?=$getActionUrl("Book", "Borrow")?>"><button class="blue">Půjčit knihu</button></a>
 	<a href="<?=$getActionUrl("Book", "Return")?>"><button class="blue">Vrátit knihu</button></a>
 	<a href="<?=$getActionUrl("Book", "Reservations")?>"><button class="blue">Zarezervované knihy</button></a>

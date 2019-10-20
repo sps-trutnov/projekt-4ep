@@ -1,7 +1,7 @@
 <?php
 namespace bookrequest;
 
-interface BookRepositoryInterface {
+interface BookRequestRepositoryInterface {
     function add(int $user_id, int $book_id): BookRequest;
     function getById(int $id): ?BookRequest;
     function update(BookRequest $book);

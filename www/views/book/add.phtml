@@ -1,3 +1,32 @@
 <?php
 $parentPath = "views/layout.phtml";
 ?>
+<div class="container">
+    <h1>Přidat knihu</h1>
+    <form action="<?=$getActionUrl("Book", "AddPost")?>" method="post" class="col-lg-4 mx-auto">
+        <div class="form-group">
+            <label for="name">Název knihy</label>
+            <input type="text" class="form-control" id="name" placeholder="Název knihy">
+        </div>
+        <div class="form-group">
+            <label for="author_id">Autor</label>
+            <select class="custom-select">
+            <option selected id="author_id">Vyberte autora</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Popis</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="pageCount">Počet stran</label>
+            <input type="number" class="form-control" id="pageCount">
+        </div>
+        <div class="form-group">
+            <label for="year">Rok vydání</label>
+            <input type="number" class="form-control" id="year">
+        </div>
+        <button type="submit" class="btn btn-primary mx-auto d-block">Přidat</button>
+    </form>
+</div>
