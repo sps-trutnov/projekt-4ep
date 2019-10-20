@@ -46,6 +46,8 @@ class PDOAuthorRepository implements AuthorRepositoryInterface {
     function getAll(): iterable {
         $statement = $this->_connection->query("SELECT * FROM authors");
 
+        $statement = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        
         foreach ($statement as $row) {
             yield new Author($row["id"], $row["firstname"], $row["lastname"]);
         }

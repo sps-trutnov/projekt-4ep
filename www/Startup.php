@@ -11,6 +11,8 @@ class Startup {
 
         $config->for("\article\ArticleRepositoryInterface")->useClass("\article\PDOArticleRepository");
         $config->for("\book\BookRepositoryInterface")->useClass("\book\PDOBookRepository");
+        $config->for("\author\AuthorRepositoryInterface")->useClass("\author\PDOAuthorRepository");
+        $config->for("\place\PlaceRepositoryInterface")->useClass("\place\PDOPlaceRepository");
 
         $config->for("\user\UserRepositoryInterface")->useClass("\user\PDOUserRepository");
 

@@ -3,29 +3,42 @@ $parentPath = "views/layout.phtml";
 ?>
 <div class="container">
     <h1>Přidat knihu</h1>
-    <form action="<?=$getActionUrl("Book", "AddPost")?>" method="post" class="col-lg-4 mx-auto">
+    <form action="<?=$getActionUrl("Book", "AddPost")?>" method="post" class="col-lg-6 mx-auto">
         <div class="form-group">
             <label for="name">Název knihy</label>
-            <input type="text" class="form-control" id="name" placeholder="Název knihy">
+            <input type="text" class="form-control" name="_name" id="name" placeholder="Název knihy">
         </div>
         <div class="form-group">
-            <label for="author_id">Autor</label>
-            <select class="custom-select">
-            <option selected id="author_id">Vyberte autora</option>
-
+            <label for="authorId">Autor</label>
+            <select class="custom-select" id="authorId" name="_authorId">
+                <option selected value="0">Vyberte autora</option>
+                <?php foreach($authors as $author): ?>
+                <option value="<?=$author->getId()?>"><?=$author->getFullname()?></option>
+                <?php endforeach ?>
             </select>
         </div>
         <div class="form-group">
             <label for="description">Popis</label>
-            <textarea class="form-control" id="description" rows="3"></textarea>
+            <textarea class="form-control" id="description" name="description" rows="3" ></textarea>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="pageCount">Počet stran</label>
+                <input type="number" class="form-control" id="pageCount" name="_pageCount">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="year">Rok vydání</label>
+                <input type="number" class="form-control" id="year" name="_year">
+            </div>
         </div>
         <div class="form-group">
-            <label for="pageCount">Počet stran</label>
-            <input type="number" class="form-control" id="pageCount">
-        </div>
-        <div class="form-group">
-            <label for="year">Rok vydání</label>
-            <input type="number" class="form-control" id="year">
+            <label for="author_id">Budova</label>
+            <select class="custom-select" id="place_id" name="_placeId">
+                <option selected value="0">Vyberte budovu</option>
+                <?php foreach($places as $place): ?>
+                <option value="<?=$place->getId()?>"><?=$place->getPlace()?></option>
+                <?php endforeach ?>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary mx-auto d-block">Přidat</button>
     </form>
