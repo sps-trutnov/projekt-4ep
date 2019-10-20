@@ -1,87 +1,99 @@
 <?php
-namespace kniha;
+namespace book;
 
-class Kniha {
+class Book {
     private $_id;
     private $_isbn;
-    private $_autorId;
+    private $_authorId;
     private $_description;
     private $_name;
     private $_year;
     private $_conditionId;
-    private $_admin;
+    private $_administrator;
     private $_placeId;
     private $_genreId;
-    private $borrowedBy;
-    private $borrowTime;
-    private $maturita;
-    private $pageCount;
+    private $_borrowedBy;
+    private $_borrowTime;
+    private $_maturitaReady;
+    private $_pageCount;
     
-    public function __construct(int $id, string $isbn, string $name, int $autorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $admin, int $borrowedBy, string $borrowedTime, int $maturita) {
+    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, int $borrowedBy, string $borrowTime, int $maturita) {
         $this->_id = $id;
         $this->_isbn = $isbn;
-        $this->_autorId = $autorId;
+        $this->_authorId = $authorId;
         $this->_name = $name;
         $this->_year = $year;
         $this->_conditionId = $conditionId;
-        $this->_admin = $admin;
+        $this->_administrator = $administrator;
         $this->_placeId = $placeId;
         $this->_genreId = $genreId;
         $this->_borrowedBy = $borrowedBy;
         $this->_borrowTime = $borrowTime;
-        $this->_maturita = $maturita;
+        $this->_maturitaReady = $maturita;
         $this->_pageCount = $pageCount;
     }
     
-    public function setId() {
+    public function setId(int $id) {
         $this->_id = $id;
     }
     
-    public function setIsbn() {
+    public function setIsbn(string $isbn) {
         $this->_isbn = $isbn;
     }
     
-    public function setAutorId() {
-        $this->_autorId = $autorId;
+    public function setAuthorId(int $authorId) {
+        $this->_authorId = $authorId;
     }
     
-    public function setName() {
+    public function setName(string $name) {
         $this->_name = $name;
     }
     
-    public function setYear() {
+    public function setYear(int $year) {
         $this->_year = $year;
     }
     
-    public function setConditionId() {
+    public function setConditionId(int $conditionId) {
         $this->_conditionId = $conditionId;
     }
     
-    public function setAdmin() {
-        $this->_admin = $admin;
+    public function setAdmin(int $administrator) {
+        $this->_administrator = $administrator;
     }
     
-    public function setPlaceId() {
+    public function setPlaceId(int $placeId) {
         $this->_placeId = $placeId;
     }
     
-    public function setGenreId() {
+    public function setGenreId(int $genreId) {
         $this->_genreId = $genreId;
     }
     
-    public function setBorrowedBy() {
+    public function setBorrowedBy(int $borrowedBy) {
         $this->_borrowedBy = $borrowedBy;
     }
     
-    public function setBorrowTime() {
+    public function setBorrowTime(string $borrowTime) {
         $this->_borrowTime = $borrowTime;
     }
     
-    public function setMaturita() {
-        $this->_maturita = $maturita;
+    public function setMaturitaReady(boolean $maturitaReady) {
+        $this->_maturita = $maturitaReady;
     }
     
-    public function setPageCount() {
+    public function setPageCount(int $pageCount) {
         $this->_pageCount = $pageCount;
+    }
+
+    public function getName(): string {
+        return $this->_name;
+    }
+
+    public function getAuthorId(): int {
+        return $this->_authorId;
+    }
+
+    public function getBorrowedBy(): int {
+        return $this->_borrowedBy;
     }
 }

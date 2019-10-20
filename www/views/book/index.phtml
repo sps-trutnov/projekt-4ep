@@ -1,0 +1,22 @@
+<?php
+$parentPath = "views/layout.phtml";
+?>
+<h1>Seznam knih</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Název</td>
+            <td>Autor</td>
+            <td>Půjčeno</td>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($books as $book): ?>
+        <tr>
+            <td><?=$book->getName()?></td>
+            <td><?=$book->getAuthorId()?></td>
+            <td><?=$book->getBorrowedBy()?></td>
+        </tr>
+    <?php endforeach ?>
+    </tbody>
+</table>
