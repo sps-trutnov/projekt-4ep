@@ -62,8 +62,10 @@ class BookController extends AbstractController {
         $conditionId = $formData["_conditionId"];
         $placeId = $formData["_placeId"];
         $genreId = $formData["_genreId"];
-        $admin = $formData["_admin"];
-        $maturita = $formData["_maturita"];
+        if(!isset($formData["_maturita"]))
+            $maturita = FALSE;
+        else
+            $maturita = $formData["_maturita"];
         if(
             empty($isbn) ||
             empty($name) ||
@@ -78,7 +80,7 @@ class BookController extends AbstractController {
             return addForm($formData);
         }
         else{
-            $book = $this->_bookRepository->add($isbn, $name, $autorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId, $admin, $maturita);
+            $book = $this->_bookRepository->add($isbn, $name, $autorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId, FALSE, $maturita);
             return parent::view("views/book/added.phtml");
         }
     } 

@@ -6,7 +6,9 @@ $parentPath = "views/layout.phtml";
     <thead>
         <tr>
             <td>Název</td>
+            <td>ISBN</td>
             <td>Autor</td>
+            <td>Rok</td>
             <td>Půjčeno</td>
         </tr>
     </thead>
@@ -14,8 +16,10 @@ $parentPath = "views/layout.phtml";
     <?php foreach ($books as $book): ?>
         <tr>
             <td><?=$book->getName()?></td>
-            <td><?=$book->getAuthorId()?></td>
-            <td><?=$book->getBorrowedBy()?></td>
+            <td><?=$book->getIsbn()?></td>
+            <td><?=$book->getAuthorName()?></td>
+            <td><?=$book->getYear()?></td>
+            <td><?=$book->getBorrowedByName()?></td>
         </tr>
     <?php endforeach ?>
     </tbody>

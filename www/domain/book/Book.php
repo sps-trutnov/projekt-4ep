@@ -19,7 +19,7 @@ class Book {
 	private $_authorName;
 	private $_borrowedByName;
     
-    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, int $borrowedBy, string $borrowTime, int $maturita) {
+    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, ?int $borrowedBy, string $borrowTime, int $maturita, string $authorName = "", string $borrowedByName = "") {
         $this->_id = $id;
         $this->_isbn = $isbn;
         $this->_authorId = $authorId;
@@ -33,6 +33,8 @@ class Book {
         $this->_borrowTime = $borrowTime;
         $this->_maturitaReady = $maturita;
         $this->_pageCount = $pageCount;
+        $this->_authorName = $authorName;
+        $this->_borrowedByName = $borrowedByName;
     }
     
     public function setId(int $id) {
@@ -91,8 +93,16 @@ class Book {
         return $this->_name;
     }
 
+    public function getISBN(): string {
+        return $this->_isbn;
+    }
+
     public function getAuthorId(): int {
         return $this->_authorId;
+    }
+
+    public function getYear(): int {
+        return $this->_year;
     }
 
     public function getBorrowedBy(): int {
@@ -103,7 +113,7 @@ class Book {
         return $this->_authorName;
     }
 
-    public function getBorrowedName(): string {
+    public function getBorrowedByName(): string {
         return $this->_borrowedByName;
     }
 }
