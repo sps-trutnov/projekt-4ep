@@ -1,5 +1,5 @@
 <?php
-namespace author;
+namespace domain\author;
 
 class PDOAuthorRepository implements AuthorRepositoryInterface {
     private $_connection;

@@ -1,5 +1,5 @@
 <?php
-namespace book;
+namespace domain\book;
 
 
 class PDOBookRepository implements BookRepositoryInterface {

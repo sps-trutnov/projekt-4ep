@@ -1,5 +1,5 @@
 <?php
-namespace condition;
+namespace domain\condition;
 
 class Condition {
     private $_id;

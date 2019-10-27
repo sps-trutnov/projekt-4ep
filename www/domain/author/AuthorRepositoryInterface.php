@@ -1,5 +1,5 @@
 <?php
-namespace author;
+namespace domain\author;
 
 interface AuthorRepositoryInterface {
     function add(int $firstname, int $lastname): Author;

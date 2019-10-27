@@ -1,5 +1,5 @@
 <?php
-namespace bookrequest;
+namespace domain\bookrequest;
 
 class BookRequest {
     private $_id;
@@ -8,7 +8,7 @@ class BookRequest {
     private $_confirmed;
     private $_request_added;
     
-    public function __construct(int $id, int $user_id, int $book_id, boolean $confirmed, time $request_added) {
+    public function __construct(int $id, int $user_id, int $book_id, bool $confirmed, time $request_added) {
         $this->_id = $id;
         $this->_user_id = $user_id;
         $this->_book_id = $book_id;
@@ -28,7 +28,7 @@ class BookRequest {
         $this->_book_id = $book_id;
     }
     
-    public function setConfirmed(boolean $confirmed) {
+    public function setConfirmed(bool $confirmed) {
         $this->_confirmed = $confirmed;
     }
     

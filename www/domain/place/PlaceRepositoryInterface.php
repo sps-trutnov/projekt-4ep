@@ -1,5 +1,5 @@
 <?php
-namespace place;
+namespace domain\place;
 
 interface PlaceRepositoryInterface {
     function add(int $place): Place;

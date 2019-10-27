@@ -1,5 +1,5 @@
 <?php
-namespace author;
+namespace domain\author;
 
 class Author {
     private $_id;

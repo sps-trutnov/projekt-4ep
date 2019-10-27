@@ -1,5 +1,5 @@
 <?php
-namespace condition;
+namespace domain\condition;
 
 
 class PDOConditionRepository implements ConditionRepositoryInterface {

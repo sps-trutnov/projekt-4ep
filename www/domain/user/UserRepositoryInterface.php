@@ -1,5 +1,5 @@
 <?php
-namespace user;
+namespace domain\user;
 
 interface UserRepositoryInterface {
     function getById(int $id): ?User;

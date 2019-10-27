@@ -1,5 +1,5 @@
 <?php
-namespace genre;
+namespace domain\genre;
 
 
 class PDOGenreRepository implements GenreRepositoryInterface {

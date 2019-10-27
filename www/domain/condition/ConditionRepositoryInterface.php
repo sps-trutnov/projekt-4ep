@@ -1,5 +1,5 @@
 <?php
-namespace condition;
+namespace domain\condition;
 
 interface ConditionRepositoryInterface {
     function getAll(): iterable;

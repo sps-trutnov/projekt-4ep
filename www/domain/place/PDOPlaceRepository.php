@@ -1,5 +1,5 @@
 <?php
-namespace place;
+namespace domain\place;
 
 class PDOPlaceRepository implements PlaceRepositoryInterface {
     private $_connection;

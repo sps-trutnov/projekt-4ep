@@ -10,13 +10,12 @@ class Startup {
         $config->for("\PDO")->useInstance($this->createPDOConnection());
 
         $config->for("\article\ArticleRepositoryInterface")->useClass("\article\PDOArticleRepository");
-        $config->for("\book\BookRepositoryInterface")->useClass("\book\PDOBookRepository");
-        $config->for("\author\AuthorRepositoryInterface")->useClass("\author\PDOAuthorRepository");
-        $config->for("\place\PlaceRepositoryInterface")->useClass("\place\PDOPlaceRepository");
-        $config->for("\condition\ConditionRepositoryInterface")->useClass("\condition\PDOConditionRepository");
-        $config->for("\genre\GenreRepositoryInterface")->useClass("\genre\PDOGenreRepository");
-
-        $config->for("\user\UserRepositoryInterface")->useClass("\user\PDOUserRepository");
+        $config->for("\domain\book\BookRepositoryInterface")->useClass("\domain\book\PDOBookRepository");
+        $config->for("\domain\author\AuthorRepositoryInterface")->useClass("\domain\author\PDOAuthorRepository");
+        $config->for("\domain\place\PlaceRepositoryInterface")->useClass("\domain\place\PDOPlaceRepository");
+        $config->for("\domain\condition\ConditionRepositoryInterface")->useClass("\domain\condition\PDOConditionRepository");
+        $config->for("\domain\genre\GenreRepositoryInterface")->useClass("\domain\genre\PDOGenreRepository");
+        $config->for("\domain\user\UserRepositoryInterface")->useClass("\domain\user\PDOUserRepository");
 
         $config->for("\passwordHashing\PasswordHasherInterface")->useClass("\passwordHashing\PasswordHasher");
         $config->for("\authentication\UserAuthenticationServiceInterface")->useClass("\authentication\SessionUserAuthenticationService");

@@ -1,5 +1,5 @@
 <?php
-namespace book;
+namespace domain\book;
 
 interface BookRepositoryInterface {
     function getAll(int $offset = 0, int $count = 0): iterable;

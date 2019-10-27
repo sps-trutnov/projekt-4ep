@@ -1,5 +1,5 @@
 <?php
-namespace book;
+namespace domain\book;
 
 class Book {
     private $_id;
@@ -79,8 +79,8 @@ class Book {
         $this->_borrowTime = $borrowTime;
     }
     
-    public function setMaturitaReady(boolean $maturitaReady) {
-        $this->_maturita = $maturitaReady;
+    public function setMaturita(bool $maturita) {
+        $this->_maturita = $maturita;
     }
     
     public function setPageCount(int $pageCount) {

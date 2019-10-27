@@ -1,11 +1,11 @@
 <?php
 namespace controllers;
 
-use book\BookRepositoryInterface;
-use condition\ConditionRepositoryInterface;
-use genre\GenreRepositoryInterface;
-use author\AuthorRepositoryInterface;
-use place\PlaceRepositoryInterface;
+use domain\book\BookRepositoryInterface;
+use domain\condition\ConditionRepositoryInterface;
+use domain\genre\GenreRepositoryInterface;
+use domain\author\AuthorRepositoryInterface;
+use domain\place\PlaceRepositoryInterface;
 use actionResults\ActionResultInterface;
 use validation\Validator;
 use authentication\UserAuthenticationServiceInterface;
@@ -48,22 +48,53 @@ class BookController extends AbstractController {
     }
 
     public function add(): ActionResultInterface {
+        return $this->addForm(null);
+    }
+
+    public function addPost(): ActionResultInterface {
+        $formData = $_POST;
+        $isbn = $formData["_isbn"];
+        $name = $formData["_name"];
+        $autorId = $formData["_authorId"];
+        $description = $formData["_description"];
+        $pageCount = $formData["_pageCount"];
+        $year = $formData["_year"];
+        $conditionId = $formData["_conditionId"];
+        $placeId = $formData["_placeId"];
+        $genreId = $formData["_genreId"];
+        $admin = $formData["_admin"];
+        $maturita = $formData["_maturita"];
+        if(
+            empty($isbn) ||
+            empty($name) ||
+            empty($autorId) ||
+            empty($pageCount) ||
+            empty($year) ||
+            empty($conditionId) ||
+            empty($placeId) ||
+            empty($genreId)
+        )
+        {
+            return addForm($formData);
+        }
+        else{
+            $book = $this->_bookRepository->add($isbn, $name, $autorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId, $admin, $maturita);
+            return parent::view("views/book/added.phtml");
+        }
+    } 
+
+    private function addForm($data): ActionResultInterface{
         $authors = $this->_authorRepository->getAll();
         $places = $this->_placeRepository->getAll();
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
         return parent::view("views/book/add.phtml", [
+            "data" => $data,
             "authors" => $authors,
             "places" => $places,
             "conditions" => $conditions,
             "genres" => $genres
         ]);
     }
-
-    public function addPost(): ActionResultInterface {
-        print json_encode($_POST);
-        return parent::view("views/book/add.phtml");
-    } 
-
 }

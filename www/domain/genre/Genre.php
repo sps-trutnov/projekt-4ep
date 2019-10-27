@@ -1,5 +1,5 @@
 <?php
-namespace genre;
+namespace domain\genre;
 
 class Genre {
     private $_id;

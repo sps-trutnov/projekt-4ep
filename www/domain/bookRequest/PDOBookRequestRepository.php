@@ -1,5 +1,5 @@
 <?php
-namespace bookrequest;
+namespace domain\bookrequest;
 
 class PDOBookRequestRepository implements BookRequestRepositoryInterface {
     private $_connection;

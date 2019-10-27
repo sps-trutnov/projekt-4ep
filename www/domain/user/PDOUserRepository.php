@@ -1,5 +1,5 @@
 <?php
-namespace user;
+namespace domain\user;
 
 use passwordHashing\PasswordHasherInterface;
 
