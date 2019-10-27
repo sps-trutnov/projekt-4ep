@@ -13,6 +13,8 @@ class Startup {
         $config->for("\book\BookRepositoryInterface")->useClass("\book\PDOBookRepository");
         $config->for("\author\AuthorRepositoryInterface")->useClass("\author\PDOAuthorRepository");
         $config->for("\place\PlaceRepositoryInterface")->useClass("\place\PDOPlaceRepository");
+        $config->for("\condition\ConditionRepositoryInterface")->useClass("\condition\PDOConditionRepository");
+        $config->for("\genre\GenreRepositoryInterface")->useClass("\genre\PDOGenreRepository");
 
         $config->for("\user\UserRepositoryInterface")->useClass("\user\PDOUserRepository");
 
