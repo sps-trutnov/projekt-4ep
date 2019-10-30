@@ -1,28 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './pages/app.component';
+import { AppRoutingModule } from './routing/app-routing.module';
+import { AppComponent } from './pages/app/app.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { UsersComponent } from './pages/users/users.component';
+import { AuthorizationTokenHttpInterceptor } from './http-interceptors/authorization-token-http-interceptor';
+import { MainNavigationComponent } from './pages/app/main-navigation/main-navigation.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignInComponent,
-    UsersComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SignInComponent,
+        UsersComponent,
+        MainNavigationComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthorizationTokenHttpInterceptor,
+            multi: true
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

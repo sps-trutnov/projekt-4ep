@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError, of } from 'rxjs';
 import { AuthenticationResult } from './authentication-result';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -16,6 +17,8 @@ export class AuthenticationService {
             userName,
             password
         };
-        return this.httpClient.post<AuthenticationResult>("http://localhost/authentication/index.php", credentials);
+        return this.httpClient.post<AuthenticationResult>("http://localhost/authentication/index.php", credentials).pipe(
+            catchError((e: HttpErrorResponse) => e.status == 401 ? of(null) : throwError(e))
+        );
     }
 }

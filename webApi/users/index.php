@@ -2,16 +2,22 @@
 
 namespace users;
 
+use function authorization\authorize;
 use function database\createPDOConection;
 
-require_once "../vendor/autoload.php";
+require_once "../authorization/authorization.php";
 require_once "../database/database.php";
 require_once "./User.php";
 require_once "./users.php";
 
 header("Access-Control-Allow-Origin: http://localhost:4200");
 header("Access-Control-Allow-Methods: PUT, POST, DELETE");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
+if ($_SERVER['REQUEST_METHOD'] === "OPTIONS")
+    exit;
+
+authorize();
 
 if ($_SERVER['REQUEST_METHOD'] === "GET")
     get();
@@ -21,7 +27,6 @@ elseif ($_SERVER['REQUEST_METHOD'] === "PUT")
     put();
 elseif ($_SERVER['REQUEST_METHOD'] === "DELETE")
     delete();
-elseif ($_SERVER['REQUEST_METHOD'] === "OPTIONS") {}
 else 
 {
     http_response_code(405);
@@ -36,7 +41,7 @@ function get()
     {
         $id = $_GET["id"];
 
-        $user = getUser($databaseConnection, $id);
+        $user = getUserById($databaseConnection, $id);
 
         if ($user == null)
         {
@@ -99,7 +104,7 @@ function put()
     }
 
     if (!array_key_exists("password", $dataModel))
-        $passwordHash = getUser($databaseConnection, $dataModel["id"])->getPasswordHash();
+        $passwordHash = getUserById($databaseConnection, $dataModel["id"])->getPasswordHash();
     else
         $passwordHash = password_hash($dataModel["password"], PASSWORD_DEFAULT);
 
@@ -137,7 +142,7 @@ function toDataModel(User $user): array
         "id" => $user->getId(),
         "userName" => $user->getUserName(),
         "email" => $user->getEmail(),
-        "isLibrarian" => $user->getIsLibrarian(),
-        "isAdministrator" => $user->getIsAdministrator()
+        "isLibrarian" => $user->isLibrarian(),
+        "isAdministrator" => $user->isAdministrator()
     ];
 }

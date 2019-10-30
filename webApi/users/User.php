@@ -41,12 +41,12 @@ class User
         return $this->passwordHash;
     }
 
-    public function getIsLibrarian(): bool
+    public function isLibrarian(): bool
     {
         return $this->isLibrarian;
     }
 
-    public function getIsAdministrator(): bool
+    public function isAdministrator(): bool
     {
         return $this->isAdministrator;
     }

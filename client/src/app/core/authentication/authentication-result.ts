@@ -1,4 +1,4 @@
 export interface AuthenticationResult {
-    readonly id: string,
+    readonly id: number,
     readonly token: string
 }

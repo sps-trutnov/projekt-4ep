@@ -14,7 +14,7 @@ function getUsers(\PDO $databaseConnection): array
     return $users;
 }
 
-function getUser(\PDO $databaseConnection, int $id): ?User
+function getUserById(\PDO $databaseConnection, int $id): ?User
 {
     $statement = $databaseConnection->prepare("SELECT * FROM users WHERE id = ?");
     $statement->execute([$id]);
@@ -27,23 +27,36 @@ function getUser(\PDO $databaseConnection, int $id): ?User
     return new User($row["id"], $row["user_name"], $row["email"], $row["password_hash"], (bool)$row["is_librarian"], (bool)$row["is_administrator"]);
 }
 
+function getUserByUserName(\PDO $databaseConnection, string $userName): ?User
+{
+    $statement = $databaseConnection->prepare("SELECT * FROM users WHERE user_name = ?");
+    $statement->execute([$userName]);
+
+    $row = $statement->fetch();
+
+    if ($row == false)
+        return null;
+
+    return new User($row["id"], $row["user_name"], $row["email"], $row["password_hash"], (bool)$row["is_librarian"], (bool)$row["is_administrator"]);
+}
+
 function addUser(\PDO $databaseConnection, User $user): User
 {
     $statement = $databaseConnection->prepare("INSERT INTO users(`user_name`, email, password_hash, is_librarian, is_administrator) VALUES(?, ?, ?, ?, ?)");
-    $statement->execute([$user->getUserName(), $user->getEmail(), $user->getPasswordHash(), (int)$user->getIsLibrarian(), (int)$user->getIsAdministrator()]);
+    $statement->execute([$user->getUserName(), $user->getEmail(), $user->getPasswordHash(), (int)$user->isLibrarian(), (int)$user->isAdministrator()]);
 
     return new User((int)$databaseConnection->lastInsertId(), $user->getUserName(), $user->getEmail(), $user->getPasswordHash(),
-        $user->getIsLibrarian(), $user->getIsAdministrator());
+        $user->isLibrarian(), $user->isAdministrator());
 }
 
 function updateUser(\PDO $databaseConnection, User $user): User
 {
     $statement = $databaseConnection->prepare("UPDATE users SET `user_name` = ?, email = ?, password_hash = ?, is_librarian = ?, is_administrator = ? WHERE id = ?");
-    $statement->execute([$user->getUserName(), $user->getEmail(), $user->getPasswordHash(), (int)$user->getIsLibrarian(), (int)$user->getIsAdministrator(), 
+    $statement->execute([$user->getUserName(), $user->getEmail(), $user->getPasswordHash(), (int)$user->isLibrarian(), (int)$user->isAdministrator(), 
         $user->getId()]);
 
-    return new User($user->getId(), $user->getUserName(), $user->getEmail(), $user->getPasswordHash(), $user->getIsLibrarian(), 
-        $user->getIsAdministrator());
+    return new User($user->getId(), $user->getUserName(), $user->getEmail(), $user->getPasswordHash(), $user->isLibrarian(), 
+        $user->isAdministrator());
 }
 
 function removeUser(\PDO $databaseConnection, int $id): bool
@@ -52,12 +65,4 @@ function removeUser(\PDO $databaseConnection, int $id): bool
     $statement->execute([$id]);
 
     return $statement->rowCount() > 0;
-}
-
-function existsUserByUserName(\PDO $databaseConnection, string $userName): bool
-{
-    $statement = $databaseConnection->prepare("SELECT COUNT(*) FROM users WHERE `user_name` = ?");
-    $statement->execute([$userName]);
-
-    return $statement->fetch()[0][0] > 0;
 }
