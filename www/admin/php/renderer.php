@@ -11,10 +11,10 @@ class renderer
         if(self::hasPermissions())
           $this->page = $pageName;
         else
-          header("Location: /knihovna");
+          header("Location: /Projekt");
       }
       else{
-        header("Location: /knihovna");
+        header("Location: /Projekt");
         exit;
       }
 
