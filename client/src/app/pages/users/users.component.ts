@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
 import { UserService } from 'src/app/core/users/user.service';
 import { User } from 'src/app/core/users/user';
 import { UserViewModel } from './user-view-model';
@@ -8,8 +8,21 @@ import { UserViewModel } from './user-view-model';
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, DoCheck {
     users: UserViewModel[];
+    newUser: UserViewModel;
+
+    get canSaveAll(): boolean {
+        return this.users !== undefined && this.users.some(u => (u.isChanged || u.original === null) && u !== this.newUser)
+    }
+
+    get canDiscardAll(): boolean {
+        return this.users !== undefined && this.users.some(u => (u.isChanged || u.original === null) && u !== this.newUser)
+    }
+
+    get isAllValid(): boolean {
+        return this.users === undefined || this.users.every(u => u.isValid || u === this.newUser);
+    }
 
     constructor(private readonly userService: UserService) { 
         
@@ -18,11 +31,17 @@ export class UsersComponent implements OnInit {
     async ngOnInit() {
         this.users = (await this.userService.getAll().toPromise())
             .map(u => new UserViewModel(u, u.userName, "", u.email, u.isLibrarian, u.isAdministrator));
-        this.users.unshift(new UserViewModel(null, "", "", "", false, false));
+        this.addNewUser();
     }
 
-    get isAnyChanged(): boolean {
-        return this.users !== undefined && this.users.some(u => u.isChanged);
+    ngDoCheck() {
+        if (this.newUser != undefined && this.newUser.isChanged) 
+            this.addNewUser();
+    }
+
+    addNewUser() {
+        this.newUser = new UserViewModel(null, "", "", "", false, false);
+        this.users.unshift(this.newUser);
     }
 
     async save(user: UserViewModel) {
@@ -45,6 +64,11 @@ export class UsersComponent implements OnInit {
             this.users.splice(this.users.indexOf(user), 1);
         else
             user.resetToOriginal();
+    }
+
+    async remove(user: UserViewModel) {
+        await this.userService.remove(user.original).toPromise();
+        this.users.splice(this.users.indexOf(user), 1);
     }
 
     saveAll() {

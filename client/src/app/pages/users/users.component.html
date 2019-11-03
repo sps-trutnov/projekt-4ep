@@ -9,40 +9,59 @@
             <th>Knihovník</th>
             <th>Administrátor</th>
             <th class="pr-0">
-                <button *ngIf="isAnyChanged" class="btn btn-sm btn-success" (click)="saveAll()">Uložit</button>
+                <button [class.invisible]="!canSaveAll" [disabled]="!isAllValid" class="btn btn-sm btn-success"
+                    (click)="saveAll()">Uložit</button>
             </th>
             <th>
-                <button *ngIf="isAnyChanged" class="btn btn-sm btn-danger" (click)="discardAll()">Zahodit</button>
+                <button [class.invisible]="!canDiscardAll" class="btn btn-sm btn-danger"
+                    (click)="discardAll()">Zahodit</button>
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users" [class.table-warning]="user.isChanged">
+        <tr *ngFor="let user of users"
+            [class.table-warning]="(user.isChanged || user.original === null) && user !== newUser">
             <td>{{user.original !== null ? user.original.id : ""}}</td>
             <td class="table-column-fill">
-                <input class="form-control form-control-sm form-control-hover" placeholder="Nevyplněno" type="text" [(ngModel)]="user.newUserName">
+                <input [class.is-invalid]="!user.isUserNameValid && user !== newUser"
+                    class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
+                    [(ngModel)]="user.newUserName">
             </td>
             <td class="table-column-fill">
-                <input class="form-control form-control-sm form-control-hover" placeholder="Nezměněno" type="password" [(ngModel)]="user.newPassword">
+                <input [class.is-invalid]="!user.isPasswordValid && user !== newUser"
+                    class="form-control form-control-sm editable-cell"
+                    [placeholder]="user.original === null ? 'Nevyplněno' : 'Nezměněno'" type="password"
+                    [(ngModel)]="user.newPassword">
             </td>
             <td class="table-column-fill">
-                <input class="form-control form-control-sm form-control-hover" placeholder="Nevyplněno" type="text" [(ngModel)]="user.newEmail">
+                <input [class.is-invalid]="!user.isEmailValid && user !== newUser"
+                    class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
+                    [(ngModel)]="user.newEmail">
             </td>
             <td>
                 <div class="form-check text-center">
-                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static" type="checkbox" [(ngModel)]="user.newIsLibrarian" aria-label="...">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" [(ngModel)]="user.newIsLibrarian">
                 </div>
             </td>
             <td>
                 <div class="form-check text-center">
-                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static" type="checkbox" [(ngModel)]="user.newIsAdministrator" aria-label="...">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" [(ngModel)]="user.newIsAdministrator">
                 </div>
             </td>
             <td class="pr-0">
-                <button *ngIf="user.isChanged" class="btn btn-sm btn-success" (click)="save(user)">Uložit</button>
+                <button [class.invisible]="!user.isChanged && user.original !== null || user === newUser"
+                    [disabled]="!user.isValid" class="btn btn-sm btn-success" (click)="save(user)">Uložit</button>
             </td>
             <td>
-                <button *ngIf="user.isChanged" class="btn btn-sm btn-danger" (click)="discard(user)">Zahodit</button>
+                <button [class.invisible]="!user.isChanged && user.original !== null || user === newUser"
+                    class="btn btn-sm btn-danger" (click)="discard(user)">Zahodit</button>
+            </td>
+            <td>
+                <i *ngIf="user.original !== null" class="fas fa-trash fa-2x cursor-pointer text-muted"
+                    style="font-size: 1.5em" (click)="remove(user)"></i>
             </td>
         </tr>
     </tbody>

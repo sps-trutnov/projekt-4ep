@@ -1,8 +1,21 @@
-.form-control-hover {
-    border: none;
+.editable-cell {
     background: initial;
+    border: none;
+    box-shadow: none!important;
+}
+
+.editable-cell.is-invalid {
+    color: #dc3545;
+}
+
+.editable-cell.is-invalid::placeholder {
+    color: #dc3545;
 }
 
 .table-column-fill {
     width: calc(100% / 3);
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
