@@ -6,15 +6,19 @@
     </button>
     <div *ngIf="signedUser !== null" class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" routerLink="/users">Uživatelé</a>
-            <div class="dropdown show">
-                <a class="dropdown-toggle nav-item nav-link active text-left" href="#" role="button"
+            <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">
+                <i class="fas fa-user-friends"></i>
+                Uživatelé
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle nav-item nav-link active text-left border-0" role="button"
                     id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-user"></i>
                     {{signedUser.userName}}
-                </a>
+                </button>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdownMenuLink">
-                    <a class="dropdown-item" (click)="signOut()">Odhlásit se</a>
+                    <a class="dropdown-item btn btn-link" (click)="signOut()">Odhlásit se</a>
                 </div>
             </div>
         </div>
