@@ -17,26 +17,25 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 if ($_SERVER['REQUEST_METHOD'] === "OPTIONS")
     exit;
 
-authorize();
+$databaseConnection = createPDOConection();
+authorize($databaseConnection, true);
 
 if ($_SERVER['REQUEST_METHOD'] === "GET")
-    get();
+    get($databaseConnection);
 elseif ($_SERVER['REQUEST_METHOD'] === "POST")
-    post();
+    post($databaseConnection);
 elseif ($_SERVER['REQUEST_METHOD'] === "PUT")
-    put();
+    put($databaseConnection);
 elseif ($_SERVER['REQUEST_METHOD'] === "DELETE")
-    delete();
+    delete($databaseConnection);
 else 
 {
     http_response_code(405);
     header("Allow: GET, POST, PUT, DELETE, OPTIONS");
 }
 
-function get()
+function get(\PDO $databaseConnection)
 {
-    $databaseConnection = createPDOConection();
-
     if (isset($_GET["id"]))
     {
         $id = $_GET["id"];
@@ -65,15 +64,15 @@ function get()
     }
 }
 
-function post()
+function post(\PDO $databaseConnection)
 {
-    $databaseConnection = createPDOConection();
-
+    // TODO: 409 Conflict on username conflict
+    // TODO: Add validations (password length, etc.)
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
-    if (!array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || !array_key_exists("password", $dataModel) || 
-        !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel))
+    if ($dataModel === null || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
+        !array_key_exists("password", $dataModel) || !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel))
     {
         http_response_code(400);
         return;
@@ -89,14 +88,14 @@ function post()
     echo(json_encode($newDataModel));
 }
 
-function put() 
+function put(\PDO $databaseConnection) 
 {
-    $databaseConnection = createPDOConection();
-
+    // TODO: 409 Conflict on username conflict
+    // TODO: Add validations (password length, etc.)
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
-    if (!array_key_exists("id", $dataModel) || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
+    if ($dataModel === null || !array_key_exists("id", $dataModel) || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
         !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel))
     {
         http_response_code(400);
@@ -118,10 +117,8 @@ function put()
     echo(json_encode($newDataModel));
 }
 
-function delete() 
+function delete(\PDO $databaseConnection) 
 {
-    $databaseConnection = createPDOConection();
-
     if (!isset($_GET["id"]))
     {
         http_response_code(400);

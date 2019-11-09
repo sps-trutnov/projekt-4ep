@@ -22,22 +22,22 @@ header("Access-Control-Allow-Headers: Content-Type");
 if ($_SERVER['REQUEST_METHOD'] === "OPTIONS")
     exit;
 
+$databaseConnection = createPDOConection();
+
 if ($_SERVER['REQUEST_METHOD'] === "POST")
-    post();
+    post($databaseConnection);
 else 
 {
     http_response_code(405);
     header("Allow: POST, OPTIONS");
 }
 
-function post()
- {
-    $databaseConnection = createPDOConection();
-
+function post(\PDO $databaseConnection)
+{
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
-    if (!array_key_exists("userName", $dataModel) || !array_key_exists("password", $dataModel))
+    if ($dataModel === null || !array_key_exists("userName", $dataModel) || !array_key_exists("password", $dataModel))
     {
         http_response_code(400);
         return;
@@ -62,6 +62,7 @@ function post()
         return;
     }
 
+    // TODO: add token expiration field, ...
     $token = [
         "sub" => $user->getId()
     ];
