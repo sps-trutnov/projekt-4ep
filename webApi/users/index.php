@@ -66,15 +66,26 @@ function get(\PDO $databaseConnection)
 
 function post(\PDO $databaseConnection)
 {
-    // TODO: 409 Conflict on username conflict
-    // TODO: Add validations (password length, etc.)
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
     if ($dataModel === null || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
-        !array_key_exists("password", $dataModel) || !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel))
+        !array_key_exists("password", $dataModel) || !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel) ||
+        !is_string($dataModel["userName"]) || !is_string($dataModel["email"]) || !is_string($dataModel["password"]) || !is_bool($dataModel["isLibrarian"]) ||
+        !is_bool($dataModel["isAdministrator"]))
     {
         http_response_code(400);
+        return;
+    }
+    if (!isUserNameValid($dataModel["userName"]) || !isEmailValid($dataModel["email"]) || !isPasswordValid($dataModel["password"]))
+    {
+        http_response_code(422);
+        return;
+    }
+    $namesakeUser = getUserByUserName($databaseConnection, $dataModel["userName"]);
+    if ($namesakeUser !== null)
+    {
+        http_response_code(409);
         return;
     }
 
@@ -90,15 +101,27 @@ function post(\PDO $databaseConnection)
 
 function put(\PDO $databaseConnection) 
 {
-    // TODO: 409 Conflict on username conflict
-    // TODO: Add validations (password length, etc.)
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
     if ($dataModel === null || !array_key_exists("id", $dataModel) || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
-        !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel))
+        !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel) || !is_string($dataModel["userName"]) || 
+        !is_string($dataModel["email"]) || (array_key_exists("password", $dataModel) && !is_string($dataModel["password"])) || 
+        !is_bool($dataModel["isLibrarian"]) || !is_bool($dataModel["isAdministrator"]))
     {
         http_response_code(400);
+        return;
+    }
+    if (!isUserNameValid($dataModel["userName"]) || !isEmailValid($dataModel["email"]) || 
+        (array_key_exists("password", $dataModel) && !isPasswordValid($dataModel["password"])))
+    {
+        http_response_code(422);
+        return;
+    }
+    $namesakeUser = getUserByUserName($databaseConnection, $dataModel["userName"]);
+    if ($namesakeUser !== null && $namesakeUser->getId() !== $dataModel["id"])
+    {
+        http_response_code(409);
         return;
     }
 
@@ -142,4 +165,19 @@ function toDataModel(User $user): array
         "isLibrarian" => $user->isLibrarian(),
         "isAdministrator" => $user->isAdministrator()
     ];
+}
+
+function isUserNameValid(string $userName): bool
+{
+    return strlen($userName) > 0;
+}
+
+function isEmailValid(string $email): bool
+{
+    return $email === "" || preg_match("/^(([^<>()\[\]\\\\.,;:\s@\"]+(\.[^<>()\[\]\\\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/", $email);
+}
+
+function isPasswordValid(string $password): bool
+{
+    return strlen($password) >= 8;
 }
