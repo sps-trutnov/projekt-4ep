@@ -10,13 +10,15 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { UsersComponent } from './pages/users/users.component';
 import { AuthorizationTokenHttpInterceptor } from './http-interceptors/authorization-token-http-interceptor';
 import { MainNavigationComponent } from './pages/app/main-navigation/main-navigation.component';
+import { AlertViewComponent } from './alerts/alert-view/alert-view.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         SignInComponent,
         UsersComponent,
-        MainNavigationComponent
+        MainNavigationComponent,
+        AlertViewComponent
     ],
     imports: [
         BrowserModule,

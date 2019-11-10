@@ -1,0 +1,3 @@
+<div *ngFor="let alert of activeAlerts" [class]="'m-1 shadow-sm alert ' + getAlertClass(alert)">
+    {{alert.message}}
+</div>
