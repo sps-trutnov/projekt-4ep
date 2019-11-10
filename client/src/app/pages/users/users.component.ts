@@ -2,6 +2,9 @@ import { Component, OnInit, OnChanges, SimpleChanges, DoCheck } from '@angular/c
 import { UserService } from 'src/app/core/users/user.service';
 import { User } from 'src/app/core/users/user';
 import { UserViewModel } from './user-view-model';
+import { AlertService } from 'src/app/alerts/alert.service';
+import { AlertType } from 'src/app/alerts/alert-type';
+import { UserNameAlreadyUsedError } from 'src/app/core/users/user-name-already-used-error';
 
 @Component({
     selector: 'app-users',
@@ -24,7 +27,7 @@ export class UsersComponent implements OnInit, DoCheck {
         return this.users === undefined || this.users.every(u => u.isValid || u === this.newUser);
     }
 
-    constructor(private readonly userService: UserService) { 
+    constructor(private readonly userService: UserService, private readonly alertService: AlertService) { 
         
     }
 
@@ -49,11 +52,29 @@ export class UsersComponent implements OnInit, DoCheck {
         if (user.original != null) {
             let u = new User(user.original.id, user.newUserName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
             let newPassword = user.newPassword === "" ? undefined : user.newPassword;
-            newUser = await this.userService.update(u, newPassword).toPromise();
+            try {
+                newUser = await this.userService.update(u, newPassword).toPromise();
+            } 
+            catch(e) {
+                if (e instanceof UserNameAlreadyUsedError) {
+                    this.alertService.show(`Uživatelské jméno '${u.userName}' již používá někdo jiný.`, AlertType.error);
+                    return;
+                }
+                throw e;
+            }
         }
         else {
             let u = new User(0, user.newUserName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
-            newUser = await this.userService.add(u, user.newPassword).toPromise();
+            try {
+                newUser = await this.userService.add(u, user.newPassword).toPromise();
+            } 
+            catch(e) {
+                if (e instanceof UserNameAlreadyUsedError) {
+                    this.alertService.show(`Uživatelské jméno '${u.userName}' již používá někdo jiný.`, AlertType.error);
+                    return;
+                }
+                throw e;
+            }
         }
         user.original = newUser;
         user.resetToOriginal();

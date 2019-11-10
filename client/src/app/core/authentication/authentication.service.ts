@@ -18,7 +18,7 @@ export class AuthenticationService {
             password
         };
         return this.httpClient.post<AuthenticationResult>("http://localhost/authentication/index.php", credentials).pipe(
-            catchError((e: HttpErrorResponse) => e.status == 401 ? of(null) : throwError(e))
+            catchError((e: HttpErrorResponse) => e.status === 401 ? of(null) : throwError(e))
         );
     }
 }
