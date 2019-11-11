@@ -4,6 +4,7 @@ namespace authentication;
 
 use Firebase\JWT\JWT;
 
+use const settings\ACCESS_CONTROL_ALLOWED_ORIGIN;
 use const settings\AUTHORIZATION_TOKEN_SECRET;
 
 use function database\createPDOConection;
@@ -15,7 +16,7 @@ require_once "../users/User.php";
 require_once "../users/users.php";
 require_once "../settings/settings.php";
 
-header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Origin: " . ACCESS_CONTROL_ALLOWED_ORIGIN);
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Allow-Headers: Content-Type");
 

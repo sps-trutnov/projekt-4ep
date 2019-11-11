@@ -2,6 +2,8 @@
 
 namespace users;
 
+use const settings\ACCESS_CONTROL_ALLOWED_ORIGIN;
+
 use function authorization\authorize;
 use function database\createPDOConection;
 
@@ -9,8 +11,9 @@ require_once "../authorization/authorization.php";
 require_once "../database/database.php";
 require_once "./User.php";
 require_once "./users.php";
+require_once "../settings/settings.php";
 
-header("Access-Control-Allow-Origin: http://localhost:4200");
+header("Access-Control-Allow-Origin: " . ACCESS_CONTROL_ALLOWED_ORIGIN);
 header("Access-Control-Allow-Methods: PUT, POST, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
