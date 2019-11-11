@@ -5,6 +5,8 @@ export class UserViewModel {
         public original: User,
         public newUserName: string,
         public newPassword: string,
+        public newFirstName: string,
+        public newLastName: string,
         public newEmail: string,
         public newIsLibrarian: boolean,
         public newIsAdministrator: boolean
@@ -12,12 +14,13 @@ export class UserViewModel {
 
     get isChanged(): boolean {
         if (this.original == null) {
-            return this.newUserName !== "" || this.newPassword !== "" || this.newEmail !== "" || this.newIsLibrarian !== false ||
-                this.newIsAdministrator !== false;
+            return this.newUserName !== "" || this.newPassword !== "" || this.newFirstName !== "" || this.newLastName !== "" || this.newEmail !== "" || 
+                this.newIsLibrarian !== false ||this.newIsAdministrator !== false;
         }
         else {
-            return this.newUserName !== this.original.userName || this.newPassword !== "" || this.newEmail !== this.original.email ||
-                this.newIsLibrarian !== this.original.isLibrarian || this.newIsAdministrator !== this.original.isAdministrator;
+            return this.newUserName !== this.original.userName || this.newPassword !== "" || this.newFirstName !== this.original.firstName || 
+            this.newLastName !== this.original.lastName || this.newEmail !== this.original.email || this.newIsLibrarian !== this.original.isLibrarian || 
+            this.newIsAdministrator !== this.original.isAdministrator;
         }
     }
 
@@ -42,12 +45,16 @@ export class UserViewModel {
         if (this.original !== null) {
             this.newUserName = this.original.userName;
             this.newPassword = "";
+            this.newFirstName = this.original.firstName;
+            this.newLastName = this.original.lastName;
             this.newEmail = this.original.email;
             this.newIsLibrarian = this.original.isLibrarian;
             this.newIsAdministrator = this.original.isAdministrator;
         } else {
             this.newUserName = "";
             this.newPassword = "";
+            this.newFirstName = "";
+            this.newLastName = "";
             this.newEmail = "";
             this.newIsLibrarian = false;
             this.newIsAdministrator = false;

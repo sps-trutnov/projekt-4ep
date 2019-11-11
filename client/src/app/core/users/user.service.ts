@@ -16,13 +16,13 @@ export class UserService {
 
     getAll(): Observable<User[]> {
         return this.httpClient.get<User[]>(`${this.apiUrl}/users/index.php`).pipe(
-            map(u => u.map(u => new User(u.id, u.userName, u.email, u.isLibrarian, u.isAdministrator)))
+            map(u => u.map(u => new User(u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator)))
         );
     }
 
     getById(id: number): Observable<User> {
         return this.httpClient.get<User>(`${this.apiUrl}/users/index.php?id=${id}`).pipe(
-            map(u => new User(u.id, u.userName, u.email, u.isLibrarian, u.isAdministrator))
+            map(u => new User(u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator))
         );
     }
 
@@ -32,7 +32,7 @@ export class UserService {
 
         return this.httpClient.post<User>(`${this.apiUrl}/users/index.php`, withPassword).pipe(
             catchError((e: HttpErrorResponse) => e.status === 409 ? throwError(new UserNameAlreadyUsedError()) : throwError(e)),
-            map(u => new User(u.id, u.userName, u.email, u.isLibrarian, u.isAdministrator))
+            map(u => new User(u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator))
         );
     }
 
@@ -41,7 +41,7 @@ export class UserService {
 
         return this.httpClient.put<User>(`${this.apiUrl}/users/index.php?id=${user.id}`, userData).pipe(
             catchError((e: HttpErrorResponse) => e.status === 409 ? throwError(new UserNameAlreadyUsedError()) : throwError(e)),
-            map(u => new User(u.id, u.userName, u.email, u.isLibrarian, u.isAdministrator))
+            map(u => new User(u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator))
         );
     }
 

@@ -27,35 +27,35 @@ export class UsersComponent implements OnInit, DoCheck {
         return this.users === undefined || this.users.every(u => u.isValid || u === this.newUser);
     }
 
-    constructor(private readonly userService: UserService, private readonly alertService: AlertService) { 
-        
+    constructor(private readonly userService: UserService, private readonly alertService: AlertService) {
+
     }
 
     async ngOnInit() {
         this.users = (await this.userService.getAll().toPromise())
-            .map(u => new UserViewModel(u, u.userName, "", u.email, u.isLibrarian, u.isAdministrator));
+            .map(u => new UserViewModel(u, u.userName, "", u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator));
         this.addNewUser();
     }
 
     ngDoCheck() {
-        if (this.newUser != undefined && this.newUser.isChanged) 
+        if (this.newUser != undefined && this.newUser.isChanged)
             this.addNewUser();
     }
 
     addNewUser() {
-        this.newUser = new UserViewModel(null, "", "", "", false, false);
+        this.newUser = new UserViewModel(null, "", "", "", "", "", false, false);
         this.users.unshift(this.newUser);
     }
 
     async save(user: UserViewModel) {
         let newUser;
         if (user.original != null) {
-            let u = new User(user.original.id, user.newUserName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
+            let u = new User(user.original.id, user.newUserName, user.newFirstName, user.newLastName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
             let newPassword = user.newPassword === "" ? undefined : user.newPassword;
             try {
                 newUser = await this.userService.update(u, newPassword).toPromise();
-            } 
-            catch(e) {
+            }
+            catch (e) {
                 if (e instanceof UserNameAlreadyUsedError) {
                     this.alertService.show(`Uživatelské jméno '${u.userName}' již používá někdo jiný.`, AlertType.error);
                     return;
@@ -64,11 +64,11 @@ export class UsersComponent implements OnInit, DoCheck {
             }
         }
         else {
-            let u = new User(0, user.newUserName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
+            let u = new User(0, user.newUserName, user.newFirstName, user.newLastName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
             try {
                 newUser = await this.userService.add(u, user.newPassword).toPromise();
-            } 
-            catch(e) {
+            }
+            catch (e) {
                 if (e instanceof UserNameAlreadyUsedError) {
                     this.alertService.show(`Uživatelské jméno '${u.userName}' již používá někdo jiný.`, AlertType.error);
                     return;

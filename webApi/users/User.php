@@ -6,15 +6,20 @@ class User
 {
     private $id;
     private $userName;
+    private $firstName;
+    private $lastName;
     private $email;
     private $passwordHash;
     private $isLibrarian;
     private $isAdministrator;
 
-    public function __construct(int $id, string $userName, string $email, string $passwordHash, bool $isLibrarian, bool $isAdministrator)
+    public function __construct(int $id, string $userName, string $firstName, string $lastName, string $email, string $passwordHash, bool $isLibrarian, 
+        bool $isAdministrator)
     {
         $this->id = $id;
         $this->userName = $userName;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
         $this->email = $email;
         $this->passwordHash = $passwordHash;
         $this->isLibrarian = $isLibrarian;
@@ -29,6 +34,16 @@ class User
     public function getUserName(): string
     {
         return $this->userName;
+    }
+
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName(): string
+    {
+        return $this->lastName;
     }
 
     public function getEmail(): string

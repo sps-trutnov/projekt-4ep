@@ -72,10 +72,11 @@ function post(\PDO $databaseConnection)
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
-    if ($dataModel === null || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
-        !array_key_exists("password", $dataModel) || !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel) ||
-        !is_string($dataModel["userName"]) || !is_string($dataModel["email"]) || !is_string($dataModel["password"]) || !is_bool($dataModel["isLibrarian"]) ||
-        !is_bool($dataModel["isAdministrator"]))
+    if ($dataModel === null || !array_key_exists("userName", $dataModel) || !array_key_exists("firstName", $dataModel) || 
+        !array_key_exists("lastName", $dataModel) || !array_key_exists("email", $dataModel) || !array_key_exists("password", $dataModel) || 
+        !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel) || !is_string($dataModel["userName"]) || 
+        !is_string($dataModel["firstName"]) || !is_string($dataModel["lastName"]) || !is_string($dataModel["email"]) || !is_string($dataModel["password"]) || 
+        !is_bool($dataModel["isLibrarian"]) || !is_bool($dataModel["isAdministrator"]))
     {
         http_response_code(400);
         return;
@@ -93,7 +94,8 @@ function post(\PDO $databaseConnection)
     }
 
     $passwordHash = password_hash($dataModel["password"], PASSWORD_DEFAULT);
-    $user = new User(0, $dataModel["userName"], $dataModel["email"], $passwordHash, $dataModel["isLibrarian"], $dataModel["isAdministrator"]);
+    $user = new User(0, $dataModel["userName"], $dataModel["firstName"], $dataModel["lastName"], $dataModel["email"], $passwordHash, 
+        $dataModel["isLibrarian"], $dataModel["isAdministrator"]);
 
     $newUser = addUser($databaseConnection, $user);
 
@@ -107,10 +109,11 @@ function put(\PDO $databaseConnection)
     $bodyContent = file_get_contents('php://input');
     $dataModel = json_decode($bodyContent, true);
 
-    if ($dataModel === null || !array_key_exists("id", $dataModel) || !array_key_exists("userName", $dataModel) || !array_key_exists("email", $dataModel) || 
-        !array_key_exists("isLibrarian", $dataModel) || !array_key_exists("isAdministrator", $dataModel) || !is_string($dataModel["userName"]) || 
-        !is_string($dataModel["email"]) || (array_key_exists("password", $dataModel) && !is_string($dataModel["password"])) || 
-        !is_bool($dataModel["isLibrarian"]) || !is_bool($dataModel["isAdministrator"]))
+    if ($dataModel === null || !array_key_exists("id", $dataModel) || !array_key_exists("userName", $dataModel) || !array_key_exists("firstName", $dataModel) || 
+        !array_key_exists("lastName", $dataModel) || !array_key_exists("email", $dataModel) || !array_key_exists("isLibrarian", $dataModel) || 
+        !array_key_exists("isAdministrator", $dataModel) || !is_string($dataModel["userName"]) || !is_string($dataModel["firstName"]) || 
+        !is_string($dataModel["lastName"]) || !is_string($dataModel["email"]) || (array_key_exists("password", $dataModel) && 
+        !is_string($dataModel["password"])) || !is_bool($dataModel["isLibrarian"]) || !is_bool($dataModel["isAdministrator"]))
     {
         http_response_code(400);
         return;
@@ -133,8 +136,8 @@ function put(\PDO $databaseConnection)
     else
         $passwordHash = password_hash($dataModel["password"], PASSWORD_DEFAULT);
 
-    $user = new User($dataModel["id"], $dataModel["userName"], $dataModel["email"], $passwordHash, $dataModel["isLibrarian"], 
-        $dataModel["isAdministrator"]);
+    $user = new User($dataModel["id"], $dataModel["userName"], $dataModel["firstName"], $dataModel["lastName"], $dataModel["email"], $passwordHash, 
+        $dataModel["isLibrarian"], $dataModel["isAdministrator"]);
 
     $newUser = updateUser($databaseConnection, $user);
 
@@ -164,6 +167,8 @@ function toDataModel(User $user): array
     return [
         "id" => $user->getId(),
         "userName" => $user->getUserName(),
+        "firstName" => $user->getFirstName(),
+        "lastName" => $user->getLastName(),
         "email" => $user->getEmail(),
         "isLibrarian" => $user->isLibrarian(),
         "isAdministrator" => $user->isAdministrator()
