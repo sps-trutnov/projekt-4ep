@@ -1,5 +1,7 @@
 <?php
 $parentPath = "views/layout.phtml";
+$books = iterator_to_array($books);
+$pagesCount = ceil($bookCount/20);
 ?>
 <h1>Seznam knih</h1>
 <table>
@@ -24,3 +26,23 @@ $parentPath = "views/layout.phtml";
     <?php endforeach ?>
     </tbody>
 </table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class='page-item <?php if($page < 1) echo "disabled"?>'>
+      <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page - 1)])?>' tabindex="-1">Previous</a>
+    </li>
+    <?php
+    for($i = 0; $i < $pagesCount; $i++)
+    {
+        if($i == $page)
+            $active = "active";
+        else
+            $active = "";
+        echo("<li class='page-item $active'><a class='page-link' href='".$getActionUrl("Book", "Index", ["page" => $i])."'>".($i + 1)."</a></li>");
+    }
+    ?>
+    <li class='page-item  <?php if($page == $pagesCount - 1) echo "disabled"?>'>
+      <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page + 1)])?>'>Next</a>
+    </li>
+  </ul>
+</nav>

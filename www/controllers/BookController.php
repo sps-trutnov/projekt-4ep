@@ -29,9 +29,12 @@ class BookController extends AbstractController {
 
     public function index(int $page = 0): ActionResultInterface {
         $allBooks = $this->_bookRepository->getAll($page * 20, 20);
+        $bookCount = $this->_bookRepository->count();
 
         return parent::view("views/book/index.phtml", [
-            "books" => $allBooks
+            "books" => $allBooks,
+            "bookCount" => $bookCount,
+            "page" => $page
         ]);
     }
 

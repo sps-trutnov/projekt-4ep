@@ -48,4 +48,8 @@ class PDOBookRepository implements BookRepositoryInterface {
     }
     public function removeById(int $id){
     }
+    public function count(): int{
+        $statement = $this->_connection->query("SELECT COUNT(*) FROM books");
+        return intval($statement->fetchColumn());
+    }
 }

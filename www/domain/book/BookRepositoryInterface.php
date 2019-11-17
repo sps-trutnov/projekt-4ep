@@ -8,4 +8,5 @@ interface BookRepositoryInterface {
     function add(string $isbn, string $name, int $autorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $admin, bool $maturita): Book;
     function update(Book $book);
     function removeById(int $id);
+    function count(): int;
 }
