@@ -3,46 +3,48 @@ $parentPath = "views/layout.phtml";
 $books = iterator_to_array($books);
 $pagesCount = ceil($bookCount/20);
 ?>
-<h1>Seznam knih</h1>
-<table>
-    <thead>
-        <tr>
-            <td>Název</td>
-            <td>ISBN</td>
-            <td>Autor</td>
-            <td>Rok</td>
-            <td>Půjčeno</td>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach ($books as $book): ?>
-        <tr>
-            <td><?=$book->getName()?></td>
-            <td><?=$book->getIsbn()?></td>
-            <td><?=$book->getAuthorName()?></td>
-            <td><?=$book->getYear()?></td>
-            <td><?=$book->getBorrowedByName()?></td>
-        </tr>
-    <?php endforeach ?>
-    </tbody>
-</table>
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end">
-    <li class='page-item <?php if($page < 1) echo "disabled"?>'>
-      <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page - 1)])?>' tabindex="-1">Previous</a>
-    </li>
-    <?php
-    for($i = 0; $i < $pagesCount; $i++)
-    {
-        if($i == $page)
-            $active = "active";
-        else
-            $active = "";
-        echo("<li class='page-item $active'><a class='page-link' href='".$getActionUrl("Book", "Index", ["page" => $i])."'>".($i + 1)."</a></li>");
-    }
-    ?>
-    <li class='page-item  <?php if($page == $pagesCount - 1) echo "disabled"?>'>
-      <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page + 1)])?>'>Next</a>
-    </li>
-  </ul>
-</nav>
+<div class="col-xs-12 col-lg-10 mx-auto">
+    <h2 class="text-center">Seznam knih</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>ISBN</th>
+                <th>Autor</th>
+                <th>Rok</td>
+                <th>Půjčeno</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($books as $book): ?>
+            <tr>
+                <td><?=$book->getName()?></td>
+                <td><?=$book->getIsbn()?></td>
+                <td><?=$book->getAuthorName()?></td>
+                <td><?=$book->getYear()?></td>
+                <td><?=$book->getBorrowedByName()?></td>
+            </tr>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li class='page-item <?php if($page < 1) echo "disabled"?>'>
+        <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page - 1)])?>' tabindex="-1">Previous</a>
+        </li>
+        <?php
+        for($i = 0; $i < $pagesCount; $i++)
+        {
+            if($i == $page)
+                $active = "active";
+            else
+                $active = "";
+            echo("<li class='page-item $active'><a class='page-link' href='".$getActionUrl("Book", "Index", ["page" => $i])."'>".($i + 1)."</a></li>");
+        }
+        ?>
+        <li class='page-item  <?php if($page == $pagesCount - 1) echo "disabled"?>'>
+        <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page + 1)])?>'>Next</a>
+        </li>
+    </ul>
+    </nav>
+</div>
