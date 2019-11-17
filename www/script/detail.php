@@ -113,7 +113,7 @@ function get_user_rating(){
     echo '<div class="stars">';
 
     for($i=0;$i<5;$i++){
-        if($ratings_mid_temp>1){
+        if($ratings_mid_temp>=1){
             echo('
             <span class="star selected">★</span>
             <span class="star half selected">★</span>'

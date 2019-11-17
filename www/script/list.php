@@ -38,7 +38,7 @@ function echoList()
             $umisteni_knihy = $book["place"];
             $zanr = $book["genre"];
             $dostupnost_knihy = $book["borrowed_by"];
-
+            
             echo "<tr>";
 
             echo "<td>" . $nazev_knihy . "</td><td>" . $autor_knihy . "</td><td>" . $rok_knihy . "</td><td>" . 
