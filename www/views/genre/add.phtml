@@ -5,19 +5,19 @@ $parentPath = "views/layout.phtml";
 $parentPath = "views/layout.phtml";
 ?>
 <div class="container">
-    <h1>Přidat autora</h1>
     <form action="<?=$getActionUrl("Genre", "AddPost")?>" method="post" class="col-lg-6 mx-auto needs-validation" novalidate>
-            <?php
-                if(!empty($errors)){
-                    foreach($errors as $error){
-                        echo("<div class='alert alert-danger' role='alert'>$error</div>");
-                    }
+        <h2>Přidat žánr</h2>
+        <?php
+            if(!empty($errors)){
+                foreach($errors as $error){
+                    echo("<div class='alert alert-danger' role='alert'>$error</div>");
                 }
-            ?>
-            <div class="form-group">
-                <label for="name">Název žánru</label>
-                <input type="text" class="form-control" name="_genre" id="genre" placeholder="Název žánru" required>
-            </div>
+            }
+        ?>
+        <div class="form-group">
+            <label for="name">Název žánru</label>
+            <input type="text" class="form-control" name="_genre" id="genre" placeholder="Název žánru" required>
+        </div>
         <button type="submit" class="btn btn-primary mx-auto d-block">Přidat</button>
     </form>
     <script>
