@@ -1,3 +1,3 @@
 <?php session_destroy();
-  header("location:?p");
+  header("location:?p=index");
 ?>

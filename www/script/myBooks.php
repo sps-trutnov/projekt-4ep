@@ -31,7 +31,7 @@ include "./base/db.php";
 
         foreach ($booklist as $book) 
         {
-            $ID_knihy = $book["id"];
+            $ID_knihy = $book["book_id"];
             
             $potvrzeno = $book["confirmed"];
             $nazev_knihy = $book["name"];
