@@ -43,7 +43,7 @@ var tooltip = document.getElementsByClassName("tooltiptext");
       else if (availability[i].innerHTML == 1)
       {
         availability[i].innerHTML = "";
-        availability[i].classList.add("resreved_icon");
+        availability[i].classList.add("reserved_icon");
         tooltip[i].innerHTML = "Rezervováno";
       }
       else
