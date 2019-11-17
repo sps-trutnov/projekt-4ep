@@ -19,7 +19,13 @@ class PDOGenreRepository implements GenreRepositoryInterface {
 
     public function getById(int $id): ?Genre{
     }
-    public function add(int $id, string $genre): Genre {
+    public function add(string $genre): Genre {
+        $statement = $this->_connection->prepare("INSERT INTO genres(genre) VALUES(?)");
+        $statement->execute([$genre]);
+
+        $id = (int)$this->_connection->lastInsertId();
+
+        return new Genre($id, $genre);
     }
     public function update(Genre $genre){
     }
