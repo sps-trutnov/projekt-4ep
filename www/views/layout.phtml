@@ -6,7 +6,7 @@ $loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : 
 ?>
 
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="h-100" style="min-height: 100% !important;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@ $loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : 
     <script type="text/javascript" src="/js/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/js/bootstrap/bootstrap.min.js"></script>
 </head>
-<body class="h-100 d-flex flex-column">
+<body class="d-flex flex-column" style="min-height: 100% !important;">
     <header>
         <nav class="navbar navbar-light bg-light">
             <a class="navbar-brand" href="/">
@@ -26,7 +26,7 @@ $loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : 
         </nav>
     </header>
     <main class="flex-grow-1 d-flex align-items-center">
-        <div class="d-block w-100">
+        <div class="d-block w-100 pt-3">
             <?=$child?>
         </div>
     </main>

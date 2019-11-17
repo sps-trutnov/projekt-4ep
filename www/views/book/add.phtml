@@ -61,7 +61,7 @@ $parentPath = "views/layout.phtml";
             </div>
             <div class="form-group col-md-3">
                 <label for="year">Rok vydání</label>
-                <input type="number" class="form-control" id="year" name="_year" required>
+                <input type="number" class="form-control" id="year" name="_year" max="<?=date("Y")?>" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="conditionId">Kondice</label>
