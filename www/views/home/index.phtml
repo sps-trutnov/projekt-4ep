@@ -1,10 +1,36 @@
 <?php
 $parentPath = "views/layout.phtml";
 ?>
-<div id="button-box">
-	<a href="<?=$getActionUrl("Book", "Index", ["page" => 0])?>"><button class="blue">Seznam knih</button></a>
-	<a href="<?=$getActionUrl("Book", "Borrow")?>"><button class="blue">Půjčit knihu</button></a>
-	<a href="<?=$getActionUrl("Book", "Return")?>"><button class="blue">Vrátit knihu</button></a>
-	<a href="<?=$getActionUrl("Book", "Reservations")?>"><button class="blue">Zarezervované knihy</button></a>
-	<a href="<?=$getActionUrl("Book", "Add")?>"><button class="blue">Přidat knihu</button></a>
+<div class="card-columns justify-content-center px-3 px-lg-5">
+		<div class="card">
+			<img src="img/flaticon/searchbooks.svg" class="card-img-top px-3 pt-3" alt="">
+			<div class="card-body">
+				<a href="<?=$getActionUrl("Book", "Index", ["page" => 0])?>" class="btn btn-primary stretched-link">Seznam knih</a>
+			</div>
+		</div>
+		<div class="card">
+			<img src="img/flaticon/borrowbook.svg" class="card-img-top px-3 pt-3" alt="">
+			<div class="card-body">
+				<a href="<?=$getActionUrl("Book", "Borrow")?>" class="btn btn-primary stretched-link">Půjčit knihu</a>
+			</div>
+		</div>
+		<div class="card">
+			<img src="img/flaticon/returnbook.svg" class="card-img-top px-3 pt-3" alt="">
+			<div class="card-body">
+				<a href="<?=$getActionUrl("Book", "Return")?>" class="btn btn-primary stretched-link">Vrátit knihu</a>
+			</div>
+		</div>
+		<div class="card">
+			<img src="img/flaticon/reservedbooks.svg" class="card-img-top px-3 pt-3" alt="">
+			<div class="card-body">
+				<a href="<?=$getActionUrl("Book", "Reservations")?>" class="btn btn-primary stretched-link">Zarezervované knihy</a>
+			</div>
+		</div>
+		<div class="card">
+			<img src="img/flaticon/addbook.svg" class="card-img-top px-3 pt-3" alt="">
+			<div class="card-body">
+				<a href="<?=$getActionUrl("Book", "Add")?>" class="btn btn-primary stretched-link">Přidat knihu</a>
+			</div>
+		</div>
+	</div>
 </div>
