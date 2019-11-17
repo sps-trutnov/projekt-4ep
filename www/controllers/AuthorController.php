@@ -1,7 +1,7 @@
 <?php
 namespace controllers;
 
-use author\AuthorRepositoryInterface;
+use domain\author\AuthorRepositoryInterface;
 use actionResults\ActionResultInterface;
 use validation\Validator;
 use authentication\UserAuthenticationServiceInterface;
