@@ -4,7 +4,14 @@ $books = iterator_to_array($books);
 $pagesCount = ceil($bookCount/20);
 ?>
 <div class="col-xs-12 col-lg-10 mx-auto">
-    <h2 class="text-center">Seznam knih</h2>
+    <div class="row">
+        <h2 class="text-center col-md-6">Seznam knih</h2>
+        <form class="form-inline my-2 my-lg-0 col-md-6" method="post" action="<?=$getActionUrl("Book", "Index")?>">
+            <input class="hidden" type="hidden" name="page" value="0">
+            <input class="form-control mr-sm-2" name="search" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
     <table class="table">
         <thead>
             <tr>
@@ -30,7 +37,7 @@ $pagesCount = ceil($bookCount/20);
     <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-end">
         <li class='page-item <?php if($page < 1) echo "disabled"?>'>
-        <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page - 1)])?>' tabindex="-1">Previous</a>
+        <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page - 1), "search" => ""])?>' tabindex="-1">Previous</a>
         </li>
         <?php
         for($i = 0; $i < $pagesCount; $i++)
@@ -39,11 +46,11 @@ $pagesCount = ceil($bookCount/20);
                 $active = "active";
             else
                 $active = "";
-            echo("<li class='page-item $active'><a class='page-link' href='".$getActionUrl("Book", "Index", ["page" => $i])."'>".($i + 1)."</a></li>");
+            echo("<li class='page-item $active'><a class='page-link' href='".$getActionUrl("Book", "Index", ["page" => $i, "search" => ""])."'>".($i + 1)."</a></li>");
         }
         ?>
         <li class='page-item  <?php if($page == $pagesCount - 1) echo "disabled"?>'>
-        <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page + 1)])?>'>Next</a>
+        <a class="page-link" href='<?=$getActionUrl("Book", "Index", ["page" => ($page + 1), "search" => ""])?>'>Next</a>
         </li>
     </ul>
     </nav>

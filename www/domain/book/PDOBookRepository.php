@@ -28,6 +28,10 @@ class PDOBookRepository implements BookRepositoryInterface {
             yield new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"]);
         }
     }
+    public function search(string $text): iterable{
+        $statement = $this->_connection->prepare("SELECT * FROM books b LEFT JOIN authors a ON books.author_id = authors.id WHERE b.name LIKE ? OR CONCAT_WS(' ', authors.lastname, authors.firstname) LIKE ?");
+        return null;
+    }
     public function getAllWithAuthor(int $author_id): iterable{
     }
     public function getById(int $id): ?Book{

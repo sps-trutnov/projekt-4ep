@@ -27,7 +27,12 @@ class BookController extends AbstractController {
         $this->_userAuthenticationService = $userAuthenticationService;
     }
 
-    public function index(int $page = 0): ActionResultInterface {
+    public function index(int $page = 0, string $search = ""): ActionResultInterface {
+        if($search != ""){
+            $allBooks = $this->_bookRepository->getAll();
+            
+        }
+
         $allBooks = $this->_bookRepository->getAll($page * 20, 20);
         $bookCount = $this->_bookRepository->count();
 

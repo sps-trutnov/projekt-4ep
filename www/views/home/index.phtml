@@ -5,7 +5,10 @@ $parentPath = "views/layout.phtml";
 		<div class="card">
 			<img src="img/flaticon/searchbooks.svg" class="card-img-top px-3 pt-3" alt="">
 			<div class="card-body">
-				<a href="<?=$getActionUrl("Book", "Index", ["page" => 0])?>" class="btn btn-primary stretched-link">Seznam knih</a>
+				<a href="<?=$getActionUrl("Book", "Index", [
+					"page" => 0,
+					"search" => ""
+					])?>" class="btn btn-primary stretched-link">Seznam knih</a>
 			</div>
 		</div>
 		<div class="card">

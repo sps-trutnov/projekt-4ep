@@ -9,4 +9,5 @@ interface BookRepositoryInterface {
     function update(Book $book);
     function removeById(int $id);
     function count(): int;
+    function search(string $text): iterable;
 }
