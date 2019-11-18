@@ -29,8 +29,16 @@ class PDOBookRepository implements BookRepositoryInterface {
         }
     }
     public function search(string $text): iterable{
-        $statement = $this->_connection->prepare("SELECT * FROM books b LEFT JOIN authors a ON books.author_id = authors.id WHERE b.name LIKE ? OR CONCAT_WS(' ', authors.lastname, authors.firstname) LIKE ?");
-        return null;
+        $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName FROM books b
+        LEFT JOIN authors a ON b.author_id = a.id
+        LEFT JOIN users u ON b.borrowed_by = u.id
+        WHERE b.name LIKE :keywords OR CONCAT_WS(' ', a.lastname, a.firstname) LIKE :keywords");
+        $statement->bindValue(':keywords', '%'.$text.'%');
+        $statement->execute();
+        $statement = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        foreach ($statement as $row) {
+            yield new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"]);
+        }
     }
     public function getAllWithAuthor(int $author_id): iterable{
     }

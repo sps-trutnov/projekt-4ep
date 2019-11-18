@@ -29,17 +29,18 @@ class BookController extends AbstractController {
 
     public function index(int $page = 0, string $search = ""): ActionResultInterface {
         if($search != ""){
-            $allBooks = $this->_bookRepository->getAll();
-            
+            $allBooks = $this->_bookRepository->search($search);
         }
-
-        $allBooks = $this->_bookRepository->getAll($page * 20, 20);
+        else{
+            $allBooks = $this->_bookRepository->getAll($page * 20, 20);
+        }
         $bookCount = $this->_bookRepository->count();
 
         return parent::view("views/book/index.phtml", [
             "books" => $allBooks,
             "bookCount" => $bookCount,
-            "page" => $page
+            "page" => $page,
+            "search" => $search
         ]);
     }
 
