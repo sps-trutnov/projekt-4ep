@@ -89,6 +89,10 @@ class Book {
         $this->_pageCount = $pageCount;
     }
 
+    public function getId(): int {
+        return $this->_id;
+    }
+
     public function getName(): string {
         return $this->_name;
     }

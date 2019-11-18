@@ -18,8 +18,9 @@ $pagesCount = ceil($bookCount/20);
                 <th>Název</th>
                 <th>ISBN</th>
                 <th>Autor</th>
-                <th>Rok</td>
-                <th>Půjčeno</th>
+                <th>Rok vydání</td>
+                <th>Dostupnost</th>
+                <th>Detail</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +30,21 @@ $pagesCount = ceil($bookCount/20);
                 <td><?=$book->getIsbn()?></td>
                 <td><?=$book->getAuthorName()?></td>
                 <td><?=$book->getYear()?></td>
-                <td><?=$book->getBorrowedByName()?></td>
+                <?php if($book->getBorrowedByName() != ""):?>
+                    <td class="p-2">
+                        <img src="img/flaticon/cross.svg" alt="" style="height: 2rem;">
+                        <span><?=$book->getBorrowedByName()?></span>
+                    </td>
+                <?php else:?>
+                    <td class="p-2">
+                        <img src="img/flaticon/tick.svg" alt="" style="height: 2rem;">
+                    </td>
+                <?php endif?>
+                <td class="p-2">
+                    <a href='<?=$getActionUrl("Book", "Detail", ["id" => $book->getId()])?>' tabindex="-1">
+                        <img src="img/flaticon/search.svg" alt="Detail" style="height: 2rem;">
+                    </a>
+                </td>
             </tr>
         <?php endforeach ?>
         </tbody>
