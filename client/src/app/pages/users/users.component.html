@@ -5,21 +5,47 @@
 </div>
 <table class="table table-striped table-hover">
     <thead>
-        <tr>
-            <th class="sticky-top bg-white">Id</th>
-            <th class="table-column-fill sticky-top bg-white">Uživatelské jméno</th>
-            <th class="table-column-fill sticky-top bg-white">Heslo</th>
-            <th class="table-column-fill sticky-top bg-white">Jméno</th>
-            <th class="table-column-fill sticky-top bg-white">Příjmení</th>
-            <th class="table-column-fill sticky-top bg-white">Email</th>
-            <th class="sticky-top bg-white">Knihovník</th>
-            <th class="sticky-top bg-white">Administrátor</th>
-            <th class="pr-0 sticky-top bg-white">
-                <button [class.invisible]="!canSaveAll" [disabled]="!isAllValid" class="btn btn-sm btn-success"
-                    (click)="saveAll()">Uložit</button>
+        <tr [formGroup]="filterForm">
+            <th class="sticky-top bg-white table-column-id">
+                Id
+                <input type="text" class="form-control form-control-sm" formControlName="id" [class.is-invalid]="!isIdFilterValid">
+            </th>
+            <th class="table-column-fill sticky-top bg-white">
+                Uživatelské jméno
+                <input type="text" class="form-control form-control-sm" formControlName="userName">
+            </th>
+            <th class="table-column-fill sticky-top bg-white align-top">Heslo</th>
+            <th class="table-column-fill sticky-top bg-white">
+                Jméno
+                <input type="text" class="form-control form-control-sm" formControlName="firstName">
+            </th>
+            <th class="table-column-fill sticky-top bg-white">
+                Příjmení
+                <input type="text" class="form-control form-control-sm" formControlName="lastName">
+            </th>
+            <th class="table-column-fill sticky-top bg-white">
+                Email
+                <input type="text" class="form-control form-control-sm" formControlName="email">
             </th>
             <th class="sticky-top bg-white">
-                <button [class.invisible]="!canDiscardAll" class="btn btn-sm btn-danger"
+                Knihovník
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" formControlName="isLibrarian">
+                </div>
+            </th>
+            <th class="sticky-top bg-white">
+                Administrátor
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" formControlName="isAdministrator">
+                </div>
+            </th>
+            <th class="sticky-top bg-white text-nowrap">
+                <small class="text-muted font-weight-normal text-center d-block pb-1">{{changesText}}</small>
+                <button [class.invisible]="!hasChanges" [disabled]="!isAllValid" class="btn btn-sm btn-success mr-1"
+                    (click)="saveAll()">Uložit</button>
+                <button [class.invisible]="!hasChanges" class="btn btn-sm btn-danger ml-1"
                     (click)="discardAll()">Zahodit</button>
             </th>
             <th class="sticky-top bg-white"></th>
@@ -28,7 +54,7 @@
     <tbody>
         <tr *ngFor="let user of users"
             [class.table-warning]="(user.isChanged || user.original === null) && user !== newUser">
-            <td>{{user.original !== null ? user.original.id : ""}}</td>
+            <td class="table-column-id">{{user.original !== null ? user.original.id : ""}}</td>
             <td class="table-column-fill">
                 <input [class.is-invalid]="!user.isUserNameValid && user !== newUser"
                     class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
@@ -65,13 +91,11 @@
                         type="checkbox" [(ngModel)]="user.newIsAdministrator">
                 </div>
             </td>
-            <td class="pr-0">
+            <td class="pr-0 text-nowrap">
                 <button [class.invisible]="!user.isChanged && user.original !== null || user === newUser"
-                    [disabled]="!user.isValid" class="btn btn-sm btn-success" (click)="save(user)">Uložit</button>
-            </td>
-            <td>
+                    [disabled]="!user.isValid" class="btn btn-sm btn-success mr-1" (click)="save(user)">Uložit</button>
                 <button [class.invisible]="!user.isChanged && user.original !== null || user === newUser"
-                    class="btn btn-sm btn-danger" (click)="discard(user)">Zahodit</button>
+                    class="btn btn-sm btn-danger ml-1" (click)="discard(user)">Zahodit</button>
             </td>
             <td>
                 <i *ngIf="user.original !== null" class="fas fa-trash fa-2x cursor-pointer text-muted"
@@ -80,3 +104,14 @@
         </tr>
     </tbody>
 </table>
+<div *ngIf="users === undefined" class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Načítání...</span>
+    </div>
+</div>
+<div *ngIf="users !== undefined && users.length === 1 && !isFiltred" class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <span class="text-muted">Databáze neobsahuje žádné záznamy.</span>
+</div>
+<div *ngIf="users !== undefined && users.length === 0 && isFiltred" class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <span class="text-muted">Podle zadaných kritérií nebyly nalezeny žádné záznamy.</span>
+</div>

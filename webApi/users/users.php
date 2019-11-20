@@ -2,17 +2,55 @@
 
 namespace users;
 
-function getUsers(\PDO $databaseConnection): array
+function getUsers(\PDO $databaseConnection, int $idFilter = null, string $userNameFilter = null, string $firstNameFilter = null, 
+    string $lastNameFilter = null, string $emailFilter = null, bool $isLibrarianFilter = null, bool $isAdministratorFilter = null): iterable
 {
-    $statement = $databaseConnection->prepare("SELECT * FROM users");
-    $statement->execute();
+    $conditions = [];
+    $parameters = [];
 
-    $users = [];
+    if ($idFilter !== null)
+    {
+        $conditions[] = "id = ?";
+        $parameters[] = $idFilter;
+    }
+    if ($userNameFilter !== null)
+    {
+        $conditions[] = "user_name LIKE ?";
+        $parameters[] = "%$userNameFilter%";
+    }
+    if ($firstNameFilter !== null)
+    {
+        $conditions[] = "first_name LIKE ?";
+        $parameters[] = "%$firstNameFilter%";
+    }
+    if ($lastNameFilter !== null)
+    {
+        $conditions[] = "last_name LIKE ?";
+        $parameters[] = "%$lastNameFilter%";
+    }
+    if ($emailFilter !== null)
+    {
+        $conditions[] = "email LIKE ?";
+        $parameters[] = "%$emailFilter%";
+    }
+    if ($isLibrarianFilter !== null)
+    {
+        $conditions[] = "is_librarian = ?";
+        $parameters[] = (int)$isLibrarianFilter;
+    }
+    if ($isAdministratorFilter !== null)
+    {
+        $conditions[] = "is_administrator = ?";
+        $parameters[] = (int)$isAdministratorFilter;
+    }
+
+    $statementText = "SELECT * FROM users" . (count($conditions) > 0 ? " WHERE " : "") . join(" AND ", $conditions);
+
+    $statement = $databaseConnection->prepare($statementText);
+    $statement->execute($parameters);
+
     while ($row = $statement->fetch())
-        $users[] = new User($row["id"], $row["user_name"], $row["first_name"], $row["last_name"], $row["email"], $row["password_hash"], 
-            (bool)$row["is_librarian"], (bool)$row["is_administrator"]);
-
-    return $users;
+        yield rowToUser($row);
 }
 
 function getUserById(\PDO $databaseConnection, int $id): ?User
@@ -25,8 +63,7 @@ function getUserById(\PDO $databaseConnection, int $id): ?User
     if ($row == false)
         return null;
 
-    return new User($row["id"], $row["user_name"], $row["first_name"], $row["last_name"], $row["email"], $row["password_hash"], 
-        (bool)$row["is_librarian"], (bool)$row["is_administrator"]);
+    return rowToUser($row);
 }
 
 function getUserByUserName(\PDO $databaseConnection, string $userName): ?User
@@ -39,8 +76,7 @@ function getUserByUserName(\PDO $databaseConnection, string $userName): ?User
     if ($row == false)
         return null;
 
-    return new User($row["id"], $row["user_name"], $row["first_name"], $row["last_name"], $row["email"], $row["password_hash"], 
-        (bool)$row["is_librarian"], (bool)$row["is_administrator"]);
+    return rowToUser($row);
 }
 
 function addUser(\PDO $databaseConnection, User $user): User
@@ -69,4 +105,10 @@ function removeUser(\PDO $databaseConnection, int $id): bool
     $statement->execute([$id]);
 
     return $statement->rowCount() > 0;
+}
+
+function rowToUser(array $row): User
+{
+    return new User($row["id"], $row["user_name"], $row["first_name"], $row["last_name"], $row["email"], $row["password_hash"], 
+        (bool)$row["is_librarian"], (bool)$row["is_administrator"]);
 }

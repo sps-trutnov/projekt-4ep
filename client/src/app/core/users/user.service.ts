@@ -14,8 +14,19 @@ export class UserService {
 
     }
 
-    getAll(): Observable<User[]> {
-        return this.httpClient.get<User[]>(`${this.apiUrl}/users/index.php`).pipe(
+    getAll(options: { idFilter?: number, userNameFilter?: string, firstNameFilter?: string, lastNameFilter?: string, emailFilter?: string, 
+        isLibrarianFilter?: boolean, isAdministratorFilter?: boolean } = {}): Observable<User[]> {
+        let parameters = {
+            ...options.idFilter !== undefined && { "id-filter": options.idFilter.toString() },
+            ...options.userNameFilter !== undefined && { "user-name-filter": options.userNameFilter },
+            ...options.firstNameFilter !== undefined && { "first-name-filter": options.firstNameFilter },
+            ...options.lastNameFilter !== undefined && { "last-name-filter": options.lastNameFilter },
+            ...options.emailFilter !== undefined && { "email-filter": options.emailFilter },
+            ...options.isLibrarianFilter !== undefined && { "is-librarian-filter": options.isLibrarianFilter.toString() },
+            ...options.isAdministratorFilter !== undefined && { "is-administrator-filter": options.isAdministratorFilter.toString() }
+        };
+
+        return this.httpClient.get<User[]>(`${this.apiUrl}/users/index.php`, { params: parameters }).pipe(
             map(u => u.map(u => new User(u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator)))
         );
     }

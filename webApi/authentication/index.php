@@ -8,6 +8,7 @@ use const settings\ACCESS_CONTROL_ALLOWED_ORIGIN;
 use const settings\AUTHORIZATION_TOKEN_SECRET;
 
 use function database\createPDOConection;
+use function http\exitWithHttpCode;
 use function users\getUserByUserName;
 
 require_once "../vendor/autoload.php";
@@ -15,6 +16,7 @@ require_once "../database/database.php";
 require_once "../users/User.php";
 require_once "../users/users.php";
 require_once "../settings/settings.php";
+require_once "../http/http.php";
 
 header("Access-Control-Allow-Origin: " . ACCESS_CONTROL_ALLOWED_ORIGIN);
 header("Access-Control-Allow-Methods: POST");
@@ -39,10 +41,7 @@ function post(\PDO $databaseConnection)
     $dataModel = json_decode($bodyContent, true);
 
     if ($dataModel === null || !array_key_exists("userName", $dataModel) || !array_key_exists("password", $dataModel))
-    {
-        http_response_code(400);
-        return;
-    }
+        exitWithHttpCode(400);
 
     $userName = $dataModel["userName"];
     $password = $dataModel["password"];
@@ -50,18 +49,12 @@ function post(\PDO $databaseConnection)
     $user = getUserByUserName($databaseConnection, $userName);
 
     if ($user === null || !$user->isAdministrator())
-    {
-        http_response_code(401);
-        return;
-    }
+        exitWithHttpCode(401);
 
     $passwordValid = password_verify($password, $user->getPasswordHash());
 
     if (!$passwordValid)
-    {
-        http_response_code(401);
-        return;
-    }
+        exitWithHttpCode(401);
 
     // TODO: add token expiration field, ...
     $token = [
@@ -73,6 +66,5 @@ function post(\PDO $databaseConnection)
         "id" => $user->getId(),
         "token" => $tokenEncoded
     ];
-    
     echo(json_encode($result));
 }

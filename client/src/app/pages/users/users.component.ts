@@ -5,6 +5,7 @@ import { UserViewModel } from './user-view-model';
 import { AlertService } from 'src/app/alerts/alert.service';
 import { AlertType } from 'src/app/alerts/alert-type';
 import { UserNameAlreadyUsedError } from 'src/app/core/users/user-name-already-used-error';
+import { FormGroup, FormControl, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
 
 @Component({
     selector: 'app-users',
@@ -15,11 +16,17 @@ export class UsersComponent implements OnInit, DoCheck {
     users: UserViewModel[];
     newUser: UserViewModel;
 
-    get canSaveAll(): boolean {
-        return this.users !== undefined && this.users.some(u => (u.isChanged || u.original === null) && u !== this.newUser)
-    }
+    filterForm = new FormGroup({
+        id: new FormControl("", this.idFilterValidator),
+        userName: new FormControl(""),
+        firstName: new FormControl(""),
+        lastName: new FormControl(""),
+        email: new FormControl(""),
+        isLibrarian: new FormControl(false),
+        isAdministrator: new FormControl(false)
+    });
 
-    get canDiscardAll(): boolean {
+    get hasChanges(): boolean {
         return this.users !== undefined && this.users.some(u => (u.isChanged || u.original === null) && u !== this.newUser)
     }
 
@@ -27,22 +34,85 @@ export class UsersComponent implements OnInit, DoCheck {
         return this.users === undefined || this.users.every(u => u.isValid || u === this.newUser);
     }
 
-    constructor(private readonly userService: UserService, private readonly alertService: AlertService) {
+    get isFiltred(): boolean {
+        return this.filterForm.get("id").value != "" || this.filterForm.get("userName").value != "" || this.filterForm.get("firstName").value != "" || 
+            this.filterForm.get("lastName").value != "" || this.filterForm.get("email").value != "" || this.filterForm.get("isLibrarian").value != false ||
+            this.filterForm.get("isAdministrator").value != false;
+    }
 
+    get isIdFilterValid(): boolean {
+        return !this.filterForm.get("id").invalid;
+    }
+
+    get changesText(): string {
+        if (this.users === undefined)
+            return "";
+
+        let changesCount = this.users
+            .filter(u => u.isChanged)
+            .length;
+        
+        if (changesCount === 0)
+            return "";
+        else if (changesCount === 1)
+            return `${changesCount} změna.`;
+        else if (changesCount > 1 && changesCount < 5)
+            return `${changesCount} změny.`;
+        else
+            return `${changesCount} změn.`;
+    }
+
+    constructor(private readonly userService: UserService, private readonly alertService: AlertService) {
+        this.filterForm.valueChanges.subscribe(async () => {
+            this.users = undefined;
+
+            await this.refreshUsers();
+
+            if (!this.isFiltred)
+                this.addNewUser();
+        });
     }
 
     async ngOnInit() {
-        this.users = (await this.userService.getAll().toPromise())
-            .map(u => new UserViewModel(u, u.userName, "", u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator));
+        await this.refreshUsers();
         this.addNewUser();
     }
 
     ngDoCheck() {
         if (this.newUser != undefined && this.newUser.isChanged)
             this.addNewUser();
+
+        if (this.hasChanges)
+            this.filterForm.disable({ emitEvent: false });
+        else
+            this.filterForm.enable({ emitEvent: false });
     }
 
-    addNewUser() {
+    private async refreshUsers() {
+        let idFilterControl = this.filterForm.get("id");
+        let idFilter = idFilterControl.value;
+        let userNameFilter = this.filterForm.get("userName").value;
+        let firstNameFilter = this.filterForm.get("firstName").value;
+        let lastNameFilter = this.filterForm.get("lastName").value;
+        let emailFilter = this.filterForm.get("email").value;
+        let isLibrarianFilter = this.filterForm.get("isLibrarian").value;
+        let isAdministratorFilter = this.filterForm.get("isAdministrator").value;
+
+        let options = {
+            ...idFilter !== "" && !idFilterControl.invalid && { idFilter: parseInt(idFilter) },
+            ...userNameFilter !== "" && { userNameFilter },
+            ...firstNameFilter !== "" && { firstNameFilter },
+            ...lastNameFilter !== "" && { lastNameFilter },
+            ...emailFilter !== "" && { emailFilter },
+            ...isLibrarianFilter !== false && { isLibrarianFilter },
+            ...isAdministratorFilter !== false && { isAdministratorFilter }
+        };
+
+        this.users = (await this.userService.getAll(options).toPromise())
+            .map(u => new UserViewModel(u, u.userName, "", u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator));
+    }
+
+    private addNewUser() {
         this.newUser = new UserViewModel(null, "", "", "", "", "", false, false);
         this.users.unshift(this.newUser);
     }
@@ -102,5 +172,12 @@ export class UsersComponent implements OnInit, DoCheck {
         this.users
             .filter(u => u.isChanged)
             .forEach(u => this.discard(u));
+    }
+
+    private idFilterValidator(control: AbstractControl): ValidationErrors | null {
+        if (/^(0|(-?[1-9][0-9]*)|)$/.test(control.value))
+            return null;
+        else
+            return { invalidId: true};
     }
 }

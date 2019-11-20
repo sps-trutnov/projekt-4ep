@@ -4,6 +4,7 @@ namespace authorization;
 
 use Firebase\JWT\JWT;
 
+use function http\exitWithHttpCode;
 use function users\getUserById;
 
 use const settings\AUTHORIZATION_TOKEN_SECRET;
@@ -11,14 +12,12 @@ use const settings\AUTHORIZATION_TOKEN_SECRET;
 require_once "../vendor/autoload.php";
 require_once "../settings/settings.php";
 require_once "../users/users.php";
+require_once "../http/http.php";
 
 function authorize(\PDO $databaseConnection, bool $requireAdministrator) 
 {
     if (!isAuthorized($databaseConnection, $requireAdministrator))
-    {
-        http_response_code(401);
-        exit;
-    }
+        exitWithHttpCode(401);
 }
 
 function isAuthorized(\PDO $databaseConnection, bool $requireAdministrator): bool
