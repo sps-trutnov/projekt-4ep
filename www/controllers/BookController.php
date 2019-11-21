@@ -57,24 +57,24 @@ class BookController extends AbstractController {
     }
 
     public function add(): ActionResultInterface {
-        return $this->addForm(null);
+        $authors = $this->_authorRepository->getAll();
+        $places = $this->_placeRepository->getAll();
+        $conditions = $this->_conditionRepository->getAll();
+        $genres = $this->_genreRepository->getAll();
+
+        return parent::view("views/book/add.phtml", [
+            "authors" => $authors,
+            "places" => $places,
+            "conditions" => $conditions,
+            "genres" => $genres
+        ]);
     }
 
-    public function addPost(): ActionResultInterface {
-        $formData = $_POST;
-        $isbn = $formData["_isbn"];
-        $name = $formData["_name"];
-        $autorId = $formData["_authorId"];
-        $description = $formData["_description"];
-        $pageCount = $formData["_pageCount"];
-        $year = $formData["_year"];
-        $conditionId = $formData["_conditionId"];
-        $placeId = $formData["_placeId"];
-        $genreId = $formData["_genreId"];
-        if(!isset($formData["_maturita"]))
-            $maturita = FALSE;
+    public function addPost($isbn, $name, $authorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId): ActionResultInterface {
+        if(!empty($_POST["maturita"]))
+            $maturita = 1;
         else
-            $maturita = $formData["_maturita"];
+            $maturita = 0;
         if(
             empty($isbn) ||
             empty($name) ||
@@ -86,26 +86,69 @@ class BookController extends AbstractController {
             empty($genreId)
         )
         {
-            return addForm($formData);
+            return add();
         }
         else{
             $book = $this->_bookRepository->add($isbn, $name, $autorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId, FALSE, $maturita);
             return parent::view("views/book/added.phtml");
         }
-    } 
+    }
 
-    private function addForm($data): ActionResultInterface{
+    public function edit(int $id): ActionResultInterface {
+        $book = $this->_bookRepository->getById($id);
         $authors = $this->_authorRepository->getAll();
         $places = $this->_placeRepository->getAll();
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
-        return parent::view("views/book/add.phtml", [
-            "data" => $data,
+        return parent::view("views/book/edit.phtml", [
+            "book" => $book,
             "authors" => $authors,
             "places" => $places,
             "conditions" => $conditions,
             "genres" => $genres
+        ]);
+    }
+
+    public function editPost(int $id, $isbn, $name, $authorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId){
+        if(!empty($_POST["maturita"]))
+            $maturita = 1;
+        else
+            $maturita = 0;
+
+        $book = $this->_bookRepository->getById($id);
+        if(empty($book)) {
+            return parent::redirectToAction("Home", "Index", [
+                "errors" => ["Upravená kniha nebyla v databázi."]
+            ]);
+        }
+
+        $book->setISBN($isbn);
+        $book->setName($name);
+        $book->setAuthorId($authorId);
+        $book->setDescription($description);
+        $book->setPageCount($pageCount);
+        $book->setYear($year);
+        $book->setConditionId($conditionId);
+        $book->setPlaceId($placeId);
+        $book->setGenreId($genreId);
+        $book->setMaturitaReady($maturita);
+
+        $this->_bookRepository->update($book);
+
+        return parent::redirectToAction("Book", "Detail", [
+            "id" => $book->getId(),
+            "message" => "Informace o knize byly upraveny."
+        ]);
+    }
+
+    public function detail(int $id): ActionResultInterface {
+        $book = $this->_bookRepository->getById($id);
+        if($book == null)
+            return parent::redirectToAction("Book", "Index");
+
+        return parent::view("views/book/detail.phtml", [
+            "book" => $book
         ]);
     }
 }
