@@ -41,14 +41,8 @@ $pagesCount = ceil($bookCount/20);
                     </td>
                 <?php endif?>
                 <td class="p-2">
-                    <a href='<?=$getActionUrl("Book", "Detail", ["id" => $book->getId()])?>' tabindex="-1" class="px-1">
+                    <a href='<?=$getActionUrl("Book", "Detail", ["id" => $book->getId()])?>' tabindex="-1">
                         <img src="img/flaticon/search.svg" alt="Detail" style="height: 2rem;">
-                    </a>
-                    <a href='<?=$getActionUrl("Book", "Edit", ["id" => $book->getId()])?>' tabindex="-1" class="px-1">
-                        <img src="img/flaticon/edit.svg" alt="Upravit" style="height: 2rem;">
-                    </a>
-                    <a href='<?=$getActionUrl("Book", "Remove", ["id" => $book->getId()])?>' tabindex="-1" class="px-1">
-                        <img src="img/flaticon/cross.svg" alt="Odstranit" style="height: 2rem;">
                     </a>
                 </td>
             </tr>

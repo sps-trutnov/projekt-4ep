@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:www/css/style.css
 h3{
     color: var(--secondary) !important;
 }
@@ -11,6 +12,8 @@ h3{
     border-top: 0;
 }
 
+=======
+>>>>>>> Stashed changes:css/style.css
 @media (min-width: 62em) {
     .card-columns {
         -webkit-column-count: 3 !important;
@@ -36,13 +39,5 @@ h3{
 
     .active, .active *, .page-item *:hover{
         border-color: var(--light) !important;
-    }
-
-    .table td, .table th {
-        border-color: var(--secondary) !important;
-    }
-
-    .icon + span {
-        color: var(--light) !important;
     }
 }

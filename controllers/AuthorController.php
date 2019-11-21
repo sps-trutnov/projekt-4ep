@@ -20,8 +20,20 @@ class AuthorController extends AbstractController {
     }
     
     public function AddPost(): ActionResultInterface {
-        
-
+        $formData = $_POST;
+        $autorId = $formData["_authorId"];
+        if(empty($autorId))
+        {
+            return parent ::view("views/author/add.phtml",["errors" => ["Autor musí mít jméno"]]);
+        }
+        else
+        {
+            $autorId = $this->_authorRepository->GetAll();
+            foreach($autorId as $existingAuthor){
+                if($existingAuthor->getAuthor() == $autorId)
+                    return parent::view("views/author/add.phtml", [ "errors" =>["Autor s tímto jménem již existuje"]] );}
+        }
+        $autorId = $this->_authorRepository->add($autorId);
         return parent::view("views/author/add.phtml");
     }
 }

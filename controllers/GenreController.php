@@ -22,7 +22,7 @@ class GenreController extends AbstractController {
     
     public function AddPost(): ActionResultInterface {
         $formData = $_POST;
-        $genre = $formData["_genre"];
+        $genre = $formData["_genre"];   
         if(empty($genre))
         {
             return parent::view("views/genre/add.phtml", [
