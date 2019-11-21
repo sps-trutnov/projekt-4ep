@@ -28,6 +28,10 @@ h3{
 }
 
 @media (prefers-color-scheme: dark){
+    .card{
+        background-color: var(--secondary);
+    }
+
     body, header, .bg-light, .table, .navbar-light .navbar-brand, .page-item *{
         background-color: var(--dark) !important;
         color: var(--light) !important;

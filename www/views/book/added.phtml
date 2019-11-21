@@ -2,12 +2,23 @@
 $parentPath = "views/layout.phtml";
 ?>
 <div class="container">
+    <script src="http://jecas.cz/files/qr/qrcode.min.js"></script>
     <div class="card mx-auto" style="max-width: 32rem;">
-        <img src="..." class="card-img-top" alt="QR Kód">
+        <div id="qr-code" class="card-img-top"></div>
         <div class="card-body">
             <h5 class="card-title">Kniha přidána</h5>
             <p class="card-text">Vytiskněte QR kód a nalepte na knihu.</p>
             <a href="#" class="btn btn-primary">Tisk</a>
         </div>
     </div>
+    <script>
+    var qrcode = new QRCode("qr-code", {
+        text: "žluťoučký",
+        width: $('.card')[0].clientWidth,
+        height: $('.card')[0].clientWidth,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+    </script>
 </div>
