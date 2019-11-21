@@ -11,15 +11,19 @@ class PDOBookRepository implements BookRepositoryInterface {
 
     public function getAll(int $offset = 0, int $limit = 0): iterable{
         if($offset == 0 && $limit == 0)
-            $statement = $this->_connection->prepare("SELECT books.*, CONCAT_WS(' ', authors.lastname, authors.firstname) as authorName, CONCAT_WS(' ', users.lastname, users.firstname) as borrowedByName, genres.genre as genreName FROM books 
-            LEFT JOIN authors ON books.author_id = authors.id
-            LEFT JOIN users ON books.borrowed_by = users.id
-            LEFT JOIN genres ON books.genre_id = genres.id");
-        else {
-            $statement = $this->_connection->prepare("SELECT books.*, CONCAT_WS(' ', authors.lastname, authors.firstname) as authorName, CONCAT_WS(' ', users.lastname, users.firstname) as borrowedByName, genres.genre as genreName FROM books 
+            $statement = $this->_connection->prepare("SELECT books.*, CONCAT_WS(' ', authors.lastname, authors.firstname) as authorName, CONCAT_WS(' ', users.lastname, users.firstname) as borrowedByName, genres.genre as genreName, conditions.condition as conditionName, places.place as placeName FROM books 
             LEFT JOIN authors ON books.author_id = authors.id
             LEFT JOIN users ON books.borrowed_by = users.id
             LEFT JOIN genres ON books.genre_id = genres.id
+            LEFT JOIN conditions ON books.condition_id = conditions.id
+            LEFT JOIN places ON books.place_id = places.id");
+        else {
+            $statement = $this->_connection->prepare("SELECT books.*, CONCAT_WS(' ', authors.lastname, authors.firstname) as authorName, CONCAT_WS(' ', users.lastname, users.firstname) as borrowedByName, genres.genre as genreName, conditions.condition as conditionName, places.place as placeName FROM books 
+            LEFT JOIN authors ON books.author_id = authors.id
+            LEFT JOIN users ON books.borrowed_by = users.id
+            LEFT JOIN genres ON books.genre_id = genres.id
+            LEFT JOIN conditions ON books.condition_id = conditions.id
+            LEFT JOIN places ON books.place_id = places.id
             LIMIT ?, ?");
             $statement->bindValue(1, $offset, \PDO::PARAM_INT);
             $statement->bindValue(2, $limit, \PDO::PARAM_INT);
@@ -31,10 +35,12 @@ class PDOBookRepository implements BookRepositoryInterface {
         }
     }
     public function search(string $text): iterable{
-        $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName FROM books b
+        $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName, c.condition as conditionName, p.place as placeName FROM books b
         LEFT JOIN authors a ON b.author_id = a.id
         LEFT JOIN users u ON b.borrowed_by = u.id
         LEFT JOIN genres g ON b.genre_id = g.id
+        LEFT JOIN conditions c ON b.condition_id = c.id
+        LEFT JOIN places p ON b.place_id = p.id
         WHERE b.name LIKE :keywords OR CONCAT_WS(' ', a.lastname, a.firstname) LIKE :keywords");
         $statement->bindValue(':keywords', '%'.$text.'%');
         $statement->execute();
@@ -46,10 +52,12 @@ class PDOBookRepository implements BookRepositoryInterface {
     public function getAllWithAuthor(int $author_id): iterable{
     }
     public function getById(int $id): ?Book{
-        $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName FROM books b
+        $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName, c.condition as conditionName, p.place as placeName FROM books b
         LEFT JOIN authors a ON b.author_id = a.id
         LEFT JOIN users u ON b.borrowed_by = u.id
         LEFT JOIN genres g ON b.genre_id = g.id
+        LEFT JOIN conditions c ON b.condition_id = c.id
+        LEFT JOIN places p ON b.place_id = p.id
         WHERE b.id = ?");
         $statement->execute([$id]);
         $row = $statement->fetch();

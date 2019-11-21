@@ -3,7 +3,7 @@ h3{
 }
 
 .icon + span {
-    color: var(--light) !important;
+    color: var(--dark) !important;
     padding-left: .25rem;
 }
 
@@ -32,5 +32,9 @@ h3{
 
     .active, .active *, .page-item *:hover{
         border-color: var(--light) !important;
+    }
+
+    .icon + span {
+        color: var(--light) !important;
     }
 }
