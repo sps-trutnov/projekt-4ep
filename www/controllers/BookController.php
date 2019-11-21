@@ -60,6 +60,22 @@ class BookController extends AbstractController {
         return $this->addForm(null);
     }
 
+    public function edit(int $id): ActionResultInterface {
+        $book = $this->_bookRepository->getById($id);
+        $authors = $this->_authorRepository->getAll();
+        $places = $this->_placeRepository->getAll();
+        $conditions = $this->_conditionRepository->getAll();
+        $genres = $this->_genreRepository->getAll();
+
+        return parent::view("views/book/edit.phtml", [
+            "book" => $book,
+            "authors" => $authors,
+            "places" => $places,
+            "conditions" => $conditions,
+            "genres" => $genres
+        ]);
+    }
+
     public function detail(int $id): ActionResultInterface {
         $book = $this->_bookRepository->getById($id);
         if($book == null)

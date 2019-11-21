@@ -111,24 +111,24 @@ class Book {
         return $this->_authorId;
     }
 
+    public function getGenreId(): int {
+        return $this->_genreId;
+    }
+
+    public function getConditionId(): int{
+        return $this->_conditionId;
+    }
+
+    public function getPlaceId(): int{
+        return $this->_placeId;
+    }
+
     public function getYear(): int {
         return $this->_year;
     }
 
     public function getBorrowedBy(): int {
         return $this->_borrowedBy;
-    }
-
-    public function getAuthorName(): string {
-        return $this->_authorName;
-    }
-
-    public function getBorrowedByName(): string {
-        return $this->_borrowedByName;
-    }
-
-    public function getGenreName(): string {
-        return $this->_genreName;
     }
 
     public function getDescription(): string {
@@ -149,5 +149,17 @@ class Book {
 
     public function getPlaceName(): string {
         return $this->_placeName ?? "";
+    }
+
+    public function getAuthorName(): string {
+        return $this->_authorName;
+    }
+
+    public function getBorrowedByName(): string {
+        return $this->_borrowedByName;
+    }
+
+    public function getGenreName(): string {
+        return $this->_genreName;
     }
 }
