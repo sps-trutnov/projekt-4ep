@@ -13,10 +13,10 @@
 <div id="logged_user"><p>Přihlášený uživatel: <b> <?php echo $_SESSION["name"] ?> </b></p></div>
 
 <ul class="list_profile">
-    <a href="./?p=home"><div class="zoom"><img src="./img/flaticon/006-home.png" alt="profil"><br>Hlavní stránka</div></a>
+    
     <a href="./?p=pass_change"><div class="zoom"><img src="./img/flaticon/010-pass.png" alt="zmena_hesla"><br>Změna hesla</div></a>
     <a href="./?p=list"><div class="zoom"><img src="./img/flaticon/014-folder.png" alt="seznam_knih"><br>Seznam knih</div></a>
     <a href="./?p=myBooks"><div class="zoom"><img src="./img/flaticon/003-bookmark.png" alt="moje_knihy"><br>Moje knihy</div></a>
     <a href="./?p=qr_reader"><div class="zoom"><img src="./img/flaticon/015-qr-code.png" alt="qr_ctecka"><br>QR čtečka</div></a>
-    <a href="./?a=logout"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="odhlasit_se"><br>Odhlásit se</div></a>
+    
 </ul>
