@@ -17,9 +17,10 @@ class Book {
     private $_maturitaReady;
     private $_pageCount;
 	private $_authorName;
-	private $_borrowedByName;
+    private $_borrowedByName;
+    private $_genreName;
     
-    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, ?int $borrowedBy, string $borrowTime, int $maturita, string $authorName = "", string $borrowedByName = "") {
+    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, ?int $borrowedBy, string $borrowTime, int $maturita, string $authorName = "", string $borrowedByName = "", string $genreName = "") {
         $this->_id = $id;
         $this->_isbn = $isbn;
         $this->_authorId = $authorId;
@@ -35,6 +36,7 @@ class Book {
         $this->_pageCount = $pageCount;
         $this->_authorName = $authorName;
         $this->_borrowedByName = $borrowedByName;
+        $this->_genreName = $genreName;
     }
     
     public function setId(int $id) {
@@ -119,5 +121,9 @@ class Book {
 
     public function getBorrowedByName(): string {
         return $this->_borrowedByName;
+    }
+
+    public function getGenreName(): string {
+        return $this->_genreName;
     }
 }

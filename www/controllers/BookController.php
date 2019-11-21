@@ -60,6 +60,16 @@ class BookController extends AbstractController {
         return $this->addForm(null);
     }
 
+    public function detail(int $id): ActionResultInterface {
+        $book = $this->_bookRepository->getById($id);
+        if($book == null)
+            return parent::redirectToAction("Book", "Index");
+
+        return parent::view("views/book/detail.phtml", [
+            "book" => $book
+        ]);
+    }
+
     public function addPost(): ActionResultInterface {
         $formData = $_POST;
         $isbn = $formData["_isbn"];
