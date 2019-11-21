@@ -7,12 +7,12 @@ $parentPath = "views/layout.phtml";
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="name">Název knihy</label>
-                <input type="text" class="form-control" name="_name" id="name" placeholder="Název knihy" required>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Název knihy" required>
             </div>
             <div class="form-group col-md-4">
                 <label for="genreId">Žánr</label>
                 <div class="input-group">
-                    <select class="custom-select" id="genreId" name="_genreId" required>
+                    <select class="custom-select" id="genreId" name="genreId" required>
                         <option selected value="">Vyberte žánr</option>
                         <?php foreach($genres as $genre): ?>
                         <option value="<?=$genre->getId()?>"><?=$genre->getGenre()?></option>
@@ -28,7 +28,7 @@ $parentPath = "views/layout.phtml";
             <div class="form-group col-md-6">
                 <label for="authorId">Autor</label>
                 <div class="input-group">
-                    <select class="custom-select" id="authorId" name="_authorId" required>
+                    <select class="custom-select" id="authorId" name="authorId" required>
                         <option selected value="">Vyberte autora</option>
                         <?php foreach($authors as $author): ?>
                         <option value="<?=$author->getId()?>"><?=$author->getFullname()?></option>
@@ -41,7 +41,7 @@ $parentPath = "views/layout.phtml";
             </div>
             <div class="form-group col-md-6">
                 <label for="isbn">ISBN</label>
-                <input type="text" class="form-control" name="_isbn" id="isbn" placeholder="ISBN" pattern="(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])" required>
+                <input type="text" class="form-control" name="isbn" id="isbn" placeholder="ISBN" pattern="(?:(?=.{17}$)97[89][ -](?:[0-9]+[ -]){2}[0-9]+[ -][0-9]|97[89][0-9]{10}|(?=.{13}$)(?:[0-9]+[ -]){2}[0-9]+[ -][0-9Xx]|[0-9]{9}[0-9Xx])" required>
                 <div class="valid-feedback">
                     ISBN je ve správném formátu.
                 </div>
@@ -52,20 +52,20 @@ $parentPath = "views/layout.phtml";
         </div>
         <div class="form-group">
             <label for="description">Popis</label>
-            <textarea class="form-control" id="description" name="_description" rows="3"></textarea>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
         </div>
         <div class="form-row">
             <div class="form-group col-md-3">
                 <label for="pageCount">Počet stran</label>
-                <input type="number" class="form-control" id="pageCount" name="_pageCount" min="1" required>
+                <input type="number" class="form-control" id="pageCount" name="pageCount" min="1" required>
             </div>
             <div class="form-group col-md-3">
                 <label for="year">Rok vydání</label>
-                <input type="number" class="form-control" id="year" name="_year" max="<?=date("Y")?>" required>
+                <input type="number" class="form-control" id="year" name="year" max="<?=date("Y")?>" required>
             </div>
             <div class="form-group col-md-6">
                 <label for="conditionId">Kondice</label>
-                <select class="custom-select" id="conditionId" name="_conditionId" required>
+                <select class="custom-select" id="conditionId" name="conditionId" required>
                     <option selected value="">Vyberte kondici</option>
                     <?php foreach($conditions as $condition): ?>
                         <option value="<?=$condition->getId()?>"><?=$condition->getCondition()?></option>
@@ -75,7 +75,7 @@ $parentPath = "views/layout.phtml";
         </div>
         <div class="form-group">
             <label for="placeId">Budova</label>
-            <select class="custom-select" id="placeId" name="_placeId" required>
+            <select class="custom-select" id="placeId" name="placeId" required>
                 <option selected value="">Vyberte budovu</option>
                 <?php foreach($places as $place): ?>
                 <option value="<?=$place->getId()?>"><?=$place->getPlace()?></option>
@@ -84,7 +84,7 @@ $parentPath = "views/layout.phtml";
         </div>
         <div class="form-group">
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="_maturita" id="maturita">
+                <input type="checkbox" class="custom-control-input" name="maturita" id="maturita" value="TRUE">
                 <label class="custom-control-label" for="maturita">Je v maturitním seznamu</label>
             </div>
         </div>

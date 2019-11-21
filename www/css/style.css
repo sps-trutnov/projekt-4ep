@@ -7,6 +7,10 @@ h3{
     padding-left: .25rem;
 }
 
+.table tbody tr:first-child td{
+    border-top: 0;
+}
+
 @media (min-width: 62em) {
     .card-columns {
         -webkit-column-count: 3 !important;

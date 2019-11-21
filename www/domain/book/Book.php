@@ -63,6 +63,14 @@ class Book {
         $this->_year = $year;
     }
     
+    public function setPageCount(int $pageCount) {
+        $this->_pageCount = $pageCount;
+    }
+
+    public function setDescription(string $description) {
+        $this->_description = $description;
+    }
+
     public function setConditionId(int $conditionId) {
         $this->_conditionId = $conditionId;
     }
@@ -87,13 +95,10 @@ class Book {
         $this->_borrowTime = $borrowTime;
     }
     
-    public function setMaturita(bool $maturita) {
+    public function setMaturitaReady(bool $maturita) {
         $this->_maturita = $maturita;
     }
     
-    public function setPageCount(int $pageCount) {
-        $this->_pageCount = $pageCount;
-    }
 
     public function getId(): int {
         return $this->_id;
@@ -117,6 +122,10 @@ class Book {
 
     public function getConditionId(): int{
         return $this->_conditionId;
+    }
+
+    public function getAdministrator(): int{
+        return $this->_administrator;
     }
 
     public function getPlaceId(): int{

@@ -31,7 +31,7 @@ class PDOBookRepository implements BookRepositoryInterface {
         $statement->execute();
         $statement = $statement->fetchAll(\PDO::FETCH_ASSOC);
         foreach ($statement as $row) {
-            yield new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"], $row["genreName"] ?? "");
+            yield new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"], $row["genreName"] ?? "", $row["conditionName"] ?? "", $row["placeName"] ?? "");
         }
     }
     public function search(string $text): iterable{
@@ -46,7 +46,7 @@ class PDOBookRepository implements BookRepositoryInterface {
         $statement->execute();
         $statement = $statement->fetchAll(\PDO::FETCH_ASSOC);
         foreach ($statement as $row) {
-            yield new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"], $row["genreName"] ?? "");
+            yield new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"], $row["genreName"] ?? "", $row["conditionName"] ?? "", $row["placeName"] ?? "");
         }
     }
     public function getAllWithAuthor(int $author_id): iterable{
@@ -62,7 +62,7 @@ class PDOBookRepository implements BookRepositoryInterface {
         $statement->execute([$id]);
         $row = $statement->fetch();
 
-        return new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"], $row["genreName"] ?? "");
+        return new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["administrator"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"], $row["genreName"] ?? "", $row["conditionName"] ?? "", $row["placeName"] ?? "");
     }
     public function add(string $isbn, string $name, int $autorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $admin, bool $maturita): Book {
         $statement = $this->_connection->prepare("INSERT INTO books (`ISBN`, `name`, `author_id`, `description`, `page_count`, `year`, `condition_id`, `place_id`, `genre_id`, `administrator`, `maturita_ready`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -72,6 +72,10 @@ class PDOBookRepository implements BookRepositoryInterface {
         return $this->getById($id);
     }
     public function update(Book $book){
+        $id = $book->getId();
+
+        $statement = $this->_connection->prepare("UPDATE books SET ISBN=?, name=?, author_id=?, description=?, page_count=?, year=?, condition_id=?, place_id=?, genre_id=?, administrator=?, maturita_ready=? WHERE id = ?");
+        $statement->execute([$book->getISBN(), $book->getName(), $book->getAuthorId(), $book->getDescription(), $book->getPageCount(), $book->getYear(), $book->getConditionId(), $book->getPlaceId(), $book->getGenreId(), $book->getAdministrator(), $book->getMaturitaReady(), $id]);
     }
     public function removeById(int $id){
     }
