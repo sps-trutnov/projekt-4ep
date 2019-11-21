@@ -17,9 +17,12 @@ class Book {
     private $_maturitaReady;
     private $_pageCount;
 	private $_authorName;
-	private $_borrowedByName;
+    private $_borrowedByName;
+    private $_genreName;
+    private $_conditionName;
+    private $_placeName;
     
-    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, ?int $borrowedBy, string $borrowTime, int $maturita, string $authorName = "", string $borrowedByName = "") {
+    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, ?int $borrowedBy, string $borrowTime, int $maturita, string $authorName = "", string $borrowedByName = "", string $genreName = "", string $conditionName = "", string $placeName = "") {
         $this->_id = $id;
         $this->_isbn = $isbn;
         $this->_authorId = $authorId;
@@ -35,6 +38,9 @@ class Book {
         $this->_pageCount = $pageCount;
         $this->_authorName = $authorName;
         $this->_borrowedByName = $borrowedByName;
+        $this->_genreName = $genreName;
+        $this->_conditionName = $conditionName;
+        $this->_placeName = $placeName;
     }
     
     public function setId(int $id) {
@@ -110,7 +116,6 @@ class Book {
         return $this->_authorId;
     }
 
-<<<<<<< Updated upstream:www/domain/book/Book.php
     public function getGenreId(): int {
         return $this->_genreId;
     }
@@ -127,8 +132,6 @@ class Book {
         return $this->_placeId;
     }
 
-=======
->>>>>>> Stashed changes:domain/book/Book.php
     public function getYear(): int {
         return $this->_year;
     }
@@ -137,11 +140,35 @@ class Book {
         return $this->_borrowedBy;
     }
 
+    public function getDescription(): string {
+        return $this->_description ?? "";
+    }
+
+    public function getPageCount(): int {
+        return $this->_pageCount;
+    }
+
+    public function getMaturitaReady(): int {
+        return $this->_maturitaReady;
+    }
+
+    public function getConditionName(): string {
+        return $this->_conditionName ?? "";
+    }
+
+    public function getPlaceName(): string {
+        return $this->_placeName ?? "";
+    }
+
     public function getAuthorName(): string {
         return $this->_authorName;
     }
 
     public function getBorrowedByName(): string {
         return $this->_borrowedByName;
+    }
+
+    public function getGenreName(): string {
+        return $this->_genreName;
     }
 }
