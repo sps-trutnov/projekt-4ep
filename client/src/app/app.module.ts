@@ -11,6 +11,7 @@ import { AuthorizationTokenHttpInterceptor } from './http-interceptors/authoriza
 import { MainNavigationComponent } from './pages/app/main-navigation/main-navigation.component';
 import { AlertViewComponent } from './alerts/alert-view/alert-view.component';
 import { API_URL } from './core/api/api';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { API_URL } from './core/api/api';
         SignInComponent,
         UsersComponent,
         MainNavigationComponent,
-        AlertViewComponent
+        AlertViewComponent,
+        ConfirmDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -37,6 +39,9 @@ import { API_URL } from './core/api/api';
             provide: API_URL,
             useValue: "http://localhost"
         }
+    ],
+    entryComponents: [
+        ConfirmDialogComponent
     ],
     bootstrap: [AppComponent]
 })
