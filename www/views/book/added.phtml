@@ -1,24 +1,54 @@
 <?php
 $parentPath = "views/layout.phtml";
 ?>
+<<<<<<< Updated upstream
 <div class="container">
     <script src="http://jecas.cz/files/qr/qrcode.min.js"></script>
     <div class="card mx-auto" style="max-width: 32rem;">
         <div id="qr-code" class="card-img-top"></div>
+=======
+<div class="container" style="text-align:center">
+    <script src="http://jecas.cz/files/qr/qrcode.min.js"></script>
+    <div class="card mx-auto" style="max-width: 32rem; text-align:center">
+        <div id="qr-code" style="margin-left: auto; margin-right: auto; width: auto; height: auto; margin-top: auto" ></div>
+>>>>>>> Stashed changes
         <div class="card-body">
             <h5 class="card-title">Kniha přidána</h5>
             <p class="card-text">Vytiskněte QR kód a nalepte na knihu.</p>
-            <a href="#" class="btn btn-primary">Tisk</a>
+            <script>
+            function printDiv(id) 
+            {
+            var printContents = document.getElementById(id).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = "<div style='margin-left: auto; margin-right: auto; width: auto; height: auto;'>" + printContents + <?php echo $book->getId()?> + "</div>";
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+            }
+            </script>
+            <a href="javascript:printDiv('qr-code');" class="btn btn-primary">Tisk</a>
         </div>
     </div>
     <script>
     var qrcode = new QRCode("qr-code", {
+<<<<<<< Updated upstream
         text: "žluťoučký",
         width: $('.card')[0].clientWidth,
         height: $('.card')[0].clientWidth,
+=======
+        text: window.location.protocol + window.location.hostname + "/?id=" + <?php echo $book->getId()?> + "&controller=Book&action=Detail",
+>>>>>>> Stashed changes
         colorDark : "#000000",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
+<<<<<<< Updated upstream
+=======
+    function vygenerovatQr(text) {
+    qrcode.makeode(text);
+    }
+>>>>>>> Stashed changes
     </script>
 </div>
