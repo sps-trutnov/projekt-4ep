@@ -90,7 +90,9 @@ class BookController extends AbstractController {
         }
         else{
             $book = $this->_bookRepository->add($isbn, $name, $authorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId, FALSE, $maturita);
-            return parent::view("views/book/added.phtml");
+            return parent::view("views/book/added.phtml", [
+                "book" => $book
+            ]);
         }
     }
 

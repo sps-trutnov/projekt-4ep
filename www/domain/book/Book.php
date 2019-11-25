@@ -9,7 +9,6 @@ class Book {
     private $_name;
     private $_year;
     private $_conditionId;
-    private $_administrator;
     private $_placeId;
     private $_genreId;
     private $_borrowedBy;
@@ -22,14 +21,13 @@ class Book {
     private $_conditionName;
     private $_placeName;
     
-    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, int $administrator, ?int $borrowedBy, string $borrowTime, int $maturita, string $authorName = "", string $borrowedByName = "", string $genreName = "", string $conditionName = "", string $placeName = "") {
+    public function __construct(int $id, string $isbn, string $name, int $authorId, string $description, int $pageCount, int $year, int $conditionId, int $placeId, int $genreId, ?int $borrowedBy, string $borrowTime, int $maturita, string $authorName = "", string $borrowedByName = "", string $genreName = "", string $conditionName = "", string $placeName = "") {
         $this->_id = $id;
         $this->_isbn = $isbn;
         $this->_authorId = $authorId;
         $this->_name = $name;
         $this->_year = $year;
         $this->_conditionId = $conditionId;
-        $this->_administrator = $administrator;
         $this->_placeId = $placeId;
         $this->_genreId = $genreId;
         $this->_borrowedBy = $borrowedBy;
@@ -75,10 +73,6 @@ class Book {
         $this->_conditionId = $conditionId;
     }
     
-    public function setAdmin(int $administrator) {
-        $this->_administrator = $administrator;
-    }
-    
     public function setPlaceId(int $placeId) {
         $this->_placeId = $placeId;
     }
@@ -122,10 +116,6 @@ class Book {
 
     public function getConditionId(): int{
         return $this->_conditionId;
-    }
-
-    public function getAdministrator(): int{
-        return $this->_administrator;
     }
 
     public function getPlaceId(): int{
