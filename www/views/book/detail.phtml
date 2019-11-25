@@ -1,6 +1,7 @@
 <?php
 $parentPath = "views/layout.phtml";
 ?>
+<script src="http://jecas.cz/files/qr/qrcode.min.js"></script>
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-lg-6 pb-3">
@@ -22,6 +23,9 @@ $parentPath = "views/layout.phtml";
             </div>
             <div class="col-12">
             <?=$book->getDescription()?>
+            </div>
+            <div class="col-12 pt-3">
+                <div id="qr-code"></div>
             </div>
         </div>
         <div class="col-xs-12 col-lg-6">
@@ -79,4 +83,12 @@ $parentPath = "views/layout.phtml";
             </table>
         </div>
     </div>
+    <script>
+    var qrcode = new QRCode("qr-code", {
+        text: window.location.protocol + window.location.hostname + "/?id=" + <?php echo $book->getId()?> + "&controller=Book&action=Detail",
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+    </script>
 </div>

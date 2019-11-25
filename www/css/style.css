@@ -49,4 +49,8 @@ h3{
     .icon + span {
         color: var(--light) !important;
     }
+
+    #qr-code img{
+        filter: invert(1);
+    }
 }
