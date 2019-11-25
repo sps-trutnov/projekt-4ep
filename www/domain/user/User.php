@@ -5,11 +5,15 @@ class User {
     private $_id;
     private $_name;
     private $_passwordHash;
+    private $_is_administrator;
+    private $_is_librarian;
 
-    public function __construct(int $id, string $name, string $passwordHash) {
+    public function __construct(int $id, string $name, string $passwordHash, int $is_administrator, int $is_librarian) {
         $this->_id = $id;
         $this->_name = $name;
         $this->_passwordHash = $passwordHash;
+        $this->_is_administrator = $is_administrator;
+        $this->_is_librarian = $is_librarian;
     }
 
     public function setId(int $id) {

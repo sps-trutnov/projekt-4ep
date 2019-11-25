@@ -91,11 +91,17 @@ class BookController extends AbstractController {
         else{
 <<<<<<< Updated upstream
             $book = $this->_bookRepository->add($isbn, $name, $authorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId, FALSE, $maturita);
+<<<<<<< HEAD
             return parent::view("views/book/added.phtml");
 =======
             $book = $this->_bookRepository->add($isbn, $name, $autorId, $description, $pageCount, $year, $conditionId, $placeId, $genreId, FALSE, $maturita);
             return parent::view("views/book/added.phtml", ["book" => $book] );
 >>>>>>> Stashed changes
+=======
+            return parent::view("views/book/added.phtml", [
+                "book" => $book
+            ]);
+>>>>>>> t1_knihovnik
         }
     }
 

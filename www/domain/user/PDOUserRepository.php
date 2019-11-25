@@ -20,7 +20,7 @@ class PDOUserRepository implements UserRepositoryInterface {
         if ($row === false)
              return null;
         
-        return new User($row["id"], $row["name"], $row["password_hash"]);
+        return new User($row["id"], $row["name"], $row["password_hash"], $row["is_administrator"], $row["is_librarian"]);
     }
 
     public function getByName(string $name): ?User {
