@@ -19,7 +19,32 @@
     font-family: 'OpenSans', Arial, Helvetica, sans-serif;
     margin: 0 auto; 
 }
-
+.dropbtn {
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    border: none;
+    background-color: #555;
+  }
+  
+  .dropdown-content a {
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 body {
     background: #edeff0;
 }
@@ -37,12 +62,12 @@ body {
 
 .header_user{
     color: black;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.089);
     padding: 5px;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    position: relative;
     font-size: 18px;
+    right: 0px;
+    float: right !important;
 }
 
 .stranka_nadpis {
@@ -153,6 +178,9 @@ section {
     padding-bottom: 20px;
 }
 
+.img{
+    height: 50px;
+}
 
 header h1 #logo {
     display: inline-block;
@@ -339,7 +367,16 @@ ul.list_profile {
         text-align: left;
         padding-bottom: 50px;
     } 
-
+    
+    .header_user{
+        color: black;
+        background-color: rgba(255, 255, 255, 0.089);
+        padding: 5px;
+        position: absolute;
+        font-size: 18px;
+        right:0px;
+        float: left;
+    }
     #navigace {
         order: 2;
         flex: 1;
@@ -404,6 +441,8 @@ ul.list_profile {
       display: block;
     }
 
+
+
     .horninav.responsive {
         position: relative;
     }
@@ -437,6 +476,7 @@ ul.list_profile {
     }
 
     .header_user{
+        float:left !important;
         position: relative;
         right: 0;
         bottom: 0;

@@ -10,9 +10,7 @@
             Knihovna SPŠ Trutnov
         </h1>
     </a>
-    <?php if($loggedIn){ 
-        echo '<a href="./" class="header_user"><span class="flaticon-user">&nbsp;&nbsp;'.showProfileInfo().'</span></a>';
-    }?>
+    
     
 </header>
 
@@ -27,7 +25,22 @@
     
     <a href="./?p=myBooks" class="<?php echo isActive("myBooks") ?>"><span class="flaticon-bookmark"></span>Moje knihy<div id="notification_bar" class=""><div id="notification_number"></div></div></a>
     
-    <a id="navigace-right" href="./?a=logout" class="<?php echo isActive("logout") ?>"><span class="flaticon-exit"></span>Odhlásit</a>
+    
+        <?php if($loggedIn){ 
+            
+
+            echo (' <div class="dropdown" id="horninavigace-log">
+                        <a href="./" class="header_user"><span class="flaticon-user">&nbsp;&nbsp;'.showProfileInfo().'</span></a>
+                        <div class="dropdown-content">
+                            <a href="./?p=pass_change"><div><img class="img" src="./img/flaticon/010-pass.png" alt="zmena_hesla"><br>Změna hesla</div></a>
+                            <a href="./?a=logout"><div><img class="img" src="./img/flaticon/013-exit.png" alt="odhlasit_se"><br>Odhlásit se</div></a>
+                        </div>
+                    </div>');
+
+        }?>
+    
+    
+
     <a href="javascript:void(0);" class="icon" onclick="sbalit()">&#x2630;</a>
 
     <?php 
