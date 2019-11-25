@@ -5,16 +5,10 @@
 ?>
 <header class="header">
  
-   <!-- <?php #if($loggedIn){  
-        #echo '<a href="./" class="header_user"><span class="flaticon-user">&nbsp;&nbsp;'.showProfileInfo().'</span></a>';
-    }?> -->
-    <a href="./" class="head">
-        <h1 class="nadpis">
-            <span id="logo"></span>
-            Knihovna SPŠ Trutnov
-        </h1>
-    </a>
-    
+   <!-- 
+       <?php #if($loggedIn){  
+        #echo '<a href="./" class="header_user"><span class="flaticon-user">&nbsp;&nbsp;'.showProfileInfo().'</span></a>';}?> 
+    -->
     
 </header>
 
