@@ -12,6 +12,7 @@ import { MainNavigationComponent } from './pages/app/main-navigation/main-naviga
 import { AlertViewComponent } from './alerts/alert-view/alert-view.component';
 import { API_URL } from './core/api/api';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { MainFooterComponent } from './pages/app/main-footer/main-footer.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.
         UsersComponent,
         MainNavigationComponent,
         AlertViewComponent,
-        ConfirmDialogComponent
+        ConfirmDialogComponent,
+        MainFooterComponent
     ],
     imports: [
         BrowserModule,
