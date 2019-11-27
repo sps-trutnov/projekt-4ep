@@ -9,3 +9,45 @@ body {
 .router-outlet-flex-grow-1 + * {
     flex-grow: 1;
 }
+/*
+@media (prefers-color-scheme: dark) {
+    body, .bg-white {
+        background-color: #252525 !important;
+        color: white;
+    }
+    
+    .form-control, .form-control:focus {
+        background-color: #333333;
+        border-color: #444444;
+        color: white;
+    }
+    
+    .form-control:disabled {
+        background-color: #444444;
+    }
+    
+    .dropdown-menu {
+        background-color: #333333;
+        color: white;
+    }
+    
+    .dropdown-item:hover:not(:active) {
+        background-color: #393939;
+    }
+    
+    .table {
+        color: white;
+    }
+    
+    .table-hover tbody tr:hover {
+        color: white;
+    }
+    
+    .table-warning, .table-warning:hover, .table-warning .form-control {
+        color: black;
+    }
+    
+    .table th, .table td {
+        border-top: 1px solid #404040;
+    }
+}*/
