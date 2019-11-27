@@ -5,6 +5,7 @@ namespace authentication;
 use Firebase\JWT\JWT;
 
 use const settings\ACCESS_CONTROL_ALLOWED_ORIGIN;
+use const settings\AUTHORIZATION_TOKEN_EXPIRATION_TIME;
 use const settings\AUTHORIZATION_TOKEN_SECRET;
 
 use function database\createPDOConection;
@@ -56,9 +57,11 @@ function post(\PDO $databaseConnection)
     if (!$passwordValid)
         exitWithHttpCode(401);
 
-    // TODO: add token expiration field, ...
+    $currentTime = time();
     $token = [
-        "sub" => $user->getId()
+        "sub" => $user->getId(),
+        "iat" => $currentTime,
+        "exp" => $currentTime + AUTHORIZATION_TOKEN_EXPIRATION_TIME
     ];
     $tokenEncoded = JWT::encode($token, AUTHORIZATION_TOKEN_SECRET);
 
