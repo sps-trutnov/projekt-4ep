@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/alerts/alert.service';
 import { AlertType } from 'src/app/alerts/alert-type';
 import { UserNameAlreadyUsedError } from 'src/app/core/users/user-name-already-used-error';
 import { FormGroup, FormControl, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
+import { DialogService } from 'src/app/dialogs/dialog.service';
 
 @Component({
     selector: 'app-users',
@@ -181,7 +182,38 @@ export class UsersComponent implements OnInit, DoCheck {
             return { invalidId: true};
     }
     import(){
+        
+        let element = document.createElement("input");
+        element.type = "file";
+        element.click();
+        element.addEventListener("change", () => {
+          let file = element.files[0];
+          let reader = new FileReader();
+          reader.readAsText(file, "UTF-8");
+          reader.onload = (evt) => {
+              var soubor = evt.target.result;
+               var pole = soubor.split("\n");
 
+               for(var i =0;i<pole.length;i++)
+               {
+                var kokot=pole[i].split(",");
+                
+                
+              var promenna = new UserViewModel(null,kokot[0],kokot[1],kokot[2],kokot[3],kokot[4],kokot[5] === "true",kokot[6] === "true");
+                this.users.unshift(promenna);
+                
+               
+                
+               }
+               
+               
+              
+                
+              
+          }
+        });
+        
+           
 
     }
     export(){
