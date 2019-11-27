@@ -36,7 +36,7 @@ export class UsersComponent implements OnInit, DoCheck {
     }
 
     get isFiltred(): boolean {
-        return this.filterForm.get("id").value != "" || this.filterForm.get("userName").value != "" || this.filterForm.get("firstName").value != "" || 
+        return this.filterForm.get("id").value != "" || this.filterForm.get("userName").value != "" || this.filterForm.get("firstName").value != "" ||
             this.filterForm.get("lastName").value != "" || this.filterForm.get("email").value != "" || this.filterForm.get("isLibrarian").value != false ||
             this.filterForm.get("isAdministrator").value != false;
     }
@@ -52,7 +52,7 @@ export class UsersComponent implements OnInit, DoCheck {
         let changesCount = this.users
             .filter(u => u.isChanged)
             .length;
-        
+
         if (changesCount === 0)
             return "";
         else if (changesCount === 1)
@@ -179,44 +179,43 @@ export class UsersComponent implements OnInit, DoCheck {
         if (/^(0|(-?[1-9][0-9]*)|)$/.test(control.value))
             return null;
         else
-            return { invalidId: true};
+            return { invalidId: true };
     }
-    import(){
-        
+    import() {
+
         let element = document.createElement("input");
         element.type = "file";
         element.click();
         element.addEventListener("change", () => {
-          let file = element.files[0];
-          let reader = new FileReader();
-          reader.readAsText(file, "UTF-8");
-          reader.onload = (evt) => {
-              var soubor = evt.target.result;
-               var pole = soubor.split("\n");
+            let file = element.files[0];
+            let reader = new FileReader();
+            reader.readAsText(file, "UTF-8");
+            reader.onload = () => {
+                var soubor = <string>reader.result;
+                var pole = soubor.split("\n");
 
-               for(var i =0;i<pole.length;i++)
-               {
-                var kokot=pole[i].split(",");
-                
-                
-              var promenna = new UserViewModel(null,kokot[0],kokot[1],kokot[2],kokot[3],kokot[4],kokot[5] === "true",kokot[6] === "true");
-                this.users.unshift(promenna);
-                
-               
-                
-               }
-               
-               
-              
-                
-              
-          }
+                for (var i = 0; i < pole.length; i++) {
+                    var kokot = pole[i].split(",");
+
+
+                    var promenna = new UserViewModel(null, kokot[0], kokot[1], kokot[2], kokot[3], kokot[4], kokot[5] === "true", kokot[6] === "true");
+                    this.users.unshift(promenna);
+
+
+
+                }
+
+
+
+
+
+            }
         });
-        
-           
+
+
 
     }
-    export(){
+    export() {
 
     }
 }
