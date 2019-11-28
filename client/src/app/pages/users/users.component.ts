@@ -182,7 +182,7 @@ export class UsersComponent implements OnInit, DoCheck {
             return { invalidId: true };
     }
     import() {
-
+        var kontrola=0;
         let element = document.createElement("input");
         element.type = "file";
         element.click();
@@ -194,17 +194,30 @@ export class UsersComponent implements OnInit, DoCheck {
                 var soubor = <string>reader.result;
                 var pole = soubor.split("\n");
 
-                for (var i = 0; i < pole.length; i++) {
-                    var kokot = pole[i].split(",");
-
-
-                    var promenna = new UserViewModel(null, kokot[0], kokot[1], kokot[2], kokot[3], kokot[4], kokot[5] === "true", kokot[6] === "true");
-                    this.users.unshift(promenna);
-
-
+                for(var i = 0; i < pole.length; i++)
+                {
+                    var prvek = pole[i].split(",");
+                    if(prvek.length!=8 || prvek[0]=="" || prvek[1]=="" || prvek[2]=="" || prvek[3]=="" || prvek[4]=="" || prvek[5]=="" || prvek[6]=="" )
+                    {
+                        alert("chyba v řádku "+ (i+1));
+                        kontrola++;
+                    }
+                    else{
+                        var mezipromenna = prvek;
+                    }
+                }
+                if(kontrola>0)
+                {
 
                 }
-
+                else{
+                for(var i=0;i<pole.length;i++)
+                {
+                    var promenna = new UserViewModel(null, mezipromenna[0], mezipromenna[1], mezipromenna[2], mezipromenna[3], mezipromenna[4], mezipromenna[5] === "true", mezipromenna[6] === "true");
+                    this.users.unshift(promenna);
+                }
+            }
+               
 
 
 
