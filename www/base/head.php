@@ -37,8 +37,8 @@
             echo (' <div class="dropdown" id="horninavigace-log">
                         <a href="./" class="header_user"><span class="flaticon-user">&nbsp;&nbsp;'.showProfileInfo().'</span></a>
                         <div class="dropdown-content">
-                            <a href="./?p=pass_change"><div><img class="img" src="./img/flaticon/010-pass.png" alt="zmena_hesla"><br>Změna hesla</div></a>
-                            <a href="./?a=logout"><div><img class="img" src="./img/flaticon/013-exit.png" alt="odhlasit_se"><br>Odhlásit se</div></a>
+                            <a href="./?p=pass_change"><div><span class="flaticon-pass">&nbsp;&nbsp; Změna hesla </div></a><br>
+                            <a href="./?a=logout"><div><span class="flaticon-exit">&nbsp;&nbsp; Odhlásit se</div></a>
                         </div>
                     </div>');
 

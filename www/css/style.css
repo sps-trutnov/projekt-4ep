@@ -25,13 +25,15 @@
   }
   
   .dropdown {
-    display: inline-block;
+    float:right;
+    line-height: 43px;
   }
   
   .dropdown-content {
     display: none;
     position: absolute;
-    min-width: 160px;
+    margin-top: 71px;
+    width: 213px;
     z-index: 1;
     border: none;
     background-color: #555;
@@ -40,9 +42,11 @@
   .dropdown-content a {
     text-decoration: none;
     display: block;
+    width:100%;
   }
   
   .dropdown:hover .dropdown-content {
+      transition: 3s;
     display: block;
   }
 body {
@@ -63,7 +67,6 @@ body {
 
 .header_user{
     color: black;
-    background-color: rgba(255, 255, 255, 0.089);
     padding: 5px;
     position: relative;
     font-size: 18px;
@@ -96,6 +99,7 @@ nav ul {
     padding: 0px;
     list-style: none;
 }
+
 
 nav > ul > li {
     display: block; 
@@ -231,6 +235,7 @@ header h1 #logo {
   }
   
 .horninav a {
+    line-height:43px;
     float: left;
     display: block;
     color: antiquewhite;
@@ -271,7 +276,10 @@ header h1 #logo {
     display: inline-block;
     vertical-align: top;
 }
-  
+.enable_notification
+{
+    line-height: normal;
+}
 
 .profile_box {
     display: block;
