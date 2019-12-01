@@ -2,34 +2,18 @@
 $parentPath = "views/layout.phtml";
 ?>
 <div class="container" style="text-align:center">
-    <script src="http://jecas.cz/files/qr/qrcode.min.js"></script>
-    <div class="card mx-auto" style="max-width: 32rem; text-align:center">
-        <div id="qr-code" style="margin-left: auto; margin-right: auto; width: auto; height: auto; margin-top: auto" ></div>
+    <div class="card mx-auto" style="max-width: 24rem; text-align:center">
+        <div id="qr-code"></div>
         <div class="card-body">
             <h5 class="card-title">Kniha přidána</h5>
             <p class="card-text">Vytiskněte QR kód a nalepte na knihu.</p>
-            <script>
-            function printDiv(id) 
-            {
-            var printContents = document.getElementById(id).innerHTML;
-            var originalContents = document.body.innerHTML;
-
-            document.body.innerHTML = "<div style='margin-left: auto; margin-right: auto; width: auto; height: auto;'>" + printContents + <?php echo $book->getId()?> + "</div>";
-
-            window.print();
-
-            document.body.innerHTML = originalContents;
-            }
-            </script>
-            <a href="javascript:printDiv('qr-code');" class="btn btn-primary">Tisk</a>
+            <a href="javascript:printBookQR('qr-code', <?=$book->getId()?>, '<?=$book->getName()?>');" class="btn btn-primary">Tisk</a>
+            <a href='<?=$getActionUrl("Book", "Detail", ["id" => $book->getId()])?>' tabindex="-1" class="btn btn-secondary px-1">Přejít na detail</a>
         </div>
     </div>
     <script>
-    var qrcode = new QRCode("qr-code", {
-        text: window.location.protocol + window.location.hostname + "/?id=" + <?php echo $book->getId()?> + "&controller=Book&action=Detail",
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    });
+        $(document).ready(function() {
+            renderBookQR("qr-code", <?=$book->getId()?>);
+        });
     </script>
 </div>

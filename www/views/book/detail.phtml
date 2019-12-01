@@ -10,7 +10,7 @@ $parentPath = "views/layout.phtml";
                 <span style="color: #4180ab !important;">Zpět</span>
             </a>
         </div>
-        <div class="col-xs-12 col-lg-6 pb-3">
+        <div class="col-xs-12 col-lg-4 pb-3">
             <div class="col-12">
                 <h2><?=$book->getName()." "?><?php
                     if($book->getMaturitaReady() == 1)
@@ -30,11 +30,8 @@ $parentPath = "views/layout.phtml";
             <div class="col-12">
             <?=$book->getDescription()?>
             </div>
-            <div class="col-12 pt-3">
-                <div id="qr-code"></div>
-            </div>
         </div>
-        <div class="col-xs-12 col-lg-6">
+        <div class="col-xs-12 col-lg-5">
             <table class="table">
                 <tbody>
                     <tr>
@@ -88,13 +85,16 @@ $parentPath = "views/layout.phtml";
                 </tbody>
             </table>
         </div>
+        <div class="col-lg-2 d-flex">
+            <div class="card print flex-grow-1 mx-auto" style="max-width: 12rem;align-self: center;">
+                <div id="qr-code"></div>
+                <a href="javascript:printBookQR('qr-code', <?=$book->getId()?>, '<?=$book->getName()?>');" class="btn btn-primary stretched-link">Tisk</a>
+            </div>
+        </div>
     </div>
     <script>
-    var qrcode = new QRCode("qr-code", {
-        text: window.location.protocol + window.location.hostname + "/?id=" + <?php echo $book->getId()?> + "&controller=Book&action=Detail",
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    });
+        $(document).ready(function() {
+            renderBookQR("qr-code", <?=$book->getId()?>);
+        });
     </script>
 </div>

@@ -1,13 +1,14 @@
 a.return {
-    transition: .15s ease-in-out;
     display: inline-block;
+    transition: .15s;
+    transition-timing-function: ease-out;
 }
 
 a.return:hover {
     text-decoration: none;
     margin-left: -.5rem;
     padding-right: .5rem;
-    transition: .15s ease-in-out;
+    transition-timing-function: ease-out;
 }
 
 h3{
@@ -77,4 +78,31 @@ h3{
     #qr-code img{
         filter: invert(1);
     }
+}
+
+.card.print img {
+    transition: .15s ease-in-out;
+}
+
+.card.print:hover img {
+    opacity: .5;
+}
+
+/* Styly QR kódu pro tisk */
+#qr-code-print {
+    color: #000000;
+    width: 16mm !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    text-transform: uppercase;
+}
+
+#qr-code-print > .bookId {
+    font-size: 18px;
+    text-align: center;
+    display: block;
+}
+
+#qr-code-print > img {
+    width: 16mm !important;
 }
