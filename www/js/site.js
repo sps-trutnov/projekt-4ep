@@ -30,7 +30,7 @@ function printBookQRs(books, elementId, placeId = $("#placeId")[0].value)
             continue;
         let element = $.parseHTML("<div id='qr-code-print'>" + books[i][1] + "<div id='" + books[i][0] + "'></div>" + "<span class='bookId'>" + books[i][0] + "</span>  " + "</div>");
         contentsElement.append(element);
-        renderBookQR(document.getElementById(books[i][0]), books[i][0], 384);
+        renderBookQR(document.getElementById(books[i][0]), books[i][0], 256);
     }
 
     setTimeout(function(){

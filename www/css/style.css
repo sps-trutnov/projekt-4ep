@@ -57,7 +57,7 @@ h3{
         background-color: var(--secondary);
     }
 
-    body, header, .bg-light, .table, .navbar-light .navbar-brand, .page-item *{
+    body, header, .bg-light, .table, .navbar-light .navbar-brand, a.nav-link, .page-item *{
         background-color: var(--dark) !important;
         color: var(--light) !important;
         border-color: var(--gray) !important;
