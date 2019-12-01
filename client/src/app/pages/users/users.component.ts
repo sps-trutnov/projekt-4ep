@@ -216,8 +216,26 @@ export class UsersComponent implements OnInit, DoCheck {
         element.click();
     }
 
-    export() {
-        
+    async export() {
+        let soubor = "";
+        let uzivatele = await this.userService.getAll().toPromise();
+        for (let i = 0; i < uzivatele.length; i++) {
+            let uzivatel = uzivatele[i];
+            if (i != 0)
+                soubor += "\n";
+            soubor += uzivatel.userName;
+            soubor += ",";
+            soubor += uzivatel.firstName;
+            soubor += ",";
+            soubor += uzivatel.lastName;
+            soubor += ",";
+            soubor += uzivatel.email;
+            soubor += ",";
+            soubor += uzivatel.isLibrarian;
+            soubor += ",";
+            soubor += uzivatel.isAdministrator;
+        }
+        this.downloadBlob("Sysadmin - export uživatelů.txt", new Blob([soubor]));
     }
 
     private downloadBlob(fileName: string, blob: Blob) {
