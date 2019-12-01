@@ -33,7 +33,7 @@
     display: none;
     position: absolute;
     margin-top: 71px;
-    width: 213px;
+    width: 170px;
     z-index: 1;
     border: none;
     background-color: #555;
@@ -46,7 +46,6 @@
   }
   
   .dropdown:hover .dropdown-content {
-      transition: 3s;
     display: block;
   }
 body {
@@ -434,20 +433,19 @@ ul.list_profile {
         padding: 10px 0px;
     }*/
     
-}
-
-
-
-  @media screen and (max-width: 1280px) {
     .horninav
     {
         -webkit-box-shadow: none;
         -moz-box-shadow: none;
         box-shadow: none;
     }
-
+   
     .horninav a:not(:first-child) {
         display: none;
+    }
+    .dropdown{
+        float:left;
+   
     }
 
     .horninav a.icon {
@@ -494,6 +492,7 @@ ul.list_profile {
         position: relative;
         right: 0;
         bottom: 0;
+        
     }
 
   }
