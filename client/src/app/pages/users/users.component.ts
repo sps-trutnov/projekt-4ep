@@ -6,7 +6,6 @@ import { AlertService } from 'src/app/alerts/alert.service';
 import { AlertType } from 'src/app/alerts/alert-type';
 import { UserNameAlreadyUsedError } from 'src/app/core/users/user-name-already-used-error';
 import { FormGroup, FormControl, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
-import { DialogService } from 'src/app/dialogs/dialog.service';
 
 @Component({
     selector: 'app-users',
@@ -181,50 +180,55 @@ export class UsersComponent implements OnInit, DoCheck {
         else
             return { invalidId: true };
     }
+
     import() {
         let kontrola = 0;
         let validniRadky = [];
         let element = document.createElement("input");
         element.type = "file";
-        element.click();
         element.addEventListener("change", () => {
             let file = element.files[0];
             let reader = new FileReader();
             reader.readAsText(file, "UTF-8");
             reader.onload = () => {
                 let soubor = <string>reader.result;
-                let radek = soubor.split(/\r\n?|\n/);
+                let radky = soubor.split(/\r\n?|\n/);
 
-                for (let i = 0; i < radek.length; i++) {
-                    let AtributUsera = radek[i].split(",");
-                    if (AtributUsera.length != 7 || (AtributUsera[5] != "true" && AtributUsera[5] != "false") || (AtributUsera[6] != "true" && AtributUsera[6] != "false")) {
-                        this.alertService.show("chyba v řádku " + (i + 1), AlertType.error);
+                for (let i = 0; i < radky.length; i++) {
+                    let atributyUsera = radky[i].split(",");
+                    if (atributyUsera.length != 7 || (atributyUsera[5] != "true" && atributyUsera[5] != "false") || (atributyUsera[6] != "true" && atributyUsera[6] != "false")) {
+                        this.alertService.show("Chyba na řádku " + (i + 1), AlertType.error);
                         kontrola++;
                     }
                     else {
-                        validniRadky.push(AtributUsera);
+                        validniRadky.push(atributyUsera);
                     }
                 }
                 if (kontrola == 0) {
-                    for (let i = 0; i < radek.length; i++) {
+                    for (let i = 0; i < radky.length; i++) {
                         let validniRadek = validniRadky.pop();
-                        let Uzivatel = new UserViewModel(null, validniRadek[0], validniRadek[1], validniRadek[2], validniRadek[3], validniRadek[4], validniRadek[5] === "true", validniRadek[6] === "true");
-                        this.users.unshift(Uzivatel);
+                        let uzivatel = new UserViewModel(null, validniRadek[0], validniRadek[1], validniRadek[2], validniRadek[3], validniRadek[4], validniRadek[5] === "true", validniRadek[6] === "true");
+                        this.users.unshift(uzivatel);
                     }
                 }
             }
-
-
-
-
-
-
         });
-
-
-
+        element.click();
     }
-    export() {
 
+    export() {
+        
+    }
+
+    private downloadBlob(fileName: string, blob: Blob) {
+        let url = URL.createObjectURL(blob);
+
+        let linkElement = document.createElement("a");
+        linkElement.download = fileName;
+        linkElement.href = url;
+
+        linkElement.click();
+
+        URL.revokeObjectURL(url);
     }
 }
