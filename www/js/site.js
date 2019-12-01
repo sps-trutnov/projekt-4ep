@@ -1,8 +1,8 @@
-function renderBookQR(elementId, bookId){
+function renderBookQR(elementId, bookId, width = $(".card")[0].clientWidth){
     var qrcode = new QRCode(elementId, {
         text: window.location.protocol + window.location.hostname + "/?controller=Book&action=Detail&id=" + bookId,
-        width: $(".card")[0].clientWidth,
-        height: $(".card")[0].clientWidth,
+        width: width,
+        height: width,
         correctLevel : QRCode.CorrectLevel.L,
         useSVG: true
     });
@@ -18,4 +18,23 @@ function printBookQR(elementId, bookId, bookName)
     window.print();
 
     document.body.innerHTML = originalContents;
+}
+
+function printBookQRs(books, elementId, placeId = $("#placeId")[0].value) 
+{
+    let contentsElement = $("#"+elementId);
+    var originalContents = contentsElement.html();
+
+    for(let i = 0; i < books.length; i++){
+        if(placeId && books[i][2] != placeId)
+            continue;
+        let element = $.parseHTML("<div id='qr-code-print'>" + books[i][1] + "<div id='" + books[i][0] + "'></div>" + "<span class='bookId'>" + books[i][0] + "</span>  " + "</div>");
+        contentsElement.append(element);
+        renderBookQR(document.getElementById(books[i][0]), books[i][0], 384);
+    }
+
+    setTimeout(function(){
+        window.print();
+        window.onafterprint = function() { contentsElement.html(originalContents); };
+    }, 2000);
 }

@@ -90,11 +90,18 @@ h3{
 
 /* Styly QR kódu pro tisk */
 #qr-code-print {
+    display: inline-block;
     color: #000000;
-    width: 16mm !important;
+    position: relative;
+    width: 20mm !important;
+    height: auto;
+    padding: 2mm;
+    align-self: end;
+    align-self: flex-end;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 8px;
     text-transform: uppercase;
+    word-break: break-word;
 }
 
 #qr-code-print > .bookId {
@@ -103,6 +110,6 @@ h3{
     display: block;
 }
 
-#qr-code-print > img {
+#qr-code-print img {
     width: 16mm !important;
 }

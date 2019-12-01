@@ -22,9 +22,11 @@ $pagesCount = ceil($bookCount/20);
         <thead>
             <tr>
                 <th>Název</th>
-                <th>ISBN</th>
                 <th>Autor</th>
-                <th>Rok vydání</td>
+                <th>Žánr</th>
+                <th>ISBN</th>
+                <th>Rok vydání</th>
+                <th>Umístění</th>
                 <th>Dostupnost</th>
                 <th>Detail</th>
             </tr>
@@ -33,9 +35,11 @@ $pagesCount = ceil($bookCount/20);
         <?php foreach ($books as $book): ?>
             <tr>
                 <td><?=$book->getName()?></td>
-                <td><?=$book->getIsbn()?></td>
                 <td><?=$book->getAuthorName()?></td>
+                <td><?=$book->getGenreName()?></td>
+                <td><?=$book->getIsbn()?></td>
                 <td><?=$book->getYear()?></td>
+                <td><?=$book->getPlaceName()?></td>
                 <?php if($book->getBorrowedByName() != ""):?>
                     <td class="p-2">
                         <img class="icon" src="img/flaticon/cross.svg" alt="Nedostupné" title="Nedostupné">

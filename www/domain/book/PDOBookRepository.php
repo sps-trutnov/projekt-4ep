@@ -30,6 +30,7 @@ class PDOBookRepository implements BookRepositoryInterface {
         }
         $statement->execute();
         $statement = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
         foreach ($statement as $row) {
             yield new Book($row["id"], $row["ISBN"], $row["name"], $row["author_id"], $row["description"], $row["page_count"], $row["year"], $row["condition_id"], $row["place_id"], $row["genre_id"], $row["borrowed_by"], $row["borrow_time"], $row["maturita_ready"], $row["authorName"], $row["borrowedByName"], $row["genreName"] ?? "", $row["conditionName"] ?? "", $row["placeName"] ?? "");
         }

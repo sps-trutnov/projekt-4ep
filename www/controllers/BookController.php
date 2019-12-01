@@ -165,4 +165,26 @@ class BookController extends AbstractController {
             "returnUrl" => $returnUrl
         ]);
     }
+
+    public function print(): ActionResultInterface {
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
+        $books = $this->_bookRepository->getAll();
+        $places = $this->_placeRepository->getAll();
+
+        $booksArray = [];
+        $placesArray = [];
+
+        foreach($books as $book)
+            array_push($booksArray, [$book->getId(), $book->getName(), $book->getPlaceId()]);
+        
+        foreach($places as $place)
+            array_push($placesArray, [$place->getId(), $place->getPlace()]);
+
+        return parent::view("views/book/print.phtml", [
+            "books" => $booksArray,
+            "places" => $placesArray,
+            "returnUrl" => $returnUrl
+        ]);
+    }
 }
