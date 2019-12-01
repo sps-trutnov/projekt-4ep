@@ -16,7 +16,11 @@ class AuthorController extends AbstractController {
     }
 
     public function Add(): ActionResultInterface {
-        return parent::view("views/author/add.phtml");
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
+        return parent::view("views/author/add.phtml", [
+            "returnUrl" => $returnUrl
+        ]);
     }
     
     public function AddPost(): ActionResultInterface {
@@ -24,7 +28,10 @@ class AuthorController extends AbstractController {
         $autorId = $formData["_authorId"];
         if(empty($autorId))
         {
-            return parent ::view("views/author/add.phtml",["errors" => ["Autor musí mít jméno"]]);
+            return parent ::view("views/author/add.phtml",[
+                "errors" => ["Autor musí mít jméno"],
+                "returnUrl" => "/"
+                ]);
         }
         else
         {

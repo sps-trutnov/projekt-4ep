@@ -28,6 +28,8 @@ class BookController extends AbstractController {
     }
 
     public function index(int $page = 0, string $search = ""): ActionResultInterface {
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
         if($search != ""){
             $allBooks = $this->_bookRepository->search($search);
         }
@@ -40,7 +42,8 @@ class BookController extends AbstractController {
             "books" => $allBooks,
             "bookCount" => $bookCount,
             "page" => $page,
-            "search" => $search
+            "search" => $search,
+            "returnUrl" => $returnUrl
         ]);
     }
 
@@ -62,11 +65,14 @@ class BookController extends AbstractController {
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
         return parent::view("views/book/add.phtml", [
             "authors" => $authors,
             "places" => $places,
             "conditions" => $conditions,
-            "genres" => $genres
+            "genres" => $genres,
+            "returnUrl" => $returnUrl
         ]);
     }
 
@@ -103,12 +109,15 @@ class BookController extends AbstractController {
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
         return parent::view("views/book/edit.phtml", [
             "book" => $book,
             "authors" => $authors,
             "places" => $places,
             "conditions" => $conditions,
-            "genres" => $genres
+            "genres" => $genres,
+            "returnUrl" => $returnUrl
         ]);
     }
 
@@ -145,12 +154,15 @@ class BookController extends AbstractController {
     }
 
     public function detail(int $id): ActionResultInterface {
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
         $book = $this->_bookRepository->getById($id);
         if($book == null)
             return parent::redirectToAction("Book", "Index");
 
         return parent::view("views/book/detail.phtml", [
-            "book" => $book
+            "book" => $book,
+            "returnUrl" => $returnUrl
         ]);
     }
 }

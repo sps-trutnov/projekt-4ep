@@ -17,21 +17,24 @@ class GenreController extends AbstractController {
     }
 
     public function Add(): ActionResultInterface {
-        return parent::view("views/genre/add.phtml");
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
+        return parent::view("views/genre/add.phtml", [
+            "returnUrl" => $returnUrl
+            ]);
     }
     
     public function AddPost(): ActionResultInterface {
         $formData = $_POST;
         $genre = $formData["_genre"];
-        if(empty($genre))
-        {
+        if(empty($genre)) {
             return parent::view("views/genre/add.phtml", [
                 "errors" => [
                     "Žánr musí mít název."
                 ]
             ]);
         }
-        else{
+        else {
             $genres = $this->_genreRepository->GetAll();
             foreach($genres as $existingGenre){
                 if($existingGenre->getGenre() == $genre)

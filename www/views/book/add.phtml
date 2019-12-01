@@ -3,6 +3,12 @@ $parentPath = "views/layout.phtml";
 ?>
 <div class="container">
     <form action="<?=$getActionUrl("Book", "AddPost")?>" method="post" class="col-lg-6 mx-auto needs-validation" novalidate>
+        <div class="col-12 p-0 mb-2">
+            <a class="return" href="<?=$returnUrl?>">
+                <img class="icon-sm" src="img/flaticon/back.svg" alt="<">
+                <span style="color: #4180ab !important;">Zpět</span>
+            </a>
+        </div>
         <h2>Přidat knihu</h2>
         <div class="form-row">
             <div class="form-group col-md-8">
@@ -19,7 +25,7 @@ $parentPath = "views/layout.phtml";
                         <?php endforeach ?>
                     </select>
                     <div class="input-group-append">
-                        <a href="<?=$getActionUrl("Genre", "Add")?>" class="btn btn-outline-success">+</a>
+                        <a href="<?=$getActionUrl("Genre", "Add", ["returnUrl" => $getActionUrl("Book", "Add")])?>" class="btn btn-outline-success">+</a>
                     </div>
                 </div>
             </div>
@@ -35,7 +41,7 @@ $parentPath = "views/layout.phtml";
                         <?php endforeach ?>
                     </select>
                     <div class="input-group-append">
-                        <a href="<?=$getActionUrl("Author", "Add")?>" class="btn btn-outline-success">+</a>
+                        <a href="<?=$getActionUrl("Author", "Add", ["returnUrl" => $getActionUrl("Book", "Add")])?>" class="btn btn-outline-success">+</a>
                     </div>
                 </div>
             </div>

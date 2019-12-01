@@ -3,6 +3,12 @@ $parentPath = "views/layout.phtml";
 ?>
 <div class="container">
     <form action="<?=$getActionUrl("Author", "AddPost")?>" method="post" class="col-lg-6 mx-auto needs-validation" novalidate>
+        <div class="col-12 p-0 mb-2">
+            <a class="return" href="<?=$returnUrl?>">
+                <img class="icon-sm" src="img/flaticon/back.svg" alt="<">
+                <span style="color: #4180ab !important;">Zpět</span>
+            </a>
+        </div>
         <h2>Přidat autora</h2>
         <div class="form-group">
             <label for="name">Jméno</label>
