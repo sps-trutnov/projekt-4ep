@@ -170,7 +170,7 @@ export class UsersComponent implements OnInit, DoCheck {
 
     discardAll() {
         this.users
-            .filter(u => u.isChanged)
+            .filter(u => u.isChanged || u.original === null && u !== this.newUser)
             .forEach(u => this.discard(u));
     }
 
