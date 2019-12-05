@@ -23,10 +23,11 @@ if(isset($_POST["name"]) && $_POST["name"] !="" && isset($_POST["pass"]) && $_PO
             $_SESSION["user_ID"] = $user["id"];
             $_SESSION["username"] = $user["username"];
             $_SESSION["name"]=$user["firstname"]." ".$user["lastname"];
-            $_SESSION["account_type"]=$user["account_type"];
+            $_SESSION["isAdmin"]=$user['is_administrator'];
+            $_SESSION["isLibrarian"]=$user["is_librarian"];
             /*echo $user["id"]."  ".$_SESSION["user_ID"];
             echo $user["account_type"];*/
-            switch($user["account_type"]){
+          /*  switch($user["account_type"]){
                 case 0:{
                     header("Location: ../../admin/");
                     break;
@@ -41,6 +42,23 @@ if(isset($_POST["name"]) && $_POST["name"] !="" && isset($_POST["pass"]) && $_PO
                 }
                 default: die("unexpected error");
             }
+*/          if ($_SESSION["isAdmin"] == 1 && $_SESSION["isLibrarian"] == 0){
+    header("Location: ../../admin/");
+       
+}
+else if($_SESSION["isLibrarian"] == 1 && $_SESSION["isAdmin"] == 0){
+    header("Location: ../../knihovnik/");
+                    
+}
+else if ($_SESSION["isLibrarian"] == 1 && $_SESSION["isAdmin"] == 1)
+{
+    header("Location: ../../obojetny/");
+}
+else {
+    header("Location: ../../");
+}
+
+
             exit();
         }
     }
