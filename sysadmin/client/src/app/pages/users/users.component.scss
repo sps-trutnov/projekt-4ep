@@ -1,0 +1,34 @@
+:host {
+    display: flex;
+    flex-direction: column;
+}
+
+.editable-cell {
+    background: initial;
+    border: none;
+    box-shadow: none!important;
+}
+
+.editable-cell.is-invalid {
+    color: #dc3545;
+}
+
+.editable-cell.is-invalid::placeholder {
+    color: #dc3545;
+}
+
+.table-column-fill {
+    width: calc(100% / 5);
+}
+
+.table-column-id {
+    min-width: 70px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
