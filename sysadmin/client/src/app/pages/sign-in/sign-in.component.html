@@ -1,0 +1,17 @@
+<form class="form p-2" [formGroup]="signInForm" (ngSubmit)="signIn()">
+    <h2 class="text-center">Přihlášení</h2>
+    <div class="form-group">
+        <label for="user-name-input">Uživatelské jméno</label>
+        <input class="form-control" [class.is-invalid]="userNameRequired" id="user-name-input" type="text" formControlName="userName">
+    </div>
+    
+    <div class="form-group">
+        <label for="user-name-input">Heslo</label>
+        <input class="form-control" [class.is-invalid]="passwordRequired" id="password-input" type="password" formControlName="password">
+        <div *ngIf="badUserNameOrPassword" class="invalid-feedback d-block">
+            Špatné uživatelské jméno nebo heslo.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" [disabled]="!signInForm.valid">Přihlásit se</button>
+</form>
