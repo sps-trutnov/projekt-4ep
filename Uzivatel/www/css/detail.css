@@ -1,0 +1,228 @@
+* {
+    margin: 0 auto
+}
+
+.rating_cover{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.25);
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.rating_container{
+    width: 320px;
+    background-color: white;
+    min-height: 200px;
+    position: absolute;
+    top: calc(50% - 100px);
+    left: calc(50% - 160px);
+    z-index: 1000;
+}
+.rating{
+
+}
+
+
+#bookdetail {
+    overflow-x: auto;
+    margin: 20px;
+}
+
+#bookdetail table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid #ddd;
+    max-width: 500px;
+   
+}
+
+#bookdetail table th, td {
+    text-align: left;
+    padding: 10px;
+    padding-right: 50px;
+    border-right: 2px solid #ddd;
+}
+
+#bookdetail table th:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+#bookdetail table tr td:nth-child(even) {
+    width: 55%;
+}
+
+
+#bookdetail table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+
+#bookdetail table td#imagecol {
+    padding: 10px 30px;
+}
+
+
+#bookdetail table td.detail_queue_row {
+    text-align: center;
+}
+
+#book_title {
+    font-size: 36px;
+}
+
+
+
+
+.detail_button {
+    height: 30px;
+    margin: 10px 0;
+    margin-right: 10px;
+    background-color: #0095d8;
+    color: #ffffff;
+    border: none;
+    font-size: 12pt;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.25), inset 0 2px 5px rgba(225,225,225,0.35);
+}
+
+
+#book_detail {
+    margin: 60px 120px;
+}
+
+
+#book_detail > div div:not(:first-child){
+    margin-top: 20px;
+}
+
+
+
+.detail_left {
+    width: calc(52% - 100px);
+    float: left;
+    padding: 0px 100px 0px 0px;
+    clear: both;
+}
+
+.detail_right {
+    width: 48%;
+    float: left;
+}
+
+
+.book_rating {
+    unicode-bidi: bidi-override;
+    direction: ltr;
+    text-align: left;
+}   
+  
+.star {
+    display: inline-block;
+    position: relative;
+    color: gray;
+    font-size: 32px;
+    cursor: default;
+}
+
+.star.half::before{
+    content: "★";
+    position: absolute;
+    color: gold;
+    width: 50%;
+    overflow: hidden;
+    height: 100%;
+}
+.star.one-four::before{
+    content: "★";
+    position: absolute;
+    color: gold;
+    width: 40%;
+    overflow: hidden;
+    height: 100%;
+}
+.star.three-four::before{
+    content: "★";
+    position: absolute;
+    color: gold;
+    width: 60%;
+    overflow: hidden;
+    height: 100%;
+}
+.star.full{
+    color: gold;
+}
+.stars{
+    font-size: 0;
+  }
+  .rating_num{
+    font-size: 16px;
+  }
+  .stars .star {
+    display: inline-block;
+    font-size: 32px;
+    position: relative;
+    width: 13.5px;
+    overflow: hidden;
+    color: gray;
+    cursor: pointer;
+  }
+  .stars .star::before{
+      content: "";
+  }
+  .stars .star.half{
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+  }
+  .stars .star.selected{
+    color: #e6c300;
+  }
+  .stars .star.hover {
+    color: gold;
+  }
+
+/*.book_rating > span:hover, .book_rating > span:hover ~ span {
+    color: transparent;
+}
+
+.book_rating > span:hover:before, .book_rating > span:hover ~ span:before {
+    content: "\2605";
+    position: absolute;
+    color: #ffe02f;
+}*/
+  
+
+.book_tags {
+    display: block;
+}
+
+
+@media screen and (max-width: 1380px) {
+
+    #book_detail {
+        margin: 0px 20px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    #bookdetail table {
+        min-width: 0;
+    }
+
+    .detail_left, .detail_right {
+        display: block;
+        width: 100%;
+    }
+
+    .detail_right {
+        margin-top: 30px;
+    }
+
+}
