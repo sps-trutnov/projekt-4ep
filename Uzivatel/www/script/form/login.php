@@ -42,21 +42,9 @@ if(isset($_POST["name"]) && $_POST["name"] !="" && isset($_POST["pass"]) && $_PO
                 }
                 default: die("unexpected error");
             }
-*/          if ($_SESSION["isAdmin"] == 1 && $_SESSION["isLibrarian"] == 0){
-    header("Location: ../../admin/");
-       
-}
-else if($_SESSION["isLibrarian"] == 1 && $_SESSION["isAdmin"] == 0){
-    header("Location: ../../knihovnik/");
-                    
-}
-else if ($_SESSION["isLibrarian"] == 1 && $_SESSION["isAdmin"] == 1)
-{
-    header("Location: ../../obojetny/");
-}
-else {
+*/          
     header("Location: ../../");
-}
+
 
 
             exit();

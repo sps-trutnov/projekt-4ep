@@ -36,10 +36,17 @@
 
             echo (' <div class="dropdown" id="horninavigace-log">
                         <a href="./" class="header_user"><span class="flaticon-user"></span>'.showProfileInfo().'</a>
-                        <div class="dropdown-content">
+                        <div class="dropdown-content">');
+                        if($_SESSION['isAdmin']){
+                            echo('<a href="OdkazKJorkoj"><div><span class="flaticon-exit"></span>Admin</div></a>');
+                        }
+                        if($_SESSION['isLibrarian']){
+                            echo('<a href="OdkazKMichaloj"><div><span class="flaticon-exit"></span> Knihovník</div></a>');
+                        }echo('
                             <a href="./?p=pass_change"><div><span class="flaticon-pass"></span> Změna hesla </div></a><br>
                             <a href="./?a=logout"><div><span class="flaticon-exit"></span> Odhlásit se</div></a>
-                        </div>
+                            
+                             </div>
                     </div>');
 
         }?>

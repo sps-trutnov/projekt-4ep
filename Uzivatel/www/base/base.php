@@ -1,18 +1,7 @@
 
 <?php
 if(isset($_SESSION["user_ID"])){
-    if ($_SESSION["isAdmin"] == 1 && $_SESSION["isLibrarian"] == 0){
-        header("Location: ./admin/");
-           
-    }
-    else if($_SESSION["isLibrarian"] == 1 && $_SESSION["isAdmin"] == 0){
-        header("Location: ./knihovnik/");
-                        
-    }
-    else if ($_SESSION["isLibrarian"] == 1 && $_SESSION["isAdmin"] == 1)
-    {
-        header("Location: ./obojetny/");
-    }
+
 }
 
 $page;
