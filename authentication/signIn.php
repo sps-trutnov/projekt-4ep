@@ -101,7 +101,7 @@ function getUserByUserName(PDO $databaseConnection, string $userName): ?User
             <label for="user-name-input">Heslo</label>
             <input class="form-control" id="password-input" type="password" name="password">
             <?php if ($invalidCredentials): ?>
-                <div *ngIf="badUserNameOrPassword" class="invalid-feedback d-block">
+                <div class="invalid-feedback d-block">
                     Špatné uživatelské jméno nebo heslo.
                 </div>
             <?php endif; ?>
