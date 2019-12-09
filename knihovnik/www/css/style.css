@@ -1,0 +1,115 @@
+a.return {
+    display: inline-block;
+    transition: .15s;
+    transition-timing-function: ease-out;
+}
+
+a.return:hover {
+    text-decoration: none;
+    margin-left: -.5rem;
+    padding-right: .5rem;
+    transition-timing-function: ease-out;
+}
+
+h3{
+    color: var(--secondary) !important;
+}
+
+.icon {
+    height: 2rem;
+}
+
+.icon-sm {
+    height: 1.5rem;
+}
+
+.icon + span, .icon-sm + span {
+    color: var(--dark) !important;
+    padding-left: .25rem;
+}
+
+.icon-sm + span {
+    padding-left: 0;
+}
+
+.table tbody tr:first-child td{
+    border-top: 0;
+}
+
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 3 !important;
+        -moz-column-count: 3 !important;
+        column-count: 3 !important;
+    }
+}
+
+@media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 5 !important;
+        -moz-column-count: 5 !important;
+        column-count: 5 !important;
+    }
+}
+
+@media (prefers-color-scheme: dark){
+    .card{
+        background-color: var(--secondary);
+    }
+
+    body, header, .bg-light, .table, .navbar-light .navbar-brand, a.nav-link, .page-item *{
+        background-color: var(--dark) !important;
+        color: var(--light) !important;
+        border-color: var(--gray) !important;
+    }
+
+    .active, .active *, .page-item *:hover{
+        border-color: var(--light) !important;
+    }
+
+    .table td, .table th {
+        border-color: var(--secondary) !important;
+    }
+
+    .icon + span, .icon-sm + span {
+        color: var(--light) !important;
+    }
+
+    #qr-code img{
+        filter: invert(1);
+    }
+}
+
+.card.print img {
+    transition: .15s ease-in-out;
+}
+
+.card.print:hover img {
+    opacity: .5;
+}
+
+/* Styly QR kódu pro tisk */
+#qr-code-print {
+    display: inline-block;
+    color: #000000;
+    position: relative;
+    width: 20mm !important;
+    height: auto;
+    padding: 2mm;
+    align-self: end;
+    align-self: flex-end;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    text-transform: uppercase;
+    word-break: break-word;
+}
+
+#qr-code-print > .bookId {
+    font-size: 18px;
+    text-align: center;
+    display: block;
+}
+
+#qr-code-print img {
+    width: 16mm !important;
+}
