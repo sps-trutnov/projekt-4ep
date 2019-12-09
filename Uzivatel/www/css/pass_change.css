@@ -1,0 +1,67 @@
+.pass_change {
+  margin:0 auto;
+  margin-top: 100px;
+  max-width:500px;
+}
+
+.pass_change-form h1 {
+  text-align: left;
+  margin-left: 40px;
+  font-size: 36px;
+  color: #fff;
+}
+
+.pass_change-form {
+  border: .5px solid #fff;
+  background: #4facff;
+  box-sizing: border-box;
+  padding-top: 50px;
+	padding-bottom: 50px;
+  margin: 5% auto;
+  text-align: center;
+}
+
+.pass_change input[type="text"],
+.pass_change input[type="password"] {
+  max-width: 400px;
+	width: 80%;
+  line-height: 3em;
+  margin: 1em 2em;
+  border: 2px solid #f2f2f2;
+  outline: none;
+  padding-left: 10px;
+}
+
+.pass_change-form input[type="submit"] {
+  height: 30px;
+  width: 120px;
+  background:#fff;
+  border:1px solid #f2f2f2;
+  font-size: larger;
+  cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 600px)
+{
+  .pass_change-form h1 {
+    text-align: center;
+    margin: 0;
+    font-size: 28px;
+  }
+
+  .pass_change-button {
+    margin-bottom: 10px;
+  }
+
+  .pass_change input[type="text"],
+  .pass_change input[type="password"] {
+    line-height: 2em;
+  }
+
+  .pass_change-form input[type="submit"] {
+    font-size: smaller;
+  }
+
+}
