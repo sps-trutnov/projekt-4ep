@@ -15,9 +15,12 @@ require_once "./users.php";
 require_once "../settings/settings.php";
 require_once "../http/http.php";
 
+session_start();
+
 header("Access-Control-Allow-Origin: " . ACCESS_CONTROL_ALLOWED_ORIGIN);
 header("Access-Control-Allow-Methods: PUT, POST, DELETE");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Credentials: true");
 
 if ($_SERVER['REQUEST_METHOD'] === "OPTIONS")
     exit;
@@ -41,8 +44,13 @@ else
 
 function get(\PDO $databaseConnection)
 {
-    if (isset($_GET["id"]))
-        getSingle($databaseConnection);
+    if (isset($_GET["id"])) 
+    {
+        if ($_GET["id"] === "")
+            getSignedIn($databaseConnection);
+        else
+            getSingle($databaseConnection);
+    }
     else
         getMultiple($databaseConnection);
 }
@@ -56,9 +64,18 @@ function getSingle(\PDO $databaseConnection)
 
     $user = getUserById($databaseConnection, $id);
 
-    if ($user == null)
+    if ($user === null)
         exitWithHttpCode(404);
 
+    $dataModel = toDataModel($user);
+    echo(json_encode($dataModel));
+}
+
+function getSignedIn(\PDO $databaseConnection)
+{
+    $id = $_SESSION["userId"];
+    $user = getUserById($databaseConnection, $id);
+    
     $dataModel = toDataModel($user);
     echo(json_encode($dataModel));
 }

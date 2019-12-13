@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { User } from './user';
 import { UserNameAlreadyUsedError } from './user-name-already-used-error';
@@ -34,6 +34,13 @@ export class UserService {
     getById(id: number): Observable<User> {
         return this.httpClient.get<User>(`${this.apiUrl}/users/index.php?id=${id}`).pipe(
             map(u => new User(u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator))
+        );
+    }
+
+    getSignedIn(): Observable<User> {
+        return this.httpClient.get<User>(`${this.apiUrl}/users/index.php?id=`).pipe(
+            catchError((e: HttpErrorResponse) => e.status === 401 ? of(null) : throwError(e)),
+            map(u => u === null ? null : new User(u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator))
         );
     }
 

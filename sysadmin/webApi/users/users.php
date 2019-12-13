@@ -15,17 +15,17 @@ function getUsers(\PDO $databaseConnection, int $idFilter = null, string $userNa
     }
     if ($userNameFilter !== null)
     {
-        $conditions[] = "user_name LIKE ?";
+        $conditions[] = "username LIKE ?";
         $parameters[] = "%$userNameFilter%";
     }
     if ($firstNameFilter !== null)
     {
-        $conditions[] = "first_name LIKE ?";
+        $conditions[] = "firstname LIKE ?";
         $parameters[] = "%$firstNameFilter%";
     }
     if ($lastNameFilter !== null)
     {
-        $conditions[] = "last_name LIKE ?";
+        $conditions[] = "lastname LIKE ?";
         $parameters[] = "%$lastNameFilter%";
     }
     if ($emailFilter !== null)
@@ -68,7 +68,7 @@ function getUserById(\PDO $databaseConnection, int $id): ?User
 
 function getUserByUserName(\PDO $databaseConnection, string $userName): ?User
 {
-    $statement = $databaseConnection->prepare("SELECT * FROM users WHERE user_name = ?");
+    $statement = $databaseConnection->prepare("SELECT * FROM users WHERE username = ?");
     $statement->execute([$userName]);
 
     $row = $statement->fetch();
@@ -81,7 +81,7 @@ function getUserByUserName(\PDO $databaseConnection, string $userName): ?User
 
 function addUser(\PDO $databaseConnection, User $user): User
 {
-    $statement = $databaseConnection->prepare("INSERT INTO users(`user_name`, first_name, last_name, email, password_hash, is_librarian, is_administrator) VALUES(?, ?, ?, ?, ?, ?, ?)");
+    $statement = $databaseConnection->prepare("INSERT INTO users(`username`, firstname, lastname, email, password, is_librarian, is_administrator) VALUES(?, ?, ?, ?, ?, ?, ?)");
     $statement->execute([$user->getUserName(), $user->getFirstName(), $user->getLastName(), $user->getEmail(), $user->getPasswordHash(), 
         (int)$user->isLibrarian(), (int)$user->isAdministrator()]);
 
@@ -91,7 +91,7 @@ function addUser(\PDO $databaseConnection, User $user): User
 
 function updateUser(\PDO $databaseConnection, User $user): User
 {
-    $statement = $databaseConnection->prepare("UPDATE users SET `user_name` = ?, first_name = ?, last_name = ?, email = ?, password_hash = ?, is_librarian = ?, is_administrator = ? WHERE id = ?");
+    $statement = $databaseConnection->prepare("UPDATE users SET `username` = ?, firstname = ?, lastname = ?, email = ?, password = ?, is_librarian = ?, is_administrator = ? WHERE id = ?");
     $statement->execute([$user->getUserName(), $user->getFirstName(), $user->getLastName(), $user->getEmail(), $user->getPasswordHash(), 
         (int)$user->isLibrarian(), (int)$user->isAdministrator(), $user->getId()]);
 
@@ -109,6 +109,6 @@ function removeUser(\PDO $databaseConnection, int $id): bool
 
 function rowToUser(array $row): User
 {
-    return new User($row["id"], $row["user_name"], $row["first_name"], $row["last_name"], $row["email"], $row["password_hash"], 
+    return new User($row["id"], $row["username"], $row["firstname"], $row["lastname"], $row["email"], $row["password"], 
         (bool)$row["is_librarian"], (bool)$row["is_administrator"]);
 }

@@ -1,23 +1,24 @@
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { SignInService } from 'src/app/core/sign-in/sign-in.service';
+
+export const SIGN_IN_URL = new InjectionToken<string>("Sign in page url.");
 
 @Injectable({
     providedIn: 'root'
 })
 export class SignedInCanActivate implements CanActivate {
-    constructor(private readonly signInService: SignInService, private readonly router: Router) {
+    constructor(private readonly signInService: SignInService, @Inject(SIGN_IN_URL) private readonly signInUrl: string) {
 
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         let signedIn = this.signInService.signedUserId !== null;
-        if (signedIn)
-            return true;
-        else {
-            this.router.navigate(["sign-in"]);
-            return false;
-        }
+
+        if (!signedIn)
+            window.location.href = this.signInUrl + "?redirectUrl=" + window.location.href;
+
+        return signedIn;
     }
 }
