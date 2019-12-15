@@ -20,11 +20,11 @@
     <a href="./?p=qr_reader"><div class="zoom"><img src="./img/flaticon/015-qr-code.png" alt="qr_ctecka"><br>QR čtečka</div></a>
     <a class='NormalHide' href="./?a=logout"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="log_out"><br>Odhlásit se</div></a>
     <?php 
-    if ($_SESSION['isAdmin']){
+    if ($_SESSION['isLibrarian']){
         echo(" 
     <a class='NormalHide' href='/knihovnik/www/'><div class='zoom'><img src='./img/flaticon/013-exit.png' alt='log_out'><br>Knihovník</div></a>");
 }
-if($_SESSION['isLibrarian']){
+if($_SESSION['isAdmin']){
  echo("   <a class='NormalHide' href='/sysadmin/'><div class='zoom'><img src='./img/flaticon/013-exit.png' alt='log_out'><br>Admin</div></a>");
  
  } ?>
