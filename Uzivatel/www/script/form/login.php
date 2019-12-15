@@ -1,4 +1,25 @@
 <?php
+include("../../base/db.php");
+session_start();
+$query=$db->prepare("SELECT * FROM users WHERE id=? LIMIT 1");
+$query->execute([$_SESSION['userID']]);
+$user = $query->fetch();
+if($query->rowCount()>0){
+    $_SESSION["user_ID"] = $user["id"];
+    $_SESSION["username"] = $user["username"];
+    $_SESSION["name"]=$user["firstname"]." ".$user["lastname"];
+    $_SESSION["isAdmin"]=$user['is_administrator'];
+    $_SESSION["isLibrarian"]=$user["is_librarian"];
+  }
+  else{
+    header("location: /authentication/signIn.php?returnUrl=/uzivatel/www/script/form/login.php");
+ }
+
+  header("Location: ../../");
+
+
+
+/*
 if(isset($_POST["name"]) && $_POST["name"] !="" && isset($_POST["pass"]) && $_POST["pass"] != ""){
     include("../../base/db.php");
 
@@ -41,8 +62,8 @@ if(isset($_POST["name"]) && $_POST["name"] !="" && isset($_POST["pass"]) && $_PO
                     break;
                 }
                 default: die("unexpected error");
-            }
-*/          
+       }
+         *//* 
     header("Location: ../../");
 
 
@@ -55,3 +76,5 @@ if(isset($_POST["name"]) && $_POST["name"] !="" && isset($_POST["pass"]) && $_PO
     exit();
 }
 header("Location: ../../?p=login&e=0");
+
+*/
