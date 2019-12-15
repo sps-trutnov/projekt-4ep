@@ -57,7 +57,7 @@ h3{
         background-color: var(--secondary);
     }
 
-    body, header, .bg-light, .table, .navbar-light .navbar-brand, a.nav-link, .page-item *{
+    body, header, .bg-light, .table, .navbar-light .navbar-brand, .navbar-text, a.nav-link, .page-item *{
         background-color: var(--dark) !important;
         color: var(--light) !important;
         border-color: var(--gray) !important;
@@ -75,7 +75,7 @@ h3{
         color: var(--light) !important;
     }
 
-    #qr-code img{
+    #qr-code img, .navbar-toggler-icon{
         filter: invert(1);
     }
 }

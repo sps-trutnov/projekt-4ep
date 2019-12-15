@@ -18,21 +18,21 @@ class AuthorizationMiddleware implements MiddlewareInterface {
         $userId = $_SESSION["userId"];
         
         if(empty($userId) || $userId == 0){
-            header("Location: /authentication/signIn.php?returnUrl=".$_SERVER["REQUEST_URI"]);
+            header("Location: /authentication/signIn.php?redirectUrl=".$_SERVER["REQUEST_URI"]);
             exit();
         }
 
-        $user = $userRepository->getById($userId);
+        $user = $this->_userRepository->getById($userId);
         if($user == null){
-            header("Location: /authentication/signIn.php?returnUrl=".$_SERVER["REQUEST_URI"]);
+            header("Location: /authentication/signIn.php?redirectUrl=".$_SERVER["REQUEST_URI"]);
             exit();
         }
-        else if($user->getIsLibrarian() == 0){
-            header("Location: /uzivatel/");
+        else if(!$user->getIsLibrarian()){
+            header("Location: /uzivatel/www/");
             exit();
         }
         
-        $_dependencyContainer->for("\domain\user\User")->useInstance($user);
+        $this->_dependencyContainer->for("\domain\user\User")->useInstance($user);
         $next();
     }
 }

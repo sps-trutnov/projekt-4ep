@@ -1,8 +1,5 @@
 <?php
-$userAuthenticationService = $provideDependency("\authentication\UserAuthenticationServiceInterface");
-
-$isLogged = $userAuthenticationService->isLogged();
-$loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : null;
+$user = $provideDependency("\domain\user\User");
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +18,7 @@ $loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : 
     <header>
         <nav class="navbar navbar-light bg-light navbar-expand-lg">
             <a class="navbar-brand" href="/">
-                <img src="img/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="img/logo.svg" class="d-inline-block align-top icon" alt="">
                 Knihovna
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +30,12 @@ $loggedUserName = $isLogged ? $userAuthenticationService->getLoggedUserName() : 
                         <a class="nav-link" href="<?=$getActionUrl("Book", "Print")?>" tabindex="-1" aria-disabled="true">Tisk</a>
                     </li>
                 </ul>
+                <span class="navbar-text">
+                    <?=$user->getFullName()?>
+                    <a href="/authentication/signOut.php?redirectUrl=/knihovnik/www/">
+                        <img src="img/flaticon/exit.svg" class="d-inline-block align-top icon-sm" alt="Odhlásit" title="Odhlásit">
+                    </a>
+                </span>
             </div>
         </nav>
     </header>

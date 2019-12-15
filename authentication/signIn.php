@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 require_once "settings.php";
 require_once "User.php";
 
@@ -19,6 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $databaseConnection = createPDOConection();
 
     $invalidCredentials = !signIn($databaseConnection, $userName, $password);
+
+    echo json_encode($invalidCredentials);
 
     if (!$invalidCredentials && isset($_GET["redirectUrl"])) {
         $redirectUrl = $_GET["redirectUrl"];
