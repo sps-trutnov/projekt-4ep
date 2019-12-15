@@ -14,9 +14,11 @@
 
 <ul class="list_profile">
     
-    <a href="./?p=pass_change"><div class="zoom"><img src="./img/flaticon/010-pass.png" alt="zmena_hesla"><br>Změna hesla</div></a>
+    <a class='NormalHide' href="./?p=pass_change"><div class="zoom"><img src="./img/flaticon/010-pass.png" alt="zmena_hesla"><br>Změna hesla</div></a>
     <a href="./?p=list"><div class="zoom"><img src="./img/flaticon/014-folder.png" alt="seznam_knih"><br>Seznam knih</div></a>
     <a href="./?p=myBooks"><div class="zoom"><img src="./img/flaticon/003-bookmark.png" alt="moje_knihy"><br>Moje knihy</div></a>
     <a href="./?p=qr_reader"><div class="zoom"><img src="./img/flaticon/015-qr-code.png" alt="qr_ctecka"><br>QR čtečka</div></a>
-    <a href="./?a=logout"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="log_out"><br>Odhlásit se</div></a>
+    <a class='NormalHide' href="./?a=logout"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="log_out"><br>Odhlásit se</div></a>
+    <a class='NormalHide' href="/knihovnik/www/"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="log_out"><br>Knihovník</div></a>
+    <a class='NormalHide' href="/sysadmin/"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="log_out"><br>Admin</div></a>
 </ul>

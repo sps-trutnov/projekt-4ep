@@ -44,7 +44,9 @@
     display: block;
     width:100%;
   }
-  
+  .normalHide{
+      display: none;
+  }
   .dropdown:hover .dropdown-content {
     display: block;
   }
@@ -369,6 +371,10 @@ ul.list_profile {
 
 
 @media all and (max-width:1280px) {
+
+    .normalHide{
+        display: block;
+    }
 
     #stranka{
         margin-top: 0;
