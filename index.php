@@ -6,7 +6,6 @@ if(empty($_SESSION["userId"])){
     header("Location: /authentication/signIn.php?redirectUrl=/");
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
