@@ -14,7 +14,7 @@ export class SignedInCanActivate implements CanActivate {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        let signedIn = this.signInService.signedUserId !== null;
+        let signedIn = this.signInService.signedUser !== null;
 
         if (!signedIn)
             window.location.href = this.signInUrl + "?redirectUrl=" + window.location.href;
