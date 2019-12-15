@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { User } from '../users/user';
 
 @Injectable({
     providedIn: 'root'
@@ -6,19 +7,19 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class SignInService {
     readonly signedUserChanged = new EventEmitter();
 
-    private _signedUserId: number = null;
+    private _signedUser: User = null;
 
-    get signedUserId(): number {
-        return this._signedUserId;
+    get signedUser(): User {
+        return this._signedUser;
     }
 
-    signIn(userId: number) {
-        this._signedUserId = userId;
+    signIn(user: User) {
+        this._signedUser = user;
         this.signedUserChanged.emit();
     }
 
     signOut() {
-        this._signedUserId = null;
+        this._signedUser = null;
         this.signedUserChanged.emit();
     }
 }
