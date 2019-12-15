@@ -1,18 +1,16 @@
 <?php
 namespace middlewares;
 
-use dependencyInjection\DependencyProviderInterface;
+use dependencyInjection\DependencyContainer;
 use controllers\AbstractController;
 use domain\user\UserRepositoryInterface;
 
 class AuthorizationMiddleware implements MiddlewareInterface {
-    private $_dependencyProvider;
-    private $_dependencyConfiguration;
+    private $_dependencyContainer;
     private $_userRepository;
 
-    public function __construct(DependencyProviderInterface $dependencyProvider, DependencyConfigurationInterface $dependencyConfiguration, UserRepositoryInterface $userRepository) {
-        $this->_dependencyProvider = $dependencyProvider;
-        $this->_dependencyConfiguration = $dependencyConfiguration;
+    public function __construct(DependencyContainer $dependencyContainer, UserRepositoryInterface $userRepository) {
+        $this->_dependencyContainer = $dependencyContainer;
         $this->_userRepository = $userRepository;
     }
 
@@ -34,7 +32,7 @@ class AuthorizationMiddleware implements MiddlewareInterface {
             exit();
         }
         
-        $dependencyConfiguration->for("\domain\user\User")->useInstance($user);
+        $_dependencyContainer->for("\domain\user\User")->useInstance($user);
         $next();
     }
 }
