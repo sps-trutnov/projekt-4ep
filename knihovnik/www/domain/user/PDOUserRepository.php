@@ -20,9 +20,10 @@ class PDOUserRepository implements UserRepositoryInterface {
         if ($row === false)
              return null;
         
-        return new User($row["id"], $row["name"], $row["password_hash"], $row["is_administrator"], $row["is_librarian"]);
+        return new User($row["id"], $row["username"], $row["firstname"], $row["lastname"], $row["password_hash"], $row["is_administrator"], $row["is_librarian"]);
     }
 
+    /*
     public function getByName(string $name): ?User {
         $statement = $this->_connection->prepare("SELECT * FROM users WHERE `name` = ?");
         $statement->execute([$name]);
@@ -50,5 +51,5 @@ class PDOUserRepository implements UserRepositoryInterface {
 
         $statement = $this->_connection->prepare("UPDATE users SET `name` = ?, password_hash = ? WHERE id = ?");
         $statement->execute([$name, $passwordHash, $id]);
-    }
+    }*/
 }
