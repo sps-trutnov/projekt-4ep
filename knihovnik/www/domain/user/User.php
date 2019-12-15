@@ -39,4 +39,8 @@ class User {
     public function getPasswordHash(): string {
         return $this->_passwordHash;
     }
+
+    public function getIsLibrarian(): int {
+        return $this->_is_librarian;
+    }
 }

@@ -2,6 +2,7 @@
 use routing\QueryParametersRouter;
 use middlewares\MVCMiddleware;
 use middlewares\MiddlewarePipeline;
+use middlewares\AuthorizationMiddleware;
 use dependencyInjection\DependencyProviderInterface;
 use dependencyInjection\DependencyConfigurationInterface;
 
@@ -26,6 +27,8 @@ class Startup {
             "controller" => "Home",
             "action" => "index"
         ]);
+        $authorization = new AuthorizationMiddleware($provider, $provider->provide("\domain\user\UserRepositoryInterface"));
+        $pipeline->add($authorization);
         $mvc = new MVCMiddleware($router, $provider);
         $pipeline->add($mvc);
     }
