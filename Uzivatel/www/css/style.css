@@ -44,7 +44,7 @@
     display: block;
     width:100%;
   }
-  .normalHide{
+  .NormalHide{
       display: none;
   }
   .dropdown:hover .dropdown-content {
@@ -372,8 +372,8 @@ ul.list_profile {
 
 @media all and (max-width:1280px) {
 
-    .normalHide{
-        display: block;
+    .NormalHide{
+        display: inline-block;
     }
 
     #stranka{
