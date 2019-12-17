@@ -2,9 +2,15 @@
 
 namespace users;
 
-use const settings\ACCESS_CONTROL_ALLOWED_ORIGIN;
+use const settings\CORS_ALLOW_ALL_ORIGINS;
+use const settings\CORS_ALLOWED_ORIGINS;
 
 use function authorization\authorize;
+use function cors\allowAllHeaders;
+use function cors\allowAllMethods;
+use function cors\allowAllOrigins;
+use function cors\allowCredentials;
+use function cors\allowOrigins;
 use function database\createPDOConection;
 use function http\exitWithHttpCode;
 
@@ -14,13 +20,17 @@ require_once "./User.php";
 require_once "./users.php";
 require_once "../settings/settings.php";
 require_once "../http/http.php";
+require_once "../http/cors.php";
 
 session_start();
 
-header("Access-Control-Allow-Origin: " . ACCESS_CONTROL_ALLOWED_ORIGIN);
-header("Access-Control-Allow-Methods: PUT, POST, DELETE");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-header("Access-Control-Allow-Credentials: true");
+if (CORS_ALLOW_ALL_ORIGINS)
+    allowAllOrigins();
+else
+    allowOrigins(CORS_ALLOWED_ORIGINS);
+allowAllMethods();
+allowAllHeaders();
+allowCredentials();
 
 if ($_SERVER['REQUEST_METHOD'] === "OPTIONS")
     exit;
