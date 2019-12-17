@@ -54,7 +54,10 @@
     <tbody>
         <tr *ngFor="let user of users"
             [class.table-warning]="(user.isChanged || user.original === null) && user !== newUser">
-            <td class="table-column-id">{{user.original !== null ? user.original.id : ""}}</td>
+            <td class="table-column-id align-middle">
+                <ng-container *ngIf="user.original !== null">{{user.original.id}}</ng-container>
+                <i *ngIf="user.original === null" class="fas fa-plus"></i>
+            </td>
             <td class="table-column-fill">
                 <input [class.is-invalid]="!user.isUserNameValid && user !== newUser"
                     class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
