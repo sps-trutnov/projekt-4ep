@@ -9,6 +9,9 @@ function allowAllOrigins()
 
 function allowOrigins(array $origins)
 {
+    if (!isset($_SERVER["HTTP_ORIGIN"]))
+        return;
+
     $origin = $_SERVER["HTTP_ORIGIN"];
     if (in_array($origin, $origins))
         header("Access-Control-Allow-Origin: $origin");
