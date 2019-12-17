@@ -100,11 +100,11 @@ function getUserByUserName(PDO $databaseConnection, string $userName): ?User
             <h2 class="text-center">Přihlášení</h2>
             <div class="form-group">
                 <label for="user-name-input">Uživatelské jméno</label>
-                <input class="form-control" id="user-name-input" type="text" name="userName">
+                <input class="form-control" id="user-name-input" type="text" name="userName" value="<?=$_POST['userName'] ?? ''?>">
             </div>
             <div class="form-group">
                 <label for="user-name-input">Heslo</label>
-                <input class="form-control" id="password-input" type="password" name="password">
+                <input class="form-control" id="password-input" type="password" name="password" value="<?=$_POST['password'] ?? ''?>">
                 <?php if ($invalidCredentials) : ?>
                     <div class="invalid-feedback d-block">
                         Špatné uživatelské jméno nebo heslo.
