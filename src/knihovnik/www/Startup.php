@@ -23,7 +23,7 @@ class Startup {
     }
     
     public function configurePipeline(MiddlewarePipeline $pipeline, DependencyProviderInterface $provider) {
-        $router = new QueryParametersRouter("/knihovnik/www/", [
+        $router = new QueryParametersRouter(BASE_URL."/knihovnik/www/", [
             "controller" => "Home",
             "action" => "index"
         ]);
