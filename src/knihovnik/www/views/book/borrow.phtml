@@ -1,3 +1,63 @@
 <?php
 $parentPath = "views/layout.phtml";
 ?>
+<div class="col-xs-12 col-lg-10 mx-auto">
+    <div class="row">
+        <div class="col-md-2 p-0 mb-2">
+            <a class="return" href="<?=$returnUrl?>">
+                <img class="icon-sm" src="img/flaticon/back.svg" alt="<">
+                <span style="color: #4180ab !important;">Zpět</span>
+            </a>
+        </div>
+        <h2 class="text-center col-md-6">Seznam knih</h2>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Název</th>
+                <th>Autor</th>
+                <th>Žánr</th>
+                <th>ISBN</th>
+                <th>Rok vydání</th>
+                <th>Umístění</th>
+                <th>Dostupnost</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($books as $book): ?>
+            <tr>
+                <td><?=$book->getName()?></td>
+                <td><?=$book->getAuthorName()?></td>
+                <td><?=$book->getGenreName()?></td>
+                <td><?=$book->getIsbn()?></td>
+                <td><?=$book->getYear()?></td>
+                <td><?=$book->getPlaceName()?></td>
+                <?php if($book->getBorrowedByName() != ""):?>
+                    <td class="p-2">
+                        <img class="icon" src="img/flaticon/cross.svg" alt="Nedostupné" title="Nedostupné">
+                        <span><?=$book->getBorrowedByName()?></span>
+                    </td>
+                <?php else:?>
+                    <td class="p-2">
+                        <img class="icon" src="img/flaticon/tick.svg" alt="Dostupné" title="Dostupné">
+                    </td>
+                <?php endif?>
+                <td class="p-2">
+                    <a href='<?=$getActionUrl("Book", "Detail", ["id" => $book->getId(), "returnUrl" => $getActionUrl("Book", "Index", ["page" => $page, "search" => ""])])?>' tabindex="-1" class="px-1">
+                        <img class="icon" src="img/flaticon/search.svg" alt="Detail" title="Přejít na detail">
+                    </a>
+                    <a href='<?=$getActionUrl("Book", "Edit", ["id" => $book->getId(), "returnUrl" => $getActionUrl("Book", "Index", ["page" => $page, "search" => ""])])?>' tabindex="-1" class="px-1">
+                        <img class="icon" src="img/flaticon/edit.svg" alt="Upravit" title="Upravit parametry">
+                    </a>
+                    <!--
+                    <a href='<?=$getActionUrl("Book", "Remove", ["id" => $book->getId()])?>' tabindex="-1" class="px-1">
+                        <img class="icon" src="img/flaticon/cross.svg" alt="Odstranit">
+                    </a>
+                    -->
+                </td>
+            </tr>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+</div>
