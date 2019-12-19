@@ -42,7 +42,7 @@
                             echo('<a href="../../../sysadmin/"><div><span class="flaticon-exit"></span>Admin</div></a>');
                         }
                         if($_SESSION['isLibrarian']){
-                            echo('<a href="../../../knihovnik/www/"><div><span class="flaticon-exit"></span> Knihovník</div></a>');
+                            echo('<a href="../../../knihovnik/"><div><span class="flaticon-exit"></span> Knihovník</div></a>');
                         }echo('
                             <a href="./?p=pass_change"><div><span class="flaticon-pass"></span> Změna hesla </div></a><br>
                             <a href="./?a=logout"><div><span class="flaticon-exit"></span> Odhlásit se</div></a>

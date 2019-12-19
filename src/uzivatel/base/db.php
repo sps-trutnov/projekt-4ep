@@ -1,6 +1,5 @@
 <?php
-
-include_once('../../config.php');
+require_once __DIR__ . '/../../config.php';
 $hostname = DB_HOST;
 $databaseName = DB_NAME;
 $username = DB_USER;
