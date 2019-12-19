@@ -6,7 +6,6 @@ use function http\exitWithHttpCode;
 use function users\getUserById;
 
 require_once "../vendor/autoload.php";
-require_once "../settings/settings.php";
 require_once "../users/users.php";
 require_once "../http/http.php";
 

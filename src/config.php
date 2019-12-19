@@ -10,3 +10,8 @@ const DB_PASS = "Heslo96321";
 
 // URL, kde se aktuálně nachází kořen projektu
 const BASE_URL = "/src";
+
+// 
+const CORS_ALLOW_ALL_ORIGINS = false;
+// 
+const CORS_ALLOWED_ORIGINS = ["http://localhost:4200"];

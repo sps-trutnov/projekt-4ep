@@ -2,9 +2,6 @@
 
 namespace users;
 
-use const settings\CORS_ALLOW_ALL_ORIGINS;
-use const settings\CORS_ALLOWED_ORIGINS;
-
 use function authorization\authorize;
 use function cors\allowAllHeaders;
 use function cors\allowAllMethods;
@@ -18,7 +15,7 @@ require_once "../authorization/authorization.php";
 require_once "../database/database.php";
 require_once "./User.php";
 require_once "./users.php";
-require_once "../settings/settings.php";
+require_once "../../../config.php";
 require_once "../http/http.php";
 require_once "../http/cors.php";
 
