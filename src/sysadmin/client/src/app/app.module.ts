@@ -49,23 +49,23 @@ function createAppInitializer(appInitializeService: AppInitializeService) {
         },
         {
             provide: API_URL,
-            useValue: "http://localhost/sysadmin/webApi"
+            useValue: "/sysadmin/api"
         },
         {
             provide: SIGN_IN_URL,
-            useValue: "http://localhost/authentication/signIn.php"
+            useValue: "/authentication/signIn.php"
         },
         {
             provide: SIGN_OUT_URL,
-            useValue: "http://localhost/authentication/signOut.php"
+            useValue: "/authentication/signOut.php"
         },
         {
             provide: USER_MODULE_URL,
-            useValue: "http://google.com"
+            useValue: "/uzivatel"
         },
         {
             provide: LIBRARIAN_MODULE_URL,
-            useValue: "http://seznam.cz"
+            useValue: "/knihovnik"
         }
     ],
     entryComponents: [
