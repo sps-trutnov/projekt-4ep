@@ -10,16 +10,12 @@ class Startup {
     public function configureDependencies(DependencyConfigurationInterface $config) {
         $config->for("\PDO")->useInstance($this->createPDOConnection());
 
-        $config->for("\article\ArticleRepositoryInterface")->useClass("\article\PDOArticleRepository");
         $config->for("\domain\book\BookRepositoryInterface")->useClass("\domain\book\PDOBookRepository");
         $config->for("\domain\author\AuthorRepositoryInterface")->useClass("\domain\author\PDOAuthorRepository");
         $config->for("\domain\place\PlaceRepositoryInterface")->useClass("\domain\place\PDOPlaceRepository");
         $config->for("\domain\condition\ConditionRepositoryInterface")->useClass("\domain\condition\PDOConditionRepository");
         $config->for("\domain\genre\GenreRepositoryInterface")->useClass("\domain\genre\PDOGenreRepository");
         $config->for("\domain\user\UserRepositoryInterface")->useClass("\domain\user\PDOUserRepository");
-
-        $config->for("\passwordHashing\PasswordHasherInterface")->useClass("\passwordHashing\PasswordHasher");
-        $config->for("\authentication\UserAuthenticationServiceInterface")->useClass("\authentication\SessionUserAuthenticationService");
     }
     
     public function configurePipeline(MiddlewarePipeline $pipeline, DependencyProviderInterface $provider) {
