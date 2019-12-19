@@ -22,10 +22,10 @@
     <?php 
     if ($_SESSION['isLibrarian']){
         echo(" 
-    <a class='NormalHide' href='/knihovnik/www/'><div class='zoom'><img src='./img/flaticon/013-exit.png' alt='log_out'><br>Knihovník</div></a>");
+    <a class='NormalHide' href='../../../knihovnik/www/'><div class='zoom'><img src='./img/flaticon/013-exit.png' alt='log_out'><br>Knihovník</div></a>");
 }
 if($_SESSION['isAdmin']){
- echo("   <a class='NormalHide' href='/sysadmin/'><div class='zoom'><img src='./img/flaticon/013-exit.png' alt='log_out'><br>Admin</div></a>");
+ echo("   <a class='NormalHide' href='../../../sysadmin/'><div class='zoom'><img src='./img/flaticon/013-exit.png' alt='log_out'><br>Admin</div></a>");
  
  } ?>
 

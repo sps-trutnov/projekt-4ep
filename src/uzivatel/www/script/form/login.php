@@ -15,7 +15,7 @@ if($query->rowCount()>0){
     header("Location: ../../");
   }
   else{
-    header("location: /authentication/signIn.php?redirectUrl=/uzivatel/www/script/form/login.php");
+    header("location: ../../../../authentication/signIn.php?redirectUrl=/uzivatel/www/script/form/login.php");
  }
 
 
