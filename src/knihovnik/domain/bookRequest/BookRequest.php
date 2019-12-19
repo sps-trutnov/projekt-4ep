@@ -3,37 +3,25 @@ namespace domain\bookrequest;
 
 class BookRequest {
     private $_id;
-    private $_user_id;
-    private $_book_id;
+    private $_userId;
+    private $_userName;
+    private $_bookId;
+    private $_bookName;
     private $_confirmed;
-    private $_request_added;
+    private $_requestAdded;
     
-    public function __construct(int $id, int $user_id, int $book_id, bool $confirmed, time $request_added) {
+    public function __construct(int $id, int $userId, int $bookId, bool $confirmed, time $requestAdded, string $userName = "", string $bookName = "") {
         $this->_id = $id;
-        $this->_user_id = $user_id;
-        $this->_book_id = $book_id;
+        $this->_userId = $userId;
+        $this->_userName = $userName;
+        $this->_bookId = $bookId;
+        $this->_bookName = $bookName;
         $this->_confirmed = $confirmed;
-        $this->_request_added = $request_added;
-    }
-    
-    public function setId(int $id) {
-        $this->_id = $id;
-    }
-    
-    public function setUserId(int $user_id) {
-        $this->_is_user_idbn = $user_id;
-    }
-    
-    public function setBookId(int $book_id) {
-        $this->_book_id = $book_id;
+        $this->_requestAdded = $requestAdded;
     }
     
     public function setConfirmed(bool $confirmed) {
         $this->_confirmed = $confirmed;
-    }
-    
-    public function setRequestAdded(time $request_added) {
-        $this->_request_added = $request_added;
     }
     
     public function getId() {
@@ -43,9 +31,17 @@ class BookRequest {
     public function getUserId() {
         return $this->_is_user_idbn;
     }
+
+    public function getUserName(): string {
+        return $this->_userName;
+    }
     
     public function getBookId() {
         return $this->_book_id;
+    }
+
+    public function getBookName(): string {
+        return $this->_bookName;
     }
     
     public function getConfirmed() {
