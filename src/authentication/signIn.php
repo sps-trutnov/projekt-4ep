@@ -1,6 +1,6 @@
 <?php
 
-require_once "settings.php";
+require_once "../config.php";
 require_once "User.php";
 
 session_start();
@@ -44,10 +44,10 @@ function signIn(PDO $databaseConnection, string $userName, string $password): bo
 
 function createPDOConection(): PDO
 {
-    $server = DATABASE_SERVER;
-    $databaseName = DATABASE_NAME;
-    $username = DATABASE_USER_NAME;
-    $password = DATABASE_PASWORD;
+    $server = DB_HOST;
+    $databaseName = DB_NAME;
+    $username = DB_USER;
+    $password = DB_PASS;
     $options = [
         \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
         \PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
