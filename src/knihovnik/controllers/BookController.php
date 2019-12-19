@@ -8,7 +8,6 @@ use domain\author\AuthorRepositoryInterface;
 use domain\place\PlaceRepositoryInterface;
 use actionResults\ActionResultInterface;
 use validation\Validator;
-use authentication\UserAuthenticationServiceInterface;
 
 class BookController extends AbstractController {
     private $_bookRepository;
@@ -18,13 +17,12 @@ class BookController extends AbstractController {
     private $_placeRepository;
     private $_userAuthenticationService;
 
-    public function __construct(BookRepositoryInterface $bookRepository, ConditionRepositoryInterface $conditionRepository, GenreRepositoryInterface $genreRepository, AuthorRepositoryInterface $authorRepository, PlaceRepositoryInterface $placeRepository, UserAuthenticationServiceInterface $userAuthenticationService) {
+    public function __construct(BookRepositoryInterface $bookRepository, ConditionRepositoryInterface $conditionRepository, GenreRepositoryInterface $genreRepository, AuthorRepositoryInterface $authorRepository, PlaceRepositoryInterface $placeRepository) {
         $this->_bookRepository = $bookRepository;
         $this->_conditionRepository = $conditionRepository;
         $this->_genreRepository = $genreRepository;
         $this->_authorRepository = $authorRepository;
         $this->_placeRepository = $placeRepository;
-        $this->_userAuthenticationService = $userAuthenticationService;
     }
 
     public function index(int $page = 0, string $search = ""): ActionResultInterface {

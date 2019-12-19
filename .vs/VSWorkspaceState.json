@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\www",
-    "\\www\\js",
-    "\\www\\php"
+    "\\src",
+    "\\src\\knihovnik",
+    "\\src\\knihovnik\\domain",
+    "\\src\\knihovnik\\domain\\user"
   ],
-  "SelectedNode": "\\www\\pridat.html",
+  "SelectedNode": "\\src\\knihovnik\\domain\\user\\PDOUserRepository.php",
   "PreviewInSolutionExplorer": false
 }

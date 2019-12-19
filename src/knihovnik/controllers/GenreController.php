@@ -5,15 +5,13 @@ use domain\genre\GenreRepositoryInterface;
 use controllers\BookController;
 use actionResults\ActionResultInterface;
 use validation\Validator;
-use authentication\UserAuthenticationServiceInterface;
 
 class GenreController extends AbstractController {
     private $_genreRepository;
     private $_userAuthenticationService;
 
-    public function __construct(GenreRepositoryInterface $genreRepository, UserAuthenticationServiceInterface $userAuthenticationService) {
+    public function __construct(GenreRepositoryInterface $genreRepository) {
         $this->_genreRepository = $genreRepository;
-        $this->_userAuthenticationService = $userAuthenticationService;
     }
 
     public function Add(): ActionResultInterface {

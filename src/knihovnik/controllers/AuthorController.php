@@ -4,15 +4,13 @@ namespace controllers;
 use domain\author\AuthorRepositoryInterface;
 use actionResults\ActionResultInterface;
 use validation\Validator;
-use authentication\UserAuthenticationServiceInterface;
 
 class AuthorController extends AbstractController {
     private $_authorRepository;
     private $_userAuthenticationService;
 
-    public function __construct(AuthorRepositoryInterface $authorRepository, UserAuthenticationServiceInterface $userAuthenticationService) {
+    public function __construct(AuthorRepositoryInterface $authorRepository) {
         $this->_authorRepository = $authorRepository;
-        $this->_userAuthenticationService = $userAuthenticationService;
     }
 
     public function Add(): ActionResultInterface {

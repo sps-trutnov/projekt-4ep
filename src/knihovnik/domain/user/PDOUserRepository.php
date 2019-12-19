@@ -1,15 +1,12 @@
 <?php
 namespace domain\user;
 
-use passwordHashing\PasswordHasherInterface;
-
 class PDOUserRepository implements UserRepositoryInterface {
     private $_connection;
     private $_passwordHasher;
 
-    public function __construct(\PDO $connection, PasswordHasherInterface $passwordHasher) {
+    public function __construct(\PDO $connection) {
         $this->_connection = $connection;
-        $this->_passwordHasher = $passwordHasher;
     }
 
     public function getById(int $id): ?User {
