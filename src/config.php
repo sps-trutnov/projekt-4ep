@@ -14,4 +14,4 @@ const BASE_URL = "/src";
 // 
 const CORS_ALLOW_ALL_ORIGINS = false;
 // 
-const CORS_ALLOWED_ORIGINS = ["http://localhost:4200"];
+const CORS_ALLOWED_ORIGINS = [];
