@@ -1,0 +1,120 @@
+<div class="d-flex align-items-center">
+    <h2 class="m-4 flex-grow-1">Uživatelé</h2>
+    <button class="btn btn-secondary m-1" (click)="export()">Exportovat</button>
+    <button class="btn btn-secondary m-1 mr-4"(click)="import()">Importovat</button>
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr [formGroup]="filterForm">
+            <th class="sticky-top bg-white table-column-id">
+                Id
+                <input type="text" class="form-control form-control-sm" formControlName="id" [class.is-invalid]="!isIdFilterValid">
+            </th>
+            <th class="table-column-fill sticky-top bg-white">
+                Uživatelské jméno
+                <input type="text" class="form-control form-control-sm" formControlName="userName">
+            </th>
+            <th class="table-column-fill sticky-top bg-white align-top">Heslo</th>
+            <th class="table-column-fill sticky-top bg-white">
+                Jméno
+                <input type="text" class="form-control form-control-sm" formControlName="firstName">
+            </th>
+            <th class="table-column-fill sticky-top bg-white">
+                Příjmení
+                <input type="text" class="form-control form-control-sm" formControlName="lastName">
+            </th>
+            <th class="table-column-fill sticky-top bg-white">
+                Email
+                <input type="text" class="form-control form-control-sm" formControlName="email">
+            </th>
+            <th class="sticky-top bg-white">
+                Knihovník
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" formControlName="isLibrarian">
+                </div>
+            </th>
+            <th class="sticky-top bg-white">
+                Administrátor
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" formControlName="isAdministrator">
+                </div>
+            </th>
+            <th class="sticky-top bg-white text-nowrap">
+                <small class="text-muted font-weight-normal text-center d-block pb-1">{{changesText}}</small>
+                <button [class.invisible]="!hasChanges" [disabled]="!isAllValid" class="btn btn-sm btn-success mr-1"
+                    (click)="saveAll()">Uložit</button>
+                <button [class.invisible]="!hasChanges" class="btn btn-sm btn-danger ml-1"
+                    (click)="discardAll()">Zahodit</button>
+            </th>
+            <th class="sticky-top bg-white"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users"
+            [class.table-warning]="(user.isChanged || user.original === null) && user !== newUser">
+            <td class="table-column-id align-middle">
+                <ng-container *ngIf="user.original !== null">{{user.original.id}}</ng-container>
+                <i *ngIf="user.original === null" class="fas fa-plus"></i>
+            </td>
+            <td class="table-column-fill">
+                <input [class.is-invalid]="!user.isUserNameValid && user !== newUser"
+                    class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
+                    [(ngModel)]="user.newUserName">
+            </td>
+            <td class="table-column-fill">
+                <input [class.is-invalid]="!user.isPasswordValid && user !== newUser"
+                    class="form-control form-control-sm editable-cell"
+                    [placeholder]="user.original === null ? 'Nevyplněno' : 'Nezměněno'" type="password"
+                    [(ngModel)]="user.newPassword">
+            </td>
+            <td class="table-column-fill">
+                <input class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
+                    [(ngModel)]="user.newFirstName">
+            </td>
+            <td class="table-column-fill">
+                <input class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
+                    [(ngModel)]="user.newLastName">
+            </td>
+            <td class="table-column-fill">
+                <input [class.is-invalid]="!user.isEmailValid && user !== newUser"
+                    class="form-control form-control-sm editable-cell" placeholder="Nevyplněno" type="text"
+                    [(ngModel)]="user.newEmail">
+            </td>
+            <td>
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" [(ngModel)]="user.newIsLibrarian">
+                </div>
+            </td>
+            <td>
+                <div class="form-check text-center">
+                    <input style="width: 18px; height: 19px; cursor: pointer;" class="form-check-input position-static"
+                        type="checkbox" [(ngModel)]="user.newIsAdministrator">
+                </div>
+            </td>
+            <td class="pr-0 text-nowrap">
+                <button [class.invisible]="!user.isChanged && user.original !== null || user === newUser"
+                    [disabled]="!user.isValid" class="btn btn-sm btn-success mr-1" (click)="save(user)">Uložit</button>
+                <button [class.invisible]="!user.isChanged && user.original !== null || user === newUser"
+                    class="btn btn-sm btn-danger ml-1" (click)="discard(user)">Zahodit</button>
+            </td>
+            <td>
+                <i *ngIf="user.original !== null" class="fas fa-trash fa-2x cursor-pointer text-muted"
+                    style="font-size: 1.5em" (click)="remove(user)"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div *ngIf="users === undefined" class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Načítání...</span>
+    </div>
+</div>
+<div *ngIf="users !== undefined && users.length === 1 && !isFiltred" class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <span class="text-muted">Databáze neobsahuje žádné záznamy.</span>
+</div>
+<div *ngIf="users !== undefined && users.length === 0 && isFiltred" class="flex-grow-1 d-flex justify-content-center align-items-center">
+    <span class="text-muted">Podle zadaných kritérií nebyly nalezeny žádné záznamy.</span>
+</div>
