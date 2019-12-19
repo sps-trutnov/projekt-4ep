@@ -1,9 +1,11 @@
 <?php
+require_once("config.php");
+
 
 session_start();
 
 if(empty($_SESSION["userId"])){
-    header("Location: /authentication/signIn.php?redirectUrl=/");
+    header("Location: ".BASE_URL."/authentication/signIn.php?redirectUrl=/");
     exit();
 }
 ?>
@@ -17,8 +19,8 @@ if(empty($_SESSION["userId"])){
     <title>Knihovna</title>
 </head>
 <body>
-    <a href="/uzivatel/www/">Uživatel</a>
-    <a href="/knihovnik/www/">Knihovník</a>
-    <a href="/sysadmin/www/">Sysadmin</a>
+    <a href="<?=BASE_URL?>/uzivatel/www/">Uživatel</a>
+    <a href="<?=BASE_URL?>/knihovnik/www/">Knihovník</a>
+    <a href="<?=BASE_URL?>/sysadmin/www/">Sysadmin</a>
 </body>
 </html>
