@@ -20,7 +20,10 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
     }
 
     function getById(int $id): ?BookRequest {
-        $statement = $this->_connection->prepare("SELECT * FROM book_requests WHERE id = ?");
+        $statement = $this->_connection->prepare("SELECT br.*, b.name as bookName, CONCAT_WS(' ', users.lastname, users.firstname) as userName FROM book_requests br 
+        LEFT JOIN books b on b.id = br.book_ID
+        LEFT JOIN users u on u.id = br.user_ID
+        WHERE id = ?");
         $statement->execute($id);
 
         $row = $statement->fetch();
@@ -44,10 +47,13 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         $statement->execute([$id]);
     }
     function getAll(): iterable {
-        $statement = $this->_connection->query("SELECT * FROM book_requests");
+        $statement = $this->_connection->query("SELECT br.*, b.name as bookName, CONCAT_WS(' ', users.lastname, users.firstname) as userName FROM book_requests br 
+        LEFT JOIN books b on b.id = br.book_ID
+        LEFT JOIN users u on u.id = br.user_ID
+        ");
 
         foreach ($statement as $row) {
-            yield new BookRequest($row["id"], $row["user_ID"], $row["book_ID"], $row["confirmed"], $row["request_added"]);
+            yield new BookRequest($row["id"], $row["user_ID"], $row["book_ID"], $row["confirmed"], $row["request_added"], $row["userName"], $row["bookName"]);
         }
     }
 }
