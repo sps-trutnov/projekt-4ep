@@ -50,8 +50,11 @@ class BookController extends AbstractController {
     public function borrow(): ActionResultInterface {
         $bookRequests = $this->_bookRequestRepository->getAll();
 
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
         return parent::view("views/book/borrow.phtml",[
-            "bookRequests" => $bookRequests
+            "bookRequests" => $bookRequests,
+            "returnUrl" => $returnUrl
         ]);
     }
 
