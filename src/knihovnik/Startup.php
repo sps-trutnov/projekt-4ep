@@ -16,6 +16,7 @@ class Startup {
         $config->for("\domain\condition\ConditionRepositoryInterface")->useClass("\domain\condition\PDOConditionRepository");
         $config->for("\domain\genre\GenreRepositoryInterface")->useClass("\domain\genre\PDOGenreRepository");
         $config->for("\domain\user\UserRepositoryInterface")->useClass("\domain\user\PDOUserRepository");
+        $config->for("\domain\bookRequest\BookRequestRepositoryInterface")->useClass("\domain\bookRequest\PDOBookRequestRepository");
     }
     
     public function configurePipeline(MiddlewarePipeline $pipeline, DependencyProviderInterface $provider) {
