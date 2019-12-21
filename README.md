@@ -1,2 +1,1 @@
-##Jak zkompilovat
-
+# Knihovna SPŠ Trutnov
