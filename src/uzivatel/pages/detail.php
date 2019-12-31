@@ -61,15 +61,17 @@
                 <input type="hidden" name="request_userID" value="<?php echo($_SESSION["user_ID"]) ?>">
                 <input type="hidden" name="request_bookID" value="<?php echo($detail["ID"]) ?>">
                 <?php
-                    echo "<input class='detail_button' type='submit' name='submit_request' value='";
+                 
                     $data = is_queued();
                     if($data[0]){ 
-                        echo "Zažádat o zapůjčení'> ";
+                        echo "<input class='detail_button' type='submit' name='submit_request' value='Zažádat o zapůjčení'> ";
                     }
                     else{
-                        if($data[1]) $text = "Zažádání bylo schváleno.";
-                        else $text = "Čekání na schválení.";
-                        echo "Zrušit žádost'> ".$text;
+                        if($data[1]) echo "Zažádání bylo schváleno.";
+                        else {
+                        echo "<input class='detail_button' type='submit' name='submit_request' value='Zrušit žádost'>";
+                        echo "Čekání na schválení.";
+                    }
                     }
                     //echo is_queued();
                 ?>

@@ -144,6 +144,7 @@ function get_numberOfBorrows(){
     include "./base/db.php";
     $user_ID=$_SESSION["user_ID"];
     $IDKnihy = $_GET["id"];
+
     $stmt=$db->prepare("SELECT COUNT(user_ID) AS requests_count FROM book_requests WHERE user_ID <> $user_ID AND book_ID = ?");
 
     $stmt->execute(array($IDKnihy));
