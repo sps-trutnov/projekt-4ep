@@ -1,0 +1,16 @@
+@media (prefers-color-scheme: dark) {
+    body, .bg-white {
+        background-color: #252525 !important;
+        color: white;
+    }
+    
+    .form-control, .form-control:focus {
+        background-color: #333333;
+        border-color: #444444;
+        color: white;
+    }
+    
+    .form-control:disabled {
+        background-color: #444444;
+    }
+}
