@@ -1,7 +1,7 @@
 <?php
 
 function writeErr($code){
-    $err=["EASTER 🥚","Nebylo zadáno ID knihy!","Kniha s tímto ID se nenachází v seznamu!"];
+    $err=["EASTER🥚","Nebylo zadáno ID knihy!","Kniha s tímto ID se nenachází v seznamu!"];
 
     echo("<div style='color:red'>".$err[$code].'</div>');
 
@@ -32,7 +32,7 @@ function echoList()
 
         echo "<div id='booklist'>";
         echo "<table id='booklisttable'>";
-        echo "<tr><th>Název knihy</th><th>Autor</th><th>Rok vydání</th><th>Stav</th><th>Umístění</th><th>Žánr</th><th colspan='2'>Dostupnost</th><th>Přejít na detail knihy</th></tr>";
+        echo "<tr><th>Název knihy</th><th>Autor</th><th>Rok vydání</th><th>Stav</th><th>Umístění</th><th>Žánr</th><th>Dostupnost</th><th>Přejít na detail knihy</th></tr>";
 
         foreach ($booklist as $book) 
         {
@@ -49,7 +49,7 @@ function echoList()
             echo "<tr>";
 
             echo "<td>" . $nazev_knihy . "</td><td>" . $autor_knihy . "</td><td>" . $rok_knihy . "</td><td>" . 
-                $stav_knihy . "</td><td>" . $umisteni_knihy . "</td><td>" . $zanr . "</td><td class='availabilityIcon'>" . $dostupnost_knihy . "</td><td><div class='tooltip'>stav<span class='tooltiptext'></span></div></td><td>" . "<form method='post' action='./?p=detail&id=$ID_knihy'><input class='detail_input' type='submit' value='Přejít na detail'></form>";
+                $stav_knihy . "</td><td>" . $umisteni_knihy . "</td><td>" . $zanr . "</td><td class='availabilityIcon tooltip'>" . $dostupnost_knihy . "</td><td>" . "<form method='post' action='./?p=detail&id=$ID_knihy'><input class='detail_input' type='submit' value='Přejít na detail'></form>";
 
             echo "</tr>";
         }

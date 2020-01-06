@@ -35,7 +35,7 @@
         <?php if($loggedIn){ 
             
 
-            echo (' <div class="dropdown" id="horninavigace-log">
+            echo (' <div class="dropdown" id="horninavigace-log" >
                         <a href="./" class="header_user"><span class="flaticon-user"></span>'.showProfileInfo().'</a>
                         <div class="dropdown-content">');
                         if($_SESSION['isAdmin']){

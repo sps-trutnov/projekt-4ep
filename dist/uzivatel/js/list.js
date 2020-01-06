@@ -36,19 +36,19 @@ var tooltip = document.getElementsByClassName("tooltiptext");
       
       if (availability[i].innerHTML == 0)
       {
-        availability[i].innerHTML = "";
+        availability[i].innerHTML = "<span class='tooltiptext'></span>";
         availability[i].classList.add("available_icon");
         tooltip[i].innerHTML = "Dostupné";
       }
       else if (availability[i].innerHTML == 1)
       {
-        availability[i].innerHTML = "";
+        availability[i].innerHTML = "<span class='tooltiptext'></span>";
         availability[i].classList.add("reserved_icon");
         tooltip[i].innerHTML = "Rezervováno";
       }
       else
       {
-        availability[i].innerHTML = "";
+        availability[i].innerHTML = "<span class='tooltiptext'></span>";
         availability[i].classList.add("unavailable_icon");
         tooltip[i].innerHTML = "Nedostupné";
       }
