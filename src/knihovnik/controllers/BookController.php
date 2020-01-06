@@ -48,13 +48,34 @@ class BookController extends AbstractController {
     }
 
     public function borrow(): ActionResultInterface {
-        $bookRequests = $this->_bookRequestRepository->getAll();
+        $bookRequests = $this->_bookRequestRepository->getUnconfirmed();
 
         $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
 
         return parent::view("views/book/borrow.phtml",[
             "bookRequests" => $bookRequests,
             "returnUrl" => $returnUrl
+        ]);
+    }
+
+    public function borrowPost($id, $act): ActionResultInterface {
+
+        if(empty($id) || empty($act)) {
+            return parent::redirectToAction("Book", "Borrow", [
+                "errors" => ["Upravená kniha nebyla v databázi."]
+            ]);
+        }
+
+        $bookRequest = $this->_bookRequestRepository->getById($id);
+
+        if($act == "accept") {
+            $bookRequest->setConfirmed(true);
+        }
+
+        $this->_bookRequestRepository->update($bookRequest);
+
+        return parent::view("views/Book/Borrow.phtml", [
+            "bookRequests" => $this->_bookRequestRepository->getUnconfirmed()
         ]);
     }
 
