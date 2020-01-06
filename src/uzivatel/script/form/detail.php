@@ -69,6 +69,15 @@ if(isset($_POST["request_userID"]) && isset($_POST["request_bookID"]) && isset($
     }
     else{
         if($query->rowCount()!=0){
+            
+            $select_dotaz = $db->prepare("SELECT id FROM book_requests WHERE book_ID=?");
+            $select_dotaz->execute(array($request_bookID));
+            if($select_dotaz->rowCount()==1){
+            $update_dotaz=$db->prepare("UPDATE books SET borrowed_by = ? WHERE id = ?");
+            $update_dotaz->execute(array(0,$request_bookID));
+                echo('done!');
+            }
+
             $remove_query=$db->prepare("DELETE FROM book_requests WHERE user_ID=? AND book_ID=?");
             $remove_query->execute(array($request_userID,$request_bookID));
         }
