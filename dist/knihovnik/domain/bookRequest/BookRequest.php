@@ -1,5 +1,5 @@
 <?php
-namespace domain\bookrequest;
+namespace domain\bookRequest;
 
 class BookRequest {
     private $_id;

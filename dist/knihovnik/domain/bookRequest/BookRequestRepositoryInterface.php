@@ -1,5 +1,5 @@
 <?php
-namespace domain\bookrequest;
+namespace domain\bookRequest;
 
 interface BookRequestRepositoryInterface {
     function add(int $user_id, int $book_id): BookRequest;
