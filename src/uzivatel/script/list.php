@@ -6,11 +6,29 @@ function writeErr($code){
     echo("<div style='color:red'>".$err[$code].'</div>');
 
   }
+
 function echoList()
 {
     include "./base/db.php";
 
-    $dotaz = $db->prepare(" SELECT books.id,books.ISBN,books.name,books.year,books.borrowed_by,authors.firstname,authors.lastname,conditions.condition,places.place, genres.genre 
+    $dotaz = $db->prepare("SELECT book_id, confirmed FROM book_requests ORDER BY book_id DESC");
+    $dotaz->execute();
+    $data = $dotaz->fetchAll();
+    $pole = array_fill(0,$data[0][0] + 1,0);
+    
+    foreach ($data as $mujRequest){
+        if($mujRequest['confirmed'] == 0){
+            $reserved =1;
+        }
+        else{
+            $reserved =2;
+        }
+
+        if($reserved > $pole[$mujRequest['book_id']])
+        $pole[$mujRequest['book_id']] = $reserved;    
+    }
+
+    $dotaz = $db->prepare(" SELECT books.id,books.ISBN,books.name,books.year,authors.firstname,authors.lastname,conditions.condition,places.place, genres.genre 
                             FROM books 
                             INNER JOIN authors on books.author_id=authors.id 
                             INNER JOIN conditions on books.condition_id=conditions.id 
@@ -44,8 +62,12 @@ function echoList()
             $stav_knihy = $book["condition"];
             $umisteni_knihy = $book["place"];
             $zanr = $book["genre"];
-            $dostupnost_knihy = $book["borrowed_by"];
-            
+            if(!isset($pole[$book["id"]])){
+                $dostupnost_knihy = 0;
+            }
+            else{
+            $dostupnost_knihy = $pole[$book["id"]];
+        }
             echo "<tr>";
 
             echo "<td>" . $nazev_knihy . "</td><td>" . $autor_knihy . "</td><td>" . $rok_knihy . "</td><td>" . 
