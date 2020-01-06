@@ -49,23 +49,23 @@ function createAppInitializer(appInitializeService: AppInitializeService) {
         },
         {
             provide: API_URL,
-            useValue: "/sysadmin/api"
+            useValue: "/knihovna/sysadmin/api"
         },
         {
             provide: SIGN_IN_URL,
-            useValue: "/authentication/signIn.php"
+            useValue: "/knihovna/authentication/signIn.php"
         },
         {
             provide: SIGN_OUT_URL,
-            useValue: "/authentication/signOut.php"
+            useValue: "/knihovna/authentication/signOut.php"
         },
         {
             provide: USER_MODULE_URL,
-            useValue: "/uzivatel"
+            useValue: "/knihovna/uzivatel"
         },
         {
             provide: LIBRARIAN_MODULE_URL,
-            useValue: "/knihovnik"
+            useValue: "/knihovna/knihovnik"
         }
     ],
     entryComponents: [

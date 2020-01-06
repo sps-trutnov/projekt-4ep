@@ -671,23 +671,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                         },
                         {
                             provide: _core_api_api__WEBPACK_IMPORTED_MODULE_10__["API_URL"],
-                            useValue: "/sysadmin/api"
+                            useValue: "/knihovna/sysadmin/api"
                         },
                         {
                             provide: _routing_can_activates_signed_in_can_activate__WEBPACK_IMPORTED_MODULE_13__["SIGN_IN_URL"],
-                            useValue: "/authentication/signIn.php"
+                            useValue: "/knihovna/authentication/signIn.php"
                         },
                         {
                             provide: _pages_app_main_navigation_main_navigation_component__WEBPACK_IMPORTED_MODULE_8__["SIGN_OUT_URL"],
-                            useValue: "/authentication/signOut.php"
+                            useValue: "/knihovna/authentication/signOut.php"
                         },
                         {
                             provide: _pages_app_main_navigation_main_navigation_component__WEBPACK_IMPORTED_MODULE_8__["USER_MODULE_URL"],
-                            useValue: "/uzivatel"
+                            useValue: "/knihovna/uzivatel"
                         },
                         {
                             provide: _pages_app_main_navigation_main_navigation_component__WEBPACK_IMPORTED_MODULE_8__["LIBRARIAN_MODULE_URL"],
-                            useValue: "/knihovnik"
+                            useValue: "/knihovna/knihovnik"
                         }
                     ],
                     entryComponents: [
