@@ -1,5 +1,6 @@
 <?php
 $user = $provideDependency("\domain\user\User");
+$baseUrl = BASE_URL;
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +30,13 @@ $user = $provideDependency("\domain\user\User");
                     <li class="nav-item">
                         <a class="nav-link" href="<?=$getActionUrl("Book", "Print", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true">Tisk</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=$baseUrl?>/uzivatel" tabindex="-1" aria-disabled="true">Uživatel</a>
+                    </li>
                 </ul>
                 <span class="navbar-text">
                     <?=$user->getFullName()?>
-                    <a href="/authentication/signOut.php?redirectUrl=/knihovnik/www/">
+                    <a href="<?=$baseUrl?>/authentication/signOut.php?redirectUrl=<?=$baseUrl?>">
                         <img src="img/flaticon/exit.svg" class="d-inline-block align-top icon-sm" alt="Odhlásit" title="Odhlásit">
                     </a>
                 </span>
