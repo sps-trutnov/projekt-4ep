@@ -70,10 +70,12 @@ class BookController extends AbstractController {
 
         if($act == "accept") {
             $bookRequest->setConfirmed(true);
+            $this->_bookRequestRepository->update($bookRequest);
         }
-
-        $this->_bookRequestRepository->update($bookRequest);
-
+        else if($act == "decline"){
+            $this->_bookRequestRepository->removeById($id);
+        }
+        
         return parent::redirectToAction("Book", "Borrow");
     }
 
