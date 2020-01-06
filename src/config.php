@@ -9,7 +9,7 @@ const DB_USER = "prouzav";
 const DB_PASS = "Fact0ri0j3sup3r";
 
 // URL, kde se aktuálně nachází kořen projektu
-const BASE_URL = "/src";
+const BASE_URL = "/Projekt/Hluboko/cesta/slozita/je/";
 
 // 
 const CORS_ALLOW_ALL_ORIGINS = false;
