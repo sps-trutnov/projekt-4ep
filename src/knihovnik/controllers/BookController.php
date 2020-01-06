@@ -6,6 +6,7 @@ use domain\condition\ConditionRepositoryInterface;
 use domain\genre\GenreRepositoryInterface;
 use domain\author\AuthorRepositoryInterface;
 use domain\place\PlaceRepositoryInterface;
+use domain\bookRequest\BookRequestRepositoryInterface;
 use actionResults\ActionResultInterface;
 use validation\Validator;
 
@@ -15,14 +16,15 @@ class BookController extends AbstractController {
     private $_genreRepository;
     private $_authorRepository;
     private $_placeRepository;
-    private $_userAuthenticationService;
+    private $_bookRequestRepository;
 
-    public function __construct(BookRepositoryInterface $bookRepository, ConditionRepositoryInterface $conditionRepository, GenreRepositoryInterface $genreRepository, AuthorRepositoryInterface $authorRepository, PlaceRepositoryInterface $placeRepository) {
+    public function __construct(BookRepositoryInterface $bookRepository, BookRequestRepositoryInterface $bookRequestRepository, ConditionRepositoryInterface $conditionRepository, GenreRepositoryInterface $genreRepository, AuthorRepositoryInterface $authorRepository, PlaceRepositoryInterface $placeRepository) {
         $this->_bookRepository = $bookRepository;
         $this->_conditionRepository = $conditionRepository;
         $this->_genreRepository = $genreRepository;
         $this->_authorRepository = $authorRepository;
         $this->_placeRepository = $placeRepository;
+        $this->_bookRequestRepository = $bookRequestRepository;
     }
 
     public function index(int $page = 0, string $search = ""): ActionResultInterface {
@@ -46,7 +48,14 @@ class BookController extends AbstractController {
     }
 
     public function borrow(): ActionResultInterface {
-        return parent::view("views/book/borrow.phtml");
+        $bookRequests = $this->_bookRequestRepository->getAll();
+
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+
+        return parent::view("views/book/borrow.phtml",[
+            "bookRequests" => $bookRequests,
+            "returnUrl" => $returnUrl
+        ]);
     }
 
     public function return(): ActionResultInterface {

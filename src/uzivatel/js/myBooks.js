@@ -6,14 +6,14 @@ window.onload=function(){
 
 function borrowedIcon() {
 
-var borrowed = document.getElementsByClassName("borrowedIcon");
+ borrowed = document.getElementsByClassName("borrowedIcon");
 
     var i;
     console.log(borrowed[0].innerHTML);
 
     for (i = 0; i < borrowed.length; i++) {
         
-        if (borrowed[i].innerHTML == 0)
+        if (borrowed[i].innerHTML == 0 )
         {
         borrowed[i].innerHTML = "";
         borrowed[i].classList.add("requested_icon");
@@ -72,6 +72,8 @@ function dateCheck() {
             if (status[j].innerHTML.includes("-"))
             {
             status[j].innerHTML = "Po termínu!";
+            borrowed[j].className = 'borrowedIcon requested_icon'
+           
             }
             else if (status[j].innerHTML.includes("+"))
             {

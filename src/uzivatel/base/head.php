@@ -26,7 +26,7 @@
     </a>
     <a href="./" class="<?php echo isActive("home") ?> ; hover"><span class="flaticon-home"></span>Domů</a>
     <a href="./?p=list" class="<?php echo isActive("list") ?> ; hover"><span class="flaticon-file"></span>Seznam knih</a>
-    <a href="./?p=qr_reader" class="<?php echo isActive("qr") ?> ; hover"><span class="flaticon-qr-code"></span>QR kódy</a>
+    <a href="./?p=qr_reader" class="<?php echo isActive("qr_reader") ?> ; hover"><span class="flaticon-qr-code"></span>QR kódy</a>
     
     <a href="./?p=myBooks" class="<?php echo isActive("myBooks") ?> ; hover"><span class="flaticon-bookmark"></span>Moje knihy<div id="notification_bar" class=""><div id="notification_number"></div></div></a>
     
@@ -39,10 +39,10 @@
                         <a href="./" class="header_user"><span class="flaticon-user"></span>'.showProfileInfo().'</a>
                         <div class="dropdown-content">');
                         if($_SESSION['isAdmin']){
-                            echo('<a href="../../../sysadmin/"><div><span class="flaticon-exit"></span>Admin</div></a>');
+                            echo('<a href="../sysadmin/"><div><span class="flaticon-exit"></span>Admin</div></a>');
                         }
                         if($_SESSION['isLibrarian']){
-                            echo('<a href="../../../knihovnik/"><div><span class="flaticon-exit"></span> Knihovník</div></a>');
+                            echo('<a href="../knihovnik/"><div><span class="flaticon-exit"></span> Knihovník</div></a>');
                         }echo('
                             <a href="./?p=pass_change"><div><span class="flaticon-pass"></span> Změna hesla </div></a><br>
                             <a href="./?a=logout"><div><span class="flaticon-exit"></span> Odhlásit se</div></a>

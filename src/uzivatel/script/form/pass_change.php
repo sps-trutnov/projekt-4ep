@@ -6,7 +6,7 @@ if(isset($_POST["current_pass"]) && $_POST["current_pass"] !="" && isset($_POST[
     $actual_user_id = $_SESSION["user_ID"];
 
 
-    $query=$db->prepare("SELECT * FROM users WHERE id='$actual_user_id' AND account_type=2");
+    $query=$db->prepare("SELECT * FROM users WHERE id='$actual_user_id'");
 
     $query->execute();
 
@@ -22,7 +22,7 @@ if(isset($_POST["current_pass"]) && $_POST["current_pass"] !="" && isset($_POST[
            {
                 $new_hash = password_hash($_POST["new_pass"], PASSWORD_DEFAULT);
 
-            $change_query=$db->prepare("UPDATE users SET password='$new_hash' WHERE id='$actual_user_id' AND account_type=2");
+            $change_query=$db->prepare("UPDATE users SET password='$new_hash' WHERE id='$actual_user_id'");
 
             $change_query->execute();
 

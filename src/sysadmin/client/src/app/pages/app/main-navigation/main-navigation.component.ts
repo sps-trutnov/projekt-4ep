@@ -1,8 +1,6 @@
-import { Component, OnInit, OnDestroy, InjectionToken, Inject } from '@angular/core';
+import { Component, InjectionToken, Inject } from '@angular/core';
 import { User } from 'src/app/core/users/user';
 import { SignInService } from 'src/app/core/sign-in/sign-in.service';
-import { UserService } from 'src/app/core/users/user.service';
-import { Router } from '@angular/router';
 
 export const SIGN_OUT_URL = new InjectionToken<string>("Sign out page url.");
 export const USER_MODULE_URL = new InjectionToken<string>("User module root page url.");
@@ -18,9 +16,8 @@ export class MainNavigationComponent {
         return this.signInService.signedUser;
     }
 
-    constructor(private readonly signInService: SignInService, private readonly userService: UserService, private readonly router: Router,
-        @Inject(SIGN_OUT_URL) private readonly signOutUrl: string, @Inject(USER_MODULE_URL) readonly userModuleUrl: string, 
-        @Inject(LIBRARIAN_MODULE_URL) readonly librarianModuleUrl: string) {
+    constructor(private readonly signInService: SignInService, @Inject(SIGN_OUT_URL) private readonly signOutUrl: string, 
+        @Inject(USER_MODULE_URL) readonly userModuleUrl: string, @Inject(LIBRARIAN_MODULE_URL) readonly librarianModuleUrl: string) {
     }
 
     signOut() {
