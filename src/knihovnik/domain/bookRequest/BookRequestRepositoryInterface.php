@@ -8,4 +8,5 @@ interface BookRequestRepositoryInterface {
     function removeById(int $id);
     function getAll(): iterable;
     function getUnconfirmed(): iterable;
+    function getConfirmed(): iterable;
 }
