@@ -55,7 +55,16 @@ if(isset($_POST["request_userID"]) && isset($_POST["request_bookID"]) && isset($
             $insert_query=$db->prepare("INSERT INTO book_requests (user_ID, book_ID) VALUES (?, ?)");
             $insert_query->execute(array($request_userID,$request_bookID));
 
+            $select_dotaz = $db->prepare("SELECT borrowed_by FROM books WHERE id = ?");
+            $select_dotaz->execute(array($request_bookID));
+            $mojeData = $select_dotaz->fetch();
 
+            if($mojeData['borrowed_by'] == 0){
+            $update_dotaz=$db->prepare("UPDATE books SET borrowed_by = ? WHERE id = ?");
+            $update_dotaz->execute(array(1,$request_bookID));
+                echo('done!');
+
+        }
         }
     }
     else{
