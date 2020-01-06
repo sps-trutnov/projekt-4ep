@@ -9,7 +9,7 @@ const DB_USER = "knihovna";
 const DB_PASS = "Heslo96321";
 
 // URL, kde se aktuálně nachází kořen projektu
-const BASE_URL = "/src";
+const BASE_URL = "/Projekt/Hluboko/cesta/slozita/je/";
 
 // 
 const CORS_ALLOW_ALL_ORIGINS = false;
