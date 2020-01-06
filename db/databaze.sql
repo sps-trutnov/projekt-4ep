@@ -414,9 +414,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `is_administrator`, `is_librarian`, `email`) VALUES
-(1, 'Dragoun', '$2y$10$aEG7N5vQphgL39saLC6Psee4oawyy3JDt/fHPgo5uMQHDSD9pfo/e', 'Jiří', 'Dragoun', 1, 1, ''),
-(4, 'user', '$2y$10$NaeY6jxdDCoTUq0K4YYnDOvToOpJ2qZlsUVrmhouUjHHdKfDtGVwW', '', '', 1, 1, ''),
-(5, 'ahoj', '$2y$10$KHDDsMqKAuzfiZYmdbfZlOlJRgWtc6dxcVF2RbWNvfN.P5WTwWHy6', '', '', 1, 1, '');
+(1, 'senkyr', '$2y$10$plhqbd1jFMMejynzrLjuweoqiVIH/KBid9K0waZXWSXgXkUFRqEK.', 'Jakub', 'Šenkýř', 1, 1, ''),
+(2, 'dragoun', '$2y$10$Q7AkXVHRqeuaZNu4paq8h.LJS12vKUaRbwWd/VALXc5SKSf2OQdGa', 'Jiří', 'Dragoun', 1, 1, ''),
+(3, 'dub', '$2y$10$nAaSQjQpszMuI1Ek1NHma.O2zJsTbXQRzhGCoE8pFyzScFR32p7d.', 'Michal', 'Dub', 1, 1, ''),
+(4, 'jorka', '$2y$10$vah/vmEZiNL65SjUMjHT0Or7/TKd5VfT0DhzEbZxZ4vqb1eY5PZ0y', 'Jan', 'Jörka', 1, 1, ''),
+(5, 'prouza', '$2y$10$Vls6kgbeo/MgxIdtUEuGCeA3PvxhacWh85DZDr6eN5MGgQXqfP9q2', 'Vojtěch', 'Prouza', 1, 1, '');
 
 --
 -- Klíče pro exportované tabulky
