@@ -1,4 +1,11 @@
 <?php
+
+function writeErr($code){
+    $err=["EASTER 🥚","Nebylo zadáno ID knihy!","Kniha s tímto ID se nenachází v seznamu!"];
+
+    echo("<div style='color:red'>".$err[$code].'</div>');
+
+  }
 function echoList()
 {
     include "./base/db.php";

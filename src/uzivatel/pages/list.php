@@ -1,7 +1,7 @@
 <?php if(pathinfo($_SERVER["SCRIPT_FILENAME"], PATHINFO_FILENAME) != "index") die("error, no dirrect access aproved"); ?>
 
 <h1 class="stranka_nadpis">Seznam knih</h1>
-
+<?php if(isset($_GET["e"])) writeErr($_GET["e"]); ?>
 
 <!-- Připraveno pro případný PHP Ajax
 

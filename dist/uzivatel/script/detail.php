@@ -10,6 +10,11 @@ getDetail(){
     //if(isset($_POST['prejitnadetail']))
     {
         include "./base/db.php";
+        if(!$_GET["id"]){
+            header('location:./?p=list&e=1');
+            die();
+        }
+
         $IDKnihy = $_GET["id"];
 
         $dotaz = $db->prepare(" SELECT books.id,books.ISBN,books.name,books.year,books.description,books.page_count,books.maturita_ready,authors.firstname,authors.lastname,conditions.condition,places.place 
@@ -22,8 +27,8 @@ getDetail(){
 
         if($dotaz->rowCount() == 0)
         {
-            echo("Nenalezena žádná kniha v databázi.");
-            echo $IDKnihy;
+            header('location:./?p=list&e=2');
+            die();
         }
         else
         {
