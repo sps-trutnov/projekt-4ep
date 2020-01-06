@@ -74,13 +74,26 @@ class BookController extends AbstractController {
 
         $this->_bookRequestRepository->update($bookRequest);
 
-        return parent::view("views/Book/Borrow.phtml", [
-            "bookRequests" => $this->_bookRequestRepository->getUnconfirmed()
-        ]);
+        return parent::redirectToAction("Book", "Borrow");
     }
 
     public function return(): ActionResultInterface {
-        return parent::view("views/book/return.phtml");
+
+        $bookRequests = $this->_bookRequestRepository->getConfirmed();
+
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
+
+        return parent::view("views/book/return.phtml",[
+            "bookRequests" => $bookRequests,
+            "returnUrl" => $returnUrl
+        ]);
+    }
+
+    public function returnPost($id): ActionResultInterface {
+
+        $this->_bookRequestRepository->removeById($id);
+
+        return parent::redirectToAction("Book", "Return");
     }
 
     public function reservations(): ActionResultInterface {

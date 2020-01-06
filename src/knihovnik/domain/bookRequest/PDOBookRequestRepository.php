@@ -75,4 +75,19 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
             yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["confirmed"], strtotime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
         }
     }
+
+    function getConfirmed(): iterable {
+        $statement = $this->_connection->query("SELECT br.*, b.name as bookName, CONCAT_WS(' ', u.lastname, u.firstname) as userName, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, p.place as placeName FROM book_requests br 
+        LEFT JOIN books b
+        LEFT JOIN authors a on b.author_id = a.id
+        LEFT JOIN places p on b.place_id = p.id
+        on b.id = br.book_ID
+        LEFT JOIN users u on u.id = br.user_ID
+        WHERE br.confirmed = 1
+        ");
+
+        foreach ($statement as $row) {
+            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["confirmed"], strtotime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
+        }
+    }
 }
