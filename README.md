@@ -1,5 +1,9 @@
 # Knihovna SPŠ Trutnov
 
+## Konfigurace
+1. `/src/config.php`
+2. `/src/sysadmin/client/src/app/app.module.js`
+
 ## Sysadmin - kompilace clienta
 1. Stáhnout [Node.js](https://nodejs.org)
 2. `npm install -g @angular/cli`
