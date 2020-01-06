@@ -1008,10 +1008,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var src_app_core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/core/sign-in/sign-in.service */ "./src/app/core/sign-in/sign-in.service.ts");
-/* harmony import */ var src_app_core_users_user_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/core/users/user.service */ "./src/app/core/users/user.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-
-
 
 
 
@@ -1019,10 +1015,8 @@ const SIGN_OUT_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionTo
 const USER_MODULE_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("User module root page url.");
 const LIBRARIAN_MODULE_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Librarian module root page url.");
 let MainNavigationComponent = class MainNavigationComponent {
-    constructor(signInService, userService, router, signOutUrl, userModuleUrl, librarianModuleUrl) {
+    constructor(signInService, signOutUrl, userModuleUrl, librarianModuleUrl) {
         this.signInService = signInService;
-        this.userService = userService;
-        this.router = router;
         this.signOutUrl = signOutUrl;
         this.userModuleUrl = userModuleUrl;
         this.librarianModuleUrl = librarianModuleUrl;
@@ -1037,8 +1031,6 @@ let MainNavigationComponent = class MainNavigationComponent {
 };
 MainNavigationComponent.ctorParameters = () => [
     { type: src_app_core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_2__["SignInService"] },
-    { type: src_app_core_users_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [SIGN_OUT_URL,] }] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [USER_MODULE_URL,] }] },
     { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [LIBRARIAN_MODULE_URL,] }] }
@@ -1049,8 +1041,8 @@ MainNavigationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./main-navigation.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/app/main-navigation/main-navigation.component.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./main-navigation.component.scss */ "./src/app/pages/app/main-navigation/main-navigation.component.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(SIGN_OUT_URL)), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(USER_MODULE_URL)),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(LIBRARIAN_MODULE_URL))
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(SIGN_OUT_URL)),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(USER_MODULE_URL)), tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(LIBRARIAN_MODULE_URL))
 ], MainNavigationComponent);
 
 
