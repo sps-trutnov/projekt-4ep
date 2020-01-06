@@ -14,7 +14,7 @@ class AuthorController extends AbstractController {
     }
 
     public function Add(): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         return parent::view("views/author/add.phtml", [
             "returnUrl" => $returnUrl

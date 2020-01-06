@@ -12,7 +12,7 @@ class BookRequest {
     private $_requestAdded;
     private $_placeName;
     
-    public function __construct(int $id, int $userId, int $bookId, bool $confirmed, int $requestAdded, string $userName = "", string $bookName = "", string $bookAuthorName = "", string $placeName = "") {
+    public function __construct(int $id, int $userId, int $bookId, bool $confirmed, string $requestAdded, string $userName = "", string $bookName = "", string $bookAuthorName = "", string $placeName = "") {
         $this->_id = $id;
         $this->_userId = $userId;
         $this->_userName = $userName;

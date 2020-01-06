@@ -28,7 +28,7 @@ class BookController extends AbstractController {
     }
 
     public function index(int $page = 0, string $search = ""): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         if($search != ""){
             $allBooks = $this->_bookRepository->search($search);
@@ -48,9 +48,9 @@ class BookController extends AbstractController {
     }
 
     public function borrow(): ActionResultInterface {
-        $bookRequests = $this->_bookRequestRepository->getAll();
+        $bookRequests = $this->_bookRequestRepository->getUnconfirmed();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         return parent::view("views/book/borrow.phtml",[
             "bookRequests" => $bookRequests,
@@ -58,8 +58,44 @@ class BookController extends AbstractController {
         ]);
     }
 
+    public function borrowPost($id, $act): ActionResultInterface {
+
+        if(empty($id) || empty($act)) {
+            return parent::redirectToAction("Book", "Borrow", [
+                "errors" => ["Upravená kniha nebyla v databázi."]
+            ]);
+        }
+
+        $bookRequest = $this->_bookRequestRepository->getById($id);
+
+        if($act == "accept") {
+            $bookRequest->setConfirmed(true);
+            $this->_bookRequestRepository->update($bookRequest);
+        }
+        else if($act == "decline"){
+            $this->_bookRequestRepository->removeById($id);
+        }
+        
+        return parent::redirectToAction("Book", "Borrow");
+    }
+
     public function return(): ActionResultInterface {
-        return parent::view("views/book/return.phtml");
+
+        $bookRequests = $this->_bookRequestRepository->getConfirmed();
+
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
+
+        return parent::view("views/book/return.phtml",[
+            "bookRequests" => $bookRequests,
+            "returnUrl" => $returnUrl
+        ]);
+    }
+
+    public function returnPost($id): ActionResultInterface {
+
+        $this->_bookRequestRepository->removeById($id);
+
+        return parent::redirectToAction("Book", "Return");
     }
 
     public function reservations(): ActionResultInterface {
@@ -72,7 +108,7 @@ class BookController extends AbstractController {
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         return parent::view("views/book/add.phtml", [
             "authors" => $authors,
@@ -116,7 +152,7 @@ class BookController extends AbstractController {
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         return parent::view("views/book/edit.phtml", [
             "book" => $book,
@@ -161,7 +197,7 @@ class BookController extends AbstractController {
     }
 
     public function detail(int $id): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         $book = $this->_bookRepository->getById($id);
         if($book == null)
@@ -174,7 +210,7 @@ class BookController extends AbstractController {
     }
 
     public function print(): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? "/";
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         $books = $this->_bookRepository->getAll();
         $places = $this->_placeRepository->getAll();

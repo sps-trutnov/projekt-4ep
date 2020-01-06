@@ -7,4 +7,6 @@ interface BookRequestRepositoryInterface {
     function update(BookRequest $book);
     function removeById(int $id);
     function getAll(): iterable;
+    function getUnconfirmed(): iterable;
+    function getConfirmed(): iterable;
 }

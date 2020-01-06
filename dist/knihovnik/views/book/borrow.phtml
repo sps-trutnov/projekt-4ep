@@ -31,11 +31,11 @@ $parentPath = "views/layout.phtml";
                 <td><?=$bookRequest->getPlaceName()?></td>
                 <td><?=$bookRequest->getUserName()?></td>
                 <td class="p-2">
-                    <a href='<?=$getActionUrl("Book", "BorrowPost", ["id" => $bookRequest->getId(), "action" => "accept", "returnUrl" => $getActionUrl("Book", "Borrow")])?>' tabindex="-1" class="px-1">
-                        <img class="icon" src="img/flaticon/tick.svg" alt="Detail" title="Přejít na detail">
+                    <a href='<?=$getActionUrl("Book", "BorrowPost", ["id" => $bookRequest->getId(), "act" => "accept", "returnUrl" => $getActionUrl("Book", "Borrow")])?>' tabindex="-1" class="px-1">
+                        <img class="icon" src="img/flaticon/tick.svg" alt="Půjčit" title="Půjčit knihu">
                     </a>
-                    <a href='<?=$getActionUrl("Book", "BorrowPost", ["id" => $bookRequest->getId(), "action" => "decline", "returnUrl" => $getActionUrl("Book", "Borrow")])?>' tabindex="-1" class="px-1">
-                        <img class="icon" src="img/flaticon/cross.svg" alt="Upravit" title="Upravit parametry">
+                    <a href='<?=$getActionUrl("Book", "BorrowPost", ["id" => $bookRequest->getId(), "act" => "decline", "returnUrl" => $getActionUrl("Book", "Borrow")])?>' tabindex="-1" class="px-1">
+                        <img class="icon" src="img/flaticon/cross.svg" alt="Zamítnout" title="Zamítnout výpůjčku">
                     </a>
                 </td>
             </tr>
