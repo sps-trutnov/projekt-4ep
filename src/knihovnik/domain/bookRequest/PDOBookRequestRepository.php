@@ -31,7 +31,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         if($row === false)
             return null;
 
-        return new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["confirmed"], $row["request_added"]);
+        return new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["state"], $row["book_borrowed"], $row["book_returned"], $row["request_added"]);
     }
 
     function update(BookRequest $book) {
@@ -57,7 +57,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         ");
 
         foreach ($statement as $row) {
-            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["confirmed"], strtotime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
+            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["state"], $row["book_borrowed"], $row["book_returned"], $row["request_added"], $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
         }
     }
 
@@ -72,7 +72,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         ");
 
         foreach ($statement as $row) {
-            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["confirmed"], strtotime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
+            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["state"], $row["book_borrowed"], $row["book_returned"], $row["request_added"], $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
         }
     }
 
@@ -87,7 +87,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         ");
 
         foreach ($statement as $row) {
-            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["confirmed"], strtotime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
+            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["state"], $row["book_borrowed"], $row["book_returned"], $row["request_added"], $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
         }
     }
 }

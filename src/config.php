@@ -1,15 +1,15 @@
 <?php
 // Adresa SQL serveru
-const DB_HOST = "";
+const DB_HOST = "localhost";
 // Název databáze
-const DB_NAME = "";
+const DB_NAME = "knihovna";
 // Přihlašovací jméno uživatele DB
-const DB_USER = "";
+const DB_USER = "knihovna";
 // Heslo uživatele DB
-const DB_PASS = "";
+const DB_PASS = "Heslo96321";
 
 // URL, kde se aktuálně nachází kořen projektu
-const BASE_URL = "";
+const BASE_URL = "/src";
 
 // 
 const CORS_ALLOW_ALL_ORIGINS = false;
