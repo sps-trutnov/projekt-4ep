@@ -11,6 +11,9 @@ use actionResults\ActionResultInterface;
 use validation\Validator;
 
 class BookController extends AbstractController {
+    private $returnUrl;
+    private $errors;
+
     private $_bookRepository;
     private $_conditionRepository;
     private $_genreRepository;
@@ -25,10 +28,12 @@ class BookController extends AbstractController {
         $this->_authorRepository = $authorRepository;
         $this->_placeRepository = $placeRepository;
         $this->_bookRequestRepository = $bookRequestRepository;
+
+        $this->returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
+        $this->errors = $_GET["errors"] ?? $_POST["errors"] ?? [];
     }
 
     public function index(int $page = 0, string $search = ""): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         if($search != ""){
             $allBooks = $this->_bookRepository->search($search);
@@ -43,18 +48,18 @@ class BookController extends AbstractController {
             "bookCount" => $bookCount,
             "page" => $page,
             "search" => $search,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 
     public function requests(): ActionResultInterface {
         $bookRequests = $this->_bookRequestRepository->getRequested();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
-
         return parent::view("views/book/requests.phtml",[
             "bookRequests" => $bookRequests,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 
@@ -82,11 +87,11 @@ class BookController extends AbstractController {
     public function reservations(): ActionResultInterface {
         $bookRequests = $this->_bookRequestRepository->getConfirmed();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         return parent::view("views/book/reservations.phtml",[
             "bookRequests" => $bookRequests,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 
@@ -98,6 +103,13 @@ class BookController extends AbstractController {
         }
 
         $bookRequest = $this->_bookRequestRepository->getById($id);
+
+        $borrowed = $this->_bookRequestRepository->getBorrowed();
+        foreach($borrowed as $alreadyBorrowed)
+            if($alreadyBorrowed->getBookId() == $bookRequest->getBookId())
+                return parent::redirectToAction("Book", "Reservations", [
+                    "errors" => ["Kniha je již zapůjčena"]
+                ]);
 
         $bookRequest->setBookBorrowed(new \DateTime());
         $bookRequest->setState(2);
@@ -111,11 +123,10 @@ class BookController extends AbstractController {
 
         $bookRequests = $this->_bookRequestRepository->getBorrowed();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
-
         return parent::view("views/book/return.phtml",[
             "bookRequests" => $bookRequests,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 
@@ -142,14 +153,13 @@ class BookController extends AbstractController {
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
-
         return parent::view("views/book/add.phtml", [
             "authors" => $authors,
             "places" => $places,
             "conditions" => $conditions,
             "genres" => $genres,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 
@@ -186,15 +196,14 @@ class BookController extends AbstractController {
         $conditions = $this->_conditionRepository->getAll();
         $genres = $this->_genreRepository->getAll();
 
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
-
         return parent::view("views/book/edit.phtml", [
             "book" => $book,
             "authors" => $authors,
             "places" => $places,
             "conditions" => $conditions,
             "genres" => $genres,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 
@@ -231,7 +240,6 @@ class BookController extends AbstractController {
     }
 
     public function detail(int $id): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         $book = $this->_bookRepository->getById($id);
         if($book == null)
@@ -239,12 +247,12 @@ class BookController extends AbstractController {
 
         return parent::view("views/book/detail.phtml", [
             "book" => $book,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 
     public function print(): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
         $books = $this->_bookRepository->getAll();
         $places = $this->_placeRepository->getAll();
@@ -261,7 +269,8 @@ class BookController extends AbstractController {
         return parent::view("views/book/print.phtml", [
             "books" => $booksArray,
             "places" => $placesArray,
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
         ]);
     }
 }
