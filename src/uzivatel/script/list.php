@@ -11,21 +11,24 @@ function echoList()
 {
     include "./base/db.php";
 
-    $dotaz = $db->prepare("SELECT book_id, confirmed FROM book_requests ORDER BY book_id DESC");
+    $dotaz = $db->prepare("SELECT book_id, state FROM book_requests ORDER BY book_id DESC");
     $dotaz->execute();
     $data = $dotaz->fetchAll();
     $pole = array_fill(0,$data[0][0] + 1,0);
     
     foreach ($data as $mujRequest){
-        if($mujRequest['confirmed'] == 0){
-            $reserved =1;
+        if($mujRequest['state'] == 2){
+            $reserved = $mujRequest['state'];
+        }
+        else if($mujRequest['state'] > 2){
+            $reserved = 0;
         }
         else{
-            $reserved =2;
+            $reserved = $mujRequest['state'] + 1;
         }
 
         if($reserved > $pole[$mujRequest['book_id']])
-        $pole[$mujRequest['book_id']] = $reserved;    
+             $pole[$mujRequest['book_id']] = $reserved;    
     }
 
     $dotaz = $db->prepare(" SELECT books.id,books.ISBN,books.name,books.year,authors.firstname,authors.lastname,conditions.condition,places.place, genres.genre 

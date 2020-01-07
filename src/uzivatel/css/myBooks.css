@@ -69,11 +69,11 @@ ul.borrowed_list {
 }
 
 .borrowed_icon {
-    background-image: url(../img/ikony/yellow_circle.png);
+    background-image: url(../img/ikony/green_circle.png);
 }
 
 .accepted_icon {
-    background-image: url(../img/ikony/green_circle.png);
+    background-image: url(../img/ikony/yellow_circle.png);
 }
 
 .requested_icon {

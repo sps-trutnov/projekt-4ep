@@ -6,13 +6,13 @@ function echoMyBooks()
 
 include "./base/db.php";
 
-    $dotaz = $db->prepare(" SELECT book_requests.id,book_requests.user_id,book_requests.book_id,book_requests.confirmed,book_requests.request_added,books.id,books.name,authors.id,authors.firstname,authors.lastname/*,authors.firstname,authors.lastname*/
+    $dotaz = $db->prepare(" SELECT book_requests.id,book_requests.user_id,book_requests.book_id,book_requests.state,book_requests.request_added,book_requests.book_borrowed, books.id,books.name,authors.id,authors.firstname,authors.lastname/*,authors.firstname,authors.lastname*/
                             FROM book_requests
 
                             INNER JOIN books on book_requests.book_id=books.id 
                             INNER JOIN authors on books.author_id=authors.id
 
-                            WHERE book_requests.user_id = ?
+                            WHERE book_requests.user_id = ? AND book_requests.state < 3 
                             ORDER BY book_requests.request_added"); 
                             
     $dotaz->execute(array($_SESSION["user_ID"]));
@@ -32,30 +32,37 @@ include "./base/db.php";
         foreach ($booklist as $book) 
         {
             $ID_knihy = $book["book_id"];
-            
-            $potvrzeno = $book["confirmed"];
+            $potvrzeno = $book["state"];
             $nazev_knihy = $book["name"];
             $autor_knihy = $book["firstname"]." ".$book["lastname"];
             $datum_zadosti = $book["request_added"];
+            $datum_zapujcky = $book['book_borrowed'];
+         
 
-            
-
-            $date = date_create($datum_zadosti);
-            date_add($date, date_interval_create_from_date_string('30 days'));
-            
-            if($potvrzeno !=0)
+            if($potvrzeno == 2 && $datum_zapujcky != NULL)
             {
-                $datum_vraceni = date_format($date, 'd.m.Y');
+                $date = date_create($datum_zapujcky);
+                date_add($date, date_interval_create_from_date_string('30 days'));
 
+                $datum_vraceni = date_format($date, 'd.m.Y');
                 $date_now = date_create(date("Y-m-d"));
                 $interval = date_diff($date_now, $date);
                 $pocet_dnu = ($interval->format('%R%a'));
             }
-            else
+            else if($potvrzeno == 1)
+            {
+                $datum_vraceni = "Vyzvedněte si knihu";
+                $pocet_dnu = "Vyzvedněte si knihu";
+            }
+            else if($potvrzeno == 0)
             {
                 $datum_vraceni = "Zatím neschváleno";
                 $pocet_dnu = "Zatím neschváleno";
-            }
+            }   
+            else{
+                $datum_vraceni = "Něco se pokazilo🙃";
+                $pocet_dnu = "Informujte prosím správce";
+            } 
 
 
             
