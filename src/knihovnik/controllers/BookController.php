@@ -47,41 +47,69 @@ class BookController extends AbstractController {
         ]);
     }
 
-    public function borrow(): ActionResultInterface {
-        $bookRequests = $this->_bookRequestRepository->getUnconfirmed();
+    public function requests(): ActionResultInterface {
+        $bookRequests = $this->_bookRequestRepository->getRequested();
 
         $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
-        return parent::view("views/book/borrow.phtml",[
+        return parent::view("views/book/requests.phtml",[
             "bookRequests" => $bookRequests,
             "returnUrl" => $returnUrl
         ]);
     }
 
-    public function borrowPost($id, $act): ActionResultInterface {
+    public function handleRequest($id, $act): ActionResultInterface {
 
         if(empty($id) || empty($act)) {
-            return parent::redirectToAction("Book", "Borrow", [
-                "errors" => ["Upravená kniha nebyla v databázi."]
+            return parent::redirectToAction("Book", "Requests", [
+                "errors" => ["Chyba: Nebylo zadáno Id nebo akce. Obraťte se na správce aplikace."]
             ]);
         }
 
         $bookRequest = $this->_bookRequestRepository->getById($id);
 
-        if($act == "accept") {
-            $bookRequest->setConfirmed(true);
-            $this->_bookRequestRepository->update($bookRequest);
-        }
-        else if($act == "decline"){
-            $this->_bookRequestRepository->removeById($id);
-        }
+        if($act == "accept")
+            $bookRequest->setState(1);
         
-        return parent::redirectToAction("Book", "Borrow");
+        else if($act == "decline")
+            $bookRequest->setState(4);
+
+        $this->_bookRequestRepository->update($bookRequest);
+        
+        return parent::redirectToAction("Book", "Requests");
+    }
+
+    public function reservations(): ActionResultInterface {
+        $bookRequests = $this->_bookRequestRepository->getConfirmed();
+
+        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
+
+        return parent::view("views/book/reservations.phtml",[
+            "bookRequests" => $bookRequests,
+            "returnUrl" => $returnUrl
+        ]);
+    }
+
+    public function passBook($id): ActionResultInterface {
+        if(empty($id)) {
+            return parent::redirectToAction("Book", "Reservations", [
+                "errors" => ["Chyba: Nebylo zadáno Id. Obraťte se na správce aplikace."]
+            ]);
+        }
+
+        $bookRequest = $this->_bookRequestRepository->getById($id);
+
+        $bookRequest->setBookBorrowed(new \DateTime());
+        $bookRequest->setState(2);
+
+        $this->_bookRequestRepository->update($bookRequest);
+
+        return parent::redirectToAction("Book", "Reservations");
     }
 
     public function return(): ActionResultInterface {
 
-        $bookRequests = $this->_bookRequestRepository->getConfirmed();
+        $bookRequests = $this->_bookRequestRepository->getBorrowed();
 
         $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
 
@@ -92,14 +120,20 @@ class BookController extends AbstractController {
     }
 
     public function returnPost($id): ActionResultInterface {
+        if(empty($id)) {
+            return parent::redirectToAction("Book", "Return", [
+                "errors" => ["Chyba: Nebylo zadáno Id. Obraťte se na správce aplikace."]
+            ]);
+        }
 
-        $this->_bookRequestRepository->removeById($id);
+        $bookRequest = $this->_bookRequestRepository->getById($id);
+
+        $bookRequest->setBookReturned(new \DateTime());
+        $bookRequest->setState(3);
+
+        $this->_bookRequestRepository->update($bookRequest);
 
         return parent::redirectToAction("Book", "Return");
-    }
-
-    public function reservations(): ActionResultInterface {
-        return parent::view("views/book/reservations.phtml");
     }
 
     public function add(): ActionResultInterface {
