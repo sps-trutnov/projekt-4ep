@@ -14,11 +14,10 @@ class PDOBookRepository implements BookRepositoryInterface {
             $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName, c.condition as conditionName, p.place as placeName FROM books b
             LEFT JOIN authors a ON b.author_id = a.id
             LEFT JOIN (
-                SELECT u.*, br.book_id, br.book_borrowed FROM book_requests br
+                SELECT u.*, br.book_id, br.state FROM book_requests br
                 LEFT JOIN users u ON br.user_id = u.id
                 ORDER BY br.request_added DESC
-                LIMIT 1
-                ) u ON u.book_id = b.id AND u.book_borrowed IS NOT NULL
+                ) u ON u.book_id = b.id AND u.state = 2
             LEFT JOIN genres g ON b.genre_id = g.id
             LEFT JOIN conditions c ON b.condition_id = c.id
             LEFT JOIN places p ON b.place_id = p.id");
@@ -26,11 +25,10 @@ class PDOBookRepository implements BookRepositoryInterface {
             $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName, c.condition as conditionName, p.place as placeName FROM books b
             LEFT JOIN authors a ON b.author_id = a.id
             LEFT JOIN (
-                SELECT u.*, br.book_id, br.book_borrowed FROM book_requests br
+                SELECT u.*, br.book_id, br.state FROM book_requests br
                 LEFT JOIN users u ON br.user_id = u.id
                 ORDER BY br.request_added DESC
-                LIMIT 1
-                ) u ON u.book_id = b.id AND u.book_borrowed IS NOT NULL
+                ) u ON u.book_id = b.id AND u.state = 2
             LEFT JOIN genres g ON b.genre_id = g.id
             LEFT JOIN conditions c ON b.condition_id = c.id
             LEFT JOIN places p ON b.place_id = p.id
@@ -49,11 +47,10 @@ class PDOBookRepository implements BookRepositoryInterface {
         $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName, c.condition as conditionName, p.place as placeName FROM books b
         LEFT JOIN authors a ON b.author_id = a.id
         LEFT JOIN (
-            SELECT u.*, br.book_id, br.book_borrowed FROM book_requests br
+            SELECT u.*, br.book_id, br.state FROM book_requests br
             LEFT JOIN users u ON br.user_id = u.id
             ORDER BY br.request_added DESC
-            LIMIT 1
-            ) u ON u.book_id = b.id AND u.book_borrowed IS NOT NULL
+            ) u ON u.book_id = b.id AND u.state = 2
         LEFT JOIN genres g ON b.genre_id = g.id
         LEFT JOIN conditions c ON b.condition_id = c.id
         LEFT JOIN places p ON b.place_id = p.id
@@ -71,11 +68,10 @@ class PDOBookRepository implements BookRepositoryInterface {
         $statement = $this->_connection->prepare("SELECT b.*, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, CONCAT_WS(' ', u.lastname, u.firstname) as borrowedByName, g.genre as genreName, c.condition as conditionName, p.place as placeName FROM books b
         LEFT JOIN authors a ON b.author_id = a.id
         LEFT JOIN (
-            SELECT u.*, br.book_id, br.book_borrowed FROM book_requests br
+            SELECT u.*, br.book_id, br.state FROM book_requests br
             LEFT JOIN users u ON br.user_id = u.id
             ORDER BY br.request_added DESC
-            LIMIT 1
-            ) u ON u.book_id = b.id AND u.book_borrowed IS NOT NULL
+            ) u ON u.book_id = b.id AND u.state = 2
         LEFT JOIN genres g ON b.genre_id = g.id
         LEFT JOIN conditions c ON b.condition_id = c.id
         LEFT JOIN places p ON b.place_id = p.id
