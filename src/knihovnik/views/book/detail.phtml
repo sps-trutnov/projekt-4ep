@@ -90,7 +90,7 @@ $parentPath = "views/layout.phtml";
             <div class="col-xs-12 col-lg-4 d-flex">
                 <div class="card print flex-grow-1 mx-auto my-3" style="max-width: 12rem;align-self: center;">
                     <div id="qr-code"></div>
-                    <a href="javascript:printBookQR('qr-code', <?=$book->getId()?>, '<?=$book->getName()?>');" class="btn btn-primary stretched-link">Tisk</a>
+                    <a href="javascript:printBookQR('qr-code', <?=$book->getId()?>, '<?=$book->getName()?>', <?=\QR_WIDTH?>);" class="btn btn-primary stretched-link">Tisk</a>
                 </div>
             </div>
             <div class="col-12">

@@ -93,7 +93,7 @@ h3{
     display: inline-block;
     color: #000000;
     position: relative;
-    width: 20mm !important;
+    width: 30mm;
     height: auto;
     padding: 2mm;
     align-self: end;
@@ -111,5 +111,5 @@ h3{
 }
 
 #qr-code-print img {
-    width: 16mm !important;
+    width: 100% !important;
 }
