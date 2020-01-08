@@ -28,22 +28,22 @@ $baseUrl = BASE_URL;
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Index", ["page" => 0, "search" => "", "returnUrl" => $getActionUrl("Home", "Index")])?>" >Seznam</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Index", ["page" => 0, "search" => "", "returnUrl" => $getActionUrl("Home", "Index")])?>" title="Seznam všech knih s vyhledáváním.">Seznam</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Requests", ["returnUrl" => $getActionUrl("Home", "Index")])?>">Žádosti</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Requests", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Žádosti od uživatelů o zapůjčení.">Žádosti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Reservations", ["returnUrl" => $getActionUrl("Home", "Index")])?>">Rezervace</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Reservations", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Rezervované knihy k předání.">Rezervace</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Return", ["returnUrl" => $getActionUrl("Home", "Index")])?>">Vypůjčené</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Return", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Seznam zapůjčených knih, které čekají na vrácení.">Zápůjčky</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Nástroje</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?=$getActionUrl("Book", "Print", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true">Přidat knihu</a>
-                            <a class="dropdown-item" href="<?=$getActionUrl("Book", "Print", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true">Tisk QR kódů</a>
+                            <a class="dropdown-item" href="<?=$getActionUrl("Book", "Add", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true" title="Formulář pro přidání nové knihy.">Přidat knihu</a>
+                            <a class="dropdown-item" href="<?=$getActionUrl("Book", "Print", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true" title="Nástroj, který tiskne všechny QR kódy pro budovu.">Tisk QR kódů</a>
                         </div>
                     </li>
                 </ul>

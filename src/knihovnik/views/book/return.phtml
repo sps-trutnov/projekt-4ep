@@ -9,7 +9,7 @@ $parentPath = "views/layout.phtml";
                 <span style="color: #4180ab !important;">Zpět</span>
             </a>
         </div>
-        <h2 class="text-center col-md-6">Vypůjčené knihy</h2>
+        <h2 class="text-center col-md-6">Zapůjčené knihy</h2>
         <?php
             if(!empty($errors)){
                 foreach($errors as $error){
@@ -26,7 +26,7 @@ $parentPath = "views/layout.phtml";
                 <th>Autor</th>
                 <th>Umístění</th>
                 <th>Žadatel</th>
-                <th>Vypůjčeno</th>
+                <th title="Datum a čas zapůjčení.">Zapůjčeno</th>
                 <th>Akce</th>
             </tr>
         </thead>

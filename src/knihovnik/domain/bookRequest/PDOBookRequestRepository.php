@@ -114,7 +114,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         LEFT JOIN places p on b.place_id = p.id
         LEFT JOIN users u on u.id = br.user_id
         LEFT JOIN book_states bs on bs.id = br.state
-        WHERE br.book_id = ?
+        WHERE (br.state BETWEEN 2 AND 3) AND br.book_id = ?
         ");
         $statement->execute([$id]);
         $statement = $statement->fetchAll();

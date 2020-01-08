@@ -21,14 +21,14 @@ $pagesCount = ceil($bookCount/20);
     <table class="table">
         <thead>
             <tr class="text-center">
-                <th>Název</th>
-                <th>Autor</th>
-                <th>Žánr</th>
+                <th title="Název knihy">Název</th>
+                <th title="Příjmení a jména autora">Autor</th>
+                <th title="Žánr knihy">Žánr</th>
                 <th>ISBN</th>
                 <th>Rok vydání</th>
-                <th>Umístění</th>
-                <th>Dostupnost</th>
-                <th>Detail</th>
+                <th title="Fyzické umístění knihy">Umístění</th>
+                <th title="Aktuální dostupnost">Dostupnost</th>
+                <th>Akce</th>
             </tr>
         </thead>
         <tbody>
@@ -38,8 +38,8 @@ $pagesCount = ceil($bookCount/20);
                 <td><?=$book->getAuthorName()?></td>
                 <td><?=$book->getGenreName()?></td>
                 <td><?=$book->getIsbn()?></td>
-                <td><?=$book->getYear()?></td>
-                <td><?=$book->getPlaceName()?></td>
+                <td class="text-center"><?=$book->getYear()?></td>
+                <td class="text-center"><?=$book->getPlaceName()?></td>
                 <td class="p-2 text-center">
                 <?php if($book->getBorrowedByName() != ""):?>
                         <img class="icon" src="img/flaticon/cross.svg" alt="Nedostupné" title="Nedostupné">
@@ -48,7 +48,7 @@ $pagesCount = ceil($bookCount/20);
                         <img class="icon" src="img/flaticon/tick.svg" alt="Dostupné" title="Dostupné">
                 <?php endif?>
                 </td>
-                <td class="p-2">
+                <td class="p-2 text-center">
                     <a href='<?=$getActionUrl("Book", "Detail", ["id" => $book->getId(), "returnUrl" => $getActionUrl("Book", "Index", ["page" => $page, "search" => ""])])?>' tabindex="-1" class="px-1">
                         <img class="icon" src="img/flaticon/search.svg" alt="Detail" title="Přejít na detail">
                     </a>

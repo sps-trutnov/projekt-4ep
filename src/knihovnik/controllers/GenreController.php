@@ -11,40 +11,37 @@ class GenreController extends AbstractController {
     private $_userAuthenticationService;
 
     public function __construct(GenreRepositoryInterface $genreRepository) {
+        parent::__construct();
         $this->_genreRepository = $genreRepository;
     }
 
     public function Add(): ActionResultInterface {
-        $returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
-
         return parent::view("views/genre/add.phtml", [
-            "returnUrl" => $returnUrl
+            "returnUrl" => $this->returnUrl,
+            "errors" => $this->errors
             ]);
     }
     
-    public function AddPost(): ActionResultInterface {
-        $formData = $_POST;
-        $genre = $formData["_genre"];
-        if(empty($genre)) {
+    public function AddPost($genre): ActionResultInterface {
+
+        if(empty($genre))
             return parent::view("views/genre/add.phtml", [
                 "errors" => [
                     "Žánr musí mít název."
                 ]
             ]);
+            
+        $genres = $this->_genreRepository->GetAll();
+        foreach($genres as $existingGenre){
+            if($existingGenre->getGenre() == $genre)
+                return parent::view("views/genre/add.phtml", [
+                    "errors" => [
+                        "Žánr s tímto názvem již existuje."
+                    ]
+                ]);
         }
-        else {
-            $genres = $this->_genreRepository->GetAll();
-            foreach($genres as $existingGenre){
-                if($existingGenre->getGenre() == $genre)
-                    return parent::view("views/genre/add.phtml", [
-                        "errors" => [
-                            "Žánr s tímto názvem již existuje."
-                        ]
-                    ]);
-            }
+        $genre = $this->_genreRepository->add($genre);
 
-            $genre = $this->_genreRepository->add($genre);
-            return parent::redirectToAction("Book", "Add");
-        }
+        return parent::redirectToAction("Book", "Add");
     }
 }
