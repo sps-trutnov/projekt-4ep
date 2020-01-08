@@ -10,6 +10,13 @@ $parentPath = "views/layout.phtml";
             </a>
         </div>
         <h2 class="text-center col-md-6">Vracení knih</h2>
+        <?php
+            if(!empty($errors)){
+                foreach($errors as $error){
+                    echo("<div class='alert alert-danger' role='alert'>$error</div>");
+                }
+            }
+        ?>
     </div>
     <table class="table">
         <thead>

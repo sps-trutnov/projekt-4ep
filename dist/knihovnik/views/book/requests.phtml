@@ -10,6 +10,13 @@ $parentPath = "views/layout.phtml";
             </a>
         </div>
         <h2 class="text-center col-md-6">Půjčení knih</h2>
+        <?php
+            if(!empty($errors)){
+                foreach($errors as $error){
+                    echo("<div class='alert alert-danger' role='alert'>$error</div>");
+                }
+            }
+        ?>
     </div>
     <table class="table">
         <thead>
@@ -31,10 +38,10 @@ $parentPath = "views/layout.phtml";
                 <td><?=$bookRequest->getPlaceName()?></td>
                 <td><?=$bookRequest->getUserName()?></td>
                 <td class="p-2">
-                    <a href='<?=$getActionUrl("Book", "BorrowPost", ["id" => $bookRequest->getId(), "act" => "accept", "returnUrl" => $getActionUrl("Book", "Borrow")])?>' tabindex="-1" class="px-1">
+                    <a href='<?=$getActionUrl("Book", "HandleRequest", ["id" => $bookRequest->getId(), "act" => "accept", "returnUrl" => $getActionUrl("Book", "Requests")])?>' tabindex="-1" class="px-1">
                         <img class="icon" src="img/flaticon/tick.svg" alt="Půjčit" title="Půjčit knihu">
                     </a>
-                    <a href='<?=$getActionUrl("Book", "BorrowPost", ["id" => $bookRequest->getId(), "act" => "decline", "returnUrl" => $getActionUrl("Book", "Borrow")])?>' tabindex="-1" class="px-1">
+                    <a href='<?=$getActionUrl("Book", "HandleRequest", ["id" => $bookRequest->getId(), "act" => "decline", "returnUrl" => $getActionUrl("Book", "Requests")])?>' tabindex="-1" class="px-1">
                         <img class="icon" src="img/flaticon/cross.svg" alt="Zamítnout" title="Zamítnout výpůjčku">
                     </a>
                 </td>
