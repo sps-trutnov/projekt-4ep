@@ -99,6 +99,7 @@ $parentPath = "views/layout.phtml";
                     <thead>
                         <tr>
                             <th>Žadatel</th>
+                            <th>Stav</th>
                             <th>Vypůjčeno</th>
                             <th>Vráceno</th>
                         </tr>
@@ -107,6 +108,7 @@ $parentPath = "views/layout.phtml";
                     <?php foreach ($bookRequests as $bookRequest): ?>
                         <tr>
                             <td><?=$bookRequest->getUserName()?></td>
+                            <td><?=$bookRequest->getStateText()?></td>
                             <td><?=($bookRequest->getBookBorrowed()) ? $bookRequest->getBookBorrowed()->format('d. m. Y H:i') : ""?></td>
                             <td><?=($bookRequest->getBookReturned()) ? $bookRequest->getBookReturned()->format('d. m. Y H:i') : ""?></td>
                         </tr>
