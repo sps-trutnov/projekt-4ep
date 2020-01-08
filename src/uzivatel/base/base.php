@@ -14,8 +14,7 @@ $pages = array(
     "404"=>"Stránka nebyla nalezena",
     "profile"=>"Profil",
     "myBooks"=>"Moje knihy",
-    "qr_reader"=>"Čtečka QR",
-    "qr_generator"=>"Generátor QR",
+    "history_of_borrows"=>"Historie výpůjček",
     "detail"=>"Detail knihy",
     "pass_change"=>"Změna hesla"
 );
