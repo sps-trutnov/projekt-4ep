@@ -245,8 +245,11 @@ class BookController extends AbstractController {
         if($book == null)
             return parent::redirectToAction("Book", "Index");
 
+        $bookRequests = $this->_bookRequestRepository->getByBookId($id);
+
         return parent::view("views/book/detail.phtml", [
             "book" => $book,
+            "bookRequests" => $bookRequests,
             "returnUrl" => $this->returnUrl,
             "errors" => $this->errors
         ]);

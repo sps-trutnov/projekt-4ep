@@ -47,11 +47,10 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
 
     function getAll(): iterable {
         $statement = $this->_connection->query("SELECT br.*, b.name as bookName, CONCAT_WS(' ', u.lastname, u.firstname) as userName, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, p.place as placeName FROM book_requests br 
-        LEFT JOIN books b
+        LEFT JOIN books b on b.id = br.book_id
         LEFT JOIN authors a on b.author_id = a.id
         LEFT JOIN places p on b.place_id = p.id
-        on b.id = br.book_ID
-        LEFT JOIN users u on u.id = br.user_ID
+        LEFT JOIN users u on u.id = br.user_id
         ");
 
         foreach ($statement as $row) {
@@ -61,11 +60,10 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
 
     function getRequested(): iterable {
         $statement = $this->_connection->query("SELECT br.*, b.name as bookName, CONCAT_WS(' ', u.lastname, u.firstname) as userName, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, p.place as placeName FROM book_requests br 
-        LEFT JOIN books b
+        LEFT JOIN books b on b.id = br.book_id
         LEFT JOIN authors a on b.author_id = a.id
         LEFT JOIN places p on b.place_id = p.id
-        on b.id = br.book_ID
-        LEFT JOIN users u on u.id = br.user_ID
+        LEFT JOIN users u on u.id = br.user_id
         WHERE br.state = 0
         ");
 
@@ -76,11 +74,10 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
 
     function getConfirmed(): iterable {
         $statement = $this->_connection->query("SELECT br.*, b.name as bookName, CONCAT_WS(' ', u.lastname, u.firstname) as userName, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, p.place as placeName FROM book_requests br 
-        LEFT JOIN books b
+        LEFT JOIN books b on b.id = br.book_id
         LEFT JOIN authors a on b.author_id = a.id
         LEFT JOIN places p on b.place_id = p.id
-        on b.id = br.book_ID
-        LEFT JOIN users u on u.id = br.user_ID
+        LEFT JOIN users u on u.id = br.user_id
         WHERE br.state = 1
         ");
 
@@ -91,12 +88,25 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
 
     function getBorrowed(): iterable {
         $statement = $this->_connection->query("SELECT br.*, b.name as bookName, CONCAT_WS(' ', u.lastname, u.firstname) as userName, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, p.place as placeName FROM book_requests br 
-        LEFT JOIN books b
+        LEFT JOIN books b on b.id = br.book_id
         LEFT JOIN authors a on b.author_id = a.id
         LEFT JOIN places p on b.place_id = p.id
-        on b.id = br.book_ID
-        LEFT JOIN users u on u.id = br.user_ID
+        LEFT JOIN users u on u.id = br.user_id
         WHERE br.state = 2
+        ");
+
+        foreach ($statement as $row) {
+            yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["state"], $row["book_borrowed"], $row["book_returned"], new \DateTime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"]);
+        }
+    }
+
+    function getByBookId(int $id): iterable {
+        $statement = $this->_connection->query("SELECT br.*, b.name as bookName, CONCAT_WS(' ', u.lastname, u.firstname) as userName, CONCAT_WS(' ', a.lastname, a.firstname) as authorName, p.place as placeName FROM book_requests br 
+        LEFT JOIN books b on b.id = br.book_id
+        LEFT JOIN authors a on b.author_id = a.id
+        LEFT JOIN places p on b.place_id = p.id
+        LEFT JOIN users u on u.id = br.user_id
+        WHERE br.book_id = 4
         ");
 
         foreach ($statement as $row) {
