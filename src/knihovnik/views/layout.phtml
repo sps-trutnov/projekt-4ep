@@ -28,18 +28,35 @@ $baseUrl = BASE_URL;
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Print", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true">Tisk</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Index", ["page" => 0, "search" => "", "returnUrl" => $getActionUrl("Home", "Index")])?>" >Seznam</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$baseUrl?>/uzivatel" tabindex="-1" aria-disabled="true">Uživatel</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Requests", ["returnUrl" => $getActionUrl("Home", "Index")])?>">Žádosti</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Reservations", ["returnUrl" => $getActionUrl("Home", "Index")])?>">Rezervace</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Return", ["returnUrl" => $getActionUrl("Home", "Index")])?>">Vypůjčené</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Nástroje</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?=$getActionUrl("Book", "Print", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true">Přidat knihu</a>
+                            <a class="dropdown-item" href="<?=$getActionUrl("Book", "Print", ["returnUrl" => $getActionUrl("Home", "Index")])?>" tabindex="-1" aria-disabled="true">Tisk QR kódů</a>
+                        </div>
                     </li>
                 </ul>
-                <span class="navbar-text">
-                    <?=$user->getFullName()?>
-                    <a href="<?=$baseUrl?>/authentication/signOut.php?redirectUrl=<?=$baseUrl?>">
-                        <img src="img/flaticon/exit.svg" class="d-inline-block align-top icon-sm" alt="Odhlásit" title="Odhlásit">
-                    </a>
-                </span>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown dropleft">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?=$user->getFullName()?></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?=$baseUrl?>/authentication/signOut.php?redirectUrl=<?=$baseUrl?>">Odhlásit se</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?=$baseUrl?>/uzivatel" tabindex="-1" aria-disabled="true">Uživatel</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
@@ -50,7 +67,7 @@ $baseUrl = BASE_URL;
     </main>
 	<footer class="d-flex text-center align-self-center p-2 d-print-none">
 		<div> &copy; 2019 &nbsp;</div>
-        <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/"     title="Flaticon">www.flaticon.com</a></div>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
     <script async type="text/javascript" src="js/site.js"></script>
 </body>
