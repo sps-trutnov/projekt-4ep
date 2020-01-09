@@ -123,4 +123,11 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
             yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["state"], $row["book_borrowed"], $row["book_returned"], new \DateTime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"], $row["stateText"]);
         }
     }
+
+    public function getCountByState(int $state): int{
+        $statement = $this->_connection->prepare("SELECT COUNT(*) as count FROM book_requests br WHERE br.state = ?");
+        $result = $statement->execute([$state]);
+        $count = $statement->fetchColumn();
+        return intval($count);
+    }
 }
