@@ -70,6 +70,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         LEFT JOIN users u on u.id = br.user_id
         LEFT JOIN book_states bs on bs.id = br.state
         WHERE br.state = 0
+        ORDER BY br.request_added ASC
         ");
 
         foreach ($statement as $row) {
@@ -85,6 +86,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         LEFT JOIN users u on u.id = br.user_id
         LEFT JOIN book_states bs on bs.id = br.state
         WHERE br.state = 1
+        ORDER BY br.request_added ASC
         ");
 
         foreach ($statement as $row) {
@@ -100,6 +102,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         LEFT JOIN users u on u.id = br.user_id
         LEFT JOIN book_states bs on bs.id = br.state
         WHERE br.state = 2
+        ORDER BY br.book_borrowed ASC
         ");
 
         foreach ($statement as $row) {
