@@ -2,14 +2,14 @@
 $parentPath = "views/layout.phtml";
 ?>
 <div class="col-xs-12 col-lg-10 mx-auto">
-    <div class="row">
-        <div class="col-md-2 p-0 mb-2">
+    <div class="row mb-3">
+        <div class="col-md-2 p-0">
             <a class="return" href="<?=$returnUrl?>">
                 <img class="icon-sm" src="img/flaticon/back.svg" alt="<">
                 <span style="color: #4180ab !important;">Zpět</span>
             </a>
         </div>
-        <h2 class="text-center col-md-6">Zarezervované knihy</h2>
+        <h2 class="text-center col-md-6">Rezervované knihy</h2>
         <?php
             if(!empty($errors)){
                 foreach($errors as $error){

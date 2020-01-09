@@ -10,6 +10,13 @@ $parentPath = "views/layout.phtml";
             </a>
         </div>
         <h2>Přidat knihu</h2>
+        <?php
+            if(!empty($errors)){
+                foreach($errors as $error){
+                    echo("<div class='alert alert-danger' role='alert'>$error</div>");
+                }
+            }
+        ?>
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="name">Název knihy</label>

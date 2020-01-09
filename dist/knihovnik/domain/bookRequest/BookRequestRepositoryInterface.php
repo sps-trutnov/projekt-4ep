@@ -10,4 +10,5 @@ interface BookRequestRepositoryInterface {
     function getRequested(): iterable;
     function getConfirmed(): iterable;
     function getBorrowed(): iterable;
+    function getByBookId(int $id): iterable;
 }

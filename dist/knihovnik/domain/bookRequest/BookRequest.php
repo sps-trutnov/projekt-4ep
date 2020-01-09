@@ -9,18 +9,20 @@ class BookRequest {
     private $_bookName;
     private $_bookAuthorName;
     private $_state;
+    private $_stateText;
     private $_bookBorrowed;
     private $_bookReturned;
     private $_requestAdded;
     private $_placeName;
     
-    public function __construct(int $id, int $userId, int $bookId, int $state, ?string $bookBorrowed, ?string $bookReturned, \DateTime $requestAdded, string $userName = "", string $bookName = "", string $bookAuthorName = "", string $placeName = "") {
+    public function __construct(int $id, int $userId, int $bookId, int $state, ?string $bookBorrowed, ?string $bookReturned, \DateTime $requestAdded, string $userName = "", string $bookName = "", string $bookAuthorName = "", string $placeName = "", string $stateText = "") {
         $this->_id = $id;
         $this->_userId = $userId;
         $this->_userName = $userName;
         $this->_bookId = $bookId;
         $this->_bookName = $bookName;
         $this->_state = $state;
+        $this->_stateText = $stateText;
         $this->_bookBorrowed = $bookBorrowed == null ? null : new \DateTime($bookBorrowed);
         $this->_bookReturned = $bookReturned == null ? null : new \DateTime($bookReturned);
         $this->_requestAdded = $requestAdded;
@@ -40,19 +42,19 @@ class BookRequest {
         $this->_bookReturned = $dateTime;
     }
     
-    public function getId() {
+    public function getId(): int {
         return $this->_id;
     }
     
-    public function getUserId() {
-        return $this->_is_user_idbn;
+    public function getUserId(): int {
+        return $this->_userId;
     }
 
     public function getUserName(): string {
         return $this->_userName;
     }
     
-    public function getBookId() {
+    public function getBookId(): int {
         return $this->_bookId;
     }
 
@@ -68,8 +70,12 @@ class BookRequest {
         return $this->_placeName;
     }
     
-    public function getState() {
+    public function getState(): int {
         return $this->_state;
+    }
+
+    public function getStateText(): string {
+        return $this->_stateText;
     }
     
     public function getRequestAdded(): \DateTime {

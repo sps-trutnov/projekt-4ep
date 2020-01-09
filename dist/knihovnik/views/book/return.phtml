@@ -2,14 +2,14 @@
 $parentPath = "views/layout.phtml";
 ?>
 <div class="col-xs-12 col-lg-10 mx-auto">
-    <div class="row">
-        <div class="col-md-2 p-0 mb-2">
+    <div class="row mb-3">
+        <div class="col-md-2 p-0">
             <a class="return" href="<?=$returnUrl?>">
                 <img class="icon-sm" src="img/flaticon/back.svg" alt="<">
                 <span style="color: #4180ab !important;">Zpět</span>
             </a>
         </div>
-        <h2 class="text-center col-md-6">Vracení knih</h2>
+        <h2 class="text-center col-md-6">Zapůjčené knihy</h2>
         <?php
             if(!empty($errors)){
                 foreach($errors as $error){
@@ -26,6 +26,7 @@ $parentPath = "views/layout.phtml";
                 <th>Autor</th>
                 <th>Umístění</th>
                 <th>Žadatel</th>
+                <th title="Datum a čas zapůjčení.">Zapůjčeno</th>
                 <th>Akce</th>
             </tr>
         </thead>
@@ -37,6 +38,7 @@ $parentPath = "views/layout.phtml";
                 <td><?=$bookRequest->getBookAuthorName()?></td>
                 <td><?=$bookRequest->getPlaceName()?></td>
                 <td><?=$bookRequest->getUserName()?></td>
+                <td><?=($bookRequest->getBookBorrowed()) ? $bookRequest->getBookBorrowed()->format('d. m. Y H:i') : ""?></td>
                 <td class="p-2">
                     <a href='<?=$getActionUrl("Book", "ReturnPost", ["id" => $bookRequest->getId(), "returnUrl" => $getActionUrl("Book", "Return")])?>' tabindex="-1" class="px-1">
                         <img class="icon" src="img/flaticon/tick.svg" alt="Detail" title="Vrátit knihu">

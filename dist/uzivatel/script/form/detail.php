@@ -15,7 +15,7 @@ if(isset($_POST["request_userID"]) && isset($_POST["request_bookID"]) && isset($
     include("../../base/db.php");
     session_start();
 
-    $query=$db->prepare("SELECT * FROM book_requests WHERE user_ID='$request_userID' AND book_ID='$request_bookID'");
+    $query=$db->prepare("SELECT * FROM book_requests WHERE user_ID='$request_userID' AND book_ID='$request_bookID' AND state < 3 ");
     $query->execute();
 
     $request = $query->fetch();
@@ -62,8 +62,8 @@ if(isset($_POST["request_userID"]) && isset($_POST["request_bookID"]) && isset($
             
 
 
-            $remove_query=$db->prepare("DELETE FROM book_requests WHERE user_ID=? AND book_ID=?");
-            $remove_query->execute(array($request_userID,$request_bookID));
+            $remove_query=$db->prepare("UPDATE book_requests SET state=? WHERE user_ID=? AND book_ID=? and state = ?");
+            $remove_query->execute(array(4,$request_userID,$request_bookID,0));
         }
     }
     //echo "Location: ../../?p=detail&id=".$request_bookID;

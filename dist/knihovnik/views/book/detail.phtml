@@ -31,66 +31,93 @@ $parentPath = "views/layout.phtml";
             <?=$book->getDescription()?>
             </div>
         </div>
-        <div class="col-xs-12 col-lg-5">
-            <table class="table">
-                <tbody>
-                    <tr>
-                        <td>Žánr</td>
-                        <td><?php
-                            if($book->getGenreName() == "")
-                                echo "Není uvedeno.";
-                            else
-                                echo $book->getGenreName();
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ISBN</td>
-                        <td><?php
-                            if($book->getISBN() == "")
-                                echo "Není uvedeno.";
-                            else
-                                echo $book->getISBN();
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Rok vydání</td>
-                        <td><?=$book->getYear()?></td>
-                    </tr>
-                    <tr>
-                        <td>Počet stran</td>
-                        <td><?=$book->getPageCount()?></td>
-                    </tr>
-                    <tr>
-                        <td>Kondice</td>
-                        <td><?php
-                            if($book->getConditionName() == "")
-                                echo "Není uvedeno.";
-                            else
-                                echo $book->getConditionName();
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Budova</td>
-                        <td><?php
-                            if($book->getPlaceName() == "")
-                                echo "Není uvedeno.";
-                            else
-                                echo $book->getPlaceName();
-                            ?>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-lg-2 d-flex">
-            <div class="card print flex-grow-1 mx-auto" style="max-width: 12rem;align-self: center;">
-                <div id="qr-code"></div>
-                <a href="javascript:printBookQR('qr-code', <?=$book->getId()?>, '<?=$book->getName()?>');" class="btn btn-primary stretched-link">Tisk</a>
+        <div class="col-xs-12 col-lg-8 row">
+            <div class="col-xs-12 col-lg-8">
+                <table class="table">
+                    <h3>Parametry</h3>
+                    <tbody>
+                        <tr>
+                            <td>Žánr</td>
+                            <td><?php
+                                if($book->getGenreName() == "")
+                                    echo "Není uvedeno.";
+                                else
+                                    echo $book->getGenreName();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ISBN</td>
+                            <td><?php
+                                if($book->getISBN() == "")
+                                    echo "Není uvedeno.";
+                                else
+                                    echo $book->getISBN();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Rok vydání</td>
+                            <td><?=$book->getYear()?></td>
+                        </tr>
+                        <tr>
+                            <td>Počet stran</td>
+                            <td><?=$book->getPageCount()?></td>
+                        </tr>
+                        <tr>
+                            <td>Kondice</td>
+                            <td><?php
+                                if($book->getConditionName() == "")
+                                    echo "Není uvedeno.";
+                                else
+                                    echo $book->getConditionName();
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Budova</td>
+                            <td><?php
+                                if($book->getPlaceName() == "")
+                                    echo "Není uvedeno.";
+                                else
+                                    echo $book->getPlaceName();
+                                ?>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12 col-lg-4 d-flex">
+                <div class="card print flex-grow-1 mx-auto my-3" style="max-width: 12rem;align-self: center;">
+                    <div id="qr-code"></div>
+                    <a href="javascript:printBookQR('qr-code', <?=$book->getId()?>, '<?=$book->getName()?>', <?=\QR_WIDTH?>);" class="btn btn-primary stretched-link">Tisk</a>
+                </div>
+            </div>
+            <div class="col-12">
+                <table class="table light mx-auto overflow-auto" style="max-height: 8rem;">
+                    <h3>Historie zapůjčení</h3>
+                    <thead>
+                        <tr>
+                            <th>Žadatel</th>
+                            <th>Stav</th>
+                            <th>Zapůjčeno</th>
+                            <th>Vráceno</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($bookRequests as $bookRequest): ?>
+                        <tr>
+                            <td><?=$bookRequest->getUserName()?></td>
+                            <td><?=$bookRequest->getStateText()?></td>
+                            <td><?=($bookRequest->getBookBorrowed()) ? $bookRequest->getBookBorrowed()->format('d. m. Y H:i') : ""?></td>
+                            <td><?=($bookRequest->getBookReturned()) ? $bookRequest->getBookReturned()->format('d. m. Y H:i') : ""?></td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
             </div>
         </div>
+        
     </div>
     <script>
         $(document).ready(function() {
