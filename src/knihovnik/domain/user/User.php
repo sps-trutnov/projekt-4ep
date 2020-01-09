@@ -51,6 +51,7 @@ class User {
     }
 
     public function getFullName(): string {
-        return $this->_firstName." ".$this->_lastName;
+        $fullName = trim($this->_firstName." ".$this->_lastName);
+        return (!empty($fullName)) ? $fullName : $this->_userName;
     }
 }
