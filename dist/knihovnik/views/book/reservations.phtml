@@ -3,6 +3,22 @@ $parentPath = "views/layout.phtml";
 ?>
 <div class="col-xs-12 col-lg-10 mx-auto">
     <div class="row mb-3">
+        <div class="col-12 row">
+            <?php
+                if(!empty($errors)){
+                    foreach($errors as $error){
+                        echo("<div class='alert alert-danger mx-auto' role='alert'>$error</div>");
+                    }
+                }
+            ?>
+            <?php
+                if(!empty($messages)){
+                    foreach($messages as $message){
+                        echo("<div class='alert alert-info mx-auto' role='alert'>$message</div>");
+                    }
+                }
+            ?>
+        </div>
         <div class="col-md-2 p-0">
             <a class="return" href="<?=$returnUrl?>">
                 <img class="icon-sm" src="img/flaticon/back.svg" alt="<">
@@ -10,13 +26,6 @@ $parentPath = "views/layout.phtml";
             </a>
         </div>
         <h2 class="text-center col-md-6">Rezervované knihy</h2>
-        <?php
-            if(!empty($errors)){
-                foreach($errors as $error){
-                    echo("<div class='alert alert-danger' role='alert'>$error</div>");
-                }
-            }
-        ?>
     </div>
     <table class="table">
         <thead>

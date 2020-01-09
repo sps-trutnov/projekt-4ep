@@ -12,10 +12,12 @@ abstract class AbstractController {
 
     protected $returnUrl;
     protected $errors;
+    protected $messages;
 
     public function __construct() {
         $this->returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
         $this->errors = $_GET["errors"] ?? $_POST["errors"] ?? [];
+        $this->messages = $_GET["messages"] ?? $_POST["messages"] ?? [];
     }
 
     protected function getRouter(): RouterInterface {

@@ -44,7 +44,8 @@ class BookController extends AbstractController {
             "page" => $page,
             "search" => $search,
             "returnUrl" => $this->returnUrl,
-            "errors" => $this->errors
+            "errors" => $this->errors,
+            "messages" => $this->messages
         ]);
     }
 
@@ -54,7 +55,8 @@ class BookController extends AbstractController {
         return parent::view("views/book/requests.phtml",[
             "bookRequests" => $bookRequests,
             "returnUrl" => $this->returnUrl,
-            "errors" => $this->errors
+            "errors" => $this->errors,
+            "messages" => $this->messages
         ]);
     }
 
@@ -68,25 +70,30 @@ class BookController extends AbstractController {
 
         $bookRequest = $this->_bookRequestRepository->getById($id);
 
-        if($act == "accept")
+        if($act == "accept"){
             $bookRequest->setState(1);
-        
-        else if($act == "decline")
+            $messages = ["Žádost byla potvrzena a přesunuta mezi rezervované."];
+        }
+        else if($act == "decline"){
             $bookRequest->setState(4);
+            $messages = ["Žádost byla zamítnuta."];
+        }
 
         $this->_bookRequestRepository->update($bookRequest);
         
-        return parent::redirectToAction("Book", "Requests");
+        return parent::redirectToAction("Book", "Requests", [
+            "messages" => $messages
+        ]);
     }
 
     public function reservations(): ActionResultInterface {
         $bookRequests = $this->_bookRequestRepository->getConfirmed();
 
-
         return parent::view("views/book/reservations.phtml",[
             "bookRequests" => $bookRequests,
             "returnUrl" => $this->returnUrl,
-            "errors" => $this->errors
+            "errors" => $this->errors,
+            "messages" => $this->messages
         ]);
     }
 
@@ -108,10 +115,13 @@ class BookController extends AbstractController {
 
         $bookRequest->setBookBorrowed(new \DateTime());
         $bookRequest->setState(2);
+        $messages = ["Kniha je předána uživateli. Teď čeká na vrácení."];
 
         $this->_bookRequestRepository->update($bookRequest);
 
-        return parent::redirectToAction("Book", "Reservations");
+        return parent::redirectToAction("Book", "Reservations",[
+            "messages" => $messages
+        ]);
     }
 
     public function return(): ActionResultInterface {
@@ -121,7 +131,8 @@ class BookController extends AbstractController {
         return parent::view("views/book/return.phtml",[
             "bookRequests" => $bookRequests,
             "returnUrl" => $this->returnUrl,
-            "errors" => $this->errors
+            "errors" => $this->errors,
+            "messages" => $this->messages
         ]);
     }
 
@@ -136,10 +147,13 @@ class BookController extends AbstractController {
 
         $bookRequest->setBookReturned(new \DateTime());
         $bookRequest->setState(3);
+        $messages = ["Kniha byla vrácena a je opět dostupná."];
 
         $this->_bookRequestRepository->update($bookRequest);
 
-        return parent::redirectToAction("Book", "Return");
+        return parent::redirectToAction("Book", "Return",[
+            "messages" => $messages
+        ]);
     }
 
     public function add(): ActionResultInterface {
