@@ -93,7 +93,7 @@ h3{
     display: inline-block;
     color: #000000;
     position: relative;
-    width: 20mm !important;
+    width: 30mm;
     height: auto;
     padding: 2mm;
     align-self: end;
@@ -101,7 +101,7 @@ h3{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 8px;
     text-transform: uppercase;
-    word-break: break-word;
+    word-break: break-all;
 }
 
 #qr-code-print > .bookId {
@@ -111,5 +111,5 @@ h3{
 }
 
 #qr-code-print img {
-    width: 16mm !important;
+    width: 100% !important;
 }

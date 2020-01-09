@@ -52,6 +52,7 @@
         <h3>Žádost o zapůjčení</h3>
         <div class="request_input">
             <?php
+                echo getNumberOfMyBorrows();
                 echo "<p>Počet žadatelů ve frontě: " . "<b>";
                 echo get_numberOfBorrows();
                 echo "</b></p>";

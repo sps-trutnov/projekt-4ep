@@ -8,19 +8,18 @@ class PDOAuthorRepository implements AuthorRepositoryInterface {
         $this->_connection = $connection;
     }
 
-
-    function add(int $firstname, int $lastname): Author {
+    function add(string $firstname, string $lastname): Author {
         $statement = $this->_connection->prepare("INSERT INTO authors(firstname, lastname) VALUES(?, ?)");
-        $statement->execute($firstname, $lastname);
+        $statement->execute([$firstname, $lastname]);
 
         $id = (int)$this->_connection->lastInsertId();
 
-        return new Author($id, $firstname, $lastname);
+        return $this->getById($id);
     }
 
     function getById(int $id): ?Author {
         $statement = $this->_connection->prepare("SELECT * FROM authors WHERE id = ?");
-        $statement->execute($id);
+        $statement->execute([$id]);
 
         $row = $statement->fetch();
 

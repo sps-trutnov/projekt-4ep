@@ -144,7 +144,21 @@ function get_user_rating(){
     echo '<label class="rating_display">Vaše hodnocení: <span>'.$ratings_mid.'</span></label><br>';
 }
 
+function getNumberOfMyBorrows(){
+    include "./base/db.php";
+    $user_ID=$_SESSION["user_ID"];
+    $IDKnihy = $_GET["id"];
+    $dotaz = $db->prepare("SELECT COUNT(user_ID) AS myBorrows FROM book_requests WHERE user_ID = ? AND book_ID = ? AND state = ?");
+    $dotaz->execute(array($user_ID, $IDKnihy, 3));
 
+    
+        $MojePujcky = $dotaz->fetch();
+        if($MojePujcky['myBorrows'] > 0)
+        return ('<p>Tuto knihu jste si již '. $MojePujcky['myBorrows'].'x vypůjčil/a.</p>');
+    
+    
+    
+}
 function get_numberOfBorrows(){
     include "./base/db.php";
     $user_ID=$_SESSION["user_ID"];
@@ -171,11 +185,11 @@ function is_queued(){
 
     $book_ID = $_GET["id"];
 
-    $stmt = $db->prepare("SELECT ID,confirmed FROM book_requests WHERE user_ID=? AND book_ID=?");
+    $stmt = $db->prepare("SELECT ID,state FROM book_requests WHERE user_ID=? AND book_ID=? AND state < 3");
     $stmt->execute(array($user_ID,$book_ID));
 
     if($stmt->rowCount()==0) return array(true);
-    else return array(false,$stmt->fetch()["confirmed"]);
+    else return array(false,$stmt->fetch()["state"]);
     //return $stmt->rowCount()." ".$book_ID." ".$user_ID;
 }
 ?>

@@ -54,8 +54,9 @@ class PDOBookRepository implements BookRepositoryInterface {
         LEFT JOIN genres g ON b.genre_id = g.id
         LEFT JOIN conditions c ON b.condition_id = c.id
         LEFT JOIN places p ON b.place_id = p.id
-        WHERE b.name LIKE :keywords OR CONCAT_WS(' ', a.lastname, a.firstname) LIKE :keywords");
+        WHERE b.name LIKE :keywords OR CONCAT_WS(' ', a.lastname, a.firstname) LIKE :keywords OR b.id = :id");
         $statement->bindValue(':keywords', '%'.$text.'%');
+        $statement->bindValue(':id', $text);
         $statement->execute();
         $statement = $statement->fetchAll(\PDO::FETCH_ASSOC);
         foreach ($statement as $row) {

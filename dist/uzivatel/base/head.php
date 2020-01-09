@@ -26,8 +26,7 @@
     </a>
     <a href="./" class="<?php echo isActive("home") ?> ; hover"><span class="flaticon-home"></span>Domů</a>
     <a href="./?p=list" class="<?php echo isActive("list") ?> ; hover"><span class="flaticon-file"></span>Seznam knih</a>
-    <a href="./?p=qr_reader" class="<?php echo isActive("qr_reader") ?> ; hover"><span class="flaticon-qr-code"></span>QR kódy</a>
-    
+    <a href="./?p=history_of_borrows" class="<?php echo isActive("history_of_borrows") ?> ; hover"><span class="flaticon-list"></span>Historie výpůjček</a>
     <a href="./?p=myBooks" class="<?php echo isActive("myBooks") ?> ; hover"><span class="flaticon-bookmark"></span>Moje knihy<div id="notification_bar" class=""><div id="notification_number"></div></div></a>
     
  <!--   <a id="navigace-right" href="./?a=logout" class="<?php # echo isActive("logout") ?>  ; hover"><span class="flaticon-exit"></span>Odhlásit</a> -->

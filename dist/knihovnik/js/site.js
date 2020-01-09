@@ -8,19 +8,19 @@ function renderBookQR(elementId, bookId, width = $(".card")[0].clientWidth){
     });
 }
 
-function printBookQR(elementId, bookId, bookName) 
+function printBookQR(elementId, bookId, bookName, width) 
 {
     var printContents = document.getElementById(elementId).innerHTML;
     var originalContents = document.body.innerHTML;
 
-    document.body.innerHTML = "<div id='qr-code-print' style='margin-left: auto; margin-right: auto; width: auto; height: auto;'>" + bookName + printContents + "<span class='bookId'>" + bookId + "</span>  " + "</div>";
+    document.body.innerHTML = "<div id='qr-code-print' style='margin-left: auto; margin-right: auto; width: "+width+"mm !important; height: auto;'>" + bookName + printContents + "<span class='bookId'>" + bookId + "</span>  " + "</div>";
 
     window.print();
 
     document.body.innerHTML = originalContents;
 }
 
-function printBookQRs(books, elementId, placeId = $("#placeId")[0].value) 
+function printBookQRs(books, elementId, width, placeId = $("#placeId")[0].value) 
 {
     let contentsElement = $("#"+elementId);
     var originalContents = contentsElement.html();
@@ -28,7 +28,7 @@ function printBookQRs(books, elementId, placeId = $("#placeId")[0].value)
     for(let i = 0; i < books.length; i++){
         if(placeId && books[i][2] != placeId)
             continue;
-        let element = $.parseHTML("<div id='qr-code-print'>" + books[i][1] + "<div id='" + books[i][0] + "'></div>" + "<span class='bookId'>" + books[i][0] + "</span>  " + "</div>");
+        let element = $.parseHTML("<div id='qr-code-print' style='width: "+width+"mm !important'>" + books[i][1] + "<div id='" + books[i][0] + "'></div>" + "<span class='bookId'>" + books[i][0] + "</span>  " + "</div>");
         contentsElement.append(element);
         renderBookQR(document.getElementById(books[i][0]), books[i][0], 256);
     }

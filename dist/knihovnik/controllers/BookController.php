@@ -11,9 +11,6 @@ use actionResults\ActionResultInterface;
 use validation\Validator;
 
 class BookController extends AbstractController {
-    private $returnUrl;
-    private $errors;
-
     private $_bookRepository;
     private $_conditionRepository;
     private $_genreRepository;
@@ -22,15 +19,13 @@ class BookController extends AbstractController {
     private $_bookRequestRepository;
 
     public function __construct(BookRepositoryInterface $bookRepository, BookRequestRepositoryInterface $bookRequestRepository, ConditionRepositoryInterface $conditionRepository, GenreRepositoryInterface $genreRepository, AuthorRepositoryInterface $authorRepository, PlaceRepositoryInterface $placeRepository) {
+        parent::__construct();
         $this->_bookRepository = $bookRepository;
         $this->_conditionRepository = $conditionRepository;
         $this->_genreRepository = $genreRepository;
         $this->_authorRepository = $authorRepository;
         $this->_placeRepository = $placeRepository;
         $this->_bookRequestRepository = $bookRequestRepository;
-
-        $this->returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
-        $this->errors = $_GET["errors"] ?? $_POST["errors"] ?? [];
     }
 
     public function index(int $page = 0, string $search = ""): ActionResultInterface {
@@ -245,8 +240,11 @@ class BookController extends AbstractController {
         if($book == null)
             return parent::redirectToAction("Book", "Index");
 
+        $bookRequests = $this->_bookRequestRepository->getByBookId($id);
+
         return parent::view("views/book/detail.phtml", [
             "book" => $book,
+            "bookRequests" => $bookRequests,
             "returnUrl" => $this->returnUrl,
             "errors" => $this->errors
         ]);

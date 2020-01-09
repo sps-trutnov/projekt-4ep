@@ -22,7 +22,7 @@ $parentPath = "views/layout.phtml";
                 <?php endforeach ?>
             </select>
         </div>
-        <a href="javascript:printBookQRs(books, 'contents')">Vytisknout</a>
+        <a href="javascript:printBookQRs(books, 'contents', <?=\QR_WIDTH?>)">Vytisknout</a>
     </div>
     <div id="contents" style="position: relative;">
 

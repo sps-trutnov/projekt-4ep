@@ -10,6 +10,14 @@ abstract class AbstractController {
     private $_router;
     private $_dependencyProvider;
 
+    protected $returnUrl;
+    protected $errors;
+
+    public function __construct() {
+        $this->returnUrl = $_GET["returnUrl"] ?? $_POST["returnUrl"] ?? \BASE_URL."/knihovnik/";
+        $this->errors = $_GET["errors"] ?? $_POST["errors"] ?? [];
+    }
+
     protected function getRouter(): RouterInterface {
         return $this->_router;
     }
