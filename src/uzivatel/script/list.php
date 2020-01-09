@@ -14,6 +14,7 @@ function echoList()
     $dotaz = $db->prepare("SELECT book_id, state FROM book_requests ORDER BY book_id DESC");
     $dotaz->execute();
     $data = $dotaz->fetchAll();
+    if($dotaz->rowCount() > 0){
     $pole = array_fill(0,$data[0][0] + 1,0);
     
     foreach ($data as $mujRequest){
@@ -30,7 +31,7 @@ function echoList()
         if($reserved > $pole[$mujRequest['book_id']])
              $pole[$mujRequest['book_id']] = $reserved;    
     }
-
+}
     $dotaz = $db->prepare(" SELECT books.id,books.ISBN,books.name,books.year,authors.firstname,authors.lastname,conditions.condition,places.place, genres.genre 
                             FROM books 
                             INNER JOIN authors on books.author_id=authors.id 
@@ -53,7 +54,7 @@ function echoList()
 
         echo "<div id='booklist'>";
         echo "<table id='booklisttable'>";
-        echo "<tr><th>Název knihy</th><th>Autor</th><th>Rok vydání</th><th>Stav</th><th>Umístění</th><th>Žánr</th><th>Dostupnost</th><th>Přejít na detail knihy</th></tr>";
+        echo "<tr><th>Název knihy</th><th>Autor</th><th>Rok vydání</th><th>Stav</th><th>Umístění</th><th>Žánr</th><th style='text-align:center'>Dostupnost</th><th>Přejít na detail knihy</th></tr>";
 
         foreach ($booklist as $book) 
         {

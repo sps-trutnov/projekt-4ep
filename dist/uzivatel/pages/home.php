@@ -17,8 +17,8 @@
     <a class='NormalHide' href="./?p=pass_change"><div class="zoom"><img src="./img/flaticon/010-pass.png" alt="zmena_hesla"><br>Změna hesla</div></a>
     <a href="./?p=list"><div class="zoom"><img src="./img/flaticon/014-folder.png" alt="seznam_knih"><br>Seznam knih</div></a>
     <a href="./?p=myBooks"><div class="zoom"><img src="./img/flaticon/003-bookmark.png" alt="moje_knihy"><br>Moje knihy</div></a>
-    <a href="./?p=qr_reader"><div class="zoom"><img src="./img/flaticon/015-qr-code.png" alt="qr_ctecka"><br>QR čtečka</div></a>
-    <a class='NormalHide' href="./?a=logout"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="log_out"><br>Odhlásit se</div></a>
+    <a href="./?p=history_of_borrows"><div class="zoom"><img src="./img/flaticon/004-list.png" alt="historie_vypujcek"><br>Historie výpůjček</div></a>
+   
     <?php 
     if ($_SESSION['isLibrarian']){
         echo(" 
@@ -28,5 +28,5 @@ if($_SESSION['isAdmin']){
  echo("   <a class='NormalHide' href='../sysadmin/'><div class='zoom'><img src='./img/flaticon/013-exit.png' alt='log_out'><br>Admin</div></a>");
  
  } ?>
-
+     <a class='NormalHide' href="./?a=logout"><div class="zoom"><img src="./img/flaticon/013-exit.png" alt="log_out"><br>Odhlásit se</div></a>
     </ul>
