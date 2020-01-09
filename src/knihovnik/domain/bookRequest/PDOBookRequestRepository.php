@@ -70,6 +70,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         LEFT JOIN users u on u.id = br.user_id
         LEFT JOIN book_states bs on bs.id = br.state
         WHERE br.state = 0
+        ORDER BY br.request_added ASC
         ");
 
         foreach ($statement as $row) {
@@ -85,6 +86,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         LEFT JOIN users u on u.id = br.user_id
         LEFT JOIN book_states bs on bs.id = br.state
         WHERE br.state = 1
+        ORDER BY br.request_added ASC
         ");
 
         foreach ($statement as $row) {
@@ -100,6 +102,7 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         LEFT JOIN users u on u.id = br.user_id
         LEFT JOIN book_states bs on bs.id = br.state
         WHERE br.state = 2
+        ORDER BY br.book_borrowed ASC
         ");
 
         foreach ($statement as $row) {
@@ -122,5 +125,12 @@ class PDOBookRequestRepository implements BookRequestRepositoryInterface {
         foreach ($statement as $row) {
             yield new BookRequest($row["id"], $row["user_id"], $row["book_id"], $row["state"], $row["book_borrowed"], $row["book_returned"], new \DateTime($row["request_added"]), $row["userName"], $row["bookName"], $row["authorName"], $row["placeName"], $row["stateText"]);
         }
+    }
+
+    public function getCountByState(int $state): int{
+        $statement = $this->_connection->prepare("SELECT COUNT(*) as count FROM book_requests br WHERE br.state = ?");
+        $result = $statement->execute([$state]);
+        $count = $statement->fetchColumn();
+        return intval($count);
     }
 }

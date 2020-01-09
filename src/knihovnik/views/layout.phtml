@@ -1,5 +1,6 @@
 <?php
 $user = $provideDependency("\domain\user\User");
+$bookRequestRepository = $provideDependency("\domain\bookRequest\BookRequestRepositoryInterface");
 $baseUrl = BASE_URL;
 ?>
 
@@ -31,13 +32,19 @@ $baseUrl = BASE_URL;
                         <a class="nav-link" href="<?=$getActionUrl("Book", "Index", ["page" => 0, "search" => "", "returnUrl" => $getActionUrl("Home", "Index")])?>" title="Seznam všech knih s vyhledáváním.">Seznam</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Requests", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Žádosti od uživatelů o zapůjčení.">Žádosti</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Requests", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Žádosti od uživatelů o zapůjčení.">Žádosti
+                            <span class="badge badge-light"><?=$bookRequestRepository->getCountByState(0)?></span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Reservations", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Rezervované knihy k předání.">Rezervace</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Reservations", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Rezervované knihy k předání.">Rezervace
+                            <span class="badge badge-light"><?=$bookRequestRepository->getCountByState(1)?></span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?=$getActionUrl("Book", "Return", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Seznam zapůjčených knih, které čekají na vrácení.">Zápůjčky</a>
+                        <a class="nav-link" href="<?=$getActionUrl("Book", "Return", ["returnUrl" => $getActionUrl("Home", "Index")])?>" title="Seznam zapůjčených knih, které čekají na vrácení.">Zápůjčky
+                            <span class="badge badge-light"><?=$bookRequestRepository->getCountByState(2)?></span>
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Nástroje</a>
@@ -51,9 +58,9 @@ $baseUrl = BASE_URL;
                     <li class="nav-item dropdown dropleft">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><?=$user->getFullName()?></a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?=$baseUrl?>/authentication/signOut.php?redirectUrl=<?=$baseUrl?>">Odhlásit se</a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?=$baseUrl?>/uzivatel" tabindex="-1" aria-disabled="true">Uživatel</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="<?=$baseUrl?>/authentication/signOut.php?redirectUrl=<?=$baseUrl?>">Odhlásit se</a>
                         </div>
                     </li>
                 </ul>
