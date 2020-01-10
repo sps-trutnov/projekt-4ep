@@ -605,10 +605,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         /*!*******************************!*\
           !*** ./src/app/app.module.ts ***!
           \*******************************/
-        /*! exports provided: AppModule */
+        /*! exports provided: createAppInitializer, AppModule */
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createAppInitializer", function () { return createAppInitializer; });
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function () { return AppModule; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
