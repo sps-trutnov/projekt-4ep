@@ -33,7 +33,7 @@
     display: none;
     position: absolute;
     margin-top: 71px;
-    width: 300px;
+    width: 208px;
     z-index: 1;
     border: none;
     background-color: #555;
@@ -73,7 +73,7 @@ body {
     position: relative;
     font-size: 18px;
     right: 0px;
-    width:300px;
+    width:208px;
     float: right !important;
 }
 
@@ -428,7 +428,7 @@ ul.list_profile {
     .zoom {
         width: 150px;
         height: 150px;
-        font-size: 11pt;
+        font-size: 10pt;
         box-shadow: none;
     }
 

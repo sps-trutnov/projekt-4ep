@@ -69,9 +69,9 @@
 include "./base/db.php";
 
 if($loggedIn) {  
-        $dotaz = $db->prepare(" SELECT book_requests.ID,book_requests.user_ID,book_requests.book_ID,book_requests.confirmed,book_requests.request_added
+        $dotaz = $db->prepare(" SELECT book_requests.ID,book_requests.user_ID,book_requests.book_ID,book_requests.state,book_requests.request_added
                                 FROM book_requests
-                                WHERE book_requests.user_ID = ?");
+                                WHERE book_requests.user_ID = ? AND book_requests.state < 3 ");
                     
         $dotaz->execute(array($_SESSION["user_ID"]));
 

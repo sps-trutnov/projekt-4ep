@@ -14,26 +14,27 @@ $data = $dotaz->fetchAll();
 
 echo "<div id='booklist'>";
 echo "<table id='booklisttable'>";
-echo "<tr><th>Název knihy</th><th>Autor</th><th>Čas žádosti</th><th>Stav</th><th>Čas půjčení</th><th>Čas vrácení</th>";
+echo "<tr><th>Název knihy</th><th>Autor</th><th>Datum žádosti</th><th>Stav</th><th>Datum půjčení</th><th>Datum vrácení</th>";
 
 foreach( $data as $vypujcka){
     $NazevKnihy = $vypujcka['name'];
     $AutorKnihy = $vypujcka["firstname"]." ".$vypujcka["lastname"];
     $Stav = $vypujcka['state'];
-    $Zadost = $vypujcka['request_added'];
+    $Zadost = date("d. m. Y", strtotime($vypujcka['request_added']));
+
     if(!isset($vypujcka['book_borrowed'])){
         $Vypujceni = '-';
     }
     else{
 
-        $Vypujceni = $vypujcka['book_borrowed'];
+        $Vypujceni = date("d. m. Y", strtotime($vypujcka['book_borrowed']));
     }
 
     if(!isset($vypujcka['book_returned'])){
         $Vraceni = '-';
     }
 else{
-    $Vraceni = $vypujcka['book_returned'];
+    $Vraceni = date("d. m. Y", strtotime($vypujcka['book_returned']));
 
 }
 
