@@ -15,7 +15,7 @@ import { SIGN_IN_URL } from './routing/can-activates/signed-in-can-activate';
 import { WithCredentialsHttpInterceptor } from './http-interceptors/with-credentials-http-interceptor';
 import { AppInitializeService } from './app-initialize.service';
 
-function createAppInitializer(appInitializeService: AppInitializeService) {
+export function createAppInitializer(appInitializeService: AppInitializeService) {
     return async () => await appInitializeService.intialize();
 }
 

@@ -15,7 +15,7 @@ export class ConfirmDialogComponent implements AfterViewInit {
     @ViewChild("modal", { static: true }) 
     modal: ElementRef<any>;
 
-    private confirmed = false;
+    confirmed = false;
 
     ngAfterViewInit() {
         // @ts-ignore
