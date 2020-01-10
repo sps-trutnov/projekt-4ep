@@ -27,4 +27,4 @@ xcopy /E /Q src\sysadmin\api dist\sysadmin\api\
 xcopy /E /Q src\uzivatel dist\uzivatel\
 
 echo\
-echo Hotovo. V adresari dist\ je pripravena produkcni verze.
+echo Hotovo. V adresari dist\ je pripravena aktualni verze.
