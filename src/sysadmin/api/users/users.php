@@ -107,6 +107,13 @@ function removeUser(\PDO $databaseConnection, int $id): bool
     return $statement->rowCount() > 0;
 }
 
+function hasUserActiveBorrows(\PDO $databaseConnection, int $id): bool {
+    $statement = $databaseConnection->prepare("SELECT COUNT(*) FROM book_requests WHERE user_id = ? AND `state` = 2");
+    $statement->execute([$id]);
+
+    return $statement->fetch()[0] > 0;
+}
+
 function rowToUser(array $row): User
 {
     return new User($row["id"], $row["username"], $row["firstname"], $row["lastname"], $row["email"], $row["password"], 

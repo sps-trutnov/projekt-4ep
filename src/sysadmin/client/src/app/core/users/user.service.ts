@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 import { User } from './user';
 import { UserNameAlreadyUsedError } from './user-name-already-used-error';
 import { API_URL } from '../api/api';
+import { UserHasActiveBorrowsError } from './user-has-active-borrows-error';
 
 @Injectable({
     providedIn: 'root'
@@ -64,6 +65,8 @@ export class UserService {
     }
 
     remove(user: User): Observable<any> {
-        return this.httpClient.delete(`${this.apiUrl}/users/index.php?id=${user.id}`);
+        return this.httpClient.delete(`${this.apiUrl}/users/index.php?id=${user.id}`).pipe(
+            catchError((e: HttpErrorResponse) => e.status === 409 ? throwError(new UserHasActiveBorrowsError()) : throwError(e)),
+        )
     }
 }

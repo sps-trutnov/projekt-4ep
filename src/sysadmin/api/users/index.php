@@ -191,6 +191,9 @@ function delete(\PDO $databaseConnection)
 
     $id = $_GET["id"];
 
+    if (hasUserActiveBorrows($databaseConnection, $id))
+        exitWithHttpCode(409);
+
     $existed = removeUser($databaseConnection, $id);
 
     if (!$existed)

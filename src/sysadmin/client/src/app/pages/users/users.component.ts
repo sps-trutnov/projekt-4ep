@@ -6,6 +6,7 @@ import { AlertService } from 'src/app/alerts/alert.service';
 import { AlertType } from 'src/app/alerts/alert-type';
 import { UserNameAlreadyUsedError } from 'src/app/core/users/user-name-already-used-error';
 import { FormGroup, FormControl, Validators, ValidationErrors, AbstractControl } from '@angular/forms';
+import { UserHasActiveBorrowsError } from 'src/app/core/users/user-has-active-borrows-error';
 
 @Component({
     selector: 'app-users',
@@ -158,8 +159,17 @@ export class UsersComponent implements OnInit, DoCheck {
     }
 
     async remove(user: UserViewModel) {
-        await this.userService.remove(user.original).toPromise();
-        this.users.splice(this.users.indexOf(user), 1);
+        try {
+            await this.userService.remove(user.original).toPromise();
+            this.users.splice(this.users.indexOf(user), 1);
+        }
+        catch (e) {
+            if (e instanceof UserHasActiveBorrowsError) {
+                this.alertService.show("Nelze smazat uživatele s aktivními výpůjčkami.", AlertType.error);
+                return;
+            }
+            throw e;
+        }
     }
 
     saveAll() {
