@@ -753,6 +753,25 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             ], SignInService);
             /***/ 
         }),
+        /***/ "./src/app/core/users/user-has-active-borrows-error.ts": 
+        /*!*************************************************************!*\
+          !*** ./src/app/core/users/user-has-active-borrows-error.ts ***!
+          \*************************************************************/
+        /*! exports provided: UserHasActiveBorrowsError */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserHasActiveBorrowsError", function () { return UserHasActiveBorrowsError; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            var UserHasActiveBorrowsError = /** @class */ (function (_super) {
+                __extends(UserHasActiveBorrowsError, _super);
+                function UserHasActiveBorrowsError() {
+                    return _super !== null && _super.apply(this, arguments) || this;
+                }
+                return UserHasActiveBorrowsError;
+            }(Error));
+            /***/ 
+        }),
         /***/ "./src/app/core/users/user-name-already-used-error.ts": 
         /*!************************************************************!*\
           !*** ./src/app/core/users/user-name-already-used-error.ts ***!
@@ -789,6 +808,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var _user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user */ "./src/app/core/users/user.ts");
             /* harmony import */ var _user_name_already_used_error__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./user-name-already-used-error */ "./src/app/core/users/user-name-already-used-error.ts");
             /* harmony import */ var _api_api__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../api/api */ "./src/app/core/api/api.ts");
+            /* harmony import */ var _user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./user-has-active-borrows-error */ "./src/app/core/users/user-has-active-borrows-error.ts");
             var UserService = /** @class */ (function () {
                 function UserService(httpClient, apiUrl) {
                     this.httpClient = httpClient;
@@ -815,7 +835,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                     return this.httpClient.put(this.apiUrl + "/users/index.php?id=" + user.id, userData).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) { return e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_name_already_used_error__WEBPACK_IMPORTED_MODULE_6__["UserNameAlreadyUsedError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (u) { return new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator); }));
                 };
                 UserService.prototype.remove = function (user) {
-                    return this.httpClient.delete(this.apiUrl + "/users/index.php?id=" + user.id);
+                    return this.httpClient.delete(this.apiUrl + "/users/index.php?id=" + user.id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) { return e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_8__["UserHasActiveBorrowsError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e); }));
                 };
                 return UserService;
             }());
@@ -1195,6 +1215,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
             /* harmony import */ var src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/alerts/alert-type */ "./src/app/alerts/alert-type.ts");
             /* harmony import */ var src_app_core_users_user_name_already_used_error__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/core/users/user-name-already-used-error */ "./src/app/core/users/user-name-already-used-error.ts");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+            /* harmony import */ var src_app_core_users_user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/core/users/user-has-active-borrows-error */ "./src/app/core/users/user-has-active-borrows-error.ts");
             var UsersComponent = /** @class */ (function () {
                 function UsersComponent(userService, alertService) {
                     var _this = this;
@@ -1381,13 +1402,24 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
                 };
                 UsersComponent.prototype.remove = function (user) {
                     return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+                        var e_3;
                         return __generator(this, function (_a) {
                             switch (_a.label) {
-                                case 0: return [4 /*yield*/, this.userService.remove(user.original).toPromise()];
+                                case 0:
+                                    _a.trys.push([0, 2, , 3]);
+                                    return [4 /*yield*/, this.userService.remove(user.original).toPromise()];
                                 case 1:
                                     _a.sent();
                                     this.users.splice(this.users.indexOf(user), 1);
-                                    return [2 /*return*/];
+                                    return [3 /*break*/, 3];
+                                case 2:
+                                    e_3 = _a.sent();
+                                    if (e_3 instanceof src_app_core_users_user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_9__["UserHasActiveBorrowsError"]) {
+                                        this.alertService.show("Nelze smazat uživatele s aktivními výpůjčkami.", src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
+                                        return [2 /*return*/];
+                                    }
+                                    throw e_3;
+                                case 3: return [2 /*return*/];
                             }
                         });
                     });

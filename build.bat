@@ -28,3 +28,5 @@ xcopy /E /Q src\uzivatel dist\uzivatel\
 
 echo\
 echo Hotovo. V adresari dist\ je pripravena aktualni verze.
+echo\
+pause
