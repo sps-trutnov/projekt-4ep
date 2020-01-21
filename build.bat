@@ -13,7 +13,7 @@ echo Build sysadmin casti v Angularu...
 
 cd src\sysadmin\client
 cmd /c npm install
-cmd /c ng build --base-href /knihovna/sysadmin --deploy-url /knihovna/sysadmin
+cmd /c ng build --base-href /knihovna/sysadmin/ --deploy-url /knihovna/sysadmin/
 cd ..\..\..\
 
 echo\

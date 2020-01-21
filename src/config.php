@@ -4,12 +4,12 @@ const DB_HOST = "localhost";
 // Název databáze
 const DB_NAME = "knihovna";
 // Přihlašovací jméno uživatele DB
-const DB_USER = "knihovna";
+const DB_USER = "root";
 // Heslo uživatele DB
-const DB_PASS = "Heslo96321";
+const DB_PASS = "root";
 
 // URL, kde se aktuálně nachází kořen projektu
-const BASE_URL = "/src";
+const BASE_URL = "/";
 
 // 
 const CORS_ALLOW_ALL_ORIGINS = false;
