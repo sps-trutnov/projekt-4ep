@@ -24,8 +24,6 @@ export class MainNavigationComponent {
 
     signOut() {
         this.signInService.signOut();
-        
-        let rootUrl = this.location.prepareExternalUrl("/");
-        window.location.href = this.signOutUrl + "?redirectUrl=" + rootUrl;
+        window.location.href = this.signOutUrl + "?redirectUrl=" + this.userModuleUrl;
     }
 }
