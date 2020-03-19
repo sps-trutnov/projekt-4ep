@@ -1,27 +1,3 @@
-function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
-
-function isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-
-function _construct(Parent, args, Class) { if (isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
-
-function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
   /***/
   "./$$_lazy_route_resource lazy recursive":
@@ -69,7 +45,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngFor=\"let alert of activeAlerts\" [class]=\"'m-1 shadow-sm alert ' + getAlertClass(alert)\">\n    {{alert.message}}\n</div>";
+    __webpack_exports__["default"] = "<div *ngFor=\"let alert of activeAlerts\" [class]=\"'m-1 shadow-sm alert ' + getAlertClass(alert)\">\r\n    {{alert.message}}\r\n</div>";
     /***/
   },
 
@@ -89,7 +65,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div #modal class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n    <div class=\"modal-dialog\" role=\"document\">\n        <div class=\"modal-content\">\n            <div class=\"modal-header\">\n                <h5 class=\"modal-title\">{{title}}</h5>\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                    <span aria-hidden=\"true\">&times;</span>\n                </button>\n            </div>\n            <div class=\"modal-body\">{{message}}</div>\n            <div class=\"modal-footer\">\n                <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Ne</button>\n                <button type=\"button\" class=\"btn btn-success\" data-dismiss=\"modal\" (click)=\"confirmed = true\">Ano</button>\n            </div>\n        </div>\n    </div>\n</div>";
+    __webpack_exports__["default"] = "<div #modal class=\"modal fade\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h5 class=\"modal-title\">{{title}}</h5>\r\n                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                    <span aria-hidden=\"true\">&times;</span>\r\n                </button>\r\n            </div>\r\n            <div class=\"modal-body\">{{message}}</div>\r\n            <div class=\"modal-footer\">\r\n                <button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">Ne</button>\r\n                <button type=\"button\" class=\"btn btn-success\" data-dismiss=\"modal\" (click)=\"confirmed = true\">Ano</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>";
     /***/
   },
 
@@ -109,7 +85,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<app-main-navigation></app-main-navigation>\n<router-outlet class=\"router-outlet-flex-grow-1\"></router-outlet>\n<app-main-footer></app-main-footer>\n    \n<div class=\"fixed-top p-5 alert-view-container\">\n    <app-alert-view></app-alert-view>\n</div>";
+    __webpack_exports__["default"] = "<app-main-navigation></app-main-navigation>\r\n<router-outlet class=\"router-outlet-flex-grow-1\"></router-outlet>\r\n<app-main-footer></app-main-footer>\r\n    \r\n<div class=\"fixed-top p-5 alert-view-container\">\r\n    <app-alert-view></app-alert-view>\r\n</div>";
     /***/
   },
 
@@ -129,7 +105,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"p-1 pr-2 text-muted text-right text-sm\">\n    <small>\n        Administrace knihovny\n        <a href=\"https://www.spstrutnov.cz\" target=\"_blank\">SPŠ Trutnov</a>\n    </small>\n</div>";
+    __webpack_exports__["default"] = "<div class=\"p-1 pr-2 text-muted text-right text-sm\">\r\n    <small>\r\n        Administrace knihovny\r\n        <a href=\"https://www.spstrutnov.cz\" target=\"_blank\">SPŠ Trutnov</a>\r\n    </small>\r\n</div>";
     /***/
   },
 
@@ -149,7 +125,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n    <a class=\"navbar-brand\" routerLink=\"/\">Knihovna SPŠ Trutnov</a>\n    <ng-container *ngIf=\"signedUser !== null\">\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\"\n            aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse justify-content-end\" id=\"navbarNavAltMarkup\">\n            <div class=\"navbar-nav\">\n                <a class=\"nav-item nav-link\" routerLink=\"/users\" routerLinkActive=\"active\">\n                    <i class=\"fas fa-user-friends\"></i>\n                    Uživatelé\n                </a>\n                <a class=\"nav-item nav-link\" href=\"{{userModuleUrl}}\">\n                    <i class=\"fas fa-book\"></i>\n                    Uživatel\n                </a>\n                <a *ngIf=\"signedUser.isLibrarian\" class=\"nav-item nav-link\" href=\"{{librarianModuleUrl}}\">\n                    <i class=\"fas fa-book-medical\"></i>\n                    Knihovník\n                </a>\n                <div class=\"dropdown\">\n                    <button class=\"btn btn-link dropdown-toggle nav-item nav-link active text-left border-0\"\n                        role=\"button\" id=\"userDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\n                        aria-expanded=\"false\">\n                        <i class=\"fas fa-user\"></i>\n                        {{signedUser.userName}}\n                    </button>\n\n                    <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"userDropdownMenuLink\">\n                        <a class=\"dropdown-item btn btn-link pl-3\" (click)=\"signOut()\">\n                            <i class=\"fas fa-sign-out-alt pr-1\"></i>\n                            Odhlásit se\n                        </a>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </ng-container>\n</nav>";
+    __webpack_exports__["default"] = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n    <a class=\"navbar-brand\" routerLink=\"/\">Knihovna SPŠ Trutnov</a>\r\n    <ng-container *ngIf=\"signedUser !== null\">\r\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNavAltMarkup\"\r\n            aria-controls=\"navbarNavAltMarkup\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n            <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse justify-content-end\" id=\"navbarNavAltMarkup\">\r\n            <div class=\"navbar-nav\">\r\n                <a class=\"nav-item nav-link\" routerLink=\"/users\" routerLinkActive=\"active\">\r\n                    <i class=\"fas fa-user-friends\"></i>\r\n                    Uživatelé\r\n                </a>\r\n                <a class=\"nav-item nav-link\" href=\"{{userModuleUrl}}\">\r\n                    <i class=\"fas fa-book\"></i>\r\n                    Uživatel\r\n                </a>\r\n                <a *ngIf=\"signedUser.isLibrarian\" class=\"nav-item nav-link\" href=\"{{librarianModuleUrl}}\">\r\n                    <i class=\"fas fa-book-medical\"></i>\r\n                    Knihovník\r\n                </a>\r\n                <div class=\"dropdown\">\r\n                    <button class=\"btn btn-link dropdown-toggle nav-item nav-link active text-left border-0\"\r\n                        role=\"button\" id=\"userDropdownMenuLink\" data-toggle=\"dropdown\" aria-haspopup=\"true\"\r\n                        aria-expanded=\"false\">\r\n                        <i class=\"fas fa-user\"></i>\r\n                        {{signedUser.userName}}\r\n                    </button>\r\n\r\n                    <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"userDropdownMenuLink\">\r\n                        <a class=\"dropdown-item btn btn-link pl-3\" (click)=\"signOut()\">\r\n                            <i class=\"fas fa-sign-out-alt pr-1\"></i>\r\n                            Odhlásit se\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </ng-container>\r\n</nav>";
     /***/
   },
 
@@ -169,7 +145,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"d-flex align-items-center\">\n    <h2 class=\"m-4 flex-grow-1\">Uživatelé</h2>\n    <button class=\"btn btn-secondary m-1\" (click)=\"export()\">Exportovat</button>\n    <button class=\"btn btn-secondary m-1 mr-4\"(click)=\"import()\">Importovat</button>\n</div>\n<table class=\"table table-striped table-hover\">\n    <thead>\n        <tr [formGroup]=\"filterForm\">\n            <th class=\"sticky-top bg-white table-column-id\">\n                Id\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"id\" [class.is-invalid]=\"!isIdFilterValid\">\n            </th>\n            <th class=\"table-column-fill sticky-top bg-white\">\n                Uživatelské jméno\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"userName\">\n            </th>\n            <th class=\"table-column-fill sticky-top bg-white align-top\">Heslo</th>\n            <th class=\"table-column-fill sticky-top bg-white\">\n                Jméno\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"firstName\">\n            </th>\n            <th class=\"table-column-fill sticky-top bg-white\">\n                Příjmení\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"lastName\">\n            </th>\n            <th class=\"table-column-fill sticky-top bg-white\">\n                Email\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"email\">\n            </th>\n            <th class=\"sticky-top bg-white\">\n                Knihovník\n                <div class=\"form-check text-center\">\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\n                        type=\"checkbox\" formControlName=\"isLibrarian\">\n                </div>\n            </th>\n            <th class=\"sticky-top bg-white\">\n                Administrátor\n                <div class=\"form-check text-center\">\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\n                        type=\"checkbox\" formControlName=\"isAdministrator\">\n                </div>\n            </th>\n            <th class=\"sticky-top bg-white text-nowrap\">\n                <small class=\"text-muted font-weight-normal text-center d-block pb-1\">{{changesText}}</small>\n                <button [class.invisible]=\"!hasChanges\" [disabled]=\"!isAllValid\" class=\"btn btn-sm btn-success mr-1\"\n                    (click)=\"saveAll()\">Uložit</button>\n                <button [class.invisible]=\"!hasChanges\" class=\"btn btn-sm btn-danger ml-1\"\n                    (click)=\"discardAll()\">Zahodit</button>\n            </th>\n            <th class=\"sticky-top bg-white\"></th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr *ngFor=\"let user of users\"\n            [class.table-warning]=\"(user.isChanged || user.original === null) && user !== newUser\">\n            <td class=\"table-column-id align-middle\">\n                <ng-container *ngIf=\"user.original !== null\">{{user.original.id}}</ng-container>\n                <i *ngIf=\"user.original === null\" class=\"fas fa-plus\"></i>\n            </td>\n            <td class=\"table-column-fill\">\n                <input [class.is-invalid]=\"!user.isUserNameValid && user !== newUser\"\n                    class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\n                    [(ngModel)]=\"user.newUserName\">\n            </td>\n            <td class=\"table-column-fill\">\n                <input [class.is-invalid]=\"!user.isPasswordValid && user !== newUser\"\n                    class=\"form-control form-control-sm editable-cell\"\n                    [placeholder]=\"user.original === null ? 'Nevyplněno' : 'Nezměněno'\" type=\"password\"\n                    [(ngModel)]=\"user.newPassword\">\n            </td>\n            <td class=\"table-column-fill\">\n                <input class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\n                    [(ngModel)]=\"user.newFirstName\">\n            </td>\n            <td class=\"table-column-fill\">\n                <input class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\n                    [(ngModel)]=\"user.newLastName\">\n            </td>\n            <td class=\"table-column-fill\">\n                <input [class.is-invalid]=\"!user.isEmailValid && user !== newUser\"\n                    class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\n                    [(ngModel)]=\"user.newEmail\">\n            </td>\n            <td>\n                <div class=\"form-check text-center\">\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\n                        type=\"checkbox\" [(ngModel)]=\"user.newIsLibrarian\">\n                </div>\n            </td>\n            <td>\n                <div class=\"form-check text-center\">\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\n                        type=\"checkbox\" [(ngModel)]=\"user.newIsAdministrator\">\n                </div>\n            </td>\n            <td class=\"pr-0 text-nowrap\">\n                <button [class.invisible]=\"!user.isChanged && user.original !== null || user === newUser\"\n                    [disabled]=\"!user.isValid\" class=\"btn btn-sm btn-success mr-1\" (click)=\"save(user)\">Uložit</button>\n                <button [class.invisible]=\"!user.isChanged && user.original !== null || user === newUser\"\n                    class=\"btn btn-sm btn-danger ml-1\" (click)=\"discard(user)\">Zahodit</button>\n            </td>\n            <td>\n                <i *ngIf=\"user.original !== null\" class=\"fas fa-trash fa-2x cursor-pointer text-muted\"\n                    style=\"font-size: 1.5em\" (click)=\"remove(user)\"></i>\n            </td>\n        </tr>\n    </tbody>\n</table>\n<div *ngIf=\"users === undefined\" class=\"flex-grow-1 d-flex justify-content-center align-items-center\">\n    <div class=\"spinner-border\" role=\"status\">\n        <span class=\"sr-only\">Načítání...</span>\n    </div>\n</div>\n<div *ngIf=\"users !== undefined && users.length === 1 && !isFiltred\" class=\"flex-grow-1 d-flex justify-content-center align-items-center\">\n    <span class=\"text-muted\">Databáze neobsahuje žádné záznamy.</span>\n</div>\n<div *ngIf=\"users !== undefined && users.length === 0 && isFiltred\" class=\"flex-grow-1 d-flex justify-content-center align-items-center\">\n    <span class=\"text-muted\">Podle zadaných kritérií nebyly nalezeny žádné záznamy.</span>\n</div>";
+    __webpack_exports__["default"] = "<div class=\"d-flex align-items-center\">\r\n    <h2 class=\"m-4 flex-grow-1\">Uživatelé</h2>\r\n    <button class=\"btn btn-secondary m-1\" (click)=\"export()\">Exportovat</button>\r\n    <button class=\"btn btn-secondary m-1 mr-4\"(click)=\"import()\">Importovat</button>\r\n</div>\r\n<table class=\"table table-striped table-hover\">\r\n    <thead>\r\n        <tr [formGroup]=\"filterForm\">\r\n            <th class=\"sticky-top bg-white table-column-id\">\r\n                Id\r\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"id\" [class.is-invalid]=\"!isIdFilterValid\">\r\n            </th>\r\n            <th class=\"table-column-fill sticky-top bg-white\">\r\n                Uživatelské jméno\r\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"userName\">\r\n            </th>\r\n            <th class=\"table-column-fill sticky-top bg-white align-top\">Heslo</th>\r\n            <th class=\"table-column-fill sticky-top bg-white\">\r\n                Jméno\r\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"firstName\">\r\n            </th>\r\n            <th class=\"table-column-fill sticky-top bg-white\">\r\n                Příjmení\r\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"lastName\">\r\n            </th>\r\n            <th class=\"table-column-fill sticky-top bg-white\">\r\n                Email\r\n                <input type=\"text\" class=\"form-control form-control-sm\" formControlName=\"email\">\r\n            </th>\r\n            <th class=\"sticky-top bg-white\">\r\n                Knihovník\r\n                <div class=\"form-check text-center\">\r\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\r\n                        type=\"checkbox\" formControlName=\"isLibrarian\">\r\n                </div>\r\n            </th>\r\n            <th class=\"sticky-top bg-white\">\r\n                Administrátor\r\n                <div class=\"form-check text-center\">\r\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\r\n                        type=\"checkbox\" formControlName=\"isAdministrator\">\r\n                </div>\r\n            </th>\r\n            <th class=\"sticky-top bg-white text-nowrap\">\r\n                <small class=\"text-muted font-weight-normal text-center d-block pb-1\">{{changesText}}</small>\r\n                <button [class.invisible]=\"!hasChanges\" [disabled]=\"!isAllValid\" class=\"btn btn-sm btn-success mr-1\"\r\n                    (click)=\"saveAll()\">Uložit</button>\r\n                <button [class.invisible]=\"!hasChanges\" class=\"btn btn-sm btn-danger ml-1\"\r\n                    (click)=\"discardAll()\">Zahodit</button>\r\n            </th>\r\n            <th class=\"sticky-top bg-white\"></th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let user of users\"\r\n            [class.table-warning]=\"(user.isChanged || user.original === null) && user !== newUser\">\r\n            <td class=\"table-column-id align-middle\">\r\n                <ng-container *ngIf=\"user.original !== null\">{{user.original.id}}</ng-container>\r\n                <i *ngIf=\"user.original === null\" class=\"fas fa-plus\"></i>\r\n            </td>\r\n            <td class=\"table-column-fill\">\r\n                <input [class.is-invalid]=\"!user.isUserNameValid && user !== newUser\"\r\n                    class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\r\n                    [(ngModel)]=\"user.newUserName\">\r\n            </td>\r\n            <td class=\"table-column-fill\">\r\n                <input [class.is-invalid]=\"!user.isPasswordValid && user !== newUser\"\r\n                    class=\"form-control form-control-sm editable-cell\"\r\n                    [placeholder]=\"user.original === null ? 'Nevyplněno' : 'Nezměněno'\" type=\"password\"\r\n                    [(ngModel)]=\"user.newPassword\">\r\n            </td>\r\n            <td class=\"table-column-fill\">\r\n                <input class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\r\n                    [(ngModel)]=\"user.newFirstName\">\r\n            </td>\r\n            <td class=\"table-column-fill\">\r\n                <input class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\r\n                    [(ngModel)]=\"user.newLastName\">\r\n            </td>\r\n            <td class=\"table-column-fill\">\r\n                <input [class.is-invalid]=\"!user.isEmailValid && user !== newUser\"\r\n                    class=\"form-control form-control-sm editable-cell\" placeholder=\"Nevyplněno\" type=\"text\"\r\n                    [(ngModel)]=\"user.newEmail\">\r\n            </td>\r\n            <td>\r\n                <div class=\"form-check text-center\">\r\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\r\n                        type=\"checkbox\" [(ngModel)]=\"user.newIsLibrarian\">\r\n                </div>\r\n            </td>\r\n            <td>\r\n                <div class=\"form-check text-center\">\r\n                    <input style=\"width: 18px; height: 19px; cursor: pointer;\" class=\"form-check-input position-static\"\r\n                        type=\"checkbox\" [(ngModel)]=\"user.newIsAdministrator\">\r\n                </div>\r\n            </td>\r\n            <td class=\"pr-0 text-nowrap\">\r\n                <button [class.invisible]=\"!user.isChanged && user.original !== null || user === newUser\"\r\n                    [disabled]=\"!user.isValid\" class=\"btn btn-sm btn-success mr-1\" (click)=\"save(user)\">Uložit</button>\r\n                <button [class.invisible]=\"!user.isChanged && user.original !== null || user === newUser\"\r\n                    class=\"btn btn-sm btn-danger ml-1\" (click)=\"discard(user)\">Zahodit</button>\r\n            </td>\r\n            <td>\r\n                <i *ngIf=\"user.original !== null\" class=\"fas fa-trash fa-2x cursor-pointer text-muted\"\r\n                    style=\"font-size: 1.5em\" (click)=\"remove(user)\"></i>\r\n            </td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n<div *ngIf=\"users === undefined\" class=\"flex-grow-1 d-flex justify-content-center align-items-center\">\r\n    <div class=\"spinner-border\" role=\"status\">\r\n        <span class=\"sr-only\">Načítání...</span>\r\n    </div>\r\n</div>\r\n<div *ngIf=\"users !== undefined && users.length === 1 && !isFiltred\" class=\"flex-grow-1 d-flex justify-content-center align-items-center\">\r\n    <span class=\"text-muted\">Databáze neobsahuje žádné záznamy.</span>\r\n</div>\r\n<div *ngIf=\"users !== undefined && users.length === 0 && isFiltred\" class=\"flex-grow-1 d-flex justify-content-center align-items-center\">\r\n    <span class=\"text-muted\">Podle zadaných kritérií nebyly nalezeny žádné záznamy.</span>\r\n</div>";
     /***/
   },
 
@@ -179,7 +155,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./node_modules/tslib/tslib.es6.js ***!
     \*****************************************/
 
-  /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+  /*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 
   /***/
   function node_modulesTslibTslibEs6Js(module, __webpack_exports__, __webpack_require__) {
@@ -306,6 +282,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     __webpack_require__.d(__webpack_exports__, "__importDefault", function () {
       return __importDefault;
     });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function () {
+      return __classPrivateFieldGet;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function () {
+      return __classPrivateFieldSet;
+    });
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
     Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -330,9 +318,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       } instanceof Array && function (d, b) {
         d.__proto__ = b;
       } || function (d, b) {
-        for (var p in b) {
-          if (b.hasOwnProperty(p)) d[p] = b[p];
-        }
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
       };
 
       return _extendStatics(d, b);
@@ -353,9 +339,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         for (var s, i = 1, n = arguments.length; i < n; i++) {
           s = arguments[i];
 
-          for (var p in s) {
-            if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-          }
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
         }
 
         return t;
@@ -367,9 +351,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     function __rest(s, e) {
       var t = {};
 
-      for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
-      }
+      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
 
       if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
         if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
@@ -381,9 +363,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var c = arguments.length,
           r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
           d;
-      if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-        if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-      }
+      if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
       return c > 3 && r && Object.defineProperty(target, key, r), r;
     }
 
@@ -398,6 +378,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function __awaiter(thisArg, _arguments, P, generator) {
+      function adopt(value) {
+        return value instanceof P ? value : new P(function (resolve) {
+          resolve(value);
+        });
+      }
+
       return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) {
           try {
@@ -416,9 +402,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
 
         function step(result) {
-          result.done ? resolve(result.value) : new P(function (resolve) {
-            resolve(result.value);
-          }).then(fulfilled, rejected);
+          result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
         }
 
         step((generator = generator.apply(thisArg, _arguments || [])).next());
@@ -456,76 +440,74 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       function step(op) {
         if (f) throw new TypeError("Generator is already executing.");
 
-        while (_) {
-          try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
+        while (_) try {
+          if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+          if (y = 0, t) op = [op[0] & 2, t.value];
 
-            switch (op[0]) {
-              case 0:
-              case 1:
+          switch (op[0]) {
+            case 0:
+            case 1:
+              t = op;
+              break;
+
+            case 4:
+              _.label++;
+              return {
+                value: op[1],
+                done: false
+              };
+
+            case 5:
+              _.label++;
+              y = op[1];
+              op = [0];
+              continue;
+
+            case 7:
+              op = _.ops.pop();
+
+              _.trys.pop();
+
+              continue;
+
+            default:
+              if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                _ = 0;
+                continue;
+              }
+
+              if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                _.label = op[1];
+                break;
+              }
+
+              if (op[0] === 6 && _.label < t[1]) {
+                _.label = t[1];
                 t = op;
                 break;
+              }
 
-              case 4:
-                _.label++;
-                return {
-                  value: op[1],
-                  done: false
-                };
+              if (t && _.label < t[2]) {
+                _.label = t[2];
 
-              case 5:
-                _.label++;
-                y = op[1];
-                op = [0];
-                continue;
+                _.ops.push(op);
 
-              case 7:
-                op = _.ops.pop();
+                break;
+              }
 
-                _.trys.pop();
+              if (t[2]) _.ops.pop();
 
-                continue;
+              _.trys.pop();
 
-              default:
-                if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-                  _ = 0;
-                  continue;
-                }
-
-                if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
-                  _.label = op[1];
-                  break;
-                }
-
-                if (op[0] === 6 && _.label < t[1]) {
-                  _.label = t[1];
-                  t = op;
-                  break;
-                }
-
-                if (t && _.label < t[2]) {
-                  _.label = t[2];
-
-                  _.ops.push(op);
-
-                  break;
-                }
-
-                if (t[2]) _.ops.pop();
-
-                _.trys.pop();
-
-                continue;
-            }
-
-            op = body.call(thisArg, _);
-          } catch (e) {
-            op = [6, e];
-            y = 0;
-          } finally {
-            f = t = 0;
+              continue;
           }
+
+          op = body.call(thisArg, _);
+        } catch (e) {
+          op = [6, e];
+          y = 0;
+        } finally {
+          f = t = 0;
         }
 
         if (op[0] & 5) throw op[1];
@@ -537,16 +519,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function __exportStar(m, exports) {
-      for (var p in m) {
-        if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-      }
+      for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
     }
 
     function __values(o) {
-      var m = typeof Symbol === "function" && o[Symbol.iterator],
+      var s = typeof Symbol === "function" && Symbol.iterator,
+          m = s && o[s],
           i = 0;
       if (m) return m.call(o);
-      return {
+      if (o && typeof o.length === "number") return {
         next: function next() {
           if (o && i >= o.length) o = void 0;
           return {
@@ -555,6 +536,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           };
         }
       };
+      throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
     }
 
     function __read(o, n) {
@@ -566,9 +548,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           e;
 
       try {
-        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
-          ar.push(r.value);
-        }
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) ar.push(r.value);
       } catch (error) {
         e = {
           error: error
@@ -585,23 +565,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }
 
     function __spread() {
-      for (var ar = [], i = 0; i < arguments.length; i++) {
-        ar = ar.concat(__read(arguments[i]));
-      }
+      for (var ar = [], i = 0; i < arguments.length; i++) ar = ar.concat(__read(arguments[i]));
 
       return ar;
     }
 
     function __spreadArrays() {
-      for (var s = 0, i = 0, il = arguments.length; i < il; i++) {
-        s += arguments[i].length;
-      }
+      for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
 
-      for (var r = Array(s), k = 0, i = 0; i < il; i++) {
-        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) {
-          r[k] = a[j];
-        }
-      }
+      for (var r = Array(s), k = 0, i = 0; i < il; i++) for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) r[k] = a[j];
 
       return r;
     }
@@ -715,9 +687,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     function __importStar(mod) {
       if (mod && mod.__esModule) return mod;
       var result = {};
-      if (mod != null) for (var k in mod) {
-        if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-      }
+      if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
       result.default = mod;
       return result;
     }
@@ -726,6 +696,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return mod && mod.__esModule ? mod : {
         default: mod
       };
+    }
+
+    function __classPrivateFieldGet(receiver, privateMap) {
+      if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+      }
+
+      return privateMap.get(receiver);
+    }
+
+    function __classPrivateFieldSet(receiver, privateMap, value) {
+      if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+      }
+
+      privateMap.set(receiver, value);
+      return value;
     }
     /***/
 
@@ -832,44 +819,33 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ../alert-type */
     "./src/app/alerts/alert-type.ts");
 
-    var AlertViewComponent =
-    /*#__PURE__*/
-    function () {
-      function AlertViewComponent(alertService) {
-        _classCallCheck(this, AlertViewComponent);
-
+    let AlertViewComponent = class AlertViewComponent {
+      constructor(alertService) {
         this.alertService = alertService;
       }
 
-      _createClass(AlertViewComponent, [{
-        key: "getAlertClass",
-        value: function getAlertClass(alert) {
-          switch (alert.type) {
-            case _alert_type__WEBPACK_IMPORTED_MODULE_3__["AlertType"].warning:
-              return "alert-warning";
+      get activeAlerts() {
+        return this.alertService.active;
+      }
 
-            case _alert_type__WEBPACK_IMPORTED_MODULE_3__["AlertType"].error:
-              return "alert-danger";
+      getAlertClass(alert) {
+        switch (alert.type) {
+          case _alert_type__WEBPACK_IMPORTED_MODULE_3__["AlertType"].warning:
+            return "alert-warning";
 
-            default:
-              return "alert-info";
-          }
+          case _alert_type__WEBPACK_IMPORTED_MODULE_3__["AlertType"].error:
+            return "alert-danger";
+
+          default:
+            return "alert-info";
         }
-      }, {
-        key: "activeAlerts",
-        get: function get() {
-          return this.alertService.active;
-        }
-      }]);
+      }
 
-      return AlertViewComponent;
-    }();
-
-    AlertViewComponent.ctorParameters = function () {
-      return [{
-        type: _alert_service__WEBPACK_IMPORTED_MODULE_2__["AlertService"]
-      }];
     };
+
+    AlertViewComponent.ctorParameters = () => [{
+      type: _alert_service__WEBPACK_IMPORTED_MODULE_2__["AlertService"]
+    }];
 
     AlertViewComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-alert-view',
@@ -927,32 +903,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./alert */
     "./src/app/alerts/alert.ts");
 
-    var AlertService =
-    /*#__PURE__*/
-    function () {
-      function AlertService() {
-        _classCallCheck(this, AlertService);
-
+    let AlertService = class AlertService {
+      constructor() {
         this.active = [];
       }
 
-      _createClass(AlertService, [{
-        key: "show",
-        value: function show(message) {
-          var _this = this;
+      show(message, type = _alert_type__WEBPACK_IMPORTED_MODULE_2__["AlertType"].info) {
+        let alert = new _alert__WEBPACK_IMPORTED_MODULE_3__["Alert"](message, type);
+        this.active.push(alert);
+        setTimeout(() => this.active.shift(), 2000);
+      }
 
-          var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : _alert_type__WEBPACK_IMPORTED_MODULE_2__["AlertType"].info;
-          var alert = new _alert__WEBPACK_IMPORTED_MODULE_3__["Alert"](message, type);
-          this.active.push(alert);
-          setTimeout(function () {
-            return _this.active.shift();
-          }, 2000);
-        }
-      }]);
-
-      return AlertService;
-    }();
-
+    };
     AlertService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     })], AlertService);
@@ -985,12 +947,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var Alert = function Alert(message, type) {
-      _classCallCheck(this, Alert);
+    class Alert {
+      constructor(message, type) {
+        this.message = message;
+        this.type = type;
+      }
 
-      this.message = message;
-      this.type = type;
-    };
+    }
     /***/
 
   },
@@ -1039,54 +1002,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./core/sign-in/sign-in.service */
     "./src/app/core/sign-in/sign-in.service.ts");
 
-    var AppInitializeService =
-    /*#__PURE__*/
-    function () {
-      function AppInitializeService(userService, signInService) {
-        _classCallCheck(this, AppInitializeService);
-
+    let AppInitializeService = class AppInitializeService {
+      constructor(userService, signInService) {
         this.userService = userService;
         this.signInService = signInService;
       }
 
-      _createClass(AppInitializeService, [{
-        key: "intialize",
-        value: function intialize() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
-            var user;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return this.userService.getSignedIn().toPromise();
+      intialize() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          let user = yield this.userService.getSignedIn().toPromise();
+          if (user !== null) this.signInService.signIn(user);
+        });
+      }
 
-                  case 2:
-                    user = _context.sent;
-                    if (user !== null) this.signInService.signIn(user);
-
-                  case 4:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-        }
-      }]);
-
-      return AppInitializeService;
-    }();
-
-    AppInitializeService.ctorParameters = function () {
-      return [{
-        type: _core_users_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]
-      }, {
-        type: _core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_3__["SignInService"]
-      }];
     };
+
+    AppInitializeService.ctorParameters = () => [{
+      type: _core_users_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]
+    }, {
+      type: _core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_3__["SignInService"]
+    }];
 
     AppInitializeService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
@@ -1217,36 +1152,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./src/app/app-initialize.service.ts");
 
     function createAppInitializer(appInitializeService) {
-      var _this2 = this;
-
-      return function () {
-        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this2, void 0, void 0,
-        /*#__PURE__*/
-        regeneratorRuntime.mark(function _callee2() {
-          return regeneratorRuntime.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  _context2.next = 2;
-                  return appInitializeService.intialize();
-
-                case 2:
-                  return _context2.abrupt("return", _context2.sent);
-
-                case 3:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2);
-        }));
-      };
+      return () => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+        return yield appInitializeService.intialize();
+      });
     }
 
-    var AppModule = function AppModule() {
-      _classCallCheck(this, AppModule);
-    };
-
+    let AppModule = class AppModule {};
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
       declarations: [_pages_app_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_users_users_component__WEBPACK_IMPORTED_MODULE_7__["UsersComponent"], _pages_app_main_navigation_main_navigation_component__WEBPACK_IMPORTED_MODULE_8__["MainNavigationComponent"], _alerts_alert_view_alert_view_component__WEBPACK_IMPORTED_MODULE_9__["AlertViewComponent"], _dialogs_confirm_dialog_confirm_dialog_component__WEBPACK_IMPORTED_MODULE_11__["ConfirmDialogComponent"], _pages_app_main_footer_main_footer_component__WEBPACK_IMPORTED_MODULE_12__["MainFooterComponent"]],
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _routing_app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"]],
@@ -1313,7 +1224,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var API_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Url of api root.");
+    const API_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Url of api root.");
     /***/
   },
 
@@ -1349,38 +1260,27 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var SignInService =
-    /*#__PURE__*/
-    function () {
-      function SignInService() {
-        _classCallCheck(this, SignInService);
-
+    let SignInService = class SignInService {
+      constructor() {
         this.signedUserChanged = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this._signedUser = null;
       }
 
-      _createClass(SignInService, [{
-        key: "signIn",
-        value: function signIn(user) {
-          this._signedUser = user;
-          this.signedUserChanged.emit();
-        }
-      }, {
-        key: "signOut",
-        value: function signOut() {
-          this._signedUser = null;
-          this.signedUserChanged.emit();
-        }
-      }, {
-        key: "signedUser",
-        get: function get() {
-          return this._signedUser;
-        }
-      }]);
+      get signedUser() {
+        return this._signedUser;
+      }
 
-      return SignInService;
-    }();
+      signIn(user) {
+        this._signedUser = user;
+        this.signedUserChanged.emit();
+      }
 
+      signOut() {
+        this._signedUser = null;
+        this.signedUserChanged.emit();
+      }
+
+    };
     SignInService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     })], SignInService);
@@ -1413,19 +1313,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var UserHasActiveBorrowsError =
-    /*#__PURE__*/
-    function (_Error) {
-      _inherits(UserHasActiveBorrowsError, _Error);
-
-      function UserHasActiveBorrowsError() {
-        _classCallCheck(this, UserHasActiveBorrowsError);
-
-        return _possibleConstructorReturn(this, _getPrototypeOf(UserHasActiveBorrowsError).apply(this, arguments));
-      }
-
-      return UserHasActiveBorrowsError;
-    }(_wrapNativeSuper(Error));
+    class UserHasActiveBorrowsError extends Error {}
     /***/
 
   },
@@ -1456,19 +1344,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var UserNameAlreadyUsedError =
-    /*#__PURE__*/
-    function (_Error2) {
-      _inherits(UserNameAlreadyUsedError, _Error2);
-
-      function UserNameAlreadyUsedError() {
-        _classCallCheck(this, UserNameAlreadyUsedError);
-
-        return _possibleConstructorReturn(this, _getPrototypeOf(UserNameAlreadyUsedError).apply(this, arguments));
-      }
-
-      return UserNameAlreadyUsedError;
-    }(_wrapNativeSuper(Error));
+    class UserNameAlreadyUsedError extends Error {}
     /***/
 
   },
@@ -1547,108 +1423,74 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./user-has-active-borrows-error */
     "./src/app/core/users/user-has-active-borrows-error.ts");
 
-    var UserService =
-    /*#__PURE__*/
-    function () {
-      function UserService(httpClient, apiUrl) {
-        _classCallCheck(this, UserService);
-
+    let UserService = class UserService {
+      constructor(httpClient, apiUrl) {
         this.httpClient = httpClient;
         this.apiUrl = apiUrl;
       }
 
-      _createClass(UserService, [{
-        key: "getAll",
-        value: function getAll() {
-          var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-          var parameters = Object.assign({}, options.idFilter !== undefined && {
-            "id-filter": options.idFilter.toString()
-          }, options.userNameFilter !== undefined && {
-            "user-name-filter": options.userNameFilter
-          }, options.firstNameFilter !== undefined && {
-            "first-name-filter": options.firstNameFilter
-          }, options.lastNameFilter !== undefined && {
-            "last-name-filter": options.lastNameFilter
-          }, options.emailFilter !== undefined && {
-            "email-filter": options.emailFilter
-          }, options.isLibrarianFilter !== undefined && {
-            "is-librarian-filter": options.isLibrarianFilter.toString()
-          }, options.isAdministratorFilter !== undefined && {
-            "is-administrator-filter": options.isAdministratorFilter.toString()
-          });
-          return this.httpClient.get("".concat(this.apiUrl, "/users/index.php"), {
-            params: parameters
-          }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (u) {
-            return u.map(function (u) {
-              return new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator);
-            });
-          }));
-        }
-      }, {
-        key: "getById",
-        value: function getById(id) {
-          return this.httpClient.get("".concat(this.apiUrl, "/users/index.php?id=").concat(id)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (u) {
-            return new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator);
-          }));
-        }
-      }, {
-        key: "getSignedIn",
-        value: function getSignedIn() {
-          return this.httpClient.get("".concat(this.apiUrl, "/users/index.php?id=")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return e.status === 401 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e);
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (u) {
-            return u === null ? null : new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator);
-          }));
-        }
-      }, {
-        key: "add",
-        value: function add(user, password) {
-          var id = user.id,
-              withoutId = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](user, ["id"]);
-          var withPassword = Object.assign({}, withoutId, {
-            password: password
-          });
-          return this.httpClient.post("".concat(this.apiUrl, "/users/index.php"), withPassword).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_name_already_used_error__WEBPACK_IMPORTED_MODULE_6__["UserNameAlreadyUsedError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e);
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (u) {
-            return new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator);
-          }));
-        }
-      }, {
-        key: "update",
-        value: function update(user, password) {
-          var userData = password === undefined ? user : Object.assign({}, user, {
-            password: password
-          });
-          return this.httpClient.put("".concat(this.apiUrl, "/users/index.php?id=").concat(user.id), userData).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_name_already_used_error__WEBPACK_IMPORTED_MODULE_6__["UserNameAlreadyUsedError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e);
-          }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (u) {
-            return new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator);
-          }));
-        }
-      }, {
-        key: "remove",
-        value: function remove(user) {
-          return this.httpClient.delete("".concat(this.apiUrl, "/users/index.php?id=").concat(user.id)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(function (e) {
-            return e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_8__["UserHasActiveBorrowsError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e);
-          }));
-        }
-      }]);
+      getAll(options = {}) {
+        let parameters = Object.assign({}, options.idFilter !== undefined && {
+          "id-filter": options.idFilter.toString()
+        }, options.userNameFilter !== undefined && {
+          "user-name-filter": options.userNameFilter
+        }, options.firstNameFilter !== undefined && {
+          "first-name-filter": options.firstNameFilter
+        }, options.lastNameFilter !== undefined && {
+          "last-name-filter": options.lastNameFilter
+        }, options.emailFilter !== undefined && {
+          "email-filter": options.emailFilter
+        }, options.isLibrarianFilter !== undefined && {
+          "is-librarian-filter": options.isLibrarianFilter.toString()
+        }, options.isAdministratorFilter !== undefined && {
+          "is-administrator-filter": options.isAdministratorFilter.toString()
+        });
+        return this.httpClient.get("".concat(this.apiUrl, "/users/index.php"), {
+          params: parameters
+        }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(u => u.map(u => new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator))));
+      }
 
-      return UserService;
-    }();
+      getById(id) {
+        return this.httpClient.get("".concat(this.apiUrl, "/users/index.php?id=").concat(id)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(u => new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator)));
+      }
 
-    UserService.ctorParameters = function () {
-      return [{
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
-      }, {
-        type: String,
-        decorators: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
-          args: [_api_api__WEBPACK_IMPORTED_MODULE_7__["API_URL"]]
-        }]
-      }];
+      getSignedIn() {
+        return this.httpClient.get("".concat(this.apiUrl, "/users/index.php?id=")).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => e.status === 401 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(u => u === null ? null : new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator)));
+      }
+
+      add(user, password) {
+        let {
+          id
+        } = user,
+            withoutId = tslib__WEBPACK_IMPORTED_MODULE_0__["__rest"](user, ["id"]);
+        let withPassword = Object.assign({}, withoutId, {
+          password
+        });
+        return this.httpClient.post("".concat(this.apiUrl, "/users/index.php"), withPassword).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_name_already_used_error__WEBPACK_IMPORTED_MODULE_6__["UserNameAlreadyUsedError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(u => new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator)));
+      }
+
+      update(user, password) {
+        let userData = password === undefined ? user : Object.assign({}, user, {
+          password
+        });
+        return this.httpClient.put("".concat(this.apiUrl, "/users/index.php?id=").concat(user.id), userData).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_name_already_used_error__WEBPACK_IMPORTED_MODULE_6__["UserNameAlreadyUsedError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(u => new _user__WEBPACK_IMPORTED_MODULE_5__["User"](u.id, u.userName, u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator)));
+      }
+
+      remove(user) {
+        return this.httpClient.delete("".concat(this.apiUrl, "/users/index.php?id=").concat(user.id)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["catchError"])(e => e.status === 409 ? Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(new _user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_8__["UserHasActiveBorrowsError"]()) : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["throwError"])(e)));
+      }
+
     };
+
+    UserService.ctorParameters = () => [{
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+    }, {
+      type: String,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+        args: [_api_api__WEBPACK_IMPORTED_MODULE_7__["API_URL"]]
+      }]
+    }];
 
     UserService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
@@ -1682,17 +1524,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var User = function User(id, userName, firstName, lastName, email, isLibrarian, isAdministrator) {
-      _classCallCheck(this, User);
+    class User {
+      constructor(id, userName, firstName, lastName, email, isLibrarian, isAdministrator) {
+        this.id = id;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.isLibrarian = isLibrarian;
+        this.isAdministrator = isAdministrator;
+      }
 
-      this.id = id;
-      this.userName = userName;
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.email = email;
-      this.isLibrarian = isLibrarian;
-      this.isAdministrator = isAdministrator;
-    };
+    }
     /***/
 
   },
@@ -1749,33 +1592,20 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var ConfirmDialogComponent =
-    /*#__PURE__*/
-    function () {
-      function ConfirmDialogComponent() {
-        _classCallCheck(this, ConfirmDialogComponent);
-
+    let ConfirmDialogComponent = class ConfirmDialogComponent {
+      constructor() {
         this.close = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
         this.confirmed = false;
       }
 
-      _createClass(ConfirmDialogComponent, [{
-        key: "ngAfterViewInit",
-        value: function ngAfterViewInit() {
-          var _this3 = this;
+      ngAfterViewInit() {
+        // @ts-ignore
+        let modalElement = $(this.modal.nativeElement);
+        modalElement.modal({});
+        modalElement.on("hidden.bs.modal", () => this.close.emit(this.confirmed));
+      }
 
-          // @ts-ignore
-          var modalElement = $(this.modal.nativeElement);
-          modalElement.modal({});
-          modalElement.on("hidden.bs.modal", function () {
-            return _this3.close.emit(_this3.confirmed);
-          });
-        }
-      }]);
-
-      return ConfirmDialogComponent;
-    }();
-
+    };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], ConfirmDialogComponent.prototype, "title", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], ConfirmDialogComponent.prototype, "message", void 0);
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()], ConfirmDialogComponent.prototype, "close", void 0);
@@ -1826,26 +1656,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var WithCredentialsHttpInterceptor =
-    /*#__PURE__*/
-    function () {
-      function WithCredentialsHttpInterceptor() {
-        _classCallCheck(this, WithCredentialsHttpInterceptor);
+    let WithCredentialsHttpInterceptor = class WithCredentialsHttpInterceptor {
+      intercept(request, next) {
+        let requestWithCredentials = request.clone({
+          withCredentials: true
+        });
+        return next.handle(requestWithCredentials);
       }
 
-      _createClass(WithCredentialsHttpInterceptor, [{
-        key: "intercept",
-        value: function intercept(request, next) {
-          var requestWithCredentials = request.clone({
-            withCredentials: true
-          });
-          return next.handle(requestWithCredentials);
-        }
-      }]);
-
-      return WithCredentialsHttpInterceptor;
-    }();
-
+    };
     WithCredentialsHttpInterceptor = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()], WithCredentialsHttpInterceptor);
     /***/
   },
@@ -1866,7 +1685,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ":host {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  height: 100%;\n}\n\n.alert-view-container {\n  pointer-events: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYXBwL0M6XFxVc2Vyc1xcSmFrdWIgxaBlbmvDvcWZXFxPbmVEcml2ZVxcU291cmNlXFxwcm9qZWt0eVxcdHJpZGEtNGVwXFxwcm9qZWt0LTRlcFxcc3JjXFxzeXNhZG1pblxcY2xpZW50L3NyY1xcYXBwXFxwYWdlc1xcYXBwXFxhcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSw0QkFBQTtFQUFBLDZCQUFBO1VBQUEsc0JBQUE7RUFDQSxZQUFBO0FDQ0o7O0FERUE7RUFDSSxvQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgaGVpZ2h0OiAxMDAlO1xufVxuXG4uYWxlcnQtdmlldy1jb250YWluZXIge1xuICAgIHBvaW50ZXItZXZlbnRzOiBub25lO1xufSIsIjpob3N0IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgaGVpZ2h0OiAxMDAlO1xufVxuXG4uYWxlcnQtdmlldy1jb250YWluZXIge1xuICBwb2ludGVyLWV2ZW50czogbm9uZTtcbn0iXX0= */";
+    __webpack_exports__["default"] = ":host {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  height: 100%;\n}\n\n.alert-view-container {\n  pointer-events: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYXBwL0M6XFxVc2Vyc1xcSmFrdWIgxaBlbmvDvcWZXFxPbmVEcml2ZVxcU291cmNlXFxwcm9qZWt0eVxcdHJpZGEtNGVwXFxwcm9qZWt0LTRlcFxcc3JjXFxzeXNhZG1pblxcY2xpZW50L3NyY1xcYXBwXFxwYWdlc1xcYXBwXFxhcHAuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2FwcC9hcHAuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSw0QkFBQTtFQUFBLDZCQUFBO1VBQUEsc0JBQUE7RUFDQSxZQUFBO0FDQ0o7O0FERUE7RUFDSSxvQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG59XHJcblxyXG4uYWxlcnQtdmlldy1jb250YWluZXIge1xyXG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XHJcbn0iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLmFsZXJ0LXZpZXctY29udGFpbmVyIHtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59Il19 */";
     /***/
   },
 
@@ -1902,10 +1721,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var AppComponent = function AppComponent() {
-      _classCallCheck(this, AppComponent);
-    };
-
+    let AppComponent = class AppComponent {};
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-root',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -1970,10 +1786,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var MainFooterComponent = function MainFooterComponent() {
-      _classCallCheck(this, MainFooterComponent);
-    };
-
+    let MainFooterComponent = class MainFooterComponent {};
     MainFooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-main-footer',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -2068,16 +1881,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! @angular/common */
     "./node_modules/@angular/common/fesm2015/common.js");
 
-    var SIGN_OUT_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Sign out page url.");
-    var USER_MODULE_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("User module root page url.");
-    var LIBRARIAN_MODULE_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Librarian module root page url.");
-
-    var MainNavigationComponent =
-    /*#__PURE__*/
-    function () {
-      function MainNavigationComponent(signInService, signOutUrl, userModuleUrl, librarianModuleUrl, location) {
-        _classCallCheck(this, MainNavigationComponent);
-
+    const SIGN_OUT_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Sign out page url.");
+    const USER_MODULE_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("User module root page url.");
+    const LIBRARIAN_MODULE_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Librarian module root page url.");
+    let MainNavigationComponent = class MainNavigationComponent {
+      constructor(signInService, signOutUrl, userModuleUrl, librarianModuleUrl, location) {
         this.signInService = signInService;
         this.signOutUrl = signOutUrl;
         this.userModuleUrl = userModuleUrl;
@@ -2085,47 +1893,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.location = location;
       }
 
-      _createClass(MainNavigationComponent, [{
-        key: "signOut",
-        value: function signOut() {
-          this.signInService.signOut();
-          window.location.href = this.signOutUrl + "?redirectUrl=" + this.userModuleUrl;
-        }
-      }, {
-        key: "signedUser",
-        get: function get() {
-          return this.signInService.signedUser;
-        }
-      }]);
+      get signedUser() {
+        return this.signInService.signedUser;
+      }
 
-      return MainNavigationComponent;
-    }();
+      signOut() {
+        this.signInService.signOut();
+        window.location.href = this.signOutUrl + "?redirectUrl=" + this.userModuleUrl;
+      }
 
-    MainNavigationComponent.ctorParameters = function () {
-      return [{
-        type: src_app_core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_2__["SignInService"]
-      }, {
-        type: String,
-        decorators: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
-          args: [SIGN_OUT_URL]
-        }]
-      }, {
-        type: String,
-        decorators: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
-          args: [USER_MODULE_URL]
-        }]
-      }, {
-        type: String,
-        decorators: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
-          args: [LIBRARIAN_MODULE_URL]
-        }]
-      }, {
-        type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]
-      }];
     };
+
+    MainNavigationComponent.ctorParameters = () => [{
+      type: src_app_core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_2__["SignInService"]
+    }, {
+      type: String,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+        args: [SIGN_OUT_URL]
+      }]
+    }, {
+      type: String,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+        args: [USER_MODULE_URL]
+      }]
+    }, {
+      type: String,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+        args: [LIBRARIAN_MODULE_URL]
+      }]
+    }, {
+      type: _angular_common__WEBPACK_IMPORTED_MODULE_3__["Location"]
+    }];
 
     MainNavigationComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-main-navigation',
@@ -2165,12 +1966,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! tslib */
     "./node_modules/tslib/tslib.es6.js");
 
-    var UserViewModel =
-    /*#__PURE__*/
-    function () {
-      function UserViewModel(original, newUserName, newPassword, newFirstName, newLastName, newEmail, newIsLibrarian, newIsAdministrator) {
-        _classCallCheck(this, UserViewModel);
-
+    class UserViewModel {
+      constructor(original, newUserName, newPassword, newFirstName, newLastName, newEmail, newIsLibrarian, newIsAdministrator) {
         this.original = original;
         this.newUserName = newUserName;
         this.newPassword = newPassword;
@@ -2181,60 +1978,51 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.newIsAdministrator = newIsAdministrator;
       }
 
-      _createClass(UserViewModel, [{
-        key: "resetToOriginal",
-        value: function resetToOriginal() {
-          if (this.original !== null) {
-            this.newUserName = this.original.userName;
-            this.newPassword = "";
-            this.newFirstName = this.original.firstName;
-            this.newLastName = this.original.lastName;
-            this.newEmail = this.original.email;
-            this.newIsLibrarian = this.original.isLibrarian;
-            this.newIsAdministrator = this.original.isAdministrator;
-          } else {
-            this.newUserName = "";
-            this.newPassword = "";
-            this.newFirstName = "";
-            this.newLastName = "";
-            this.newEmail = "";
-            this.newIsLibrarian = false;
-            this.newIsAdministrator = false;
-          }
+      get isChanged() {
+        if (this.original == null) {
+          return this.newUserName !== "" || this.newPassword !== "" || this.newFirstName !== "" || this.newLastName !== "" || this.newEmail !== "" || this.newIsLibrarian !== false || this.newIsAdministrator !== false;
+        } else {
+          return this.newUserName !== this.original.userName || this.newPassword !== "" || this.newFirstName !== this.original.firstName || this.newLastName !== this.original.lastName || this.newEmail !== this.original.email || this.newIsLibrarian !== this.original.isLibrarian || this.newIsAdministrator !== this.original.isAdministrator;
         }
-      }, {
-        key: "isChanged",
-        get: function get() {
-          if (this.original == null) {
-            return this.newUserName !== "" || this.newPassword !== "" || this.newFirstName !== "" || this.newLastName !== "" || this.newEmail !== "" || this.newIsLibrarian !== false || this.newIsAdministrator !== false;
-          } else {
-            return this.newUserName !== this.original.userName || this.newPassword !== "" || this.newFirstName !== this.original.firstName || this.newLastName !== this.original.lastName || this.newEmail !== this.original.email || this.newIsLibrarian !== this.original.isLibrarian || this.newIsAdministrator !== this.original.isAdministrator;
-          }
-        }
-      }, {
-        key: "isUserNameValid",
-        get: function get() {
-          return this.newUserName.length > 0;
-        }
-      }, {
-        key: "isPasswordValid",
-        get: function get() {
-          return this.newPassword.length >= 8 || this.original !== null && this.newPassword === "";
-        }
-      }, {
-        key: "isEmailValid",
-        get: function get() {
-          return this.newEmail === "" || /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.newEmail);
-        }
-      }, {
-        key: "isValid",
-        get: function get() {
-          return this.isUserNameValid && this.isPasswordValid && this.isEmailValid;
-        }
-      }]);
+      }
 
-      return UserViewModel;
-    }();
+      get isUserNameValid() {
+        return this.newUserName.length > 0;
+      }
+
+      get isPasswordValid() {
+        return this.newPassword.length >= 8 || this.original !== null && this.newPassword === "";
+      }
+
+      get isEmailValid() {
+        return this.newEmail === "" || /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.newEmail);
+      }
+
+      get isValid() {
+        return this.isUserNameValid && this.isPasswordValid && this.isEmailValid;
+      }
+
+      resetToOriginal() {
+        if (this.original !== null) {
+          this.newUserName = this.original.userName;
+          this.newPassword = "";
+          this.newFirstName = this.original.firstName;
+          this.newLastName = this.original.lastName;
+          this.newEmail = this.original.email;
+          this.newIsLibrarian = this.original.isLibrarian;
+          this.newIsAdministrator = this.original.isAdministrator;
+        } else {
+          this.newUserName = "";
+          this.newPassword = "";
+          this.newFirstName = "";
+          this.newLastName = "";
+          this.newEmail = "";
+          this.newIsLibrarian = false;
+          this.newIsAdministrator = false;
+        }
+      }
+
+    }
     /***/
 
   },
@@ -2255,7 +2043,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ":host {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n\n.editable-cell {\n  background: initial;\n  border: none;\n  box-shadow: none !important;\n}\n\n.editable-cell.is-invalid {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::-webkit-input-placeholder {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::-moz-placeholder {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::-ms-input-placeholder {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::placeholder {\n  color: #dc3545;\n}\n\n.table-column-fill {\n  width: calc(100% / 5);\n}\n\n.table-column-id {\n  min-width: 70px;\n}\n\n.cursor-pointer {\n  cursor: pointer;\n}\n\n.text-nowrap {\n  white-space: nowrap;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdXNlcnMvQzpcXFVzZXJzXFxKYWt1YiDFoGVua8O9xZlcXE9uZURyaXZlXFxTb3VyY2VcXHByb2pla3R5XFx0cmlkYS00ZXBcXHByb2pla3QtNGVwXFxzcmNcXHN5c2FkbWluXFxjbGllbnQvc3JjXFxhcHBcXHBhZ2VzXFx1c2Vyc1xcdXNlcnMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3VzZXJzL3VzZXJzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLHNCQUFBO0FDQ0o7O0FERUE7RUFDSSxtQkFBQTtFQUNBLFlBQUE7RUFDQSwyQkFBQTtBQ0NKOztBREVBO0VBQ0ksY0FBQTtBQ0NKOztBREVBO0VBQ0ksY0FBQTtBQ0NKOztBREZBO0VBQ0ksY0FBQTtBQ0NKOztBREZBO0VBQ0ksY0FBQTtBQ0NKOztBREZBO0VBQ0ksY0FBQTtBQ0NKOztBREVBO0VBQ0kscUJBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7QUNDSjs7QURFQTtFQUNJLG1CQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy91c2Vycy91c2Vycy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbi5lZGl0YWJsZS1jZWxsIHtcbiAgICBiYWNrZ3JvdW5kOiBpbml0aWFsO1xuICAgIGJvcmRlcjogbm9uZTtcbiAgICBib3gtc2hhZG93OiBub25lIWltcG9ydGFudDtcbn1cblxuLmVkaXRhYmxlLWNlbGwuaXMtaW52YWxpZCB7XG4gICAgY29sb3I6ICNkYzM1NDU7XG59XG5cbi5lZGl0YWJsZS1jZWxsLmlzLWludmFsaWQ6OnBsYWNlaG9sZGVyIHtcbiAgICBjb2xvcjogI2RjMzU0NTtcbn1cblxuLnRhYmxlLWNvbHVtbi1maWxsIHtcbiAgICB3aWR0aDogY2FsYygxMDAlIC8gNSk7XG59XG5cbi50YWJsZS1jb2x1bW4taWQge1xuICAgIG1pbi13aWR0aDogNzBweDtcbn1cblxuLmN1cnNvci1wb2ludGVyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi50ZXh0LW5vd3JhcCB7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbn0iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbi5lZGl0YWJsZS1jZWxsIHtcbiAgYmFja2dyb3VuZDogaW5pdGlhbDtcbiAgYm9yZGVyOiBub25lO1xuICBib3gtc2hhZG93OiBub25lICFpbXBvcnRhbnQ7XG59XG5cbi5lZGl0YWJsZS1jZWxsLmlzLWludmFsaWQge1xuICBjb2xvcjogI2RjMzU0NTtcbn1cblxuLmVkaXRhYmxlLWNlbGwuaXMtaW52YWxpZDo6cGxhY2Vob2xkZXIge1xuICBjb2xvcjogI2RjMzU0NTtcbn1cblxuLnRhYmxlLWNvbHVtbi1maWxsIHtcbiAgd2lkdGg6IGNhbGMoMTAwJSAvIDUpO1xufVxuXG4udGFibGUtY29sdW1uLWlkIHtcbiAgbWluLXdpZHRoOiA3MHB4O1xufVxuXG4uY3Vyc29yLXBvaW50ZXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi50ZXh0LW5vd3JhcCB7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59Il19 */";
+    __webpack_exports__["default"] = ":host {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n\n.editable-cell {\n  background: initial;\n  border: none;\n  box-shadow: none !important;\n}\n\n.editable-cell.is-invalid {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::-webkit-input-placeholder {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::-moz-placeholder {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::-ms-input-placeholder {\n  color: #dc3545;\n}\n\n.editable-cell.is-invalid::placeholder {\n  color: #dc3545;\n}\n\n.table-column-fill {\n  width: calc(100% / 5);\n}\n\n.table-column-id {\n  min-width: 70px;\n}\n\n.cursor-pointer {\n  cursor: pointer;\n}\n\n.text-nowrap {\n  white-space: nowrap;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdXNlcnMvQzpcXFVzZXJzXFxKYWt1YiDFoGVua8O9xZlcXE9uZURyaXZlXFxTb3VyY2VcXHByb2pla3R5XFx0cmlkYS00ZXBcXHByb2pla3QtNGVwXFxzcmNcXHN5c2FkbWluXFxjbGllbnQvc3JjXFxhcHBcXHBhZ2VzXFx1c2Vyc1xcdXNlcnMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3VzZXJzL3VzZXJzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLHNCQUFBO0FDQ0o7O0FERUE7RUFDSSxtQkFBQTtFQUNBLFlBQUE7RUFDQSwyQkFBQTtBQ0NKOztBREVBO0VBQ0ksY0FBQTtBQ0NKOztBREVBO0VBQ0ksY0FBQTtBQ0NKOztBREZBO0VBQ0ksY0FBQTtBQ0NKOztBREZBO0VBQ0ksY0FBQTtBQ0NKOztBREZBO0VBQ0ksY0FBQTtBQ0NKOztBREVBO0VBQ0kscUJBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7QUNDSjs7QURFQTtFQUNJLG1CQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy91c2Vycy91c2Vycy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjpob3N0IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG59XHJcblxyXG4uZWRpdGFibGUtY2VsbCB7XHJcbiAgICBiYWNrZ3JvdW5kOiBpbml0aWFsO1xyXG4gICAgYm9yZGVyOiBub25lO1xyXG4gICAgYm94LXNoYWRvdzogbm9uZSFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5lZGl0YWJsZS1jZWxsLmlzLWludmFsaWQge1xyXG4gICAgY29sb3I6ICNkYzM1NDU7XHJcbn1cclxuXHJcbi5lZGl0YWJsZS1jZWxsLmlzLWludmFsaWQ6OnBsYWNlaG9sZGVyIHtcclxuICAgIGNvbG9yOiAjZGMzNTQ1O1xyXG59XHJcblxyXG4udGFibGUtY29sdW1uLWZpbGwge1xyXG4gICAgd2lkdGg6IGNhbGMoMTAwJSAvIDUpO1xyXG59XHJcblxyXG4udGFibGUtY29sdW1uLWlkIHtcclxuICAgIG1pbi13aWR0aDogNzBweDtcclxufVxyXG5cclxuLmN1cnNvci1wb2ludGVyIHtcclxuICAgIGN1cnNvcjogcG9pbnRlcjtcclxufVxyXG5cclxuLnRleHQtbm93cmFwIHtcclxuICAgIHdoaXRlLXNwYWNlOiBub3dyYXA7XHJcbn0iLCI6aG9zdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG59XG5cbi5lZGl0YWJsZS1jZWxsIHtcbiAgYmFja2dyb3VuZDogaW5pdGlhbDtcbiAgYm9yZGVyOiBub25lO1xuICBib3gtc2hhZG93OiBub25lICFpbXBvcnRhbnQ7XG59XG5cbi5lZGl0YWJsZS1jZWxsLmlzLWludmFsaWQge1xuICBjb2xvcjogI2RjMzU0NTtcbn1cblxuLmVkaXRhYmxlLWNlbGwuaXMtaW52YWxpZDo6cGxhY2Vob2xkZXIge1xuICBjb2xvcjogI2RjMzU0NTtcbn1cblxuLnRhYmxlLWNvbHVtbi1maWxsIHtcbiAgd2lkdGg6IGNhbGMoMTAwJSAvIDUpO1xufVxuXG4udGFibGUtY29sdW1uLWlkIHtcbiAgbWluLXdpZHRoOiA3MHB4O1xufVxuXG4uY3Vyc29yLXBvaW50ZXIge1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi50ZXh0LW5vd3JhcCB7XG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XG59Il19 */";
     /***/
   },
 
@@ -2339,14 +2127,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! src/app/core/users/user-has-active-borrows-error */
     "./src/app/core/users/user-has-active-borrows-error.ts");
 
-    var UsersComponent =
-    /*#__PURE__*/
-    function () {
-      function UsersComponent(userService, alertService) {
-        var _this4 = this;
-
-        _classCallCheck(this, UsersComponent);
-
+    let UsersComponent = class UsersComponent {
+      constructor(userService, alertService) {
         this.userService = userService;
         this.alertService = alertService;
         this.filterForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormGroup"]({
@@ -2358,429 +2140,235 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           isLibrarian: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](false),
           isAdministrator: new _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormControl"](false)
         });
-        this.filterForm.valueChanges.subscribe(function () {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this4, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee3() {
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    this.users = undefined;
-                    _context3.next = 3;
-                    return this.refreshUsers();
+        this.filterForm.valueChanges.subscribe(() => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          this.users = undefined;
+          yield this.refreshUsers();
+          if (!this.isFiltred) this.addNewUser();
+        }));
+      }
 
-                  case 3:
-                    if (!this.isFiltred) this.addNewUser();
+      get hasChanges() {
+        return this.users !== undefined && this.users.some(u => (u.isChanged || u.original === null) && u !== this.newUser);
+      }
 
-                  case 4:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            }, _callee3, this);
-          }));
+      get isAllValid() {
+        return this.users === undefined || this.users.every(u => u.isValid || u === this.newUser);
+      }
+
+      get isFiltred() {
+        return this.filterForm.get("id").value != "" || this.filterForm.get("userName").value != "" || this.filterForm.get("firstName").value != "" || this.filterForm.get("lastName").value != "" || this.filterForm.get("email").value != "" || this.filterForm.get("isLibrarian").value != false || this.filterForm.get("isAdministrator").value != false;
+      }
+
+      get isIdFilterValid() {
+        return !this.filterForm.get("id").invalid;
+      }
+
+      get changesText() {
+        if (this.users === undefined) return "";
+        let changesCount = this.users.filter(u => u.isChanged).length;
+        if (changesCount === 0) return "";else if (changesCount === 1) return "".concat(changesCount, " zm\u011Bna.");else if (changesCount > 1 && changesCount < 5) return "".concat(changesCount, " zm\u011Bny.");else return "".concat(changesCount, " zm\u011Bn.");
+      }
+
+      ngOnInit() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          yield this.refreshUsers();
+          this.addNewUser();
         });
       }
 
-      _createClass(UsersComponent, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee4() {
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    _context4.next = 2;
-                    return this.refreshUsers();
+      ngDoCheck() {
+        if (this.newUser != undefined && this.newUser.isChanged) this.addNewUser();
+        if (this.hasChanges) this.filterForm.disable({
+          emitEvent: false
+        });else this.filterForm.enable({
+          emitEvent: false
+        });
+      }
 
-                  case 2:
-                    this.addNewUser();
-
-                  case 3:
-                  case "end":
-                    return _context4.stop();
-                }
-              }
-            }, _callee4, this);
-          }));
-        }
-      }, {
-        key: "ngDoCheck",
-        value: function ngDoCheck() {
-          if (this.newUser != undefined && this.newUser.isChanged) this.addNewUser();
-          if (this.hasChanges) this.filterForm.disable({
-            emitEvent: false
-          });else this.filterForm.enable({
-            emitEvent: false
+      refreshUsers() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          let idFilterControl = this.filterForm.get("id");
+          let idFilter = idFilterControl.value;
+          let userNameFilter = this.filterForm.get("userName").value;
+          let firstNameFilter = this.filterForm.get("firstName").value;
+          let lastNameFilter = this.filterForm.get("lastName").value;
+          let emailFilter = this.filterForm.get("email").value;
+          let isLibrarianFilter = this.filterForm.get("isLibrarian").value;
+          let isAdministratorFilter = this.filterForm.get("isAdministrator").value;
+          let options = Object.assign({}, idFilter !== "" && !idFilterControl.invalid && {
+            idFilter: parseInt(idFilter)
+          }, userNameFilter !== "" && {
+            userNameFilter
+          }, firstNameFilter !== "" && {
+            firstNameFilter
+          }, lastNameFilter !== "" && {
+            lastNameFilter
+          }, emailFilter !== "" && {
+            emailFilter
+          }, isLibrarianFilter !== false && {
+            isLibrarianFilter
+          }, isAdministratorFilter !== false && {
+            isAdministratorFilter
           });
-        }
-      }, {
-        key: "refreshUsers",
-        value: function refreshUsers() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee5() {
-            var idFilterControl, idFilter, userNameFilter, firstNameFilter, lastNameFilter, emailFilter, isLibrarianFilter, isAdministratorFilter, options;
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
-              while (1) {
-                switch (_context5.prev = _context5.next) {
-                  case 0:
-                    idFilterControl = this.filterForm.get("id");
-                    idFilter = idFilterControl.value;
-                    userNameFilter = this.filterForm.get("userName").value;
-                    firstNameFilter = this.filterForm.get("firstName").value;
-                    lastNameFilter = this.filterForm.get("lastName").value;
-                    emailFilter = this.filterForm.get("email").value;
-                    isLibrarianFilter = this.filterForm.get("isLibrarian").value;
-                    isAdministratorFilter = this.filterForm.get("isAdministrator").value;
-                    options = Object.assign({}, idFilter !== "" && !idFilterControl.invalid && {
-                      idFilter: parseInt(idFilter)
-                    }, userNameFilter !== "" && {
-                      userNameFilter: userNameFilter
-                    }, firstNameFilter !== "" && {
-                      firstNameFilter: firstNameFilter
-                    }, lastNameFilter !== "" && {
-                      lastNameFilter: lastNameFilter
-                    }, emailFilter !== "" && {
-                      emailFilter: emailFilter
-                    }, isLibrarianFilter !== false && {
-                      isLibrarianFilter: isLibrarianFilter
-                    }, isAdministratorFilter !== false && {
-                      isAdministratorFilter: isAdministratorFilter
-                    });
-                    _context5.next = 11;
-                    return this.userService.getAll(options).toPromise();
+          this.users = (yield this.userService.getAll(options).toPromise()).map(u => new _user_view_model__WEBPACK_IMPORTED_MODULE_4__["UserViewModel"](u, u.userName, "", u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator));
+        });
+      }
 
-                  case 11:
-                    _context5.t0 = function (u) {
-                      return new _user_view_model__WEBPACK_IMPORTED_MODULE_4__["UserViewModel"](u, u.userName, "", u.firstName, u.lastName, u.email, u.isLibrarian, u.isAdministrator);
-                    };
+      addNewUser() {
+        this.newUser = new _user_view_model__WEBPACK_IMPORTED_MODULE_4__["UserViewModel"](null, "", "", "", "", "", false, false);
+        this.users.unshift(this.newUser);
+      }
 
-                    this.users = _context5.sent.map(_context5.t0);
+      save(user) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          let newUser;
 
-                  case 13:
-                  case "end":
-                    return _context5.stop();
-                }
+          if (user.original != null) {
+            let u = new src_app_core_users_user__WEBPACK_IMPORTED_MODULE_3__["User"](user.original.id, user.newUserName, user.newFirstName, user.newLastName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
+            let newPassword = user.newPassword === "" ? undefined : user.newPassword;
+
+            try {
+              newUser = yield this.userService.update(u, newPassword).toPromise();
+            } catch (e) {
+              if (e instanceof src_app_core_users_user_name_already_used_error__WEBPACK_IMPORTED_MODULE_7__["UserNameAlreadyUsedError"]) {
+                this.alertService.show("U\u017Eivatelsk\xE9 jm\xE9no '".concat(u.userName, "' ji\u017E pou\u017E\xEDv\xE1 n\u011Bkdo jin\xFD."), src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
+                return;
               }
-            }, _callee5, this);
-          }));
-        }
-      }, {
-        key: "addNewUser",
-        value: function addNewUser() {
-          this.newUser = new _user_view_model__WEBPACK_IMPORTED_MODULE_4__["UserViewModel"](null, "", "", "", "", "", false, false);
-          this.users.unshift(this.newUser);
-        }
-      }, {
-        key: "save",
-        value: function save(user) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee6() {
-            var newUser, u, newPassword, _u;
 
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    if (!(user.original != null)) {
-                      _context6.next = 17;
-                      break;
-                    }
+              throw e;
+            }
+          } else {
+            let u = new src_app_core_users_user__WEBPACK_IMPORTED_MODULE_3__["User"](0, user.newUserName, user.newFirstName, user.newLastName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
 
-                    u = new src_app_core_users_user__WEBPACK_IMPORTED_MODULE_3__["User"](user.original.id, user.newUserName, user.newFirstName, user.newLastName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
-                    newPassword = user.newPassword === "" ? undefined : user.newPassword;
-                    _context6.prev = 3;
-                    _context6.next = 6;
-                    return this.userService.update(u, newPassword).toPromise();
-
-                  case 6:
-                    newUser = _context6.sent;
-                    _context6.next = 15;
-                    break;
-
-                  case 9:
-                    _context6.prev = 9;
-                    _context6.t0 = _context6["catch"](3);
-
-                    if (!(_context6.t0 instanceof src_app_core_users_user_name_already_used_error__WEBPACK_IMPORTED_MODULE_7__["UserNameAlreadyUsedError"])) {
-                      _context6.next = 14;
-                      break;
-                    }
-
-                    this.alertService.show("U\u017Eivatelsk\xE9 jm\xE9no '".concat(u.userName, "' ji\u017E pou\u017E\xEDv\xE1 n\u011Bkdo jin\xFD."), src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
-                    return _context6.abrupt("return");
-
-                  case 14:
-                    throw _context6.t0;
-
-                  case 15:
-                    _context6.next = 30;
-                    break;
-
-                  case 17:
-                    _u = new src_app_core_users_user__WEBPACK_IMPORTED_MODULE_3__["User"](0, user.newUserName, user.newFirstName, user.newLastName, user.newEmail, user.newIsLibrarian, user.newIsAdministrator);
-                    _context6.prev = 18;
-                    _context6.next = 21;
-                    return this.userService.add(_u, user.newPassword).toPromise();
-
-                  case 21:
-                    newUser = _context6.sent;
-                    _context6.next = 30;
-                    break;
-
-                  case 24:
-                    _context6.prev = 24;
-                    _context6.t1 = _context6["catch"](18);
-
-                    if (!(_context6.t1 instanceof src_app_core_users_user_name_already_used_error__WEBPACK_IMPORTED_MODULE_7__["UserNameAlreadyUsedError"])) {
-                      _context6.next = 29;
-                      break;
-                    }
-
-                    this.alertService.show("U\u017Eivatelsk\xE9 jm\xE9no '".concat(_u.userName, "' ji\u017E pou\u017E\xEDv\xE1 n\u011Bkdo jin\xFD."), src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
-                    return _context6.abrupt("return");
-
-                  case 29:
-                    throw _context6.t1;
-
-                  case 30:
-                    user.original = newUser;
-                    user.resetToOriginal();
-
-                  case 32:
-                  case "end":
-                    return _context6.stop();
-                }
+            try {
+              newUser = yield this.userService.add(u, user.newPassword).toPromise();
+            } catch (e) {
+              if (e instanceof src_app_core_users_user_name_already_used_error__WEBPACK_IMPORTED_MODULE_7__["UserNameAlreadyUsedError"]) {
+                this.alertService.show("U\u017Eivatelsk\xE9 jm\xE9no '".concat(u.userName, "' ji\u017E pou\u017E\xEDv\xE1 n\u011Bkdo jin\xFD."), src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
+                return;
               }
-            }, _callee6, this, [[3, 9], [18, 24]]);
-          }));
-        }
-      }, {
-        key: "discard",
-        value: function discard(user) {
-          if (user.original == null) this.users.splice(this.users.indexOf(user), 1);else user.resetToOriginal();
-        }
-      }, {
-        key: "remove",
-        value: function remove(user) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee7() {
-            return regeneratorRuntime.wrap(function _callee7$(_context7) {
-              while (1) {
-                switch (_context7.prev = _context7.next) {
-                  case 0:
-                    _context7.prev = 0;
-                    _context7.next = 3;
-                    return this.userService.remove(user.original).toPromise();
 
-                  case 3:
-                    this.users.splice(this.users.indexOf(user), 1);
-                    _context7.next = 12;
-                    break;
+              throw e;
+            }
+          }
 
-                  case 6:
-                    _context7.prev = 6;
-                    _context7.t0 = _context7["catch"](0);
+          user.original = newUser;
+          user.resetToOriginal();
+        });
+      }
 
-                    if (!(_context7.t0 instanceof src_app_core_users_user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_9__["UserHasActiveBorrowsError"])) {
-                      _context7.next = 11;
-                      break;
-                    }
+      discard(user) {
+        if (user.original == null) this.users.splice(this.users.indexOf(user), 1);else user.resetToOriginal();
+      }
 
-                    this.alertService.show("Nelze smazat uživatele s aktivními výpůjčkami.", src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
-                    return _context7.abrupt("return");
+      remove(user) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          try {
+            yield this.userService.remove(user.original).toPromise();
+            this.users.splice(this.users.indexOf(user), 1);
+          } catch (e) {
+            if (e instanceof src_app_core_users_user_has_active_borrows_error__WEBPACK_IMPORTED_MODULE_9__["UserHasActiveBorrowsError"]) {
+              this.alertService.show("Nelze smazat uživatele s aktivními výpůjčkami.", src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
+              return;
+            }
 
-                  case 11:
-                    throw _context7.t0;
+            throw e;
+          }
+        });
+      }
 
-                  case 12:
-                  case "end":
-                    return _context7.stop();
-                }
+      saveAll() {
+        this.users.filter(u => u.isChanged).forEach(u => this.save(u));
+      }
+
+      discardAll() {
+        this.users.filter(u => u.isChanged || u.original === null && u !== this.newUser).forEach(u => this.discard(u));
+      }
+
+      idFilterValidator(control) {
+        if (/^(0|(-?[1-9][0-9]*)|)$/.test(control.value)) return null;else return {
+          invalidId: true
+        };
+      }
+
+      import() {
+        let kontrola = 0;
+        let validniRadky = [];
+        let element = document.createElement("input");
+        element.type = "file";
+        element.addEventListener("change", () => {
+          let file = element.files[0];
+          let reader = new FileReader();
+          reader.readAsText(file, "UTF-8");
+
+          reader.onload = () => {
+            let soubor = reader.result;
+            let radky = soubor.split(/\r\n?|\n/);
+
+            for (let i = 0; i < radky.length; i++) {
+              let atributyUsera = radky[i].split(",");
+
+              if (atributyUsera.length != 7 || atributyUsera[5] != "true" && atributyUsera[5] != "false" || atributyUsera[6] != "true" && atributyUsera[6] != "false") {
+                this.alertService.show("Chyba na řádku " + (i + 1), src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
+                kontrola++;
+              } else {
+                validniRadky.push(atributyUsera);
               }
-            }, _callee7, this, [[0, 6]]);
-          }));
-        }
-      }, {
-        key: "saveAll",
-        value: function saveAll() {
-          var _this5 = this;
+            }
 
-          this.users.filter(function (u) {
-            return u.isChanged;
-          }).forEach(function (u) {
-            return _this5.save(u);
-          });
-        }
-      }, {
-        key: "discardAll",
-        value: function discardAll() {
-          var _this6 = this;
-
-          this.users.filter(function (u) {
-            return u.isChanged || u.original === null && u !== _this6.newUser;
-          }).forEach(function (u) {
-            return _this6.discard(u);
-          });
-        }
-      }, {
-        key: "idFilterValidator",
-        value: function idFilterValidator(control) {
-          if (/^(0|(-?[1-9][0-9]*)|)$/.test(control.value)) return null;else return {
-            invalidId: true
+            if (kontrola == 0) {
+              for (let i = 0; i < radky.length; i++) {
+                let validniRadek = validniRadky.pop();
+                let uzivatel = new _user_view_model__WEBPACK_IMPORTED_MODULE_4__["UserViewModel"](null, validniRadek[0], validniRadek[1], validniRadek[2], validniRadek[3], validniRadek[4], validniRadek[5] === "true", validniRadek[6] === "true");
+                this.users.unshift(uzivatel);
+              }
+            }
           };
-        }
-      }, {
-        key: "import",
-        value: function _import() {
-          var _this7 = this;
+        });
+        element.click();
+      }
 
-          var kontrola = 0;
-          var validniRadky = [];
-          var element = document.createElement("input");
-          element.type = "file";
-          element.addEventListener("change", function () {
-            var file = element.files[0];
-            var reader = new FileReader();
-            reader.readAsText(file, "UTF-8");
+      export() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          let soubor = "";
+          let uzivatele = yield this.userService.getAll().toPromise();
 
-            reader.onload = function () {
-              var soubor = reader.result;
-              var radky = soubor.split(/\r\n?|\n/);
+          for (let i = 0; i < uzivatele.length; i++) {
+            let uzivatel = uzivatele[i];
+            if (i != 0) soubor += "\n";
+            soubor += uzivatel.userName;
+            soubor += ",";
+            soubor += uzivatel.firstName;
+            soubor += ",";
+            soubor += uzivatel.lastName;
+            soubor += ",";
+            soubor += uzivatel.email;
+            soubor += ",";
+            soubor += uzivatel.isLibrarian;
+            soubor += ",";
+            soubor += uzivatel.isAdministrator;
+          }
 
-              for (var i = 0; i < radky.length; i++) {
-                var atributyUsera = radky[i].split(",");
+          this.downloadBlob("Sysadmin - export uživatelů.txt", new Blob([soubor]));
+        });
+      }
 
-                if (atributyUsera.length != 7 || atributyUsera[5] != "true" && atributyUsera[5] != "false" || atributyUsera[6] != "true" && atributyUsera[6] != "false") {
-                  _this7.alertService.show("Chyba na řádku " + (i + 1), src_app_alerts_alert_type__WEBPACK_IMPORTED_MODULE_6__["AlertType"].error);
+      downloadBlob(fileName, blob) {
+        let url = URL.createObjectURL(blob);
+        let linkElement = document.createElement("a");
+        linkElement.download = fileName;
+        linkElement.href = url;
+        linkElement.click();
+        URL.revokeObjectURL(url);
+      }
 
-                  kontrola++;
-                } else {
-                  validniRadky.push(atributyUsera);
-                }
-              }
-
-              if (kontrola == 0) {
-                for (var _i = 0; _i < radky.length; _i++) {
-                  var validniRadek = validniRadky.pop();
-                  var uzivatel = new _user_view_model__WEBPACK_IMPORTED_MODULE_4__["UserViewModel"](null, validniRadek[0], validniRadek[1], validniRadek[2], validniRadek[3], validniRadek[4], validniRadek[5] === "true", validniRadek[6] === "true");
-
-                  _this7.users.unshift(uzivatel);
-                }
-              }
-            };
-          });
-          element.click();
-        }
-      }, {
-        key: "export",
-        value: function _export() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
-          /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee8() {
-            var soubor, uzivatele, i, uzivatel;
-            return regeneratorRuntime.wrap(function _callee8$(_context8) {
-              while (1) {
-                switch (_context8.prev = _context8.next) {
-                  case 0:
-                    soubor = "";
-                    _context8.next = 3;
-                    return this.userService.getAll().toPromise();
-
-                  case 3:
-                    uzivatele = _context8.sent;
-
-                    for (i = 0; i < uzivatele.length; i++) {
-                      uzivatel = uzivatele[i];
-                      if (i != 0) soubor += "\n";
-                      soubor += uzivatel.userName;
-                      soubor += ",";
-                      soubor += uzivatel.firstName;
-                      soubor += ",";
-                      soubor += uzivatel.lastName;
-                      soubor += ",";
-                      soubor += uzivatel.email;
-                      soubor += ",";
-                      soubor += uzivatel.isLibrarian;
-                      soubor += ",";
-                      soubor += uzivatel.isAdministrator;
-                    }
-
-                    this.downloadBlob("Sysadmin - export uživatelů.txt", new Blob([soubor]));
-
-                  case 6:
-                  case "end":
-                    return _context8.stop();
-                }
-              }
-            }, _callee8, this);
-          }));
-        }
-      }, {
-        key: "downloadBlob",
-        value: function downloadBlob(fileName, blob) {
-          var url = URL.createObjectURL(blob);
-          var linkElement = document.createElement("a");
-          linkElement.download = fileName;
-          linkElement.href = url;
-          linkElement.click();
-          URL.revokeObjectURL(url);
-        }
-      }, {
-        key: "hasChanges",
-        get: function get() {
-          var _this8 = this;
-
-          return this.users !== undefined && this.users.some(function (u) {
-            return (u.isChanged || u.original === null) && u !== _this8.newUser;
-          });
-        }
-      }, {
-        key: "isAllValid",
-        get: function get() {
-          var _this9 = this;
-
-          return this.users === undefined || this.users.every(function (u) {
-            return u.isValid || u === _this9.newUser;
-          });
-        }
-      }, {
-        key: "isFiltred",
-        get: function get() {
-          return this.filterForm.get("id").value != "" || this.filterForm.get("userName").value != "" || this.filterForm.get("firstName").value != "" || this.filterForm.get("lastName").value != "" || this.filterForm.get("email").value != "" || this.filterForm.get("isLibrarian").value != false || this.filterForm.get("isAdministrator").value != false;
-        }
-      }, {
-        key: "isIdFilterValid",
-        get: function get() {
-          return !this.filterForm.get("id").invalid;
-        }
-      }, {
-        key: "changesText",
-        get: function get() {
-          if (this.users === undefined) return "";
-          var changesCount = this.users.filter(function (u) {
-            return u.isChanged;
-          }).length;
-          if (changesCount === 0) return "";else if (changesCount === 1) return "".concat(changesCount, " zm\u011Bna.");else if (changesCount > 1 && changesCount < 5) return "".concat(changesCount, " zm\u011Bny.");else return "".concat(changesCount, " zm\u011Bn.");
-        }
-      }]);
-
-      return UsersComponent;
-    }();
-
-    UsersComponent.ctorParameters = function () {
-      return [{
-        type: src_app_core_users_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]
-      }, {
-        type: src_app_alerts_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"]
-      }];
     };
+
+    UsersComponent.ctorParameters = () => [{
+      type: src_app_core_users_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]
+    }, {
+      type: src_app_alerts_alert_service__WEBPACK_IMPORTED_MODULE_5__["AlertService"]
+    }];
 
     UsersComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-users',
@@ -2844,7 +2432,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! ./can-activates/signed-in-can-activate */
     "./src/app/routing/can-activates/signed-in-can-activate.ts");
 
-    var routes = [{
+    const routes = [{
       path: "users",
       component: _pages_users_users_component__WEBPACK_IMPORTED_MODULE_3__["UsersComponent"],
       canActivate: [_can_activates_signed_in_can_activate__WEBPACK_IMPORTED_MODULE_4__["SignedInCanActivate"]]
@@ -2852,11 +2440,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       path: "**",
       redirectTo: "users"
     }];
-
-    var AppRoutingModule = function AppRoutingModule() {
-      _classCallCheck(this, AppRoutingModule);
-    };
-
+    let AppRoutingModule = class AppRoutingModule {};
     AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
@@ -2908,41 +2492,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*! src/app/core/sign-in/sign-in.service */
     "./src/app/core/sign-in/sign-in.service.ts");
 
-    var SIGN_IN_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Sign in page url.");
-
-    var SignedInCanActivate =
-    /*#__PURE__*/
-    function () {
-      function SignedInCanActivate(signInService, signInUrl) {
-        _classCallCheck(this, SignedInCanActivate);
-
+    const SIGN_IN_URL = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]("Sign in page url.");
+    let SignedInCanActivate = class SignedInCanActivate {
+      constructor(signInService, signInUrl) {
         this.signInService = signInService;
         this.signInUrl = signInUrl;
       }
 
-      _createClass(SignedInCanActivate, [{
-        key: "canActivate",
-        value: function canActivate(route, state) {
-          var signedIn = this.signInService.signedUser !== null;
-          if (!signedIn) window.location.href = this.signInUrl + "?redirectUrl=" + window.location.href;
-          return signedIn;
-        }
-      }]);
+      canActivate(route, state) {
+        let signedIn = this.signInService.signedUser !== null;
+        if (!signedIn) window.location.href = this.signInUrl + "?redirectUrl=" + window.location.href;
+        return signedIn;
+      }
 
-      return SignedInCanActivate;
-    }();
-
-    SignedInCanActivate.ctorParameters = function () {
-      return [{
-        type: src_app_core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_2__["SignInService"]
-      }, {
-        type: String,
-        decorators: [{
-          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
-          args: [SIGN_IN_URL]
-        }]
-      }];
     };
+
+    SignedInCanActivate.ctorParameters = () => [{
+      type: src_app_core_sign_in_sign_in_service__WEBPACK_IMPORTED_MODULE_2__["SignInService"]
+    }, {
+      type: String,
+      decorators: [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+        args: [SIGN_IN_URL]
+      }]
+    }];
 
     SignedInCanActivate = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
@@ -2979,7 +2552,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     // The list of file replacements can be found in `angular.json`.
 
 
-    var environment = {
+    const environment = {
       production: false
     };
     /*
@@ -3042,9 +2615,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
     }
 
-    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"]).catch(function (err) {
-      return console.error(err);
-    });
+    Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"]).catch(err => console.error(err));
     /***/
   },
 
